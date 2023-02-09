@@ -1,2 +1,7 @@
-package model;public enum WeaponType {
+package model;
+
+public enum WeaponType {
+    AXE,
+    SHOTGUN,
+    BAT;
 }
