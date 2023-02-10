@@ -1,11 +1,13 @@
 package model;
 
+import java.util.Objects;
+
 public class Car {
     private String name; //Поле не может быть null
     private boolean cool;
 
     public Car(String name, boolean cool) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
         this.cool = cool;
     }
 
