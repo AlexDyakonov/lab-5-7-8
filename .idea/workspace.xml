@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added getter/setter and base constructors">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UserControllerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/UserDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/UserServiceImpl.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added interfaces for all layers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UserControllerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +71,7 @@
       <updated>1675974786987</updated>
       <workItem from="1675974789244" duration="2446000" />
       <workItem from="1675978622829" duration="1402000" />
-      <workItem from="1676019523806" duration="6395000" />
+      <workItem from="1676019523806" duration="6557000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -100,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676023230475</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added interfaces for all layers">
+      <created>1676035601435</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676035601435</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +122,7 @@
     <MESSAGE value="Fixed README.md" />
     <MESSAGE value="Fixed gitignore" />
     <MESSAGE value="Added getter/setter and base constructors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added getter/setter and base constructors" />
+    <MESSAGE value="Added interfaces for all layers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added interfaces for all layers" />
   </component>
 </project>
