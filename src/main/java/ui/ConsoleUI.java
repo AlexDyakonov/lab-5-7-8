@@ -3,7 +3,7 @@ package ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+//Задание: Сделать распознание введеной строки, чтобы можно было отличить команду и ее аргументы
 public class ConsoleUI {
     public static void menu(){
         System.out.println("Добро пожаловать! Введите команду для продолжения\n" +

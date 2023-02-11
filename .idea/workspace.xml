@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added validator">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Set/DataBase.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added database realization and simple methods&#10;Added methods to Impls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Set/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UserControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +75,9 @@
       <workItem from="1675974789244" duration="2446000" />
       <workItem from="1675978622829" duration="1402000" />
       <workItem from="1676019523806" duration="10218000" />
-      <workItem from="1676064871290" duration="3465000" />
+      <workItem from="1676064871290" duration="3481000" />
+      <workItem from="1676101868632" duration="745000" />
+      <workItem from="1676102623160" duration="909000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -113,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676036750806</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added database realization and simple methods&#10;Added methods to Impls">
+      <created>1676069009224</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676069009224</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +144,7 @@
     <MESSAGE value="Added getter/setter and base constructors" />
     <MESSAGE value="Added interfaces for all layers" />
     <MESSAGE value="Added validator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validator" />
+    <MESSAGE value="Added database realization and simple methods&#10;Added methods to Impls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database realization and simple methods&#10;Added methods to Impls" />
   </component>
 </project>

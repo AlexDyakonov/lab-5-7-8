@@ -1,8 +1,9 @@
 package dao;
 
-import Set.DataBase;
+import DataBase.DataBase;
 import model.HumanBeing;
 
+// Тут будем взаимодействовать со сетом из класса ДатаБейз
 public class UserDAOImpl implements UserDAO{
     private DataBase dataBase;
 

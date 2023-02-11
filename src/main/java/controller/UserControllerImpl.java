@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class UserControllerImpl implements UserController{
+    //Тут реализуем валидацию данных
     private final UserService userService;
 
     public UserControllerImpl(UserService userService) {
