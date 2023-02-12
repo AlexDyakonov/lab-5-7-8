@@ -1,11 +1,12 @@
-package controller;
+package dao;
 
 import model.HumanBeing;
+import model.HumanBeingRequestDTO;
 
-public interface UserController {
-    void info();
+public interface HumanBeingDAO {
+    String info();
     void show();
-    void addElementToCollection(HumanBeing humanBeing);
+    String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
     void clear();

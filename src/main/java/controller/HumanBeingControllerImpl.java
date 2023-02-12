@@ -2,85 +2,86 @@ package controller;
 
 import exception.ValidationException;
 import model.HumanBeing;
-import services.UserService;
+import model.HumanBeingRequestDTO;
+import services.HumanBeingService;
 
 import java.util.Objects;
 import java.util.function.Function;
 
-public class UserControllerImpl implements UserController{
+public class HumanBeingControllerImpl implements HumanBeingController {
     //Тут реализуем валидацию данных
-    private final UserService userService;
+    private final HumanBeingService humanBeingService;
 
-    public UserControllerImpl(UserService userService) {
-        this.userService = Objects.requireNonNull(userService, "User service must be provided.");
+    public HumanBeingControllerImpl(HumanBeingService userService) {
+        this.humanBeingService = Objects.requireNonNull(userService, "User service must be provided.");
     }
 
     @Override
-    public void info() {
-        userService.info();
+    public String  info() {
+        return humanBeingService.info();
     }
 
     @Override
     public void show() {
-        userService.show();
+        humanBeingService.show();
     }
 
     @Override
-    public void addElementToCollection(HumanBeing humanBeing) {
-        validate(humanBeing.getName(), this ::validateUserName, "Invalid humanBeing name");
-        userService.addElementToCollection(humanBeing);
+    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
+        validate(humanBeingRequestDTO.getName(), this ::validateUserName, "Invalid humanBeing name");
+        return humanBeingService.addElementToCollection(humanBeingRequestDTO);
     }
 
     @Override
     public void updateById(Long id, HumanBeing humanBeing) {
         validate(id, this::validateId, "Invalid Id");
-        userService.updateById(id, humanBeing);
+        humanBeingService.updateById(id, humanBeing);
     }
 
     @Override
     public void removeById(Long id) {
         validate(id, this::validateId, "Invalid Id");
-        userService.removeById(id);
+        humanBeingService.removeById(id);
     }
 
     @Override
     public void clear() {
-        userService.clear();
+        humanBeingService.clear();
     }
 
     @Override
     public void save() {
-        userService.save();
+        humanBeingService.save();
     }
 
     @Override
     public void executeScript(String fileName) {
-        userService.executeScript(fileName);
+        humanBeingService.executeScript(fileName);
     }
 
     @Override
     public void addIfMax(HumanBeing humanBeing) {
-        userService.addIfMax(humanBeing);
+        humanBeingService.addIfMax(humanBeing);
     }
 
     @Override
     public void addIfMin(HumanBeing humanBeing) {
-        userService.addIfMin(humanBeing);
+        humanBeingService.addIfMin(humanBeing);
     }
 
     @Override
     public void maxByImpactSpeed(HumanBeing humanBeing) {
-        userService.maxByImpactSpeed(humanBeing);
+        humanBeingService.maxByImpactSpeed(humanBeing);
     }
 
     @Override
     public void countByMood(HumanBeing humanBeing) {
-        userService.countByMood(humanBeing);
+        humanBeingService.countByMood(humanBeing);
     }
 
     @Override
     public void printAscending() {
-        userService.printAscending();
+        humanBeingService.printAscending();
     }
     private boolean validateUserName(String userName){
         return (userName != null && !userName.equals(""));

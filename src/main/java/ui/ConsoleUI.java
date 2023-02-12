@@ -1,10 +1,22 @@
 package ui;
 
+import controller.HumanBeingControllerImpl;
+import dao.HumanBeingDAOImpl;
+import model.*;
+import services.HumanBeingServiceImpl;
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeMap;
+
 //Задание: Сделать распознание введеной строки, чтобы можно было отличить команду и ее аргументы
 public class ConsoleUI {
+    private static final HumanBeingControllerImpl userController = new HumanBeingControllerImpl(new HumanBeingServiceImpl(new HumanBeingDAOImpl()));
+
     public static void menu(){
         System.out.println("Добро пожаловать! Введите команду для продолжения\n" +
                 "   help : вывести справку по доступным командам\n" +
@@ -24,21 +36,70 @@ public class ConsoleUI {
                 "   count_by_mood mood : вывести количество элементов, значение поля mood которых равно заданному\n" +
                 "   print_ascending : вывести элементы коллекции в порядке возрастания\n");
     }
+    private static Coordinates readCoords(){
+        Coordinates coordinates = new Coordinates();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Введите координату х ");
+            String xStr = reader.readLine();
+            Integer x = Integer.parseInt(xStr);
+            System.out.println("Введите координату у ");
+            String yStr = reader.readLine();
+            Double y = Double.parseDouble(yStr);
+            coordinates.setX(x);
+            coordinates.setY(y);
+            return coordinates;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+        return coordinates;
+    }
+    private static Boolean readBool(){
+        boolean answer = false;
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String ans = reader.readLine();
+            answer = Boolean.parseBoolean(ans);
+            return answer;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void start() {
         menu();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
             String command = "";
+            String name;
+            Coordinates coordinates = new Coordinates(1, 1d);
+            boolean realHero;
+            boolean hasToothpick;
+            Float impactSpeed;
+            String soundtrackName;
+            WeaponType weaponType;
+            Mood mood;
+            Car car;
+
             while (!(command = reader.readLine()).equals("exit")){
                 switch (command) {
                     case "help":
                         menu();
                         break;
+                    case "info":
+                        System.out.println(userController.info());
+                        break;
                     case "show":
                         System.out.println("Для добавления пользователя введите имя");
                         break;
                     case "add":
-                        System.out.println("Введите id пользователя: ");
+                        System.out.println("Для добавления пользователя введите имя");
+                        name = reader.readLine();
+                        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, "Nightcall", WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
+                        System.out.println(userController.addElementToCollection(humanBeingRequestDTO));
                         break;
                     case "update":
                         System.out.println("Введите id пользователя, данные которого вы хотите изменить:");

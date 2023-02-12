@@ -6,9 +6,20 @@ public class Coordinates {
     private Integer x; //Поле не может быть null
     private Double y; //Поле не может быть null
 
+    public Coordinates() {
+    }
+
     public Coordinates(Integer x, Double y) {
         this.x = Objects.requireNonNull(x);
         this.y = Objects.requireNonNull(y);
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinates{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 
     public Integer getX() {

@@ -1,11 +1,13 @@
-package services;
+package controller;
 
 import model.HumanBeing;
+import model.HumanBeingRequestDTO;
+import model.HumanBeingResponseDTO;
 
-public interface UserService {
-    void info();
+public interface HumanBeingController {
+    String info();
     void show();
-    void addElementToCollection(HumanBeing humanBeing);
+    String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
     void clear();
