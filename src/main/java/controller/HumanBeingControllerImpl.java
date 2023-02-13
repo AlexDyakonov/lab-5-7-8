@@ -6,6 +6,7 @@ import model.HumanBeingRequestDTO;
 import services.HumanBeingService;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 
 public class HumanBeingControllerImpl implements HumanBeingController {
@@ -22,8 +23,8 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void show() {
-        humanBeingService.show();
+    public Set<HumanBeing> show() {
+        return humanBeingService.show();
     }
 
     @Override

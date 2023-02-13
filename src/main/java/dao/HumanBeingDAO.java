@@ -3,9 +3,11 @@ package dao;
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
 
+import java.util.Set;
+
 public interface HumanBeingDAO {
     String info();
-    void show();
+    Set<HumanBeing> show();
     String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);

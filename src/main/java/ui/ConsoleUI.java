@@ -9,9 +9,6 @@ import services.HumanBeingServiceImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeMap;
 
 //Задание: Сделать распознание введеной строки, чтобы можно было отличить команду и ее аргументы
 public class ConsoleUI {
@@ -93,7 +90,8 @@ public class ConsoleUI {
                         System.out.println(userController.info());
                         break;
                     case "show":
-                        System.out.println("Для добавления пользователя введите имя");
+                        System.out.println(userController.show());
+                        System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
                         System.out.println("Для добавления пользователя введите имя");

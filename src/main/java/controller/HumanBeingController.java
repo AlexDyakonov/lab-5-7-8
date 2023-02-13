@@ -4,9 +4,11 @@ import model.HumanBeing;
 import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
 
+import java.util.Set;
+
 public interface HumanBeingController {
     String info();
-    void show();
+    Set<HumanBeing> show();
     String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);

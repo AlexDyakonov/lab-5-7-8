@@ -5,6 +5,8 @@ import model.HumanBeing;
 import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
 
+import java.util.Set;
+
 public class HumanBeingServiceImpl implements HumanBeingService {
     private final HumanBeingDAO humanBeingDAO;
 
@@ -18,8 +20,8 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void show() {
-        humanBeingDAO.show();
+    public Set<HumanBeing> show() {
+        return humanBeingDAO.show();
     }
 
     @Override

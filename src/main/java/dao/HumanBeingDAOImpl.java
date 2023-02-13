@@ -3,6 +3,9 @@ package dao;
 import DataBase.*;
 import model.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 // Тут будем взаимодействовать со сетом из класса ДатаБейз
 public class HumanBeingDAOImpl implements HumanBeingDAO {
     private final DataBase dataBase = new DataBaseImpl();
@@ -17,12 +20,11 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         } catch (NullPointerException e){
             return "List was not created yet.";
         }
-
     }
 
     @Override
-    public void show() {
-
+    public Set<HumanBeing> show() {
+        return new HashSet<>(dataBase.getDataBase());
     }
 
     @Override
