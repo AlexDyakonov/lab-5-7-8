@@ -1,22 +1,18 @@
 package dao;
 
-import DataBase.DataBase;
+import DataBase.*;
 import model.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 // Тут будем взаимодействовать со сетом из класса ДатаБейз
 public class HumanBeingDAOImpl implements HumanBeingDAO {
-//    private DataBase dataBase;
-    private final Set<HumanBeing> dataBase= new LinkedHashSet<>();
+    private final DataBase dataBase = new DataBaseImpl();
 
     @Override
     public String info() {
         try {
-            String dbType = dataBase.getClass().toString();
-            String dbCreationTime = dataBase.toString();
-            int dbLength = dataBase.size();
+            String dbType = dataBase.getDataBase().getClass().toString();
+            String dbCreationTime = dataBase.getCreationDate().toString();
+            int dbLength = dataBase.getDataBase().size();
             return ("List type: " + dbType + "\n List creation time: " + dbCreationTime + "\n List size: " + dbLength);
         } catch (NullPointerException e){
             return "List was not created yet.";
@@ -41,7 +37,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         Mood mood = humanBeingRequestDTO.getMood();
         Car car = humanBeingRequestDTO.getCar();
         HumanBeing humanBeing = new HumanBeing(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
-        dataBase.add(humanBeing);
+        dataBase.getDataBase().add(humanBeing);
         return (humanBeing.toString() + " has been added to List");
     }
 
