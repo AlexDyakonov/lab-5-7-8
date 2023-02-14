@@ -9,6 +9,9 @@ import services.HumanBeingServiceImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //Задание: Сделать распознание введеной строки, чтобы можно было отличить команду и ее аргументы
 public class ConsoleUI {
@@ -70,14 +73,13 @@ public class ConsoleUI {
         menu();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-
             String commandArr [] = reader.readLine().split(" ");
             String command = commandArr[0];
             String argument1;
             if(commandArr.length > 1){
                 argument1 = commandArr [1];
-                
             }
+            List<String> input = new ArrayList<>();
             String name;
             Coordinates coordinates = new Coordinates(1, 1d);
             boolean realHero;
@@ -89,6 +91,7 @@ public class ConsoleUI {
             Car car;
 
             while (!(command.equals("exit"))){
+                input.add(Arrays.toString(commandArr));
                 switch (command) {
                     case "help":
                         menu();
@@ -103,7 +106,7 @@ public class ConsoleUI {
                     case "add":
                         //System.out.println("Для добавления пользователя введите имя");
                         name = commandArr[1];
-                        soundtrackName = commandArr[6];
+                        soundtrackName = commandArr[2];
 
 
                         HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
@@ -131,7 +134,13 @@ public class ConsoleUI {
                         System.out.println("Мин");
                         break;
                     case "history":
-                        System.out.println("История");
+                        if (input.size() < 10){
+                            System.out.println(input.toString());
+                        } else{
+                            for(int i = 1; i <= 10; i++){
+                                System.out.print(input.get(input.size() - i) + " ");
+                            }
+                        }
                         break;
                     case "max_by_impact_speed":
                         System.out.println("МаксБиИмпакт");

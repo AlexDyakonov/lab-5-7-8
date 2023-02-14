@@ -50,7 +50,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public void removeById(Long id) {
-
+//        dataBase.getDataBase().remove();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public void save() {
-
+        dataBase.saveDBToCSV();
     }
 
     @Override
