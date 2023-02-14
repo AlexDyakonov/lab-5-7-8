@@ -1,8 +1,7 @@
 package controller;
 
 import exception.ValidationException;
-import model.HumanBeing;
-import model.HumanBeingRequestDTO;
+import model.*;
 import services.HumanBeingService;
 
 import java.util.Objects;
@@ -28,8 +27,11 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
-        validate(humanBeingRequestDTO.getName(), this ::validateUserName, "Invalid humanBeing name");
+    public String addElementToCollection(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
+        validate(name, this ::validateUserName, "Invalid humanBeing name");
+        validate(soundtrackName, this::validateSoundtrackName, "Invalid soudtrackName");
+
+        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
         return humanBeingService.addElementToCollection(humanBeingRequestDTO);
     }
 
@@ -84,8 +86,13 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     public void printAscending() {
         humanBeingService.printAscending();
     }
+
+    //#TODO Изменить валидацию данных
     private boolean validateUserName(String userName){
-        return (userName != null && !userName.equals(""));
+        return (userName != null && !userName.trim().equals(""));
+    }
+    private boolean validateSoundtrackName(String soundtrackName){
+        return (soundtrackName != null && !soundtrackName.trim().equals(""));
     }
 
     private boolean validateId(Long id){
@@ -94,7 +101,7 @@ public class HumanBeingControllerImpl implements HumanBeingController {
 
     private <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){
         if (!validator.apply(object)){
-            throw new ValidationException(errorMessage);
+            System.out.println(errorMessage);
         }
     }
 

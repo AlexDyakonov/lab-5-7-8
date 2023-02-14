@@ -3,13 +3,29 @@ package dao;
 import DataBase.*;
 import model.*;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 // Тут будем взаимодействовать со сетом из класса ДатаБейз
 public class HumanBeingDAOImpl implements HumanBeingDAO {
     private final DataBase dataBase = new DataBaseImpl();
+    private boolean findById(Long id){
+        for (HumanBeing item : dataBase.getDataBase()){
+            if (Objects.equals(item.getId(), id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private HumanBeing getById(Long id){
+        HumanBeing humanBeing = null;
+        for (HumanBeing item : dataBase.getDataBase()){
+            if (Objects.equals(item.getId(), id)){
+                humanBeing = item;
+            }
+        }
+        return humanBeing;
+    }
 
     @Override
     public String info() {
@@ -51,7 +67,13 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public void removeById(Long id) {
-//        dataBase.getDataBase().remove();
+        if (!findById(id)){
+            System.out.println("HumanBeing с id " + id + " не найден");
+        } else {
+            dataBase.getDataBase().remove(getById(id));
+            System.out.println("HumanBeing с id " + id + " удален.");
+        }
+
     }
 
     @Override

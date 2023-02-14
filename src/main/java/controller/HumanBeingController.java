@@ -1,15 +1,13 @@
 package controller;
 
-import model.HumanBeing;
-import model.HumanBeingRequestDTO;
-import model.HumanBeingResponseDTO;
+import model.*;
 
 import java.util.Set;
 
 public interface HumanBeingController {
     String info();
     Set<HumanBeing> show();
-    String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
+    String addElementToCollection(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
     Set<HumanBeing> clear();

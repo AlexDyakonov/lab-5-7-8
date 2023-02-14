@@ -2,6 +2,7 @@ package ui;
 
 import controller.HumanBeingControllerImpl;
 import dao.HumanBeingDAOImpl;
+import exception.ValidationException;
 import model.*;
 import services.HumanBeingServiceImpl;
 
@@ -22,8 +23,8 @@ public class ConsoleUI {
                 "   help : вывести справку по доступным командам\n" +
                 "   info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
                 "   show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
-                "   add {name, X, Yd, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, carName, cool}  : добавить новый элемент в коллекцию\n" +
-                "   update id {element} : обновить значение элемента коллекции, id которого равен заданному\n" +
+                "   add : добавить новый элемент в коллекцию\n" +
+                "   update id : обновить значение элемента коллекции, id которого равен заданному\n" +
                 "   remove_by_id id : удалить элемент из коллекции по его id\n" +
                 "   clear : очистить коллекцию\n" +
                 "   save : сохранить коллекцию в файл\n" +
@@ -50,10 +51,10 @@ public class ConsoleUI {
             coordinates.setY(y);
             return coordinates;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка открытия потока чтения");
         }
         catch (NumberFormatException ex){
-            ex.printStackTrace();
+            System.out.println("Координаты являются числами.");
         }
         return coordinates;
     }
@@ -78,8 +79,9 @@ public class ConsoleUI {
 
             List<String> commandsList = new ArrayList<>();
 
+            Long id;
             String name;
-            Coordinates coordinates = new Coordinates(1, 1d);
+            Coordinates coordinates;
             boolean realHero;
             boolean hasToothpick;
             Float impactSpeed;
@@ -102,17 +104,25 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        name = commandArr[1];
-                        soundtrackName = commandArr[2];
-
-                        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
-                        System.out.println(userController.addElementToCollection(humanBeingRequestDTO));
+                        System.out.println("Введите имя пользователя:");
+                        name = reader.readLine();
+                        coordinates = readCoords();
+                        System.out.println("Введите название саундтрека:");
+                        soundtrackName = reader.readLine();
+                        System.out.println(userController.addElementToCollection(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true)));
                         break;
                     case "update":
-                        System.out.println("Введите id пользователя, данные которого вы хотите изменить:");
+                        System.out.println(readCoords());
+
                         break;
                     case "remove_by_id":
-                        System.out.println("Введите id пользователя, которого хотите удалить");
+                        try {
+                            id = Long.parseLong(commandArr[1]);
+                            userController.removeById(id);
+                        } catch (NumberFormatException ex){
+                            System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
+                        }
+
                         break;
                     case "clear":
                         userController.clear();
