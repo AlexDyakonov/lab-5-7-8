@@ -46,8 +46,8 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void clear() {
-        humanBeingService.clear();
+    public Set<HumanBeing> clear() {
+        return humanBeingService.clear();
     }
 
     @Override

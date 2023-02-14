@@ -3,7 +3,6 @@ package services;
 import dao.HumanBeingDAO;
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
-import model.HumanBeingResponseDTO;
 
 import java.util.Set;
 
@@ -40,8 +39,9 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void clear() {
+    public Set<HumanBeing> clear() {
         humanBeingDAO.clear();
+        return null;
     }
 
     @Override

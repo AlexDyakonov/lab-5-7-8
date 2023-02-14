@@ -22,7 +22,7 @@ public class ConsoleUI {
                 "   help : вывести справку по доступным командам\n" +
                 "   info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
                 "   show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
-                "   add {element} : добавить новый элемент в коллекцию\n" +
+                "   add {name, X, Yd, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, carName, cool}  : добавить новый элемент в коллекцию\n" +
                 "   update id {element} : обновить значение элемента коллекции, id которого равен заданному\n" +
                 "   remove_by_id id : удалить элемент из коллекции по его id\n" +
                 "   clear : очистить коллекцию\n" +
@@ -73,13 +73,11 @@ public class ConsoleUI {
         menu();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            String commandArr [] = reader.readLine().split(" ");
+            String[] commandArr = reader.readLine().split(" ");
             String command = commandArr[0];
-            String argument1;
-            if(commandArr.length > 1){
-                argument1 = commandArr [1];
-            }
-            List<String> input = new ArrayList<>();
+
+            List<String> commandsList = new ArrayList<>();
+
             String name;
             Coordinates coordinates = new Coordinates(1, 1d);
             boolean realHero;
@@ -91,7 +89,7 @@ public class ConsoleUI {
             Car car;
 
             while (!(command.equals("exit"))){
-                input.add(Arrays.toString(commandArr));
+                commandsList.add(Arrays.toString(commandArr));
                 switch (command) {
                     case "help":
                         menu();
@@ -104,10 +102,8 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        //System.out.println("Для добавления пользователя введите имя");
                         name = commandArr[1];
                         soundtrackName = commandArr[2];
-
 
                         HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
                         System.out.println(userController.addElementToCollection(humanBeingRequestDTO));
@@ -119,7 +115,8 @@ public class ConsoleUI {
                         System.out.println("Введите id пользователя, которого хотите удалить");
                         break;
                     case "clear":
-                        System.out.println("Список всех пользователей:");
+                        userController.clear();
+                        System.out.println("Коллекция успешно очищена.");
                         break;
                     case "save":
                         System.out.println("Список всех городов:");
@@ -134,11 +131,11 @@ public class ConsoleUI {
                         System.out.println("Мин");
                         break;
                     case "history":
-                        if (input.size() < 10){
-                            System.out.println(input.toString());
+                        if (commandsList.size() < 10){
+                            System.out.println(commandsList.toString());
                         } else{
                             for(int i = 1; i <= 10; i++){
-                                System.out.print(input.get(input.size() - i) + " ");
+                                System.out.print(commandsList.get(commandsList.size() - i) + " ");
                             }
                         }
                         break;
@@ -151,17 +148,12 @@ public class ConsoleUI {
                     case "print_ascending":
                         System.out.println("print ascend");
                         break;
-
                     default:
                         System.out.println("Вы ввели значение не из меню");
                         break;
                 }
                  commandArr = reader.readLine().split(" ");
                  command = commandArr[0];
-
-                if(commandArr.length > 1){
-                    argument1 = commandArr [1];
-                }
             }
 
 

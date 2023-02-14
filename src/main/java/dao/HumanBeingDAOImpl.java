@@ -4,6 +4,7 @@ import DataBase.*;
 import model.*;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 // Тут будем взаимодействовать со сетом из класса ДатаБейз
@@ -54,8 +55,9 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public void clear() {
-
+    public Set<HumanBeing> clear() {
+        dataBase.getDataBase().clear();
+        return new LinkedHashSet<>(dataBase.getDataBase());
     }
 
     @Override

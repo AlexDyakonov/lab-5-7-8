@@ -12,7 +12,7 @@ public interface HumanBeingController {
     String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
-    void clear();
+    Set<HumanBeing> clear();
     void save();
     void executeScript(String fileName);
     void addIfMax(HumanBeing humanBeing);
