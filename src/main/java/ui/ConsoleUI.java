@@ -70,7 +70,14 @@ public class ConsoleUI {
         menu();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            String command = "";
+
+            String commandArr [] = reader.readLine().split(" ");
+            String command = commandArr[0];
+            String argument1;
+            if(commandArr.length > 1){
+                argument1 = commandArr [1];
+                
+            }
             String name;
             Coordinates coordinates = new Coordinates(1, 1d);
             boolean realHero;
@@ -81,7 +88,7 @@ public class ConsoleUI {
             Mood mood;
             Car car;
 
-            while (!(command = reader.readLine()).equals("exit")){
+            while (!(command.equals("exit"))){
                 switch (command) {
                     case "help":
                         menu();
@@ -94,9 +101,12 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        System.out.println("Для добавления пользователя введите имя");
-                        name = reader.readLine();
-                        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, "Nightcall", WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
+                        //System.out.println("Для добавления пользователя введите имя");
+                        name = commandArr[1];
+                        soundtrackName = commandArr[6];
+
+
+                        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true));
                         System.out.println(userController.addElementToCollection(humanBeingRequestDTO));
                         break;
                     case "update":
@@ -132,11 +142,19 @@ public class ConsoleUI {
                     case "print_ascending":
                         System.out.println("print ascend");
                         break;
+
                     default:
                         System.out.println("Вы ввели значение не из меню");
                         break;
                 }
+                 commandArr = reader.readLine().split(" ");
+                 command = commandArr[0];
+
+                if(commandArr.length > 1){
+                    argument1 = commandArr [1];
+                }
             }
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
