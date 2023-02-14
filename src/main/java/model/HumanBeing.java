@@ -114,21 +114,55 @@ public class HumanBeing {
     public void setCar(Car car) {
         this.car = car;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HumanBeing that = (HumanBeing) o;
+
+        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(coordinates, that.coordinates)) return false;
+        if (!Objects.equals(creationDate, that.creationDate)) return false;
+        if (!Objects.equals(realHero, that.realHero)) return false;
+        if (!Objects.equals(hasToothpick, that.hasToothpick)) return false;
+        if (!Objects.equals(impactSpeed, that.impactSpeed)) return false;
+        if (!Objects.equals(soundtrackName, that.soundtrackName))
+            return false;
+        if (weaponType != that.weaponType) return false;
+        if (mood != that.mood) return false;
+        return Objects.equals(car, that.car);
+    }
 
     @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (coordinates != null ? coordinates.hashCode() : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        result = 31 * result + (realHero != null ? realHero.hashCode() : 0);
+        result = 31 * result + (hasToothpick != null ? hasToothpick.hashCode() : 0);
+        result = 31 * result + (impactSpeed != null ? impactSpeed.hashCode() : 0);
+        result = 31 * result + (soundtrackName != null ? soundtrackName.hashCode() : 0);
+        result = 31 * result + (weaponType != null ? weaponType.hashCode() : 0);
+        result = 31 * result + (mood != null ? mood.hashCode() : 0);
+        result = 31 * result + (car != null ? car.hashCode() : 0);
+        return result;
+    }
+    @Override
     public String toString() {
-        return "HumanBeing{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates +
-                ", creationDate=" + creationDate +
-                ", realHero=" + realHero +
-                ", hasToothpick=" + hasToothpick +
-                ", impactSpeed=" + impactSpeed +
-                ", soundtrackName='" + soundtrackName + '\'' +
-                ", weaponType=" + weaponType +
-                ", mood=" + mood +
-                ", car=" + car +
+        return " \033[0;33m HumanBeing \033[0m (id = " + id + "){\n" + "\033[0;32m" +
+                "   name \033[0m =  " + name + "\n \033[0;32m" +
+                "   coordinates \033[0m = " + coordinates + "\n \033[0;32m" +
+                "   creationDate \033[0m = " + creationDate + "\n \033[0;32m" +
+                "   realHero \033[0m = " + realHero + "\n \033[0;32m" +
+                "   hasToothpick \033[0m = " + hasToothpick + "\n \033[0;32m" +
+                "   impactSpeed \033[0m = " + impactSpeed + "\n \033[0;32m" +
+                "   soundtrackName \033[0m = " + soundtrackName + "\n \033[0;32m" +
+                "   weaponType \033[0m = " + weaponType + "\n \033[0;32m" +
+                "   mood \033[0m = " + mood + "\n \033[0;32m" +
+                "   car \033[0m = " + car + "\n" +
                 '}';
     }
 }
