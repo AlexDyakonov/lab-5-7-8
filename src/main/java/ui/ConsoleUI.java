@@ -104,16 +104,23 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        System.out.println("Введите имя пользователя:");
-                        name = reader.readLine();
-                        coordinates = readCoords();
-                        System.out.println("Введите название саундтрека:");
-                        soundtrackName = reader.readLine();
-                        System.out.println(userController.addElementToCollection(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true)));
-                        break;
+                        try {
+                            System.out.println("Введите имя пользователя:");
+                            name = reader.readLine();
+                            coordinates = readCoords();
+                            System.out.println("Введите название саундтрека:");
+                            soundtrackName = reader.readLine();
+                            System.out.println(userController.addElementToCollection(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true)));
+                            break;
+                        } catch (ValidationException e) {
+                            switch (e.getCause().getMessage()){
+                                case "id" -> System.out.println("Invalid id");
+                                case "name" -> System.out.println("Invalid name");
+                            }
+                            break;
+                        }
                     case "update":
                         System.out.println(readCoords());
-
                         break;
                     case "remove_by_id":
                         try {

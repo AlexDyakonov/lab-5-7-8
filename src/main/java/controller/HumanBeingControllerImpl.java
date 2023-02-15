@@ -28,8 +28,8 @@ public class HumanBeingControllerImpl implements HumanBeingController {
 
     @Override
     public String addElementToCollection(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        validate(name, this ::validateUserName, "Invalid humanBeing name");
-        validate(soundtrackName, this::validateSoundtrackName, "Invalid soudtrackName");
+        validate(name, this ::validateUserName, "Invalid humanBeing name", new Throwable("name"));
+        validate(soundtrackName, this::validateSoundtrackName, "Invalid soudtrackName", new Throwable("soudtrack"));
 
         HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
         return humanBeingService.addElementToCollection(humanBeingRequestDTO);
@@ -37,13 +37,13 @@ public class HumanBeingControllerImpl implements HumanBeingController {
 
     @Override
     public void updateById(Long id, HumanBeing humanBeing) {
-        validate(id, this::validateId, "Invalid Id");
+        validate(id, this::validateId, "Invalid Id", new Throwable("id"));
         humanBeingService.updateById(id, humanBeing);
     }
 
     @Override
     public void removeById(Long id) {
-        validate(id, this::validateId, "Invalid Id");
+        validate(id, this::validateId, "Invalid Id", new Throwable("id"));
         humanBeingService.removeById(id);
     }
 
@@ -99,9 +99,9 @@ public class HumanBeingControllerImpl implements HumanBeingController {
         return (id != null && id > 0);
     }
 
-    private <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){
+    private <T> void validate(T object, Function<T, Boolean> validator, String errorMessage, Throwable cause){
         if (!validator.apply(object)){
-            System.out.println(errorMessage);
+            throw new ValidationException(errorMessage, cause);
         }
     }
 
