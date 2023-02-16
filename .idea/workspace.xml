@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added remove_by_id method. Catched some exceptions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/CommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/CommandManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/CommandMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/list/Command.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added command model. Attempt to implement structure">
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/AddCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/ClearCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/CommandManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/HelpCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/InfoCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CommandExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CommandManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CommandMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/list/Command.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -85,7 +89,8 @@
       <workItem from="1676281422592" duration="4061000" />
       <workItem from="1676388177073" duration="12010000" />
       <workItem from="1676413081794" duration="191000" />
-      <workItem from="1676478443094" duration="3283000" />
+      <workItem from="1676478443094" duration="4436000" />
+      <workItem from="1676538879634" duration="2841000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -185,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676412932800</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added command model. Attempt to implement structure">
+      <created>1676494827816</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1676494827816</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +229,7 @@
     <MESSAGE value="Added opencsv dependency" />
     <MESSAGE value="Colorful output of HumanBeing" />
     <MESSAGE value="Added remove_by_id method. Catched some exceptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added remove_by_id method. Catched some exceptions" />
+    <MESSAGE value="Added command model. Attempt to implement structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added command model. Attempt to implement structure" />
   </component>
 </project>
