@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class DataBaseImpl implements DataBase {
-    private final Set<HumanBeing> dataBase= new LinkedHashSet<>();
+    private final Set<HumanBeing> dataBase = new LinkedHashSet<>();
     private final java.time.LocalDateTime creationDate = LocalDateTime.now();
 
     public DataBaseImpl() {

@@ -27,11 +27,7 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public String addElementToCollection(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        validate(name, this ::validateUserName, "Invalid humanBeing name", new Throwable("name"));
-        validate(soundtrackName, this::validateSoundtrackName, "Invalid soudtrackName", new Throwable("soudtrack"));
-
-        HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
+    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
         return humanBeingService.addElementToCollection(humanBeingRequestDTO);
     }
 

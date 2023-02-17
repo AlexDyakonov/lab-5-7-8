@@ -1,6 +1,5 @@
 package ui;
 
-import command.CommandManager;
 import controller.HumanBeingControllerImpl;
 import dao.HumanBeingDAOImpl;
 import exception.ValidationException;
@@ -93,93 +92,80 @@ public class ConsoleUI {
             String line;
 
             while (!(command.equals("exit"))){
-                CommandManager commandManager = new CommandManager();
-                commandManager.executeCommand(commandArr);
+                commandsList.add(Arrays.toString(commandArr));
+                HumanBeingRequestDTOBuilder humanBeingBuilder = new HumanBeingRequestDTOBuilder();
+                try {
+                switch (command) {
+                    case "help":
+                        menu();
+                        break;
+                    case "info":
+                        System.out.println(userController.info());
+                        break;
+                    case "show":
+                        System.out.println(userController.show());
+                        System.out.println("Выведены все элементы коллекции. ");
+                        break;
+                    case "add":
+                        System.out.println("Введите имя пользователя:");
+                        humanBeingBuilder.setName(reader.readLine()).setCoordinates(readCoords()).setSoundtrackName(reader.readLine());
+                        System.out.println(userController.addElementToCollection(humanBeingBuilder.build()));
+                        break;
+                    case "update":
+                        System.out.println(readCoords());
+                        break;
+                    case "remove_by_id":
+                        try {
+                            id = Long.parseLong(commandArr[1]);
+                            userController.removeById(id);
+                        } catch (NumberFormatException ex){
+                            System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
+                        }
+                        break;
+                    case "clear":
+                        userController.clear();
+                        System.out.println("Коллекция успешно очищена.");
+                        break;
+                    case "save":
+                        System.out.println("Список всех городов:");
+                        break;
+                    case "execute_script":
+                        System.out.println("Скрипт");
+                        break;
+                    case "add_if_max":
+                        System.out.println("Макс");
+                        break;
+                    case "add_if_min":
+                        System.out.println("Мин");
+                        break;
+                    case "history":
+                        if (commandsList.size() < 10){
+                            System.out.println(commandsList.toString());
+                        } else{
+                            for(int i = 1; i <= 10; i++){
+                                System.out.print(commandsList.get(commandsList.size() - i) + " ");
+                            }
+                        }
+                        break;
+                    case "max_by_impact_speed":
+                        System.out.println("МаксБиИмпакт");
+                        break;
+                    case "count_by_mood":
+                        System.out.println("mood");
+                        break;
+                    case "print_ascending":
+                        System.out.println("print ascend");
+                        break;
+                    default:
+                        System.out.println("Вы ввели значение не из меню");
+                        break;
+                }
+                 commandArr = reader.readLine().split(" ");
+                 command = commandArr[0];
+            } catch (ValidationException e) {
+                    System.out.println(e.getMessage());
+                }
             }
-
-//            while (!(command.equals("exit"))){
-//                commandsList.add(Arrays.toString(commandArr));
-//                switch (command) {
-//                    case "help":
-//                        menu();
-//                        break;
-//                    case "info":
-//                        System.out.println(userController.info());
-//                        break;
-//                    case "show":
-//                        System.out.println(userController.show());
-//                        System.out.println("Выведены все элементы коллекции. ");
-//                        break;
-//                    case "add":
-//                        try {
-//                            System.out.println("Введите имя пользователя:");
-//                            name = reader.readLine();
-//                            coordinates = readCoords();
-//                            System.out.println("Введите название саундтрека:");
-//                            soundtrackName = reader.readLine();
-//                            System.out.println(userController.addElementToCollection(name, coordinates, true, true, 1F, soundtrackName, WeaponType.BAT, Mood.CALM, new Car("Bebra", true)));
-//                            break;
-//                        } catch (ValidationException e) {
-//                            switch (e.getCause().getMessage()){
-//                                case "id" -> System.out.println("Invalid id");
-//                                case "name" -> System.out.println("Invalid name");
-//                            }
-//                            break;
-//                        }
-//                    case "update":
-//                        System.out.println(readCoords());
-//                        break;
-//                    case "remove_by_id":
-//                        try {
-//                            id = Long.parseLong(commandArr[1]);
-//                            userController.removeById(id);
-//                        } catch (NumberFormatException ex){
-//                            System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
-//                        }
-//
-//                        break;
-//                    case "clear":
-//                        userController.clear();
-//                        System.out.println("Коллекция успешно очищена.");
-//                        break;
-//                    case "save":
-//                        System.out.println("Список всех городов:");
-//                        break;
-//                    case "execute_script":
-//                        System.out.println("Скрипт");
-//                        break;
-//                    case "add_if_max":
-//                        System.out.println("Макс");
-//                        break;
-//                    case "add_if_min":
-//                        System.out.println("Мин");
-//                        break;
-//                    case "history":
-//                        if (commandsList.size() < 10){
-//                            System.out.println(commandsList.toString());
-//                        } else{
-//                            for(int i = 1; i <= 10; i++){
-//                                System.out.print(commandsList.get(commandsList.size() - i) + " ");
-//                            }
-//                        }
-//                        break;
-//                    case "max_by_impact_speed":
-//                        System.out.println("МаксБиИмпакт");
-//                        break;
-//                    case "count_by_mood":
-//                        System.out.println("mood");
-//                        break;
-//                    case "print_ascending":
-//                        System.out.println("print ascend");
-//                        break;
-//                    default:
-//                        System.out.println("Вы ввели значение не из меню");
-//                        break;
-//                }
-//                 commandArr = reader.readLine().split(" ");
-//                 command = commandArr[0];
-//            }
-
 
         } catch (IOException e) {
             throw new RuntimeException(e);
