@@ -8,6 +8,16 @@ import java.util.*;
 // Тут будем взаимодействовать со сетом из класса ДатаБейз
 public class HumanBeingDAOImpl implements HumanBeingDAO {
     private final DataBase dataBase = new DataBaseImpl();
+    private int findByMood(Mood mood){
+        int cnt = 0;
+        for (HumanBeing item : dataBase.getDataBase()){
+            if (Objects.equals(item.getMood(), mood)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     private boolean findById(Long id){
         for (HumanBeing item : dataBase.getDataBase()){
             if (Objects.equals(item.getId(), id)){
@@ -108,12 +118,17 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public void countByMood(HumanBeing humanBeing) {
-
+    public void countByMood(Mood mood) {
+        System.out.println(findByMood(mood) + " с настроением " + mood);
     }
 
     @Override
     public void printAscending() {
 
+    }
+
+    @Override
+    public int getSize() {
+        return dataBase.getDataBase().size();
     }
 }

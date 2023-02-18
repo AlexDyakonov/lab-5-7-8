@@ -3,6 +3,7 @@ package dao;
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
+import model.Mood;
 
 import java.util.Set;
 
@@ -18,6 +19,8 @@ public interface HumanBeingDAO {
     void addIfMax(HumanBeing humanBeing);
     void addIfMin(HumanBeing humanBeing);
     void maxByImpactSpeed(HumanBeing humanBeing);
-    void countByMood(HumanBeing humanBeing);
+    void countByMood(Mood mood);
     void printAscending();
+
+    int getSize();
 }

@@ -4,6 +4,7 @@ import dao.HumanBeingDAO;
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
+import model.Mood;
 
 import java.util.Set;
 
@@ -71,12 +72,17 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void countByMood(HumanBeing humanBeing) {
-        humanBeingDAO.countByMood(humanBeing);
+    public void countByMood(Mood mood) {
+        humanBeingDAO.countByMood(mood);
     }
 
     @Override
     public void printAscending() {
         humanBeingDAO.printAscending();
+    }
+
+    @Override
+    public int getSize() {
+        return humanBeingDAO.getSize();
     }
 }

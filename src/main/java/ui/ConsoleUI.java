@@ -52,16 +52,7 @@ public class ConsoleUI {
             List<String> commandsList = new ArrayList<>();
 
             long id;
-            String name;
-            Coordinates coordinates;
-            boolean realHero;
-            boolean hasToothpick;
-            Float impactSpeed;
-            String soundtrackName;
-            WeaponType weaponType;
-            Mood mood;
-            Car car;
-            String line;
+
 
             while (!(command.equals("exit"))){
                 commandsList.add(Arrays.toString(commandArr));
@@ -95,11 +86,13 @@ public class ConsoleUI {
                         }
                         break;
                     case "clear":
+                        int amount = userController.getSize();
                         userController.clear();
-                        System.out.println("Коллекция успешно очищена.");
+                        System.out.println("Коллекция успешно очищена. Было удалено " + amount + " элементов.");
                         break;
                     case "save":
-                        System.out.println("Список всех городов:");
+                        System.out.println("Cохранить в csv файл");
+                        userController.save();
                         break;
                     case "execute_script":
                         System.out.println("Скрипт");
@@ -123,7 +116,7 @@ public class ConsoleUI {
                         System.out.println("МаксБиИмпакт");
                         break;
                     case "count_by_mood":
-                        System.out.println("mood");
+                        userController.countByMood(Asker.mood());
                         break;
                     case "print_ascending":
                         System.out.println("print ascend");

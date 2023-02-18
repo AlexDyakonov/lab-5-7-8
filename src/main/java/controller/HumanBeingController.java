@@ -16,6 +16,7 @@ public interface HumanBeingController {
     void addIfMax(HumanBeing humanBeing);
     void addIfMin(HumanBeing humanBeing);
     void maxByImpactSpeed(HumanBeing humanBeing);
-    void countByMood(HumanBeing humanBeing);
+    void countByMood(Mood mood);
     void printAscending();
+    int getSize();
 }

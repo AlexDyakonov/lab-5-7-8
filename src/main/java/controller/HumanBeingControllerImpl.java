@@ -72,13 +72,18 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void countByMood(HumanBeing humanBeing) {
-        humanBeingService.countByMood(humanBeing);
+    public void countByMood(Mood mood) {
+        humanBeingService.countByMood(mood);
     }
 
     @Override
     public void printAscending() {
         humanBeingService.printAscending();
+    }
+
+    @Override
+    public int getSize() {
+        return humanBeingService.getSize();
     }
 
 

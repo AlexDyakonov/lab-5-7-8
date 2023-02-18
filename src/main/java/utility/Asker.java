@@ -98,7 +98,10 @@ public class Asker {
             Integer x = Integer.parseInt(xStr);
             System.out.println("Введите координату у ");
             String yStr = reader.readLine();
-            Double y = Double.parseDouble(yStr);
+            double y = Double.parseDouble(yStr);
+            if (y < -897) {
+                throw new ValidationException("Значение Y должно быть больше -897");
+            }
             coordinates.setX(x);
             coordinates.setY(y);
             return coordinates;
