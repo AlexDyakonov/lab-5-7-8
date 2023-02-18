@@ -45,7 +45,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
+    public HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
         String name = humanBeingRequestDTO.getName();
         Coordinates coordinates = humanBeingRequestDTO.getCoordinates();
         Boolean realHero = humanBeingRequestDTO.getRealHero();
@@ -57,7 +57,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         Car car = humanBeingRequestDTO.getCar();
         HumanBeing humanBeing = new HumanBeing(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
         dataBase.getDataBase().add(humanBeing);
-        return (humanBeing.toString() + " has been added to List");
+        return new HumanBeingResponseDTO(humanBeing.getId(), name, coordinates, humanBeing.getCreationDate(), realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
     }
 
     @Override

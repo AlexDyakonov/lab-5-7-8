@@ -6,6 +6,9 @@ public class Car {
     private String name; //Поле не может быть null
     private boolean cool;
 
+    public Car() {
+    }
+
     public Car(String name, boolean cool) {
         this.name = Objects.requireNonNull(name);
         this.cool = cool;

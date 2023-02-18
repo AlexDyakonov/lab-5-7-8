@@ -27,19 +27,17 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
+    public HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
         return humanBeingService.addElementToCollection(humanBeingRequestDTO);
     }
 
     @Override
     public void updateById(Long id, HumanBeing humanBeing) {
-        validate(id, this::validateId, "Invalid Id", new Throwable("id"));
         humanBeingService.updateById(id, humanBeing);
     }
 
     @Override
     public void removeById(Long id) {
-        validate(id, this::validateId, "Invalid Id", new Throwable("id"));
         humanBeingService.removeById(id);
     }
 
@@ -83,22 +81,5 @@ public class HumanBeingControllerImpl implements HumanBeingController {
         humanBeingService.printAscending();
     }
 
-    //#TODO Изменить валидацию данных
-    private boolean validateUserName(String userName){
-        return (userName != null && !userName.trim().equals(""));
-    }
-    private boolean validateSoundtrackName(String soundtrackName){
-        return (soundtrackName != null && !soundtrackName.trim().equals(""));
-    }
-
-    private boolean validateId(Long id){
-        return (id != null && id > 0);
-    }
-
-    private <T> void validate(T object, Function<T, Boolean> validator, String errorMessage, Throwable cause){
-        if (!validator.apply(object)){
-            throw new ValidationException(errorMessage, cause);
-        }
-    }
 
 }

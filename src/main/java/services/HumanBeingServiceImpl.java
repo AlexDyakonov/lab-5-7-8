@@ -3,6 +3,7 @@ package services;
 import dao.HumanBeingDAO;
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
+import model.HumanBeingResponseDTO;
 
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
+    public HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO) {
         return humanBeingDAO.addElementToCollection(humanBeingRequestDTO);
     }
 

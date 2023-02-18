@@ -12,7 +12,7 @@ public class HumanBeing {
     private Coordinates coordinates; //Поле не может быть null
     private final java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Boolean realHero; //Поле не может быть null
-    private Boolean hasToothpick; //Поле может быть null
+    private Boolean hasToothpick; //Поле не может быть null
     private Float impactSpeed; //Поле не может быть null
     private String soundtrackName; //Поле не может быть null
     private WeaponType weaponType; //Поле может быть null

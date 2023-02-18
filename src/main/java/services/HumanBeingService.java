@@ -2,13 +2,14 @@ package services;
 
 import model.HumanBeing;
 import model.HumanBeingRequestDTO;
+import model.HumanBeingResponseDTO;
 
 import java.util.Set;
 
 public interface HumanBeingService {
     String info();
     Set<HumanBeing> show();
-    String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
+    HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
     Set<HumanBeing> clear();

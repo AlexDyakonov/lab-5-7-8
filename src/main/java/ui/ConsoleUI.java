@@ -5,6 +5,8 @@ import dao.HumanBeingDAOImpl;
 import exception.ValidationException;
 import model.*;
 import services.HumanBeingServiceImpl;
+import utility.Asker;
+import utility.HumanBeingRequestDTOBuilder;
 
 
 import java.io.BufferedReader;
@@ -37,38 +39,7 @@ public class ConsoleUI {
                 "   count_by_mood mood : вывести количество элементов, значение поля mood которых равно заданному\n" +
                 "   print_ascending : вывести элементы коллекции в порядке возрастания\n");
     }
-    private static Coordinates readCoords(){
-        Coordinates coordinates = new Coordinates();
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Введите координату х ");
-            String xStr = reader.readLine();
-            Integer x = Integer.parseInt(xStr);
-            System.out.println("Введите координату у ");
-            String yStr = reader.readLine();
-            Double y = Double.parseDouble(yStr);
-            coordinates.setX(x);
-            coordinates.setY(y);
-            return coordinates;
-        } catch (IOException e) {
-            System.out.println("Ошибка открытия потока чтения");
-        }
-        catch (NumberFormatException ex){
-            System.out.println("Координаты являются числами.");
-        }
-        return coordinates;
-    }
-    private static Boolean readBool(){
-        boolean answer = false;
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String ans = reader.readLine();
-            answer = Boolean.parseBoolean(ans);
-            return answer;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     public static void start() {
         menu();
@@ -77,9 +48,10 @@ public class ConsoleUI {
             String[] commandArr = reader.readLine().split(" ");
             String command = commandArr[0];
 
+
             List<String> commandsList = new ArrayList<>();
 
-            Long id;
+            long id;
             String name;
             Coordinates coordinates;
             boolean realHero;
@@ -107,12 +79,12 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        System.out.println("Введите имя пользователя:");
-                        humanBeingBuilder.setName(reader.readLine()).setCoordinates(readCoords()).setSoundtrackName(reader.readLine());
-                        System.out.println(userController.addElementToCollection(humanBeingBuilder.build()));
+                        humanBeingBuilder.setName(Asker.name()).setCoordinates(Asker.coordinates()).setRealHero(Asker.realHero()).setHasToothpick(Asker.hasToothPick());
+                        humanBeingBuilder.setImpactSpeed(Asker.impactSpeed()).setSoundtrackName(Asker.soundtrackName()).setWeaponType(Asker.weaponType()).setMood(Asker.mood()).setCar(Asker.car());
+                        System.out.println(userController.addElementToCollection(humanBeingBuilder.build()).toString() + " был добавлен");
                         break;
                     case "update":
-                        System.out.println(readCoords());
+                        System.out.println("update");
                         break;
                     case "remove_by_id":
                         try {
@@ -168,7 +140,7 @@ public class ConsoleUI {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка открытия потока. Запустите программу еще раз.");;
         }
     }
 }

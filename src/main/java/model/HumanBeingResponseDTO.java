@@ -116,4 +116,19 @@ public class HumanBeingResponseDTO {
     public void setCar(Car car) {
         this.car = car;
     }
+    @Override
+    public String toString() {
+        return " \033[0;33m HumanBeing \033[0m (id = " + id + "){\n" + "\033[0;32m" +
+                "   name \033[0m =  " + name + "\n \033[0;32m" +
+                "   coordinates \033[0m = " + coordinates + "\n \033[0;32m" +
+                "   creationDate \033[0m = " + creationDate + "\n \033[0;32m" +
+                "   realHero \033[0m = " + realHero + "\n \033[0;32m" +
+                "   hasToothpick \033[0m = " + hasToothpick + "\n \033[0;32m" +
+                "   impactSpeed \033[0m = " + impactSpeed + "\n \033[0;32m" +
+                "   soundtrackName \033[0m = " + soundtrackName + "\n \033[0;32m" +
+                "   weaponType \033[0m = " + weaponType + "\n \033[0;32m" +
+                "   mood \033[0m = " + mood + "\n \033[0;32m" +
+                "   car \033[0m = " + car + "\n" +
+                '}';
+    }
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 public interface HumanBeingController {
     String info();
     Set<HumanBeing> show();
-    String addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
+    HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
     void updateById(Long id, HumanBeing humanBeing);
     void removeById(Long id);
     Set<HumanBeing> clear();
