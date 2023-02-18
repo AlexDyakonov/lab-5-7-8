@@ -2,6 +2,7 @@ package ui;
 
 import controller.HumanBeingControllerImpl;
 import dao.HumanBeingDAOImpl;
+import exception.ArgumentException;
 import exception.ValidationException;
 import model.*;
 import services.HumanBeingServiceImpl;
@@ -40,6 +41,14 @@ public class ConsoleUI {
                 "   print_ascending : вывести элементы коллекции в порядке возрастания\n");
     }
 
+    private static void checkCommandArg(String[] commandArr, int numOfArgs){
+            if (numOfArgs == 0 && commandArr.length - 1 > 0){
+                throw new ArgumentException("Данная команда вызывается без агрументов");
+            }
+            if (commandArr.length - 1 < numOfArgs){
+                throw new ArgumentException("Количество аргументов в данной команде равно " + numOfArgs);
+            }
+    }
 
     public static void start() {
         menu();
@@ -60,6 +69,7 @@ public class ConsoleUI {
                 try {
                 switch (command) {
                     case "help":
+//                        checkCommandArg(commandArr, 0);
                         menu();
                         break;
                     case "info":
@@ -127,10 +137,11 @@ public class ConsoleUI {
                 }
                  commandArr = reader.readLine().split(" ");
                  command = commandArr[0];
-            } catch (ValidationException e) {
+            } catch (ValidationException | ArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             }
+
 
         } catch (IOException e) {
             System.out.println("Ошибка открытия потока. Запустите программу еще раз.");;
