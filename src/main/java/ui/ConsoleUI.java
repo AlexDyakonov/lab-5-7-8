@@ -70,7 +70,7 @@ public class ConsoleUI {
                 try {
                 switch (command) {
                     case "help":
-//                        checkCommandArg(commandArr, 0);
+                        checkCommandArg(commandArr, 0);
                         menu();
                         break;
                     case "info":
@@ -138,7 +138,7 @@ public class ConsoleUI {
                 }
                  commandArr = reader.readLine().split(" ");
                  command = commandArr[0];
-            } catch (ValidationException | ArgumentException | FileException e) {
+            } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 }
             }

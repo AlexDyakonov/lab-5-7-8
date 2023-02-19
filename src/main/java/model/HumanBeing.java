@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-public class HumanBeing {
+public class HumanBeing implements Comparable<HumanBeing>{
     private static Long countOfHumanBeings = 0L; //Считает сколько всего создано сущностей. Используется в качестве id.
 //    private final String id = UUID.randomUUID().toString(); Ждать ответа
     private final Long id;  //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -19,6 +19,20 @@ public class HumanBeing {
     private Mood mood; //Поле не может быть null
     private Car car; //Поле может быть null
 
+    public HumanBeing(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.realHero = realHero;
+        this.hasToothpick = hasToothpick;
+        this.impactSpeed = impactSpeed;
+        this.soundtrackName = soundtrackName;
+        this.weaponType = weaponType;
+        this.mood = mood;
+        this.car = car;
+    }
+
     public HumanBeing(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.id = ++countOfHumanBeings;
         this.name = Objects.requireNonNull(name);
@@ -31,6 +45,22 @@ public class HumanBeing {
         this.weaponType = weaponType;
         this.mood = Objects.requireNonNull(mood);
         this.car = car;
+    }
+
+    public String toCSV() {
+        String csvName = name.replaceAll(",", "%COMMA%");
+        String csvSoundTrackName = soundtrackName.replaceAll(",", "%COMMA%");
+        return  "" + id +
+                "," + csvName +
+                ",(" + coordinates.getX() + ";" + coordinates.getY() + ")" +
+                "," + creationDate +
+                "," + realHero +
+                "," + hasToothpick +
+                "," + impactSpeed +
+                "," + csvSoundTrackName +
+                "," + weaponType +
+                "," + mood +
+                ",(" + Car.toCSV(car)+ ")" + "\n";
     }
 
     public static Long getCountOfHumanBeings() {
@@ -166,5 +196,10 @@ public class HumanBeing {
                 "   mood \033[0m = " + mood + "\n \033[0;32m" +
                 "   car \033[0m = " + car + "\n" +
                 '}';
+    }
+
+    @Override
+    public int compareTo(HumanBeing humanBeing) {
+        return (int) (this.impactSpeed - humanBeing.impactSpeed);
     }
 }

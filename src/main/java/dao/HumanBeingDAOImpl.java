@@ -1,8 +1,10 @@
 package dao;
 
 import DataBase.*;
+import exception.FileException;
 import model.*;
 
+import java.io.File;
 import java.util.*;
 
 // Тут будем взаимодействовать со сетом из класса ДатаБейз

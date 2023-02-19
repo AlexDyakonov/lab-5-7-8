@@ -1,9 +1,12 @@
 package utility;
 
+import Validation.ValidationImpl;
 import exception.ValidationException;
 import model.*;
 
 import java.util.function.Function;
+
+import static Validation.ValidationImpl.validate;
 
 public class HumanBeingRequestDTOBuilder {
     private String name;
@@ -20,19 +23,19 @@ public class HumanBeingRequestDTOBuilder {
     }
 
     public HumanBeingRequestDTOBuilder setName(String name) {
-        validate(name, this::validateUserName, "Некорректное имя пользователя. Оно не должно быть пустым.");
+        validate(name, ValidationImpl::validateUserName, "Некорректное имя пользователя. Оно не должно быть пустым.");
         this.name = name;
         return this;
     }
 
     public HumanBeingRequestDTOBuilder setCoordinates(Coordinates coordinates) {
-        validate(coordinates, this::validateCoordinates, "Некорректно введены координаты. Они не должны быть пустыми.");
+        validate(coordinates, ValidationImpl::validateCoordinates, "Некорректно введены координаты. Они не должны быть пустыми.");
         this.coordinates = coordinates;
         return this;
     }
 
     public HumanBeingRequestDTOBuilder setRealHero(Boolean realHero) {
-        validate(realHero, this::validateBoolean, "Поле real hero не может быть null. Введите значения True/False");
+        validate(realHero, ValidationImpl::validateBoolean, "Поле real hero не может быть null. Введите значения True/False");
         this.realHero = realHero;
         return this;
     }
@@ -43,13 +46,13 @@ public class HumanBeingRequestDTOBuilder {
     }
 
     public HumanBeingRequestDTOBuilder setImpactSpeed(Float impactSpeed) {
-        validate(impactSpeed, this::validateImpactSpeed, "Значение Impact Speed не может быть пустым.");
+        validate(impactSpeed, ValidationImpl::validateImpactSpeed, "Значение Impact Speed не может быть пустым.");
         this.impactSpeed = impactSpeed;
         return this;
     }
 
     public HumanBeingRequestDTOBuilder setSoundtrackName(String soundtrackName) {
-        validate(soundtrackName, this::validateSoundtrackName, "Некорректное название саундтрека пользователя. Оно не должно быть пустым.");
+        validate(soundtrackName, ValidationImpl::validateSoundtrackName, "Некорректное название саундтрека пользователя. Оно не должно быть пустым.");
         this.soundtrackName = soundtrackName;
         return this;
     }
@@ -60,7 +63,7 @@ public class HumanBeingRequestDTOBuilder {
     }
 
     public HumanBeingRequestDTOBuilder setMood(Mood mood) {
-        validate(mood, this::validateMood, "Накорректно задано настроение. Оно не может быть пустым.");
+        validate(mood, ValidationImpl::validateMood, "Накорректно задано настроение. Оно не может быть пустым.");
         this.mood = mood;
         return this;
     }
@@ -74,32 +77,4 @@ public class HumanBeingRequestDTOBuilder {
         return new HumanBeingRequestDTO(name, coordinates, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
     }
 
-    // Валидаторы
-    private boolean validateUserName(String userName){
-        return (userName != null && !userName.trim().equals(""));
-    }
-    private boolean validateCoordinates(Coordinates coordinates){
-        return coordinates.getX() != null && coordinates.getY() != null;
-    }
-    private boolean validateBoolean(Boolean bool){
-        return bool != null;
-    }
-    private boolean validateImpactSpeed(Float impactSpeed){
-        return (impactSpeed != null);
-    }
-    private boolean validateSoundtrackName(String soundtrackName){
-        return (soundtrackName != null && !soundtrackName.trim().equals(""));
-    }
-    private boolean validateMood(Mood mood){
-        return (mood != null);
-    }
-    private boolean validateId(Long id){
-        return (id != null && id > 0);
-    }
-
-    private <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){
-        if (!validator.apply(object)){
-            throw new ValidationException(errorMessage);
-        }
-    }
 }
