@@ -3,6 +3,7 @@ package ui;
 import controller.HumanBeingControllerImpl;
 import dao.HumanBeingDAOImpl;
 import exception.ArgumentException;
+import exception.FileException;
 import exception.ValidationException;
 import model.*;
 import services.HumanBeingServiceImpl;
@@ -137,7 +138,7 @@ public class ConsoleUI {
                 }
                  commandArr = reader.readLine().split(" ");
                  command = commandArr[0];
-            } catch (ValidationException | ArgumentException e) {
+            } catch (ValidationException | ArgumentException | FileException e) {
                     System.out.println(e.getMessage());
                 }
             }
