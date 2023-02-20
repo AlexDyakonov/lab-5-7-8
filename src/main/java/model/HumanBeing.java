@@ -196,6 +196,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
 
     @Override
     public int compareTo(HumanBeing humanBeing) {
-        return (int) (this.impactSpeed - humanBeing.impactSpeed);
+        return (int) -(this.impactSpeed - humanBeing.impactSpeed);
     }
 }

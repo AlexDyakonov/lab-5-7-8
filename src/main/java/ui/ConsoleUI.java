@@ -135,7 +135,8 @@ public class ConsoleUI {
                         userController.countByMood(Asker.mood());
                         break;
                     case "print_ascending":
-                        System.out.println("print ascend");
+                        System.out.println(userController.printAscending());
+                        System.out.println(GREEN_BRIGHT + "Выведены элементы коллекции по возрастанию." + RESET);
                         break;
                     default:
                         System.out.println("Вы ввели значение не из меню");

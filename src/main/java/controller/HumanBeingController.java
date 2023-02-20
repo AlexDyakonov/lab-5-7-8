@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 
+import java.util.List;
 import java.util.Set;
 
 public interface HumanBeingController {
@@ -17,6 +18,6 @@ public interface HumanBeingController {
     void addIfMin(HumanBeing humanBeing);
     void maxByImpactSpeed(HumanBeing humanBeing);
     void countByMood(Mood mood);
-    void printAscending();
+    List<HumanBeing> printAscending();
     int getSize();
 }

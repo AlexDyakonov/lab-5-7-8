@@ -4,6 +4,7 @@ import exception.ValidationException;
 import model.*;
 import services.HumanBeingService;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -77,8 +78,8 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void printAscending() {
-        humanBeingService.printAscending();
+    public List<HumanBeing> printAscending() {
+        return humanBeingService.printAscending();
     }
 
     @Override

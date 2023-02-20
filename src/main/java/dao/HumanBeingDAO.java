@@ -5,6 +5,7 @@ import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
 import model.Mood;
 
+import java.util.List;
 import java.util.Set;
 
 public interface HumanBeingDAO {
@@ -20,7 +21,7 @@ public interface HumanBeingDAO {
     void addIfMin(HumanBeing humanBeing);
     void maxByImpactSpeed(HumanBeing humanBeing);
     void countByMood(Mood mood);
-    void printAscending();
+    List<HumanBeing> printAscending();
 
     int getSize();
 }

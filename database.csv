@@ -1,4 +1,5 @@
 id,name,coordinates,creationDate,realHero,hasToothpick,impactSpeed,SoundTrackName,weaponType,mood,car
-1,a,(1;1.0),2023-02-20T03:26:19.470360,true,true,1.0,t,AXE,SORROW,(null)
-2,a,(1;1.0),2023-02-20T03:26:19.470360,true,true,1.0,t,AXE,SORROW,(null)
-1,sexova,(1;1.0),2023-02-20T14:54:44.851972100,true,true,3.0,s,AXE,SORROW,(null)
+1,Rayan,(1;1.0),2023-02-20T13:08:06.522267100,true,true,10000.0,HumanBeing,null,SORROW,(Car;true)
+1,Bebra,(2;2.0),2023-02-20T14:26:09.837423600,false,false,0.0,simple,null,SORROW,(null)
+2,Bebrik,(1;1.0),2023-02-20T14:27:04.806183400,true,true,-100.0,ff,AXE,SORROW,(null)
+3,Bebrik2,(2;2.0),2023-02-20T14:27:29.040652200,true,true,100.0,t,AXE,SORROW,(null)

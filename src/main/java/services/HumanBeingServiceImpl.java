@@ -6,6 +6,7 @@ import model.HumanBeingRequestDTO;
 import model.HumanBeingResponseDTO;
 import model.Mood;
 
+import java.util.List;
 import java.util.Set;
 
 public class HumanBeingServiceImpl implements HumanBeingService {
@@ -77,8 +78,8 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void printAscending() {
-        humanBeingDAO.printAscending();
+    public List<HumanBeing> printAscending() {
+        return humanBeingDAO.printAscending();
     }
 
     @Override

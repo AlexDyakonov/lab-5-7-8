@@ -125,9 +125,11 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public void printAscending() {
-
-    }
+    public List<HumanBeing> printAscending() {
+        List<HumanBeing> list = new ArrayList<>(dataBase.getDataBase());
+        Collections.sort(list);
+        return list;
+     }
 
     @Override
     public int getSize() {
