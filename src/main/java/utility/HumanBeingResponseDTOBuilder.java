@@ -4,12 +4,13 @@ import Validation.ValidationImpl;
 import model.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static Validation.ValidationImpl.validate;
 
 
 public class HumanBeingResponseDTOBuilder {
-    private Long id;
+    private String id = UUID.randomUUID().toString();
     private String name;
     private Coordinates coordinates;
     private java.time.LocalDateTime creationDate;
@@ -22,7 +23,6 @@ public class HumanBeingResponseDTOBuilder {
     private Car car;
 
     public HumanBeingResponseDTOBuilder(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -43,7 +43,7 @@ public class HumanBeingResponseDTOBuilder {
         return this;
     }
 
-    public HumanBeingResponseDTOBuilder setId(Long id) {
+    public HumanBeingResponseDTOBuilder setId(String id) {
         validate(id, ValidationImpl::validateId, "Некорректное id в базе данных.");
         this.id = id;
         return this;

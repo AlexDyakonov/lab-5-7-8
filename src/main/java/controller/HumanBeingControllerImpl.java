@@ -33,12 +33,12 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void updateById(Long id, HumanBeing humanBeing) {
+    public void updateById(String id, HumanBeing humanBeing) {
         humanBeingService.updateById(id, humanBeing);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(String id) {
         humanBeingService.removeById(id);
     }
 
@@ -68,8 +68,8 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
-    public void maxByImpactSpeed(HumanBeing humanBeing) {
-        humanBeingService.maxByImpactSpeed(humanBeing);
+    public HumanBeingResponseDTO maxByImpactSpeed(Float impactSpeed) {
+        return humanBeingService.maxByImpactSpeed(impactSpeed);
     }
 
     @Override

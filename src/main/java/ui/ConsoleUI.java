@@ -66,7 +66,7 @@ public class ConsoleUI {
 
             List<String> commandsList = new ArrayList<>();
 
-            long id;
+            String id;
 
 
             while (!(command.equals("exit"))){
@@ -95,7 +95,7 @@ public class ConsoleUI {
                         break;
                     case "remove_by_id":
                         try {
-                            id = Long.parseLong(commandArr[1]);
+                            id = (commandArr[1]);
                             userController.removeById(id);
                         } catch (NumberFormatException ex){
                             System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");

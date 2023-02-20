@@ -129,13 +129,13 @@ public class FileManagerImpl implements FileManager{
                 throw new ValidationException(RED_BRIGHT + "Ошибка в элементе из базы данных(неверное количество аргументов). Запись будет проигнорирована"+ RESET);
             }
             HumanBeingResponseDTOBuilder humanBeingResponseDTOBuilder = new HumanBeingResponseDTOBuilder();
-            humanBeingResponseDTOBuilder.setId(toLong(split[0])).setName(toString(split[1])).setCoordinates(toCoordinates(split[2]));
+            humanBeingResponseDTOBuilder.setId(split[0]).setName(toString(split[1])).setCoordinates(toCoordinates(split[2]));
             humanBeingResponseDTOBuilder.setCreationDate(toLocalDateTime(split[3])).setRealHero(toBoolean(split[4])).setHasToothpick(toBoolean(split[5]));
             humanBeingResponseDTOBuilder.setImpactSpeed(toFloat(split[6])).setSoundtrackName(toString(split[7])).setWeaponType(toWT(split[8])).setMood(toMood(split[9]));
             humanBeingResponseDTOBuilder.setCar(toCar(split[10]));
             return humanBeingResponseDTOBuilder.buildHumanBeing();
         } catch (ValidationException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); //#TODO понять что за ошибка вылетает и обработать
         }
     }
 

@@ -20,7 +20,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         return cnt;
     }
 
-    private boolean findById(Long id){
+    private boolean findById(String id){
         for (HumanBeing item : dataBase.getDataBase()){
             if (Objects.equals(item.getId(), id)){
                 return true;
@@ -29,7 +29,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         return false;
     }
 
-    private HumanBeing getById(Long id){
+    private HumanBeing getById(String id){
         HumanBeing humanBeing = null;
         for (HumanBeing item : dataBase.getDataBase()){
             if (Objects.equals(item.getId(), id)){
@@ -73,12 +73,12 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public void updateById(Long id, HumanBeing humanBeing) {
+    public void updateById(String id, HumanBeing humanBeing) {
 
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(String id) {
         if (!findById(id)){
             System.out.println("HumanBeing с id " + id + " не найден");
         } else {
@@ -115,8 +115,16 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     }
 
     @Override
-    public void maxByImpactSpeed(HumanBeing humanBeing) {
+    public HumanBeingResponseDTO maxByImpactSpeed(Float impactSpeed) {
+        HumanBeing humanBeingMaxImpactSpeed = new HumanBeing();
+        float maxImpactSpeed = 0;
+        for (HumanBeing item : dataBase.getDataBase()){
 
+            if (item.getImpactSpeed() > impactSpeed){
+                return null;
+            }
+        }
+        return null;
     }
 
     @Override

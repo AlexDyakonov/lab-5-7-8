@@ -29,8 +29,8 @@ public class ValidationImpl {
     public static boolean validateMood(Mood mood){
         return (mood != null);
     }
-    public static boolean validateId(Long id){
-        return (id != null && id > 0);
+    public static boolean validateId(String id){
+        return (id != null && !id.contains(","));
     }
 
     public static <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){

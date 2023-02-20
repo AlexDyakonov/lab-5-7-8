@@ -32,12 +32,12 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void updateById(Long id, HumanBeing humanBeing) {
+    public void updateById(String id, HumanBeing humanBeing) {
         humanBeingDAO.updateById(id, humanBeing);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(String id) {
         humanBeingDAO.removeById(id);
     }
 
@@ -68,8 +68,8 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void maxByImpactSpeed(HumanBeing humanBeing) {
-        humanBeingDAO.maxByImpactSpeed(humanBeing);
+    public HumanBeingResponseDTO maxByImpactSpeed(Float impactSpeed) {
+        return humanBeingDAO.maxByImpactSpeed(impactSpeed);
     }
 
     @Override

@@ -12,14 +12,14 @@ public interface HumanBeingDAO {
     String info();
     Set<HumanBeing> show();
     HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
-    void updateById(Long id, HumanBeing humanBeing);
-    void removeById(Long id);
+    void updateById(String id, HumanBeing humanBeing);
+    void removeById(String id);
     Set<HumanBeing> clear();
     void save();
     void executeScript(String fileName);
     void addIfMax(HumanBeing humanBeing);
     void addIfMin(HumanBeing humanBeing);
-    void maxByImpactSpeed(HumanBeing humanBeing);
+    HumanBeingResponseDTO maxByImpactSpeed(Float impactSpeed);
     void countByMood(Mood mood);
     List<HumanBeing> printAscending();
 

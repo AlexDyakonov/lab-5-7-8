@@ -1,5 +1,5 @@
 id,name,coordinates,creationDate,realHero,hasToothpick,impactSpeed,SoundTrackName,weaponType,mood,car
-1,Rayan,(1;1.0),2023-02-20T13:08:06.522267100,true,true,10000.0,HumanBeing,null,SORROW,(Car;true)
-1,Bebra,(2;2.0),2023-02-20T14:26:09.837423600,false,false,0.0,simple,null,SORROW,(null)
-2,Bebrik,(1;1.0),2023-02-20T14:27:04.806183400,true,true,-100.0,ff,AXE,SORROW,(null)
-3,Bebrik2,(2;2.0),2023-02-20T14:27:29.040652200,true,true,100.0,t,AXE,SORROW,(null)
+e2fbb2c7-cb37-4158-b16a-27712e68a983,Rayan,(999;999.0),2023-02-20T18:44:04.909320800,true,true,1.0E8,Nightcall,SHOTGUN,APATHY,(Car;true)
+5c4bc93d-dfa0-4338-a41d-68a8599501d0,Gosling,(998;998.0),2023-02-20T18:47:52.390173,true,true,0.0,RealHero,SHOTGUN,CALM,(null)
+264ba08c-afe5-4a95-bcbc-9102faf556df,Bebrik,(0;0.0),2023-02-20T18:48:20.744294400,false,false,100.0,BebraSong,null,RAGE,(null)
+245505a4-84b3-471d-a0c4-1b1a82963061,Bebrik2,(2;2.0),2023-02-20T18:50:41.755752700,false,false,159.0,Bebr,null,RAGE,(null)

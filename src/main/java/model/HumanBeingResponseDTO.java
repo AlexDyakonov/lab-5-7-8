@@ -1,9 +1,10 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class HumanBeingResponseDTO {
-    private Long id;
+    private final String id = UUID.randomUUID().toString();
     private String name;
     private Coordinates coordinates;
     private java.time.LocalDateTime creationDate;
@@ -15,8 +16,7 @@ public class HumanBeingResponseDTO {
     private Mood mood;
     private Car car;
 
-    public HumanBeingResponseDTO(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        this.id = id;
+    public HumanBeingResponseDTO(String id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -29,12 +29,8 @@ public class HumanBeingResponseDTO {
         this.car = car;
     }
 
-    public Long getId() {
+    public String  getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

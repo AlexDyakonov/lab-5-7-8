@@ -2,11 +2,11 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class HumanBeing implements Comparable<HumanBeing>{
-    private static final AtomicLong count = new AtomicLong(0);
-    private final Long id;  //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private String id = UUID.randomUUID().toString();
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private final java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -18,7 +18,10 @@ public class HumanBeing implements Comparable<HumanBeing>{
     private Mood mood; //Поле не может быть null
     private Car car; //Поле может быть null
 
-    public HumanBeing(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
+    public HumanBeing() {
+    }
+
+    public HumanBeing(String id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -33,7 +36,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
     }
 
     public HumanBeing(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        this.id = count.incrementAndGet();
         this.name = Objects.requireNonNull(name);
         this.coordinates = Objects.requireNonNull(coordinates);
         this.creationDate = LocalDateTime.now();
@@ -62,8 +64,11 @@ public class HumanBeing implements Comparable<HumanBeing>{
                 ",(" + Car.toCSV(car)+ ")" + "\n";
     }
 
+    public HumanBeingResponseDTO toResponseDTO(){
+        return new HumanBeingResponseDTO(id, name, coordinates, creationDate, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
+    }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
