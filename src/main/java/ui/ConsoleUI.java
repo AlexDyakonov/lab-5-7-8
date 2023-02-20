@@ -17,8 +17,8 @@ import java.util.List;
 
 import static ui.ConsoleColors.*;
 
-//Задание: Сделать распознание введеной строки, чтобы можно было отличить команду и ее аргументы
 public class ConsoleUI {
+    // #TODO сделать обработку исключений при считывании базы данных \\ ВРОДЕ СДЕЛАЛ, НАДО ТЕСТЫ ПРОВЕСТИ
     private static final HumanBeingControllerImpl userController = new HumanBeingControllerImpl(new HumanBeingServiceImpl(new HumanBeingDAOImpl()));
 
     public static void menu(){
@@ -41,13 +41,19 @@ public class ConsoleUI {
                 "   print_ascending : "+ WHITE + "вывести элементы коллекции в порядке возрастания\n");
     }
 
+    // #TODO реализовать НОРМАЛЬНЫЙ подсчет аргументов в команде
     private static void checkCommandArg(String[] commandArr, int numOfArgs){
+        try {
             if (numOfArgs == 0 && commandArr.length - 1 > 0){
                 throw new ArgumentException("Данная команда вызывается без агрументов");
             }
             if (commandArr.length - 1 < numOfArgs){
                 throw new ArgumentException("Количество аргументов в данной команде равно " + numOfArgs);
             }
+        } catch (ArgumentException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public static void start() {

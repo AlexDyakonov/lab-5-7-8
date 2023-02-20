@@ -169,7 +169,11 @@ public class FileManagerImpl implements FileManager{
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String element = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null){
-                humanBeingSet.add(parseCSVToHumanBeing(line));
+                try {
+                    humanBeingSet.add(parseCSVToHumanBeing(line));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
             fileReader.close();
             bufferedReader.close();

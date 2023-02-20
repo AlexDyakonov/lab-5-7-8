@@ -1,2 +1,4 @@
 id,name,coordinates,creationDate,realHero,hasToothpick,impactSpeed,SoundTrackName,weaponType,mood,car
 1,a,(1;1.0),2023-02-20T03:26:19.470360,true,true,1.0,t,AXE,SORROW,(null)
+2,a,(1;1.0),2023-02-20T03:26:19.470360,true,true,1.0,t,AXE,SORROW,(null)
+1,sexova,(1;1.0),2023-02-20T14:54:44.851972100,true,true,3.0,s,AXE,SORROW,(null)
