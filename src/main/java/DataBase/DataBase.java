@@ -9,5 +9,4 @@ public interface DataBase {
     Set<HumanBeing> getDataBase();
     LocalDateTime getCreationDate();
     void saveDBToCSV();
-    void loadDataBase();
 }

@@ -2,11 +2,10 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class HumanBeing implements Comparable<HumanBeing>{
-    private static Long countOfHumanBeings = 0L; //Считает сколько всего создано сущностей. Используется в качестве id.
-//    private final String id = UUID.randomUUID().toString(); Ждать ответа
+    private static final AtomicLong count = new AtomicLong(0);
     private final Long id;  //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -34,7 +33,7 @@ public class HumanBeing implements Comparable<HumanBeing>{
     }
 
     public HumanBeing(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
-        this.id = ++countOfHumanBeings;
+        this.id = count.incrementAndGet();
         this.name = Objects.requireNonNull(name);
         this.coordinates = Objects.requireNonNull(coordinates);
         this.creationDate = LocalDateTime.now();
@@ -63,9 +62,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
                 ",(" + Car.toCSV(car)+ ")" + "\n";
     }
 
-    public static Long getCountOfHumanBeings() {
-        return countOfHumanBeings;
-    }
 
     public Long getId() {
         return id;

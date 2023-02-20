@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to save collection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exception/ApplicationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added saving/loading collection to CSV, no autoload">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/HumanBeingRequestDTOBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +93,8 @@
       <workItem from="1676669229370" duration="12198000" />
       <workItem from="1676756590916" duration="373000" />
       <workItem from="1676794933483" duration="36000" />
-      <workItem from="1676797718347" duration="19860000" />
+      <workItem from="1676797718347" duration="19908000" />
+      <workItem from="1676843295939" duration="4873000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -233,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676794959749</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added saving/loading collection to CSV, no autoload">
+      <created>1676842018326</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1676842018326</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +273,7 @@
     <MESSAGE value="Removed command pattern. Added builder pattern" />
     <MESSAGE value="Realised processing of validation exceptions. Added builder and asker classes for UI&#10;Fixed add method" />
     <MESSAGE value="Attempt to save collection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to save collection" />
+    <MESSAGE value="Added saving/loading collection to CSV, no autoload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added saving/loading collection to CSV, no autoload" />
   </component>
 </project>

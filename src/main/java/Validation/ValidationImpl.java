@@ -3,6 +3,7 @@ package Validation;
 import exception.ValidationException;
 import model.Coordinates;
 import model.Mood;
+import ui.ConsoleColors;
 
 import java.util.function.Function;
 
@@ -34,7 +35,7 @@ public class ValidationImpl {
 
     public static <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){
         if (!validator.apply(object)){
-            throw new ValidationException(errorMessage);
+            throw new ValidationException(ConsoleColors.RED_BRIGHT + errorMessage + ConsoleColors.RESET);
         }
     }
 }

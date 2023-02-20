@@ -7,10 +7,11 @@ import model.*;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import static ui.ConsoleColors.*;
 
 public class FileManagerImpl implements FileManager{
     private String toString(String line){
@@ -20,21 +21,21 @@ public class FileManagerImpl implements FileManager{
         try {
             return Long.parseLong(line);
         } catch (NumberFormatException e) {
-            throw new FileException(line + " не соответствует требованию. Id в файле должно быть типа long. Запись будет проигнорирована");
+            throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Id в файле должно быть типа long. Запись будет проигнорирована" + RESET);
         }
     }
     private Float toFloat(String line){
         try {
             return Float.parseFloat(line);
         } catch (NumberFormatException e) {
-            throw new FileException(line + " не соответствует требованию. Impactspeed принимает числовое значение. Запись будет проигнорирована.");
+            throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Impactspeed принимает числовое значение. Запись будет проигнорирована."+ RESET);
         }
     }
     private Coordinates toCoordinates(String line){ // (1;1.0)
         String[] coordArr = line.replaceAll("[()]", "").split(";");
         Coordinates coordinates = new Coordinates();
         if (coordArr.length != 2){
-            throw new FileException("Количество координат больше 2. Запись будет проигнорирована");
+            throw new FileException(RED_BRIGHT + "Количество координат больше 2. Запись будет проигнорирована"+ RESET);
         }
         try {
             Integer x = Integer.parseInt(coordArr[0].trim().toLowerCase());
@@ -43,14 +44,14 @@ public class FileManagerImpl implements FileManager{
             coordinates.setX(x);
             return coordinates;
         } catch (NumberFormatException e) {
-            throw new FileException("Координаты x,y неверного формата. Должны быть числа. Запись будет проигнорирована");
+            throw new FileException(RED_BRIGHT + "Координаты x,y неверного формата. Должны быть числа. Запись будет проигнорирована"+ RESET);
         }
     }
     private LocalDateTime toLocalDateTime(String line){
         try {
             return LocalDateTime.parse(line);
         } catch (Exception e) {
-            throw new FileException("Неверно введено время создания файла. Запись будет проигнорирована");
+            throw new FileException(RED_BRIGHT +"Неверно введено время создания файла. Запись будет проигнорирована"+ RESET);
         }
     }
     private Boolean toBoolean(String line){
@@ -61,7 +62,7 @@ public class FileManagerImpl implements FileManager{
             case "false", "f" -> {
                 return false;
             }
-            default -> throw new ValidationException(line + " не соответствует требованию. Значения не соответствуют необходимым true/false");
+            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию. Значения не соответствуют необходимым true/false"+ RESET);
         }
 
     }
@@ -79,7 +80,7 @@ public class FileManagerImpl implements FileManager{
             case "(null)", "null", "" -> {
                 return null;
             }
-            default -> throw new ValidationException(line + " не соответствует требованию. Значения WeaponType могут быть AXE, SHOTGUN, BAT, null. Запись будет проигнорирована.");
+            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию. Значения WeaponType могут быть AXE, SHOTGUN, BAT, null. Запись будет проигнорирована."+ RESET);
         }
     }
     private Mood toMood(String line){
@@ -99,7 +100,7 @@ public class FileManagerImpl implements FileManager{
             case "rage" -> {
                 return Mood.RAGE;
             }
-            default -> throw new ValidationException(line + " не соответствует требованию.  Значения Mood могут быть SORROW, GLOOM, APATHY, CALM, RAGE. Запись будет проигнорирована.");
+            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию.  Значения Mood могут быть SORROW, GLOOM, APATHY, CALM, RAGE. Запись будет проигнорирована."+ RESET);
         }
     }
     private Car toCar(String line){
@@ -107,7 +108,7 @@ public class FileManagerImpl implements FileManager{
         Car car = new Car();
         try {
             if (carArr.length > 2){
-                throw new FileException("Значение поля Car должно состоять из двух компонент, либо быть null");
+                throw new FileException(RED_BRIGHT +"Значение поля Car должно состоять из двух компонент, либо быть null"+ RESET);
             } if (Objects.equals(carArr[0], "null")){
                 return null;
             }
@@ -117,7 +118,7 @@ public class FileManagerImpl implements FileManager{
                 return car;
             }
         } catch (ValidationException e) {
-            throw new FileException("Значение поля car.cool " + carArr[1] + " должно принимать значение true/false. Запись будет проигнорирована. ");
+            throw new FileException(RED_BRIGHT +"Значение поля car.cool " + carArr[1] + " должно принимать значение true/false. Запись будет проигнорирована. "+ RESET);
         }
     }
 
@@ -125,7 +126,7 @@ public class FileManagerImpl implements FileManager{
         try {
             String[] split = csvHumanBeing.split(",");
             if (split.length != 11){
-                throw new ValidationException("Ошибка в элементе из базы данных(неверное количество аргументов). Запись будет проигнорирована");
+                throw new ValidationException(RED_BRIGHT + "Ошибка в элементе из базы данных(неверное количество аргументов). Запись будет проигнорирована"+ RESET);
             }
             HumanBeingResponseDTOBuilder humanBeingResponseDTOBuilder = new HumanBeingResponseDTOBuilder();
             humanBeingResponseDTOBuilder.setId(toLong(split[0])).setName(toString(split[1])).setCoordinates(toCoordinates(split[2]));
@@ -151,12 +152,13 @@ public class FileManagerImpl implements FileManager{
             }
             csvWriter.flush();
             csvWriter.close();
-            System.out.println(humanBeingSet.size() + " элементов было сохранено в файл " + fileName +".");
+            System.out.println(GREEN + humanBeingSet.size() + GREEN_BRIGHT + " элементов было сохранено в файл " + GREEN + fileName + GREEN_BRIGHT +"." + RESET);
         } catch (Exception e) {
-            throw new FileException("Не удалось открыть файл с называнием " + fileName);
+            throw new FileException(RED_BRIGHT + "Не удалось открыть файл с называнием " + RED + fileName + RESET);
         }
     }
 
+    // #TODO пофиксить баг, когда читаются пустые строчки. Вылетают ошибки создания объекта
     @Override
     public Set<HumanBeing> load(String path) {
         try {
@@ -173,9 +175,9 @@ public class FileManagerImpl implements FileManager{
             bufferedReader.close();
             return humanBeingSet;
         } catch (FileNotFoundException e) {
-            throw new FileException("Файл по пути " + path + "Не найден");
+            throw new FileException(RED_BRIGHT + "Файл по пути " + RED + path + RED_BRIGHT + " не найден"+ RESET);
         } catch (IOException e) {
-            throw new ApplicationException("Не удалось открыть/закрыть поток чтения файла.");
+            throw new ApplicationException(RED_BRIGHT + "Не удалось открыть/закрыть поток чтения файла." + RESET);
         }
     }
 
