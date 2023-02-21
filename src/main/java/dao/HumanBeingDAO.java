@@ -23,6 +23,5 @@ public interface HumanBeingDAO {
     HumanBeingResponseDTO maxByImpactSpeed();
     void countByMood(Mood mood);
     List<HumanBeing> printAscending();
-
     int getSize();
 }

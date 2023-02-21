@@ -12,7 +12,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" afterDir="false" />
     </list>
@@ -32,6 +31,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
