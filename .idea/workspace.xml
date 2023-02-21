@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Transfered methods connected with casting HB to HBResDTO. Added methods updateById, add if min/max">
+      <change afterPath="$PROJECT_DIR$/commands.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeingResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/Asker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Asker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +50,12 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\lab-5-num-125595" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -65,9 +63,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utility.ScriptExecuter" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.ScriptExecuter" />
       </list>
     </recent_temporary>
   </component>
@@ -99,6 +111,7 @@
       <workItem from="1676797718347" duration="19908000" />
       <workItem from="1676843295939" duration="4964000" />
       <workItem from="1676893258645" duration="1018000" />
+      <workItem from="1676996504688" duration="5345000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -247,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676853690946</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Transfered methods connected with casting HB to HBResDTO. Added methods updateById, add if min/max">
+      <created>1676938142684</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1676938142684</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +306,7 @@
     <MESSAGE value="Attempt to save collection" />
     <MESSAGE value="Added saving/loading collection to CSV, no autoload" />
     <MESSAGE value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
+    <MESSAGE value="Transfered methods connected with casting HB to HBResDTO. Added methods updateById, add if min/max" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfered methods connected with casting HB to HBResDTO. Added methods updateById, add if min/max" />
   </component>
 </project>
