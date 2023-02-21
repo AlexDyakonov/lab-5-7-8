@@ -3,6 +3,7 @@ package ui;
 import controller.HumanBeingControllerImpl;
 import dao.HumanBeingDAOImpl;
 import exception.ArgumentException;
+import model.HumanBeing;
 import services.HumanBeingServiceImpl;
 import utility.Asker;
 import utility.HumanBeingRequestDTOBuilder;
@@ -86,18 +87,22 @@ public class ConsoleUI {
                         System.out.println("Выведены все элементы коллекции. ");
                         break;
                     case "add":
-                        humanBeingBuilder.setName(Asker.name()).setCoordinates(Asker.coordinates()).setRealHero(Asker.realHero()).setHasToothpick(Asker.hasToothPick());
-                        humanBeingBuilder.setImpactSpeed(Asker.impactSpeed()).setSoundtrackName(Asker.soundtrackName()).setWeaponType(Asker.weaponType()).setMood(Asker.mood()).setCar(Asker.car());
+                        humanBeingBuilder = Asker.humanBeingRequestDTOBuilder();
                         System.out.println(userController.addElementToCollection(humanBeingBuilder.build()).toString() + " был добавлен");
                         break;
                     case "update":
-                        System.out.println("update");
+                        try {
+                            id = (commandArr[1]);
+                            System.out.println(userController.updateById(id, Asker.humanBeingRequestDTOBuilder().build()).toString() + " был обновлен");
+                        } catch (NumberFormatException ex){ // TODO посмотреть исключения, что тут может вылететь
+                            System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
+                        }
                         break;
                     case "remove_by_id":
                         try {
                             id = (commandArr[1]);
                             userController.removeById(id);
-                        } catch (NumberFormatException ex){
+                        } catch (NumberFormatException ex){ // TODO посмотреть исключения, что тут может вылететь
                             System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
                         }
                         break;
@@ -114,22 +119,23 @@ public class ConsoleUI {
                         System.out.println("Скрипт");
                         break;
                     case "add_if_max":
-                        System.out.println("Макс");
+                        userController.addIfMax(Asker.humanBeingRequestDTOBuilder().build());
                         break;
                     case "add_if_min":
-                        System.out.println("Мин");
+                        userController.addIfMin(Asker.humanBeingRequestDTOBuilder().build());
                         break;
                     case "history":
-                        if (commandsList.size() < 10){
-                            System.out.println(commandsList.toString());
+                        if (commandsList.size() < 15){
+                            System.out.println(commandsList);
                         } else{
-                            for(int i = 1; i <= 10; i++){
+                            for(int i = 1; i <= 15; i++){
                                 System.out.print(commandsList.get(commandsList.size() - i) + " ");
                             }
                         }
                         break;
                     case "max_by_impact_speed":
-                        System.out.println("МаксБиИмпакт");
+                        userController.maxByImpactSpeed();
+                        System.out.println(GREEN_BRIGHT + "Выведен элемент коллекции с максимальным Impact speed." + RESET);
                         break;
                     case "count_by_mood":
                         userController.countByMood(Asker.mood());

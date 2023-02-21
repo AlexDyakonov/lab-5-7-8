@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class HumanBeingResponseDTO {
-    private final String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
+
     private String name;
     private Coordinates coordinates;
     private java.time.LocalDateTime creationDate;
@@ -31,6 +32,9 @@ public class HumanBeingResponseDTO {
 
     public String  getId() {
         return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

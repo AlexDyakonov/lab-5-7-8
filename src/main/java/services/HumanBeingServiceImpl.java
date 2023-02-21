@@ -32,8 +32,8 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void updateById(String id, HumanBeing humanBeing) {
-        humanBeingDAO.updateById(id, humanBeing);
+    public HumanBeingResponseDTO updateById(String id, HumanBeingRequestDTO humanBeingRequestDTO) {
+        return humanBeingDAO.updateById(id, humanBeingRequestDTO);
     }
 
     @Override
@@ -58,18 +58,18 @@ public class HumanBeingServiceImpl implements HumanBeingService {
     }
 
     @Override
-    public void addIfMax(HumanBeing humanBeing) {
-        humanBeingDAO.addIfMax(humanBeing);
+    public void addIfMax(HumanBeingRequestDTO humanBeingRequestDTO) {
+        humanBeingDAO.addIfMax(humanBeingRequestDTO);
     }
 
     @Override
-    public void addIfMin(HumanBeing humanBeing) {
-        humanBeingDAO.addIfMin(humanBeing);
+    public void addIfMin(HumanBeingRequestDTO humanBeingRequestDTO) {
+        humanBeingDAO.addIfMin(humanBeingRequestDTO);
     }
 
     @Override
-    public HumanBeingResponseDTO maxByImpactSpeed(Float impactSpeed) {
-        return humanBeingDAO.maxByImpactSpeed(impactSpeed);
+    public HumanBeingResponseDTO maxByImpactSpeed() {
+        return humanBeingDAO.maxByImpactSpeed();
     }
 
     @Override

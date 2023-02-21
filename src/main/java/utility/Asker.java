@@ -156,4 +156,11 @@ public class Asker {
     public static Car car(){
         return readCar();
     }
+    public static HumanBeingRequestDTOBuilder humanBeingRequestDTOBuilder(){
+        HumanBeingRequestDTOBuilder humanBeingRequestDTOBuilder = new HumanBeingRequestDTOBuilder();
+        humanBeingRequestDTOBuilder.setName(Asker.name()).setCoordinates(Asker.coordinates()).setRealHero(Asker.realHero()).setHasToothpick(Asker.hasToothPick());
+        humanBeingRequestDTOBuilder.setImpactSpeed(Asker.impactSpeed()).setSoundtrackName(Asker.soundtrackName()).setWeaponType(Asker.weaponType()).setMood(Asker.mood()).setCar(Asker.car());
+        return humanBeingRequestDTOBuilder;
+    }
+
 }

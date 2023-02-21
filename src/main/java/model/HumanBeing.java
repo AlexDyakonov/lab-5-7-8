@@ -9,7 +9,7 @@ public class HumanBeing implements Comparable<HumanBeing>{
     private String id = UUID.randomUUID().toString();
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private final java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Boolean realHero; //Поле не может быть null
     private Boolean hasToothpick; //Поле не может быть null
     private Float impactSpeed; //Поле не может быть null
@@ -67,7 +67,19 @@ public class HumanBeing implements Comparable<HumanBeing>{
     public HumanBeingResponseDTO toResponseDTO(){
         return new HumanBeingResponseDTO(id, name, coordinates, creationDate, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
     }
-
+    public HumanBeing fromHumanRequestDTO(HumanBeingRequestDTO humanBeingRequestDTO){
+        this.name = humanBeingRequestDTO.getName();
+        this.coordinates = humanBeingRequestDTO.getCoordinates();
+        this.realHero = humanBeingRequestDTO.getRealHero();
+        this.creationDate = LocalDateTime.now();
+        this.hasToothpick = humanBeingRequestDTO.getHasToothpick();
+        this.impactSpeed = humanBeingRequestDTO.getImpactSpeed();
+        this.soundtrackName = humanBeingRequestDTO.getSoundtrackName();
+        this.weaponType = humanBeingRequestDTO.getWeaponType();
+        this.mood = humanBeingRequestDTO.getMood();
+        this.car = humanBeingRequestDTO.getCar();
+        return this;
+    }
     public String getId() {
         return id;
     }

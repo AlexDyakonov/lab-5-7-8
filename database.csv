@@ -1,5 +1,4 @@
 id,name,coordinates,creationDate,realHero,hasToothpick,impactSpeed,SoundTrackName,weaponType,mood,car
-e2fbb2c7-cb37-4158-b16a-27712e68a983,Rayan,(999;999.0),2023-02-20T18:44:04.909320800,true,true,1.0E8,Nightcall,SHOTGUN,APATHY,(Car;true)
-5c4bc93d-dfa0-4338-a41d-68a8599501d0,Gosling,(998;998.0),2023-02-20T18:47:52.390173,true,true,0.0,RealHero,SHOTGUN,CALM,(null)
-264ba08c-afe5-4a95-bcbc-9102faf556df,Bebrik,(0;0.0),2023-02-20T18:48:20.744294400,false,false,100.0,BebraSong,null,RAGE,(null)
-245505a4-84b3-471d-a0c4-1b1a82963061,Bebrik2,(2;2.0),2023-02-20T18:50:41.755752700,false,false,159.0,Bebr,null,RAGE,(null)
+9af3ca27-9121-4200-b522-a9af88fa5877,Rayan,(999;999.0),2023-02-21T02:37:39.298088800,true,true,999999.0,Nightcall,SHOTGUN,CALM,(Bebra;true)
+8fd6881d-8b42-48e0-bd55-d52d748457aa,Bebra,(0;0.0),2023-02-21T02:38:37.270943,false,false,0.0,BebrikMusic,AXE,SORROW,(null)
+631f8295-1280-41af-b455-5cc23cee73ec,Bebrik2,(1;1.0),2023-02-21T02:39:25.659534100,true,false,-500.0,MbGek,SHOTGUN,GLOOM,(null)

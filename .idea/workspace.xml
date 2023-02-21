@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added print_ascending command. Commit before refactoring project to change Long id to UUID">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" afterDir="false" />
@@ -17,8 +16,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/Asker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Asker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +54,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
   <component name="RunManager">
@@ -92,7 +89,16 @@
       <workItem from="1676281422592" duration="4061000" />
       <workItem from="1676388177073" duration="12010000" />
       <workItem from="1676413081794" duration="191000" />
-      <workItem from="1676478443094" duration="3283000" />
+      <workItem from="1676478443094" duration="4436000" />
+      <workItem from="1676538879634" duration="3700000" />
+      <workItem from="1676653240323" duration="231000" />
+      <workItem from="1676661882048" duration="2707000" />
+      <workItem from="1676669229370" duration="12198000" />
+      <workItem from="1676756590916" duration="373000" />
+      <workItem from="1676794933483" duration="36000" />
+      <workItem from="1676797718347" duration="19908000" />
+      <workItem from="1676843295939" duration="4964000" />
+      <workItem from="1676893258645" duration="1018000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -192,14 +198,56 @@
       <option name="project" value="LOCAL" />
       <updated>1676412932800</updated>
     </task>
-    <task id="LOCAL-00015" summary="Added print_ascending command. Commit before refactoring project to change Long id to UUID">
-      <created>1676907262500</created>
+    <task id="LOCAL-00015" summary="Added command model. Attempt to implement structure">
+      <created>1676494827816</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1676907262500</updated>
+      <updated>1676494827816</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=" Attempt to implement command">
+      <created>1676558646026</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1676558646026</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Removed command pattern. Added builder pattern">
+      <created>1676664585398</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1676664585398</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Realised processing of validation exceptions. Added builder and asker classes for UI&#10;Fixed add method">
+      <created>1676684136371</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1676684136371</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Attempt to save collection">
+      <created>1676794959749</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1676794959749</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added saving/loading collection to CSV, no autoload">
+      <created>1676842018326</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1676842018326</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
+      <created>1676853690946</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1676853690946</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +279,13 @@
     <MESSAGE value="Added opencsv dependency" />
     <MESSAGE value="Colorful output of HumanBeing" />
     <MESSAGE value="Added remove_by_id method. Catched some exceptions" />
-    <MESSAGE value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
+    <MESSAGE value="Added command model. Attempt to implement structure" />
+    <MESSAGE value=" Attempt to implement command" />
+    <MESSAGE value="Removed command pattern. Added builder pattern" />
+    <MESSAGE value="Realised processing of validation exceptions. Added builder and asker classes for UI&#10;Fixed add method" />
+    <MESSAGE value="Attempt to save collection" />
+    <MESSAGE value="Added saving/loading collection to CSV, no autoload" />
+    <MESSAGE value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
   </component>
 </project>
