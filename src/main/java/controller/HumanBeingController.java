@@ -9,6 +9,7 @@ public interface HumanBeingController {
     String info();
     Set<HumanBeing> show();
     HumanBeingResponseDTO addElementToCollection(HumanBeingRequestDTO humanBeingRequestDTO);
+    boolean findById(String id);
     HumanBeingResponseDTO updateById(String id, HumanBeingRequestDTO humanBeingRequestDTO);
     void removeById(String id);
     Set<HumanBeing> clear();

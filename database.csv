@@ -2,3 +2,4 @@ id,name,coordinates,creationDate,realHero,hasToothpick,impactSpeed,SoundTrackNam
 9af3ca27-9121-4200-b522-a9af88fa5877,Rayan,(999;999.0),2023-02-21T02:37:39.298088800,true,true,999999.0,Nightcall,SHOTGUN,CALM,(Bebra;true)
 8fd6881d-8b42-48e0-bd55-d52d748457aa,Bebra,(0;0.0),2023-02-21T02:38:37.270943,false,false,0.0,BebrikMusic,AXE,SORROW,(null)
 631f8295-1280-41af-b455-5cc23cee73ec,Bebrik2,(1;1.0),2023-02-21T02:39:25.659534100,true,false,-500.0,MbGek,SHOTGUN,GLOOM,(null)
+aba735a8-f1eb-4ada-a7a4-8c6cf324d354,Bebra,(1;1.0),2023-02-21T10:42:05.932874900,true,true,-100.0,t,AXE,SORROW,(null)
