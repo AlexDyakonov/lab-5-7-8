@@ -93,7 +93,11 @@ public class ConsoleUI {
                     case "update":
                         try {
                             id = (commandArr[1]);
-                            System.out.println(userController.updateById(id, Asker.humanBeingRequestDTOBuilder().build()).toString() + " был обновлен"); //TODO если не существует объекта с id, пофиксить.
+                            if (userController.findById(id)){
+                                System.out.println(userController.updateById(id, Asker.humanBeingRequestDTOBuilder().build()).toString() + " был обновлен");
+                            }else {
+                                System.out.println("Объекта с id " + id + " не было найдено. Ничего не обновлено");
+                            }
                         } catch (NumberFormatException ex){ // TODO посмотреть исключения, что тут может вылететь
                             System.out.println("Значение " + commandArr[1] + "не является id. Вызовите команду еще раз.");
                         }

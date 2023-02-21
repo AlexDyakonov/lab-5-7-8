@@ -16,8 +16,8 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         }
         return cnt;
     }
-
-    private boolean findById(String id){
+    @Override
+    public boolean findById(String id){
         for (HumanBeing item : dataBase.getDataBase()){
             if (Objects.equals(item.getId(), id)){
                 return true;
@@ -64,7 +64,6 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public HumanBeingResponseDTO updateById(String id, HumanBeingRequestDTO humanBeingRequestDTO) {
-        if (findById(id)){
             Objects.requireNonNull(getById(id)).setName(humanBeingRequestDTO.getName());
             Objects.requireNonNull(getById(id)).setCoordinates(humanBeingRequestDTO.getCoordinates());
             Objects.requireNonNull(getById(id)).setCar(humanBeingRequestDTO.getCar());
@@ -77,10 +76,6 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
             HumanBeingResponseDTO humanBeingResponseDTO = Objects.requireNonNull(getById(id)).toResponseDTO(); //TODO придумать как пофиксить костыль с разными ID(сделать нормально)
             humanBeingResponseDTO.setId(Objects.requireNonNull(getById(id)).getId());
             return humanBeingResponseDTO;
-        }else {
-            System.out.println("Объекта с id " + id + " не было найдено. Ничего не обновлено");
-        }
-        return null;
     }
 
     @Override

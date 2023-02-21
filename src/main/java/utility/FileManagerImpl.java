@@ -158,7 +158,6 @@ public class FileManagerImpl implements FileManager{
         }
     }
 
-    // #TODO пофиксить баг, когда читаются пустые строчки. Вылетают ошибки создания объекта
     @Override
     public Set<HumanBeing> load(String path) {
         try {

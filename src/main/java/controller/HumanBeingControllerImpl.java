@@ -33,6 +33,11 @@ public class HumanBeingControllerImpl implements HumanBeingController {
     }
 
     @Override
+    public boolean findById(String id) {
+        return humanBeingService.findById(id);
+    }
+
+    @Override
     public HumanBeingResponseDTO updateById(String id, HumanBeingRequestDTO humanBeingRequestDTO) {
         return humanBeingService.updateById(id, humanBeingRequestDTO);
     }
