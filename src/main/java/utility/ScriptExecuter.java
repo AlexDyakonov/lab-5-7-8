@@ -21,7 +21,7 @@ public class ScriptExecuter {
             String line = reader.readLine();
             while (line != null){
                 if (!line.equals("")){
-                    commandsFromFile.add(line.toLowerCase().trim());
+                    commandsFromFile.add(line.trim());
                 }
                 line = reader.readLine();
             }
@@ -32,11 +32,16 @@ public class ScriptExecuter {
             throw new ApplicationException("Не удалось открыть опток чтения файла.");
         }
     }
+    private static List<Integer> findIndexOfCommands(String fileName){
+        readLinesFromFile(fileName);
+        return null;
+    }
     private static boolean parseLineToCommand(String string){
         return commands.contains(string);
     }
 
     public static void main(String[] args) {
         System.out.println((readLinesFromFile("commands.txt")));
+        System.out.println(parseLineToCommand("add"));
     }
 }

@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Changed Long id to UUID. Attempt to do maxByImpactSpeed">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/commands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +50,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ScriptExecuter">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -64,8 +58,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utility.ScriptExecuter" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -89,6 +97,8 @@
       <workItem from="1676388177073" duration="12010000" />
       <workItem from="1676413081794" duration="191000" />
       <workItem from="1676478443094" duration="3283000" />
+      <workItem from="1677151840641" duration="600000" />
+      <workItem from="1677183157378" duration="2371000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -195,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676907262500</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
+      <created>1677019015543</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1677019015543</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +245,7 @@
     <MESSAGE value="Colorful output of HumanBeing" />
     <MESSAGE value="Added remove_by_id method. Catched some exceptions" />
     <MESSAGE value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
+    <MESSAGE value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
   </component>
 </project>
