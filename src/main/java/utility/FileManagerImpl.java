@@ -135,7 +135,7 @@ public class FileManagerImpl implements FileManager{
             humanBeingResponseDTOBuilder.setCar(toCar(split[10]));
             return humanBeingResponseDTOBuilder.buildHumanBeing();
         } catch (ValidationException e) {
-            throw new RuntimeException(e); //#TODO понять что за ошибка вылетает и обработать
+            throw new RuntimeException(e);
         }
     }
 
@@ -182,10 +182,5 @@ public class FileManagerImpl implements FileManager{
         } catch (IOException e) {
             throw new ApplicationException(RED_BRIGHT + "Не удалось открыть/закрыть поток чтения файла." + RESET);
         }
-    }
-
-    @Override
-    public void say() {
-        System.out.println(parseCSVToHumanBeing("1,Alex%COMMA%%COMMA%%COMMA%123,(1;1.0),2023-02-19T21:08:30.147872900,true,false,1.0,s%COMMA%,AXE,SORROW,(null)"));
     }
 }

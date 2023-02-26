@@ -1,39 +1,53 @@
-package utility;
+package ui;
 
 import static ui.ConsoleColors.GREEN_BRIGHT;
 import static ui.ConsoleColors.RESET;
 
 import controller.HumanBeingControllerImpl;
-import exception.FileException;
+import exception.ArgumentException;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import ui.MenuConstants;
+import utility.AbstractAsker;
+import utility.HumanBeingRequestDTOBuilder;
+import utility.ScriptExecuter;
 
-public class ScriptExecuter {
+public class CommandExecutor {
 
     private final HumanBeingControllerImpl userController;
-    private final List<String> previousFiles;
-    private final String filename;
+    private final AbstractAsker asker;
+    private final BufferedReader reader;
 
-    public ScriptExecuter(HumanBeingControllerImpl userController, List<String> previousFiles,
-        String filename) {
-        this.userController = userController;
-        this.previousFiles = previousFiles == null ? new ArrayList<>() : previousFiles;
-        this.filename = filename;
+    public CommandExecutor(AbstractAsker asker,
+        HumanBeingControllerImpl humanBeingController,
+        BufferedReader reader) {
+        this.reader = reader;
+        this.userController = humanBeingController;
+        this.asker = asker;
+    }
+
+    // #TODO сделать обработку исключений при считывании базы данных \\ ВРОДЕ СДЕЛАЛ, НАДО ТЕСТЫ ПРОВЕСТИ
+    public void menu() {
+        System.out.println(MenuConstants.HELP);
+    }
+
+    private void checkCommandArg(String[] commandArr, int numOfArgs) {
+        if (numOfArgs == 0 && commandArr.length - 1 > 0) {
+            throw new ArgumentException("Данная команда вызывается без агрументов");
+        }
+        if (commandArr.length - 1 < numOfArgs) {
+            throw new ArgumentException(
+                "Количество аргументов в данной команде равно " + numOfArgs);
+        }
     }
 
     public void execute() {
-        try (BufferedReader reader = new BufferedReader(
-            new InputStreamReader(new FileInputStream(filename)))) {
-            AbstractAsker asker = new FileAsker(reader);
-
+        try {
             String[] commandArr = reader.readLine().split(" ");
             String command = commandArr[0];
+            List<String> filenames = new ArrayList<>();
 
             List<String> commandsList = new ArrayList<>();
 
@@ -45,7 +59,8 @@ public class ScriptExecuter {
                 try {
                     switch (command) {
                         case "help":
-                            System.out.println(MenuConstants.HELP);
+                            checkCommandArg(commandArr, 0);
+                            menu();
                             break;
                         case "info":
                             System.out.println(userController.info());
@@ -98,11 +113,7 @@ public class ScriptExecuter {
                             break;
                         case "execute_script":
                             System.out.println("запуск скрипта");
-                            if (previousFiles.contains(commandArr[1])) {
-                                throw new FileException("infinity recursion");
-                            }
-                            previousFiles.add(filename);
-                            new ScriptExecuter(userController, previousFiles, commandArr[1]).execute();
+                            new ScriptExecuter(userController, filenames, commandArr[1]).execute();
                             break;
                         case "add_if_max":
                             userController.addIfMax(
@@ -144,16 +155,12 @@ public class ScriptExecuter {
                 } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 } finally {
-                    String readline = reader.readLine();
-                    if (readline == null) {
-                        return;
-                    }
-                    commandArr = readline.split(" ");
+                    commandArr = reader.readLine().split(" ");
                     command = commandArr[0];
                 }
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Ошибка открытия потока. Запустите программу еще раз.");
         }
     }
 }
