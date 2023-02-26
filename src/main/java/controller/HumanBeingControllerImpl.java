@@ -1,14 +1,13 @@
 package controller;
 
-import exception.ValidationException;
 import model.*;
 import services.HumanBeingService;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
 
+@Deprecated
 public class HumanBeingControllerImpl implements HumanBeingController {
     //Тут реализуем валидацию данных
     private final HumanBeingService humanBeingService;

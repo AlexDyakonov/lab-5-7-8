@@ -5,6 +5,7 @@ import model.*;
 import java.util.List;
 import java.util.Set;
 
+@Deprecated
 public interface HumanBeingController {
     String info();
     Set<HumanBeing> show();

@@ -20,7 +20,7 @@ public class ConsoleUI {
         try {
             reader.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()); //TODO посмотреть вывод ошибки, но вроде норм.
         }
     }
 }

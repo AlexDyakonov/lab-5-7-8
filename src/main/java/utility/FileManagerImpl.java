@@ -38,8 +38,8 @@ public class FileManagerImpl implements FileManager{
             throw new FileException(RED_BRIGHT + "Количество координат больше 2. Запись будет проигнорирована"+ RESET);
         }
         try {
-            Integer x = Integer.parseInt(coordArr[0].trim().toLowerCase());
-            Double y = Double.parseDouble(coordArr[1].trim().toLowerCase());
+            Integer x = Integer.parseInt(coordArr[0].trim());
+            Double y = Double.parseDouble(coordArr[1].trim());
             coordinates.setY(y);
             coordinates.setX(x);
             return coordinates;
@@ -119,6 +119,7 @@ public class FileManagerImpl implements FileManager{
             }
         } catch (ValidationException e) {
             throw new FileException(RED_BRIGHT +"Значение поля car.cool " + carArr[1] + " должно принимать значение true/false. Запись будет проигнорирована. "+ RESET);
+            // На будущее прописывать историю эксепшнов. FileException e1; e1.addClause(e)
         }
     }
 
@@ -135,7 +136,7 @@ public class FileManagerImpl implements FileManager{
             humanBeingResponseDTOBuilder.setCar(toCar(split[10]));
             return humanBeingResponseDTOBuilder.buildHumanBeing();
         } catch (ValidationException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); //TODO пофиксить пробросы
         }
     }
 
@@ -148,12 +149,12 @@ public class FileManagerImpl implements FileManager{
             csvWriter.append("\n");
             for (HumanBeing humanBeing : humanBeingSet){
                 csvWriter.append(humanBeing.toCSV());
-                System.out.println(humanBeing.toCSV());
+//                System.out.println(humanBeing.toCSV());
             }
             csvWriter.flush();
             csvWriter.close();
             System.out.println(GREEN + humanBeingSet.size() + GREEN_BRIGHT + " элементов было сохранено в файл " + GREEN + fileName + GREEN_BRIGHT +"." + RESET);
-        } catch (Exception e) {
+        } catch (IOException e) { //TODO указать конкретный эксепшн
             throw new FileException(RED_BRIGHT + "Не удалось открыть файл с называнием " + RED + fileName + RESET);
         }
     }
@@ -181,6 +182,7 @@ public class FileManagerImpl implements FileManager{
             throw new FileException(RED_BRIGHT + "Файл по пути " + RED + path + RED_BRIGHT + " не найден"+ RESET);
         } catch (IOException e) {
             throw new ApplicationException(RED_BRIGHT + "Не удалось открыть/закрыть поток чтения файла." + RESET);
+            //TODO лучше пробросить в throws/либо сказать что прервано выполнение программы
         }
     }
 }

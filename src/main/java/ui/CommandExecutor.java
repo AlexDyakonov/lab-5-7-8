@@ -42,7 +42,7 @@ public class CommandExecutor {
                 "Количество аргументов в данной команде равно " + numOfArgs);
         }
     }
-
+//TODO startExecuting();
     public void execute() {
         try {
             String[] commandArr = reader.readLine().split(" ");
@@ -165,9 +165,8 @@ public class CommandExecutor {
                             System.out.println("Вы ввели значение не из меню");
                             break;
                     }
-
                 } catch (RuntimeException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println(e.getMessage()); //TODO тут нормальный вывод сделать, с рантаймом нельзя оставлять
                 } finally {
                     commandArr = reader.readLine().split(" ");
                     command = commandArr[0];
@@ -175,6 +174,6 @@ public class CommandExecutor {
             }
         } catch (IOException e) {
             System.out.println("Ошибка открытия потока. Запустите программу еще раз.");
-        }
+        } //TODO разделить методы, тк два трая в одном методе.
     }
 }
