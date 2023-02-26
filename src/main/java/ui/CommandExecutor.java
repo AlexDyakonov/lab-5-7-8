@@ -63,19 +63,23 @@ public class CommandExecutor {
                             menu();
                             break;
                         case "info":
+                            checkCommandArg(commandArr, 0);
                             System.out.println(userController.info());
                             break;
                         case "show":
+                            checkCommandArg(commandArr, 0);
                             System.out.println(userController.show());
                             System.out.println("Выведены все элементы коллекции. ");
                             break;
                         case "add":
+                            checkCommandArg(commandArr, 0);
                             humanBeingBuilder = asker.humanBeingRequestDTOBuilder();
                             System.out.println(
                                 userController.addElementToCollection(humanBeingBuilder.build())
                                     .toString() + " был добавлен");
                             break;
                         case "update":
+                            checkCommandArg(commandArr, 1);
                             try {
                                 id = (commandArr[1]);
                                 if (userController.findById(id)) {
@@ -93,6 +97,7 @@ public class CommandExecutor {
                             }
                             break;
                         case "remove_by_id":
+                            checkCommandArg(commandArr, 1);
                             try {
                                 id = (commandArr[1]);
                                 userController.removeById(id);
@@ -102,28 +107,34 @@ public class CommandExecutor {
                             }
                             break;
                         case "clear":
+                            checkCommandArg(commandArr, 0);
                             int amount = userController.getSize();
                             userController.clear();
                             System.out.println("Коллекция успешно очищена. Было удалено " + amount
                                 + " элементов.");
                             break;
                         case "save":
+                            checkCommandArg(commandArr, 0);
                             System.out.println("Cохранить в csv файл");
                             userController.save();
                             break;
                         case "execute_script":
+                            checkCommandArg(commandArr, 1);
                             System.out.println("запуск скрипта");
                             new ScriptExecuter(userController, filenames, commandArr[1]).execute();
                             break;
                         case "add_if_max":
+                            checkCommandArg(commandArr, 0);
                             userController.addIfMax(
                                 asker.humanBeingRequestDTOBuilder().build());
                             break;
                         case "add_if_min":
+                            checkCommandArg(commandArr, 0);
                             userController.addIfMin(
                                 asker.humanBeingRequestDTOBuilder().build());
                             break;
                         case "history":
+                            checkCommandArg(commandArr, 0);
                             if (commandsList.size() < MenuConstants.HISTORY_SIZE) {
                                 System.out.println(commandsList);
                             } else {
@@ -134,14 +145,17 @@ public class CommandExecutor {
                             }
                             break;
                         case "max_by_impact_speed":
+                            checkCommandArg(commandArr, 0);
                             userController.maxByImpactSpeed();
                             System.out.println(GREEN_BRIGHT
                                 + "Выведен элемент коллекции с максимальным Impact speed." + RESET);
                             break;
                         case "count_by_mood":
+                            checkCommandArg(commandArr, 0);
                             userController.countByMood(asker.mood());
                             break;
                         case "print_ascending":
+                            checkCommandArg(commandArr, 0);
                             System.out.println(userController.printAscending());
                             System.out.println(
                                 GREEN_BRIGHT + "Выведены элементы коллекции по возрастанию."

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/commands.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.ScriptExecuter">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -73,8 +72,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.ScriptExecuter" />
       </list>
     </recent_temporary>
   </component>
@@ -98,7 +97,9 @@
       <workItem from="1676413081794" duration="191000" />
       <workItem from="1676478443094" duration="3283000" />
       <workItem from="1677151840641" duration="600000" />
-      <workItem from="1677183157378" duration="2371000" />
+      <workItem from="1677183157378" duration="2395000" />
+      <workItem from="1677357671767" duration="3381000" />
+      <workItem from="1677411531513" duration="1306000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -212,7 +213,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677019015543</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="ScriptExecuter.java">
+      <created>1677246899099</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1677246899099</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring">
+      <created>1677412420017</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1677412420017</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +261,8 @@
     <MESSAGE value="Added remove_by_id method. Catched some exceptions" />
     <MESSAGE value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
     <MESSAGE value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
+    <MESSAGE value="ScriptExecuter.java" />
+    <MESSAGE value="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring" />
   </component>
 </project>
