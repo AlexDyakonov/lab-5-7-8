@@ -7,11 +7,19 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * The type Human being controller.
+ */
 @Deprecated
 public class HumanBeingControllerImpl implements HumanBeingController {
     //Тут реализуем валидацию данных
     private final HumanBeingService humanBeingService;
 
+    /**
+     * Instantiates a new Human being controller.
+     *
+     * @param userService the user service
+     */
     public HumanBeingControllerImpl(HumanBeingService userService) {
         this.humanBeingService = Objects.requireNonNull(userService, "User service must be provided.");
     }

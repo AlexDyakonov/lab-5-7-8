@@ -18,12 +18,22 @@ import utility.AbstractAsker;
 import utility.HumanBeingRequestDTOBuilder;
 import utility.ScriptExecuter;
 
+/**
+ * The type Command executor.
+ */
 public class CommandExecutor {
 
     private final HumanBeingControllerImpl userController;
     private final AbstractAsker asker;
     private final BufferedReader reader;
 
+    /**
+     * Instantiates a new Command executor.
+     *
+     * @param asker                the asker
+     * @param humanBeingController the human being controller
+     * @param reader               the reader
+     */
     public CommandExecutor(AbstractAsker asker,
         HumanBeingControllerImpl humanBeingController,
         BufferedReader reader) {
@@ -32,6 +42,9 @@ public class CommandExecutor {
         this.asker = asker;
     }
 
+    /**
+     * Menu.
+     */
     public void menu() {
         System.out.println(MenuConstants.HELP);
     }
@@ -45,6 +58,10 @@ public class CommandExecutor {
                 "Количество аргументов в данной команде равно " + numOfArgs);
         }
     }
+
+    /**
+     * Execute.
+     */
 //TODO startExecuting();
     public void execute() {
 

@@ -3,8 +3,14 @@ package ui;
 import static ui.ConsoleColors.GREEN_BRIGHT;
 import static ui.ConsoleColors.WHITE;
 
+/**
+ * The type Menu constants.
+ */
 public class MenuConstants {
 
+    /**
+     * The constant HELP.
+     */
     public static final String HELP =
         GREEN_BRIGHT + "Добро пожаловать! Введите команду для продолжения\n" + GREEN_BRIGHT +
             "   help : " + WHITE + "вывести справку по доступным командам\n" + GREEN_BRIGHT +
@@ -44,5 +50,8 @@ public class MenuConstants {
             "   print_ascending : " + WHITE
             + "вывести элементы коллекции в порядке возрастания\n";
 
+    /**
+     * The constant HISTORY_SIZE.
+     */
     public static final int HISTORY_SIZE = 15;
 }

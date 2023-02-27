@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added TODO">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/Converter.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Some fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utility/Asker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Asker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileAsker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,20 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
@@ -111,7 +108,10 @@
       <workItem from="1677411531513" duration="1520000" />
       <workItem from="1677419462039" duration="5698000" />
       <workItem from="1677437231090" duration="274000" />
-      <workItem from="1677445290549" duration="2998000" />
+      <workItem from="1677445290549" duration="3152000" />
+      <workItem from="1677459517564" duration="175000" />
+      <workItem from="1677459706094" duration="7000" />
+      <workItem from="1677494763019" duration="4439000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -246,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677413047199</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Some fixes">
+      <created>1677459466809</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1677459466809</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +290,7 @@
     <MESSAGE value="ScriptExecuter.java" />
     <MESSAGE value="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring" />
     <MESSAGE value="Small fix of args in commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fix of args in commands" />
+    <MESSAGE value="Some fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some fixes" />
   </component>
 </project>

@@ -16,12 +16,22 @@ import java.util.List;
 import fileLogic.FileAsker;
 import ui.MenuConstants;
 
+/**
+ * The type Script executer.
+ */
 public class ScriptExecuter {
 
     private final HumanBeingControllerImpl userController;
     private final List<String> previousFiles;
     private final String filename;
 
+    /**
+     * Instantiates a new Script executer.
+     *
+     * @param userController the user controller
+     * @param previousFiles  the previous files
+     * @param filename       the filename
+     */
     public ScriptExecuter(HumanBeingControllerImpl userController, List<String> previousFiles,
         String filename) {
         this.userController = userController;
@@ -29,6 +39,9 @@ public class ScriptExecuter {
         this.filename = filename;
     }
 
+    /**
+     * Execute.
+     */
     public void execute() {
         try (BufferedReader reader = new BufferedReader(
             new InputStreamReader(new FileInputStream(filename)))) {

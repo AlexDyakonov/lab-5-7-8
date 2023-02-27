@@ -5,6 +5,9 @@ import model.*;
 
 import java.util.*;
 
+/**
+ * The type Human being dao.
+ */
 public class HumanBeingDAOImpl implements HumanBeingDAO {
     private final DataBase dataBase = new DataBaseImpl();
     private int amountWithMood(Mood mood){
@@ -67,16 +70,16 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
         HumanBeing humanBeing = Objects.requireNonNull(getById(id));
         humanBeing.setName(humanBeingRequestDTO.getName());
         humanBeing.setCoordinates(humanBeingRequestDTO.getCoordinates());
-            Objects.requireNonNull(getById(id)).setCar(humanBeingRequestDTO.getCar());
-            Objects.requireNonNull(getById(id)).setMood(humanBeingRequestDTO.getMood());
-            Objects.requireNonNull(getById(id)).setSoundtrackName(humanBeingRequestDTO.getSoundtrackName());
-            Objects.requireNonNull(getById(id)).setWeaponType(humanBeingRequestDTO.getWeaponType());
-            Objects.requireNonNull(getById(id)).setRealHero(humanBeingRequestDTO.getRealHero());
-            Objects.requireNonNull(getById(id)).setHasToothpick(humanBeingRequestDTO.getHasToothpick());
-            Objects.requireNonNull(getById(id)).setImpactSpeed(humanBeingRequestDTO.getImpactSpeed());
-            HumanBeingResponseDTO humanBeingResponseDTO = Objects.requireNonNull(getById(id)).toResponseDTO(); //TODO придумать как пофиксить костыль с разными ID(сделать нормально)
-            humanBeingResponseDTO.setId(Objects.requireNonNull(getById(id)).getId());
-            return humanBeingResponseDTO;
+        humanBeing.setCar(humanBeingRequestDTO.getCar());
+        humanBeing.setMood(humanBeingRequestDTO.getMood());
+        humanBeing.setSoundtrackName(humanBeingRequestDTO.getSoundtrackName());
+        humanBeing.setWeaponType(humanBeingRequestDTO.getWeaponType());
+        humanBeing.setRealHero(humanBeingRequestDTO.getRealHero());
+        humanBeing.setHasToothpick(humanBeingRequestDTO.getHasToothpick());
+        humanBeing.setImpactSpeed(humanBeingRequestDTO.getImpactSpeed());
+        HumanBeingResponseDTO humanBeingResponseDTO = humanBeing.toResponseDTO(); //TODO придумать как пофиксить костыль с разными ID(сделать нормально)
+        humanBeingResponseDTO.setId(humanBeing.getId());
+        return humanBeingResponseDTO;
     }
 
     @Override
@@ -98,7 +101,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public void save() {
-        dataBase.saveDBToCSV();
+        dataBase.save();
     }
 
     @Override

@@ -9,6 +9,9 @@ import model.Coordinates;
 import model.Mood;
 import model.WeaponType;
 
+/**
+ * The type Console asker.
+ */
 public class ConsoleAsker extends AbstractAsker {
 
     public Car readCar() {
@@ -77,17 +80,32 @@ public class ConsoleAsker extends AbstractAsker {
         return readFloat();
     }
 
+    /**
+     * Real hero boolean.
+     *
+     * @return the boolean
+     */
     public Boolean realHero() {
         System.out.println("Введите значение для real hero (true/false/t/f):");
         return readBool();
     }
 
+    /**
+     * Has tooth pick boolean.
+     *
+     * @return the boolean
+     */
     public Boolean hasToothPick() {
         System.out.println("Введите значение для has toothpick (true/false/t/f):");
         return readBool();
     }
 
 
+    /**
+     * Soundtrack name string.
+     *
+     * @return the string
+     */
     public String soundtrackName() {
         System.out.println("Введите название саундтрека:");
         return readString();

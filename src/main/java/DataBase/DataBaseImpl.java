@@ -10,11 +10,17 @@ import java.util.Set;
 
 import static ui.ConsoleColors.*;
 
+/**
+ * The type Data base.
+ */
 public class DataBaseImpl implements DataBase {
     private Set<HumanBeing> dataBase;
     private final java.time.LocalDateTime creationDate = LocalDateTime.now();
     private final FileManager fileManager = new FileManagerImpl();
 
+    /**
+     * Instantiates a new Data base.
+     */
     public DataBaseImpl() {
         try {
             dataBase = new LinkedHashSet<>(fileManager.load("database.csv"));
@@ -41,7 +47,7 @@ public class DataBaseImpl implements DataBase {
         return outputString.toString();
     }
     @Override
-    public void saveDBToCSV() {
+    public void save() {
         fileManager.save(dataBase, "bebra");
     }
 }

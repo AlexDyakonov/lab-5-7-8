@@ -10,10 +10,26 @@ import java.time.LocalDateTime;
 
 import static ui.ConsoleColors.*;
 
+/**
+ * The type Converter.
+ */
 public class Converter {
+    /**
+     * To str string.
+     *
+     * @param line the line
+     * @return the string
+     */
     public static String toStr(String line){
         return line.replace("%COMMA%", ",");
     }
+
+    /**
+     * To long long.
+     *
+     * @param line the line
+     * @return the long
+     */
     public static Long toLong(String line){
         try {
             return Long.parseLong(line);
@@ -21,6 +37,13 @@ public class Converter {
             throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Id в файле должно быть типа long. Запись будет проигнорирована" + RESET);
         }
     }
+
+    /**
+     * To float float.
+     *
+     * @param line the line
+     * @return the float
+     */
     public static Float toFloat(String line){
         try {
             return Float.parseFloat(line);
@@ -28,6 +51,13 @@ public class Converter {
             throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Impactspeed принимает числовое значение. Запись будет проигнорирована."+ RESET);
         }
     }
+
+    /**
+     * To coordinates coordinates.
+     *
+     * @param line the line
+     * @return the coordinates
+     */
     public static Coordinates toCoordinates(String line){ // (1;1.0)
         String[] coordArr = line.replaceAll("[()]", "").split(";");
         Coordinates coordinates = new Coordinates();
@@ -44,6 +74,13 @@ public class Converter {
             throw new FileException(RED_BRIGHT + "Координаты x,y неверного формата. Должны быть числа. Запись будет проигнорирована"+ RESET);
         }
     }
+
+    /**
+     * To local date time local date time.
+     *
+     * @param line the line
+     * @return the local date time
+     */
     public static LocalDateTime toLocalDateTime(String line){
         try {
             return LocalDateTime.parse(line);
@@ -51,6 +88,13 @@ public class Converter {
             throw new FileException(RED_BRIGHT +"Неверно введено время создания файла. Запись будет проигнорирована"+ RESET);
         }
     }
+
+    /**
+     * To boolean boolean.
+     *
+     * @param line the line
+     * @return the boolean
+     */
     public static Boolean toBoolean(String line){
         switch (line.trim().toLowerCase()){
             case "true", "t" -> {
@@ -63,6 +107,13 @@ public class Converter {
         }
 
     }
+
+    /**
+     * To wt weapon type.
+     *
+     * @param line the line
+     * @return the weapon type
+     */
     public static WeaponType toWT(String line){
         switch (line.trim().toLowerCase()){
             case "axe" -> {
@@ -80,6 +131,13 @@ public class Converter {
             default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию. Значения WeaponType могут быть AXE, SHOTGUN, BAT, null. Запись будет проигнорирована."+ RESET);
         }
     }
+
+    /**
+     * To mood mood.
+     *
+     * @param line the line
+     * @return the mood
+     */
     public static Mood toMood(String line){
         switch (line.trim().toLowerCase()){
             case "sorrow" -> {

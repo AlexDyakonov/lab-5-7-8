@@ -9,9 +9,17 @@ import model.Mood;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The type Human being service.
+ */
 public class HumanBeingServiceImpl implements HumanBeingService {
     private final HumanBeingDAO humanBeingDAO;
 
+    /**
+     * Instantiates a new Human being service.
+     *
+     * @param userDAO the user dao
+     */
     public HumanBeingServiceImpl(HumanBeingDAO userDAO) {
         this.humanBeingDAO = userDAO;
     }

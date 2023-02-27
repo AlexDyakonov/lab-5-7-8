@@ -10,10 +10,18 @@ import model.WeaponType;
 import utility.AbstractAsker;
 import utility.HumanBeingRequestDTOBuilder;
 
+/**
+ * The type File asker.
+ */
 public class FileAsker extends AbstractAsker {
 
     private final BufferedReader reader;
 
+    /**
+     * Instantiates a new File asker.
+     *
+     * @param reader the reader
+     */
     public FileAsker(BufferedReader reader) {
         this.reader = reader;
     }
@@ -76,15 +84,30 @@ public class FileAsker extends AbstractAsker {
         return readFloat();
     }
 
+    /**
+     * Real hero boolean.
+     *
+     * @return the boolean
+     */
     public Boolean realHero() {
         return readBool();
     }
 
+    /**
+     * Has tooth pick boolean.
+     *
+     * @return the boolean
+     */
     public Boolean hasToothPick() {
         return readBool();
     }
 
 
+    /**
+     * Soundtrack name string.
+     *
+     * @return the string
+     */
     public String soundtrackName() {
         return readString();
     }
@@ -170,6 +193,11 @@ public class FileAsker extends AbstractAsker {
     }
 
 
+    /**
+     * Gets reader.
+     *
+     * @return the reader
+     */
     public BufferedReader getReader() {
         return reader;
     }

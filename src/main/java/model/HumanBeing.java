@@ -5,6 +5,9 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * The type Human being.
+ */
 public class HumanBeing implements Comparable<HumanBeing>{
     private String id = UUID.randomUUID().toString();
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -18,9 +21,27 @@ public class HumanBeing implements Comparable<HumanBeing>{
     private Mood mood; //Поле не может быть null
     private Car car; //Поле может быть null
 
+    /**
+     * Instantiates a new Human being.
+     */
     public HumanBeing() {
     }
 
+    /**
+     * Instantiates a new Human being.
+     *
+     * @param id             the id
+     * @param name           the name
+     * @param coordinates    the coordinates
+     * @param creationDate   the creation date
+     * @param realHero       the real hero
+     * @param hasToothpick   the has toothpick
+     * @param impactSpeed    the impact speed
+     * @param soundtrackName the soundtrack name
+     * @param weaponType     the weapon type
+     * @param mood           the mood
+     * @param car            the car
+     */
     public HumanBeing(String id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.id = id;
         this.name = name;
@@ -35,6 +56,19 @@ public class HumanBeing implements Comparable<HumanBeing>{
         this.car = car;
     }
 
+    /**
+     * Instantiates a new Human being.
+     *
+     * @param name           the name
+     * @param coordinates    the coordinates
+     * @param realHero       the real hero
+     * @param hasToothpick   the has toothpick
+     * @param impactSpeed    the impact speed
+     * @param soundtrackName the soundtrack name
+     * @param weaponType     the weapon type
+     * @param mood           the mood
+     * @param car            the car
+     */
     public HumanBeing(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.name = Objects.requireNonNull(name);
         this.coordinates = Objects.requireNonNull(coordinates);
@@ -48,6 +82,11 @@ public class HumanBeing implements Comparable<HumanBeing>{
         this.car = car;
     }
 
+    /**
+     * To csv string.
+     *
+     * @return the string
+     */
     public String toCSV() {
         String csvName = name.replaceAll(",", "%COMMA%");
         String csvSoundTrackName = soundtrackName.replaceAll(",", "%COMMA%");
@@ -64,9 +103,21 @@ public class HumanBeing implements Comparable<HumanBeing>{
                 ",(" + Car.toCSV(car)+ ")" + "\n";
     }
 
+    /**
+     * To response dto human being response dto.
+     *
+     * @return the human being response dto
+     */
     public HumanBeingResponseDTO toResponseDTO(){
         return new HumanBeingResponseDTO(id, name, coordinates, creationDate, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
     }
+
+    /**
+     * From human request dto human being.
+     *
+     * @param humanBeingRequestDTO the human being request dto
+     * @return the human being
+     */
     public HumanBeing fromHumanRequestDTO(HumanBeingRequestDTO humanBeingRequestDTO){
         this.name = humanBeingRequestDTO.getName();
         this.coordinates = humanBeingRequestDTO.getCoordinates();
@@ -80,82 +131,183 @@ public class HumanBeing implements Comparable<HumanBeing>{
         this.car = humanBeingRequestDTO.getCar();
         return this;
     }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Gets creation date.
+     *
+     * @return the creation date
+     */
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets coordinates.
+     *
+     * @return the coordinates
+     */
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
+    /**
+     * Sets coordinates.
+     *
+     * @param coordinates the coordinates
+     */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
 
+    /**
+     * Gets real hero.
+     *
+     * @return the real hero
+     */
     public Boolean getRealHero() {
         return realHero;
     }
 
+    /**
+     * Sets real hero.
+     *
+     * @param realHero the real hero
+     */
     public void setRealHero(Boolean realHero) {
         this.realHero = realHero;
     }
 
+    /**
+     * Gets has toothpick.
+     *
+     * @return the has toothpick
+     */
     public Boolean getHasToothpick() {
         return hasToothpick;
     }
 
+    /**
+     * Sets has toothpick.
+     *
+     * @param hasToothpick the has toothpick
+     */
     public void setHasToothpick(Boolean hasToothpick) {
         this.hasToothpick = hasToothpick;
     }
 
+    /**
+     * Gets impact speed.
+     *
+     * @return the impact speed
+     */
     public Float getImpactSpeed() {
         return impactSpeed;
     }
 
+    /**
+     * Sets impact speed.
+     *
+     * @param impactSpeed the impact speed
+     */
     public void setImpactSpeed(Float impactSpeed) {
         this.impactSpeed = impactSpeed;
     }
 
+    /**
+     * Gets soundtrack name.
+     *
+     * @return the soundtrack name
+     */
     public String getSoundtrackName() {
         return soundtrackName;
     }
 
+    /**
+     * Sets soundtrack name.
+     *
+     * @param soundtrackName the soundtrack name
+     */
     public void setSoundtrackName(String soundtrackName) {
         this.soundtrackName = soundtrackName;
     }
 
+    /**
+     * Gets weapon type.
+     *
+     * @return the weapon type
+     */
     public WeaponType getWeaponType() {
         return weaponType;
     }
 
+    /**
+     * Sets weapon type.
+     *
+     * @param weaponType the weapon type
+     */
     public void setWeaponType(WeaponType weaponType) {
         this.weaponType = weaponType;
     }
 
+    /**
+     * Gets mood.
+     *
+     * @return the mood
+     */
     public Mood getMood() {
         return mood;
     }
 
+    /**
+     * Sets mood.
+     *
+     * @param mood the mood
+     */
     public void setMood(Mood mood) {
         this.mood = mood;
     }
 
+    /**
+     * Gets car.
+     *
+     * @return the car
+     */
     public Car getCar() {
         return car;
     }
 
+    /**
+     * Sets car.
+     *
+     * @param car the car
+     */
     public void setCar(Car car) {
         this.car = car;
     }

@@ -14,6 +14,9 @@ import java.util.Set;
 import static ui.ConsoleColors.*;
 import static utility.Converter.*;
 
+/**
+ * The type File manager.
+ */
 public class FileManagerImpl implements FileManager{
     private Car toCar(String line){
         String[] carArr = line.replaceAll("[()]", "").split(";");
