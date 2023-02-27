@@ -14,11 +14,9 @@ public class ConsoleUI {
         new HumanBeingServiceImpl(new HumanBeingDAOImpl()));
 
     public void start() {
-        System.out.println(MenuConstants.HELP);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        new CommandExecutor(new ConsoleAsker(), userController, reader).execute();
-        try {
-            reader.close();
+        try  (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            System.out.println(MenuConstants.HELP);
+            new CommandExecutor(new ConsoleAsker(), userController, reader).execute();
         } catch (IOException e) {
             System.out.println(e.getMessage()); //TODO посмотреть вывод ошибки, но вроде норм.
         }

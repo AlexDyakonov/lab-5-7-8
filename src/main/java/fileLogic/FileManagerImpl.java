@@ -1,108 +1,20 @@
-package utility;
+package fileLogic;
 
 import exception.ApplicationException;
 import exception.FileException;
 import exception.ValidationException;
 import model.*;
+import utility.HumanBeingResponseDTOBuilder;
 
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
 import static ui.ConsoleColors.*;
+import static utility.Converter.*;
 
 public class FileManagerImpl implements FileManager{
-    private String toString(String line){
-        return line.replace("%COMMA%", ",");
-    }
-    private Long toLong(String line){
-        try {
-            return Long.parseLong(line);
-        } catch (NumberFormatException e) {
-            throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Id в файле должно быть типа long. Запись будет проигнорирована" + RESET);
-        }
-    }
-    private Float toFloat(String line){
-        try {
-            return Float.parseFloat(line);
-        } catch (NumberFormatException e) {
-            throw new FileException(RED + line + RED_BRIGHT + " не соответствует требованию. Impactspeed принимает числовое значение. Запись будет проигнорирована."+ RESET);
-        }
-    }
-    private Coordinates toCoordinates(String line){ // (1;1.0)
-        String[] coordArr = line.replaceAll("[()]", "").split(";");
-        Coordinates coordinates = new Coordinates();
-        if (coordArr.length != 2){
-            throw new FileException(RED_BRIGHT + "Количество координат больше 2. Запись будет проигнорирована"+ RESET);
-        }
-        try {
-            Integer x = Integer.parseInt(coordArr[0].trim());
-            Double y = Double.parseDouble(coordArr[1].trim());
-            coordinates.setY(y);
-            coordinates.setX(x);
-            return coordinates;
-        } catch (NumberFormatException e) {
-            throw new FileException(RED_BRIGHT + "Координаты x,y неверного формата. Должны быть числа. Запись будет проигнорирована"+ RESET);
-        }
-    }
-    private LocalDateTime toLocalDateTime(String line){
-        try {
-            return LocalDateTime.parse(line);
-        } catch (Exception e) {
-            throw new FileException(RED_BRIGHT +"Неверно введено время создания файла. Запись будет проигнорирована"+ RESET);
-        }
-    }
-    private Boolean toBoolean(String line){
-        switch (line.trim().toLowerCase()){
-            case "true", "t" -> {
-                return true;
-            }
-            case "false", "f" -> {
-                return false;
-            }
-            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию. Значения не соответствуют необходимым true/false"+ RESET);
-        }
-
-    }
-    private WeaponType toWT(String line){
-        switch (line.trim().toLowerCase()){
-            case "axe" -> {
-                return WeaponType.AXE;
-            }
-            case "shotgun" -> {
-                return WeaponType.SHOTGUN;
-            }
-            case "bat" -> {
-                return WeaponType.BAT;
-            }
-            case "(null)", "null", "" -> {
-                return null;
-            }
-            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию. Значения WeaponType могут быть AXE, SHOTGUN, BAT, null. Запись будет проигнорирована."+ RESET);
-        }
-    }
-    private Mood toMood(String line){
-        switch (line.trim().toLowerCase()){
-            case "sorrow" -> {
-                return Mood.SORROW;
-            }
-            case "gloom" -> {
-                return Mood.GLOOM;
-            }
-            case "apathy" -> {
-                return Mood.APATHY;
-            }
-            case "calm"-> {
-                return Mood.CALM;
-            }
-            case "rage" -> {
-                return Mood.RAGE;
-            }
-            default -> throw new ValidationException(RED + line + RED_BRIGHT + " не соответствует требованию.  Значения Mood могут быть SORROW, GLOOM, APATHY, CALM, RAGE. Запись будет проигнорирована."+ RESET);
-        }
-    }
     private Car toCar(String line){
         String[] carArr = line.replaceAll("[()]", "").split(";");
         Car car = new Car();
@@ -130,9 +42,9 @@ public class FileManagerImpl implements FileManager{
                 throw new ValidationException(RED_BRIGHT + "Ошибка в элементе из базы данных(неверное количество аргументов). Запись будет проигнорирована"+ RESET);
             }
             HumanBeingResponseDTOBuilder humanBeingResponseDTOBuilder = new HumanBeingResponseDTOBuilder();
-            humanBeingResponseDTOBuilder.setId(split[0]).setName(toString(split[1])).setCoordinates(toCoordinates(split[2]));
+            humanBeingResponseDTOBuilder.setId(split[0]).setName(toStr(split[1])).setCoordinates(toCoordinates(split[2]));
             humanBeingResponseDTOBuilder.setCreationDate(toLocalDateTime(split[3])).setRealHero(toBoolean(split[4])).setHasToothpick(toBoolean(split[5]));
-            humanBeingResponseDTOBuilder.setImpactSpeed(toFloat(split[6])).setSoundtrackName(toString(split[7])).setWeaponType(toWT(split[8])).setMood(toMood(split[9]));
+            humanBeingResponseDTOBuilder.setImpactSpeed(toFloat(split[6])).setSoundtrackName(toStr(split[7])).setWeaponType(toWT(split[8])).setMood(toMood(split[9]));
             humanBeingResponseDTOBuilder.setCar(toCar(split[10]));
             return humanBeingResponseDTOBuilder.buildHumanBeing();
         } catch (ValidationException e) {
@@ -155,6 +67,7 @@ public class FileManagerImpl implements FileManager{
             csvWriter.close();
             System.out.println(GREEN + humanBeingSet.size() + GREEN_BRIGHT + " элементов было сохранено в файл " + GREEN + fileName + GREEN_BRIGHT +"." + RESET);
         } catch (IOException e) { //TODO указать конкретный эксепшн
+            System.out.println(e.getMessage());
             throw new FileException(RED_BRIGHT + "Не удалось открыть файл с называнием " + RED + fileName + RESET);
         }
     }

@@ -1,8 +1,8 @@
 package DataBase;
 
 import model.HumanBeing;
-import utility.FileManager;
-import utility.FileManagerImpl;
+import fileLogic.FileManager;
+import fileLogic.FileManagerImpl;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;

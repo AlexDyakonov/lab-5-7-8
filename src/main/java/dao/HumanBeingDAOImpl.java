@@ -64,8 +64,9 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
 
     @Override
     public HumanBeingResponseDTO updateById(String id, HumanBeingRequestDTO humanBeingRequestDTO) {
-            Objects.requireNonNull(getById(id)).setName(humanBeingRequestDTO.getName());
-            Objects.requireNonNull(getById(id)).setCoordinates(humanBeingRequestDTO.getCoordinates());
+        HumanBeing humanBeing = Objects.requireNonNull(getById(id));
+        humanBeing.setName(humanBeingRequestDTO.getName());
+        humanBeing.setCoordinates(humanBeingRequestDTO.getCoordinates());
             Objects.requireNonNull(getById(id)).setCar(humanBeingRequestDTO.getCar());
             Objects.requireNonNull(getById(id)).setMood(humanBeingRequestDTO.getMood());
             Objects.requireNonNull(getById(id)).setSoundtrackName(humanBeingRequestDTO.getSoundtrackName());

@@ -6,10 +6,14 @@ import static ui.ConsoleColors.RESET;
 import controller.HumanBeingControllerImpl;
 import exception.ArgumentException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import exception.FileException;
+import exception.ValidationException;
 import utility.AbstractAsker;
 import utility.HumanBeingRequestDTOBuilder;
 import utility.ScriptExecuter;
@@ -28,7 +32,6 @@ public class CommandExecutor {
         this.asker = asker;
     }
 
-    // #TODO сделать обработку исключений при считывании базы данных \\ ВРОДЕ СДЕЛАЛ, НАДО ТЕСТЫ ПРОВЕСТИ
     public void menu() {
         System.out.println(MenuConstants.HELP);
     }
@@ -44,19 +47,22 @@ public class CommandExecutor {
     }
 //TODO startExecuting();
     public void execute() {
-        try {
-            String[] commandArr = reader.readLine().split(" ");
-            String command = commandArr[0];
+
             List<String> filenames = new ArrayList<>();
 
             List<String> commandsList = new ArrayList<>();
 
             String id;
 
+            String[] commandArr;
+            String command = "";
+
             while (!(command.equals("exit"))) {
+                try {
+                commandArr = reader.readLine().split(" ");
+                command = commandArr[0];
                 commandsList.add(Arrays.toString(commandArr));
                 HumanBeingRequestDTOBuilder humanBeingBuilder;
-                try {
                     switch (command) {
                         case "help":
                             checkCommandArg(commandArr, 0);
@@ -122,6 +128,7 @@ public class CommandExecutor {
                             checkCommandArg(commandArr, 1);
                             System.out.println("запуск скрипта");
                             new ScriptExecuter(userController, filenames, commandArr[1]).execute();
+                            //TODO попробовтаь перенести логику скриптЭкзекутера сюда
                             break;
                         case "add_if_max":
                             checkCommandArg(commandArr, 0);
@@ -165,15 +172,12 @@ public class CommandExecutor {
                             System.out.println("Вы ввели значение не из меню");
                             break;
                     }
-                } catch (RuntimeException e) {
-                    System.out.println(e.getMessage()); //TODO тут нормальный вывод сделать, с рантаймом нельзя оставлять
-                } finally {
-                    commandArr = reader.readLine().split(" ");
-                    command = commandArr[0];
-                }
+                } catch (ArgumentException | FileException | ValidationException e) {
+                    System.out.println(e.getMessage()); //TODO спросить про общий на свои
+                } catch (IOException e){
+                    System.out.println("Ошибка потока чтения. Запустите еще раз.");
+                    break;
             }
-        } catch (IOException e) {
-            System.out.println("Ошибка открытия потока. Запустите программу еще раз.");
-        } //TODO разделить методы, тк два трая в одном методе.
+        }
     }
 }
