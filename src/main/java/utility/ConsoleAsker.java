@@ -107,8 +107,14 @@ public class ConsoleAsker extends AbstractAsker {
      * @return the string
      */
     public String soundtrackName() {
-        System.out.println("Введите название саундтрека:");
-        return readString();
+        try {
+            System.out.println("Введите название саундтрека:");
+            return readString();
+        } catch (ValidationException e) {
+            System.out.println(e.getMessage());
+            return soundtrackName();
+        }
+
     }
 
     public Coordinates coordinates() {

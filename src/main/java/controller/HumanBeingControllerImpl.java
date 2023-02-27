@@ -12,7 +12,6 @@ import java.util.Set;
  */
 @Deprecated
 public class HumanBeingControllerImpl implements HumanBeingController {
-    //Тут реализуем валидацию данных
     private final HumanBeingService humanBeingService;
 
     /**
