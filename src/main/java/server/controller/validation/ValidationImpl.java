@@ -1,14 +1,14 @@
-package server.controller.Validation;
+package server.controller.validation;
 
+import client.ui.ConsoleColors;
 import server.exception.ValidationException;
 import server.model.Coordinates;
 import server.model.Mood;
-import client.ui.ConsoleColors;
 
 import java.util.function.Function;
 
 /**
- * The type server.controller.Validation.
+ * The type server.server.controller.Validation.
  */
 public class ValidationImpl {
     /**

@@ -1,26 +1,27 @@
 package server.controller;
 
-import server.model.*;
+import server.model.HumanBeing;
+import server.model.HumanBeingRequestDTO;
+import server.model.HumanBeingResponseDTO;
+import server.model.Mood;
 import server.services.HumanBeingService;
+import server.services.HumanBeingServiceImpl;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 /**
- * The type Human being server.controller.
+ * The type Human being server.server.controller.
  */
-@Deprecated
+//@Deprecated
 public class HumanBeingControllerImpl implements HumanBeingController {
     private final HumanBeingService humanBeingService;
 
     /**
-     * Instantiates a new Human being server.controller.
-     *
-     * @param userService the user service
+     * Instantiates a new Human being server.server.controller.
      */
-    public HumanBeingControllerImpl(HumanBeingService userService) {
-        this.humanBeingService = Objects.requireNonNull(userService, "User service must be provided.");
+    public HumanBeingControllerImpl() {
+        this.humanBeingService = new HumanBeingServiceImpl();
     }
 
     @Override

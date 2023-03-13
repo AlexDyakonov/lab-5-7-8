@@ -1,10 +1,10 @@
 package server.model;
 
-import server.controller.Validation.ValidationImpl;
+import server.controller.validation.ValidationImpl;
 
 import java.util.Objects;
 
-import static server.controller.Validation.ValidationImpl.validate;
+import static server.controller.validation.ValidationImpl.validate;
 
 /**
  * The type Car.

@@ -1,10 +1,11 @@
-package server.services.fileLogic;
+package server.services.file_logic;
 
+import client.utility.HumanBeingResponseDTOBuilder;
 import server.exception.ApplicationException;
 import server.exception.FileException;
 import server.exception.ValidationException;
-import server.model.*;
-import client.utility.HumanBeingResponseDTOBuilder;
+import server.model.Car;
+import server.model.HumanBeing;
 
 import java.io.*;
 import java.util.LinkedHashSet;

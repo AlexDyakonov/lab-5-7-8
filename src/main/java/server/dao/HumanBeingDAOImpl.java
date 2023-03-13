@@ -1,12 +1,16 @@
 package server.dao;
 
-import server.dao.DataBase.*;
-import server.model.*;
+import server.dao.db.DataBase;
+import server.dao.db.DataBaseImpl;
+import server.model.HumanBeing;
+import server.model.HumanBeingRequestDTO;
+import server.model.HumanBeingResponseDTO;
+import server.model.Mood;
 
 import java.util.*;
 
 /**
- * The type Human being server.dao.
+ * The type Human being server.server.dao.
  */
 public class HumanBeingDAOImpl implements HumanBeingDAO {
     private final DataBase dataBase = new DataBaseImpl();
@@ -120,7 +124,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     public void addIfMax(HumanBeingRequestDTO humanBeingRequestDTO) {
         if (isImpactSpeedMax(humanBeingRequestDTO.getImpactSpeed())){
             addElementToCollection(humanBeingRequestDTO);
-            System.out.println(humanBeingRequestDTO.toString() + " был добавлен в коллекцию.");
+            System.out.println(humanBeingRequestDTO + " был добавлен в коллекцию.");
         } else {
             System.out.println("Элемент не был добавлен в коллекцию. Его значение impact speed меньше максимального в коллекции.");
         }
@@ -130,7 +134,7 @@ public class HumanBeingDAOImpl implements HumanBeingDAO {
     public void addIfMin(HumanBeingRequestDTO humanBeingRequestDTO) {
         if (isImpactSpeedMin(humanBeingRequestDTO.getImpactSpeed())){
             addElementToCollection(humanBeingRequestDTO);
-            System.out.println(humanBeingRequestDTO.toString() + " был добавлен в коллекцию.");
+            System.out.println(humanBeingRequestDTO + " был добавлен в коллекцию.");
         } else {
             System.out.println("Элемент не был добавлен в коллекцию. Его значение impact speed больше минимального в коллекции.");
         }

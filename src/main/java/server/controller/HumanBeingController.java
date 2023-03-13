@@ -1,14 +1,17 @@
 package server.controller;
 
-import server.model.*;
+import server.model.HumanBeing;
+import server.model.HumanBeingRequestDTO;
+import server.model.HumanBeingResponseDTO;
+import server.model.Mood;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * The interface Human being server.controller.
+ * The interface Human being server.server.controller.
  */
-@Deprecated
+//@Deprecated
 public interface HumanBeingController {
     /**
      * Info string.

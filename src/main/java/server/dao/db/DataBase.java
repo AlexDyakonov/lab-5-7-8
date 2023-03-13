@@ -1,4 +1,4 @@
-package server.dao.DataBase;
+package server.dao.db;
 
 import server.model.HumanBeing;
 

@@ -1,6 +1,7 @@
 package server.services;
 
 import server.dao.HumanBeingDAO;
+import server.dao.HumanBeingDAOImpl;
 import server.model.HumanBeing;
 import server.model.HumanBeingRequestDTO;
 import server.model.HumanBeingResponseDTO;
@@ -17,11 +18,9 @@ public class HumanBeingServiceImpl implements HumanBeingService {
 
     /**
      * Instantiates a new Human being service.
-     *
-     * @param userDAO the user server.dao
      */
-    public HumanBeingServiceImpl(HumanBeingDAO userDAO) {
-        this.humanBeingDAO = userDAO;
+    public HumanBeingServiceImpl() {
+        this.humanBeingDAO = new HumanBeingDAOImpl();
     }
 
     @Override

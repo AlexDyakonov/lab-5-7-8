@@ -1,11 +1,11 @@
 package server.exception;
 
 /**
- * The type server.controller.Validation server.exception.
+ * The type server.server.controller.Validation server.exception.
  */
 public class ValidationException extends RuntimeException{
     /**
-     * Instantiates a new server.controller.Validation server.exception.
+     * Instantiates a new server.server.controller.Validation server.exception.
      *
      * @param message the message
      */
@@ -14,7 +14,7 @@ public class ValidationException extends RuntimeException{
     }
 
     /**
-     * Instantiates a new server.controller.Validation server.exception.
+     * Instantiates a new server.server.controller.Validation server.exception.
      *
      * @param message the message
      * @param cause   the cause
@@ -24,7 +24,7 @@ public class ValidationException extends RuntimeException{
     }
 
     /**
-     * Instantiates a new server.controller.Validation server.exception.
+     * Instantiates a new server.server.controller.Validation server.exception.
      *
      * @param cause the cause
      */

@@ -1,14 +1,15 @@
-package server.dao.DataBase;
+package server.dao.db;
 
 import server.model.HumanBeing;
-import server.services.fileLogic.FileManager;
-import server.services.fileLogic.FileManagerImpl;
+import server.services.file_logic.FileManager;
+import server.services.file_logic.FileManagerImpl;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static client.ui.ConsoleColors.*;
+import static client.ui.ConsoleColors.GREEN_BRIGHT;
+import static client.ui.ConsoleColors.RESET;
 
 /**
  * The type Data base.

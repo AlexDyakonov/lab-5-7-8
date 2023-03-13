@@ -1,4 +1,4 @@
-package server.services.fileLogic;
+package server.services.file_logic;
 
 import server.model.HumanBeing;
 

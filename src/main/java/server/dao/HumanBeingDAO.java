@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * The interface Human being server.dao.
+ * The interface Human being server.server.dao.
  */
 public interface HumanBeingDAO {
     /**

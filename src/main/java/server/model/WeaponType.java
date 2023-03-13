@@ -15,5 +15,5 @@ public enum WeaponType {
     /**
      * Bat weapon type.
      */
-    BAT;
+    BAT
 }
