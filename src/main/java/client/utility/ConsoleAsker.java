@@ -1,13 +1,14 @@
 package client.utility;
 
 import server.exception.ValidationException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import server.model.Car;
 import server.model.Coordinates;
 import server.model.Mood;
 import server.model.WeaponType;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * The type Console asker.

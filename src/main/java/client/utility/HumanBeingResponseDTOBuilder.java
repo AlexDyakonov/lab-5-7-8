@@ -1,12 +1,12 @@
 package client.utility;
 
-import server.controller.Validation.ValidationImpl;
+import server.controller.validation.ValidationImpl;
 import server.model.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static server.controller.Validation.ValidationImpl.validate;
+import static server.controller.validation.ValidationImpl.validate;
 
 
 /**

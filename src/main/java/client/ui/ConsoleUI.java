@@ -1,30 +1,32 @@
 package client.ui;
 
-import server.controller.HumanBeingControllerImpl;
-import server.dao.HumanBeingDAOImpl;
+import client.utility.ConsoleAsker;
+import server.services.CommandExecutor;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import server.services.HumanBeingServiceImpl;
-import client.utility.ConsoleAsker;
 
 /**
- * The type Console client.ui.
+ * The type Console client.client.ui.
  */
 public class ConsoleUI {
 
-    private final HumanBeingControllerImpl userController = new HumanBeingControllerImpl(
-        new HumanBeingServiceImpl(new HumanBeingDAOImpl()));
+    private final CommandExecutor commandExecutor;
 
-    /**
-     * Start.
-     */
+    public ConsoleUI() {
+        this.commandExecutor = new CommandExecutor(new ConsoleAsker());
+    }
+
     public void start() {
-        try  (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            System.out.println(MenuConstants.HELP);
-            new CommandExecutor(new ConsoleAsker(), userController, reader).execute();
-        } catch (IOException e) {
-            System.out.println(e.getMessage()); //TODO посмотреть вывод ошибки, но вроде норм.
+        System.out.println(MenuConstants.HELP);
+
+        while (true) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+                commandExecutor.execute(reader.readLine());
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

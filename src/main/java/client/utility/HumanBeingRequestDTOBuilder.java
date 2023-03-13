@@ -1,9 +1,9 @@
 package client.utility;
 
-import server.controller.Validation.ValidationImpl;
+import server.controller.validation.ValidationImpl;
 import server.model.*;
 
-import static server.controller.Validation.ValidationImpl.validate;
+import static server.controller.validation.ValidationImpl.validate;
 
 /**
  * The type Human being request dto builder.
