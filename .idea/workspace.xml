@@ -4,43 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added javadoc documentation">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ApplicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ApplicationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ArgumentException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/FileException.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Session main method">
+      <change afterPath="$PROJECT_DIR$/src.7z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/ui/MenuConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/utility/AbstractAsker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/utility/ConsoleAsker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/utility/Converter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/utility/HumanBeingRequestDTOBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/client/utility/HumanBeingResponseDTOBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/controller/HumanBeingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/controller/HumanBeingControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/dao/HumanBeingDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/dao/HumanBeingDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/dao/db/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/dao/db/DataBaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/exception/ApplicationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/exception/ArgumentException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/exception/FileException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/exception/ValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/HumanBeing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/HumanBeingRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/HumanBeingResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/Mood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/model/WeaponType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/HumanBeingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/HumanBeingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/ScriptExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/file_logic/FileAsker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/file_logic/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/server/services/file_logic/FileManagerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/src/main/resources/Picture1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/DataBase/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/DataBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/DataBase/DataBaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Validation/ValidationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/main/java/server/controller/validation/ValidationImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanBeingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HumanBeingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanBeingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanBeingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HumanBeingDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanBeingDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileAsker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileLogic/FileManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeingRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeingRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HumanBeingResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Mood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Mood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/WeaponType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MenuConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MenuConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/AbstractAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/AbstractAsker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/Asker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ConsoleAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/ConsoleAsker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/HumanBeingRequestDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/fileLogic/FileAsker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/fileLogic/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileLogic/FileManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/fileLogic/FileManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/HumanBeing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeingRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Mood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Mood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/WeaponType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Validation/ValidationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Validation/ValidationImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanBeingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/HumanBeingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanBeingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MenuConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/AbstractAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/AbstractAsker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ConsoleAsker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/ConsoleAsker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/HumanBeingRequestDTOBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/HumanBeingResponseDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/HumanBeingResponseDTOBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/ScriptExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/utility/ScriptExecuter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Picture1.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +96,31 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LW73EdB3cMpwHGiWStdThYqOe6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
@@ -94,11 +130,11 @@
       </method>
     </configuration>
     <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utility.ScriptExecuter" />
+      <option name="MAIN_CLASS_NAME" value="client.utility.ScriptExecuter" />
       <module name="lab-5-num-125595" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fileLogic.*" />
+          <option name="PATTERN" value="server.services.fileLogic.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -309,6 +345,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fixed README.md" />
     <MESSAGE value="Fixed gitignore" />
     <MESSAGE value="Added getter/setter and base constructors" />
