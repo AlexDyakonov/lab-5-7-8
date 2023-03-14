@@ -1,10 +1,6 @@
 package server.model;
 
-import server.controller.validation.ValidationImpl;
-
 import java.util.Objects;
-
-import static server.controller.validation.ValidationImpl.validate;
 
 /**
  * The type Car.
@@ -57,7 +53,6 @@ public class Car {
      * @param name the name
      */
     public void setName(String name) {
-        validate(name, ValidationImpl::validateCarName, "Некорректное название машины. Оно не должно быть пустым.");
         this.name = name;
     }
 

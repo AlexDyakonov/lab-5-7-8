@@ -4,8 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Changed to session">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Project refactoring #3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/CommandException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/CommandExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/AbstractAsker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/ConsoleAsker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/Converter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/HumanBeingRequestDTOBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/HumanBeingResponseDTOBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/utility/ScriptExecuter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanBeingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanBeingControllerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanBeingDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanBeingDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/db/DataBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/db/DataBaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ApplicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ApplicationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ArgumentException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/HumanBeing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Mood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Mood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/WeaponType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanBeingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanBeingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/ScriptExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/file_logic/FileAsker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/file_logic/FileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/file_logic/FileManagerImpl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +106,12 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\lab-5-num-125595" />
+      <recent name="E:\code\lab-5-num-125595\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
@@ -112,7 +170,7 @@
       <workItem from="1677459706094" duration="7000" />
       <workItem from="1677494763019" duration="4603000" />
       <workItem from="1677515995869" duration="1061000" />
-      <workItem from="1678815286836" duration="1285000" />
+      <workItem from="1678815286836" duration="2724000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -296,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678815309654</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Removed script2, moved other files">
+      <created>1678831731073</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1678831731073</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,8 +380,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed README.md" />
-    <MESSAGE value="Fixed gitignore" />
     <MESSAGE value="Added getter/setter and base constructors" />
     <MESSAGE value="Added interfaces for all layers" />
     <MESSAGE value="Added validator" />
@@ -340,6 +403,8 @@
     <MESSAGE value="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders" />
     <MESSAGE value="Refactoring project #2" />
     <MESSAGE value="Changed to session" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed to session" />
+    <MESSAGE value="Removed script2, moved other files" />
+    <MESSAGE value="Project refactoring #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project refactoring #3" />
   </component>
 </project>

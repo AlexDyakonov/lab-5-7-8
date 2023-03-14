@@ -1,17 +1,16 @@
-package server.model;
+package server.model.dto;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import server.model.Car;
+import server.model.Coordinates;
+import server.model.Mood;
+import server.model.WeaponType;
 
 /**
- * The type Human being response dto.
+ * The type Human being request dto.
  */
-public class HumanBeingResponseDTO {
-    private String id = UUID.randomUUID().toString();
-
+public class HumanBeingRequestDTO {
     private String name;
     private Coordinates coordinates;
-    private java.time.LocalDateTime creationDate;
     private Boolean realHero;
     private Boolean hasToothpick;
     private Float impactSpeed;
@@ -20,13 +19,14 @@ public class HumanBeingResponseDTO {
     private Mood mood;
     private Car car;
 
+    public HumanBeingRequestDTO() {
+    }
+
     /**
-     * Instantiates a new Human being response dto.
+     * Instantiates a new Human being request dto.
      *
-     * @param id             the id
      * @param name           the name
      * @param coordinates    the coordinates
-     * @param creationDate   the creation date
      * @param realHero       the real hero
      * @param hasToothpick   the has toothpick
      * @param impactSpeed    the impact speed
@@ -35,10 +35,9 @@ public class HumanBeingResponseDTO {
      * @param mood           the mood
      * @param car            the car
      */
-    public HumanBeingResponseDTO(String id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
+    public HumanBeingRequestDTO(String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = creationDate;
         this.realHero = realHero;
         this.hasToothpick = hasToothpick;
         this.impactSpeed = impactSpeed;
@@ -46,24 +45,6 @@ public class HumanBeingResponseDTO {
         this.weaponType = weaponType;
         this.mood = mood;
         this.car = car;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public String  getId() {
-        return id;
-    }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(String id) {
-        this.id = id;
     }
 
     /**
@@ -100,24 +81,6 @@ public class HumanBeingResponseDTO {
      */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
-    }
-
-    /**
-     * Gets creation date.
-     *
-     * @return the creation date
-     */
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    /**
-     * Sets creation date.
-     *
-     * @param creationDate the creation date
-     */
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
     }
 
     /**
@@ -244,20 +207,5 @@ public class HumanBeingResponseDTO {
      */
     public void setCar(Car car) {
         this.car = car;
-    }
-    @Override
-    public String toString() {
-        return " \033[0;33m HumanBeing \033[0m (id = " + id + "){\n" + "\033[0;32m" +
-                "   name \033[0m =  " + name + "\n \033[0;32m" +
-                "   coordinates \033[0m = " + coordinates + "\n \033[0;32m" +
-                "   creationDate \033[0m = " + creationDate + "\n \033[0;32m" +
-                "   realHero \033[0m = " + realHero + "\n \033[0;32m" +
-                "   hasToothpick \033[0m = " + hasToothpick + "\n \033[0;32m" +
-                "   impactSpeed \033[0m = " + impactSpeed + "\n \033[0;32m" +
-                "   soundtrackName \033[0m = " + soundtrackName + "\n \033[0;32m" +
-                "   weaponType \033[0m = " + weaponType + "\n \033[0;32m" +
-                "   mood \033[0m = " + mood + "\n \033[0;32m" +
-                "   car \033[0m = " + car + "\n" +
-                '}';
     }
 }

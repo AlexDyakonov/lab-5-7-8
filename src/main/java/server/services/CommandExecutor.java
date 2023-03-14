@@ -1,165 +1,104 @@
 package server.services;
 
-import client.ui.MenuConstants;
-import client.utility.AbstractAsker;
-import client.utility.HumanBeingRequestDTOBuilder;
-import server.controller.HumanBeingController;
-import server.controller.HumanBeingControllerImpl;
-import server.exception.ArgumentException;
+import server.controller.HumanController;
+import server.controller.HumanControllerImpl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static client.ui.ConsoleColors.GREEN_BRIGHT;
-import static client.ui.ConsoleColors.RESET;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class CommandExecutor {
 
-    private final HumanBeingController humanBeingController;
-    private final AbstractAsker asker;
-    private HumanBeingRequestDTOBuilder humanBeingRequestDTOBuilder;
-    private final List<String> commandsList;
+    private final HumanController controller;
+    private final HistoryManager history;
+    private final String file;
+    private final BufferedReader reader;
 
-    public CommandExecutor(AbstractAsker asker) {
-        this.asker = asker;
-        this.humanBeingController = new HumanBeingControllerImpl();
-        this.humanBeingRequestDTOBuilder = new HumanBeingRequestDTOBuilder();
-        this.commandsList = new ArrayList<>();
+    public CommandExecutor(String fileName) {
+        this.file = fileName;
+        this.controller = new HumanControllerImpl(file);
+        this.history = new HistoryManager(15); // limit history size
+        this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public void menu() {
-        System.out.println(MenuConstants.HELP);
-    }
-
-    private void checkCommandArg(String[] commandArr, int numOfArgs) {
-        if (numOfArgs == 0 && commandArr.length - 1 > 0) {
-            throw new ArgumentException("Данная команда вызывается без агрументов");
+    private void executeScript(String scriptName) {
+        String command;
+        try (BufferedReader bf = new BufferedReader(new FileReader(scriptName))) {
+            while (bf.ready()) {
+                command = bf.readLine();
+                if (!command.equals("execute_script")) {
+                    executeCommand(command);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка выполнения скрипта " + scriptName);
         }
-        if (commandArr.length - 1 < numOfArgs) {
-            throw new ArgumentException("Количество аргументов в данной команде равно " + numOfArgs);
-        }
     }
 
-    public void execute(String inputCommand) {
-        String[] commandArgs = inputCommand.split(" ");
-        String command = commandArgs[0];
-        commandsList.add(Arrays.toString(commandArgs));
-        String id;
-
-        switch (command) {
-            case "help":
-                checkCommandArg(commandArgs, 0);
-                menu();
-                break;
-            case "info":
-                checkCommandArg(commandArgs, 0);
-                System.out.println(humanBeingController.info());
-                break;
-            case "show":
-                checkCommandArg(commandArgs, 0);
-                System.out.println(humanBeingController.show());
-                System.out.println("Выведены все элементы коллекции. ");
-                break;
-            case "add":
-                checkCommandArg(commandArgs, 0);
-                humanBeingRequestDTOBuilder = asker.humanBeingRequestDTOBuilder();
-                System.out.println(
-                        humanBeingController.addElementToCollection(humanBeingRequestDTOBuilder.build())
-                                .toString() + " был добавлен");
-                break;
-            case "update":
-                checkCommandArg(commandArgs, 1);
-                try {
-                    id = (commandArgs[1]);
-                    if (humanBeingController.findById(id)) {
-                        System.out.println(humanBeingController.updateById(id,
-                                        asker.humanBeingRequestDTOBuilder().build())
-                                .toString()
-                                + " был обновлен");
-                    } else {
-                        System.out.println("Объекта с id " + id
-                                + " не было найдено. Ничего не обновлено");
+    public void executeCommand(String command) {
+        Long id;
+        try {
+            while (!Objects.equals(command = reader.readLine(), "exit")) {
+                String[] compositeCommand = command.split(" ");
+                history.addCommandToHistory(compositeCommand[0]);
+                if (compositeCommand.length > 1) {
+                    switch (compositeCommand[1]) {
+                        case "add": // add {element}
+                            break;
+                        case "update": // update id {element}
+                            break;
+                        case "remove_by_id": // remove_by_id id
+                            System.out.println("Введите id");
+                            id = Long.parseLong(reader.readLine());
+                            controller.deleteHumanById(id);
+                            break;
+                        case "execute_script": // execute_script file_name
+                            System.out.println("Введите название файла скрипта: ");
+                            executeScript(reader.readLine());
+                            break;
+                        case "add_if_max": //add_if_max {element}
+                            break;
+                        case "add_if_min": // add_if_min {element}
+                            break;
+                        case "count_by_mood": //count_by_mood mood
+                            break;
                     }
-                } catch (NumberFormatException ex) { // TODO посмотреть исключения, что тут может вылететь
-                    System.out.println("Значение " + commandArgs[1]
-                            + "не является id. Вызовите команду еще раз.");
-                }
-                break;
-            case "remove_by_id":
-                checkCommandArg(commandArgs, 1);
-                try {
-                    id = (commandArgs[1]);
-                    humanBeingController.removeById(id);
-                } catch (NumberFormatException ex) { // TODO посмотреть исключения, что тут может вылететь
-                    System.out.println("Значение " + commandArgs[1]
-                            + "не является id. Вызовите команду еще раз.");
-                }
-                break;
-            case "clear":
-                checkCommandArg(commandArgs, 0);
-                int amount = humanBeingController.getSize();
-                humanBeingController.clear();
-                System.out.println("Коллекция успешно очищена. Было удалено " + amount
-                        + " элементов.");
-                break;
-            case "save":
-                checkCommandArg(commandArgs, 0);
-                System.out.println("Cохранить в csv файл");
-                humanBeingController.save();
-                break;
-            case "execute_script":
-                checkCommandArg(commandArgs, 1);
-                System.out.println("запуск скрипта");
 
-                ScriptExecutor scriptExecutor = new ScriptExecutor();
-                scriptExecutor.executeScript("file name from args");
-                break;
-            case "add_if_max":
-                checkCommandArg(commandArgs, 0);
-                humanBeingController.addIfMax(
-                        asker.humanBeingRequestDTOBuilder().build());
-                break;
-            case "add_if_min":
-                checkCommandArg(commandArgs, 0);
-                humanBeingController.addIfMin(
-                        asker.humanBeingRequestDTOBuilder().build());
-                break;
-            case "history":
-                checkCommandArg(commandArgs, 0);
-                if (commandsList.size() < MenuConstants.HISTORY_SIZE) {
-                    System.out.println(commandsList);
                 } else {
-                    for (int i = 1; i <= MenuConstants.HISTORY_SIZE; i++) {
-                        System.out.print(commandsList.get(commandsList.size() - i) + " ");
+                    switch (command) {
+                        case "help":
+                            System.out.println(controller.help());
+                            break;
+                        case "info":
+                            System.out.println(controller.info());
+                            break;
+                        case "show":
+                            controller.getAllHuman().forEach(System.out::println);
+                            break;
+                        case "clear":
+                            controller.clear();
+                            break;
+                        case "save":
+                            controller.save(file);
+                            break;
+                        case "history":
+                            history.getHistoryListOfCommands().forEach(System.out::println);
+                            break;
+                        case "max_by_impact_speed":
+                            System.out.println(controller.max_by_impact_speed());
+                            break;
+                        case "print_ascending":
+                            controller.print_ascending().forEach(System.out::println);
+                            break;
+                        default:
+                            System.out.println("Команда не распознана");
                     }
                 }
-                break;
-            case "max_by_impact_speed":
-                checkCommandArg(commandArgs, 0);
-                humanBeingController.maxByImpactSpeed();
-                System.out.println(GREEN_BRIGHT
-                        + "Выведен элемент коллекции с максимальным Impact speed." + RESET);
-                break;
-            case "count_by_mood":
-                checkCommandArg(commandArgs, 0);
-                humanBeingController.countByMood(asker.mood());
-                break;
-            case "print_ascending":
-                checkCommandArg(commandArgs, 0);
-                System.out.println(humanBeingController.printAscending());
-                System.out.println(
-                        GREEN_BRIGHT + "Выведены элементы коллекции по возрастанию."
-                                + RESET);
-                break;
-            default:
-                System.out.println("Вы ввели значение не из меню");
-                break;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-    }
-
-    public List<String> getCommandsList() {
-        return commandsList;
     }
 }
