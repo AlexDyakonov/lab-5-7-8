@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Refactoring project #2">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Changed to session">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +112,7 @@
       <workItem from="1677459706094" duration="7000" />
       <workItem from="1677494763019" duration="4603000" />
       <workItem from="1677515995869" duration="1061000" />
-      <workItem from="1678815286836" duration="6000" />
+      <workItem from="1678815286836" duration="1285000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -290,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678709744277</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Changed to session">
+      <created>1678815309653</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1678815309654</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +339,7 @@
     <MESSAGE value="Refactored structure" />
     <MESSAGE value="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders" />
     <MESSAGE value="Refactoring project #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring project #2" />
+    <MESSAGE value="Changed to session" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed to session" />
   </component>
 </project>
