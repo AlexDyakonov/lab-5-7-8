@@ -11,6 +11,7 @@ public class App {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        new ConsoleUI().start();
+        ConsoleUI session = new ConsoleUI();
+        session.start();
     }
 }
