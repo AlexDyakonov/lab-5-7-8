@@ -208,4 +208,19 @@ public class HumanBeingRequestDTO {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    @Override
+    public String toString() {
+        return "HumanBeingRequestDTO{" +
+                "name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", realHero=" + realHero +
+                ", hasToothpick=" + hasToothpick +
+                ", impactSpeed=" + impactSpeed +
+                ", soundtrackName='" + soundtrackName + '\'' +
+                ", weaponType=" + weaponType +
+                ", mood=" + mood +
+                ", car=" + car +
+                '}';
+    }
 }

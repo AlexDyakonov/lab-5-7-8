@@ -5,7 +5,7 @@ import server.model.Coordinates;
 import server.model.Mood;
 import server.model.WeaponType;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * The type Human being response dto.
@@ -14,7 +14,7 @@ public class HumanBeingResponseDTO {
     private Long id;
     private String name;
     private Coordinates coordinates;
-    private java.time.LocalDateTime creationDate;
+    private java.time.ZonedDateTime creationDate;
     private Boolean realHero;
     private Boolean hasToothpick;
     private Float impactSpeed;
@@ -42,7 +42,7 @@ public class HumanBeingResponseDTO {
      * @param mood           the mood
      * @param car            the car
      */
-    public HumanBeingResponseDTO(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
+    public HumanBeingResponseDTO(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car) {
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -114,7 +114,7 @@ public class HumanBeingResponseDTO {
      *
      * @return the creation date
      */
-    public LocalDateTime getCreationDate() {
+    public ZonedDateTime getCreationDate() {
         return creationDate;
     }
 
@@ -123,7 +123,7 @@ public class HumanBeingResponseDTO {
      *
      * @param creationDate the creation date
      */
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(ZonedDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

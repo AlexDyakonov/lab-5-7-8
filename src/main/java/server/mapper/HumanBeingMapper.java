@@ -1,13 +1,16 @@
 package server.mapper;
 
-import server.model.HumanBeingModel;
+import server.model.*;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 
+import java.time.ZonedDateTime;
+
 public class HumanBeingMapper {
 
-    public HumanBeingResponseDTO fromModelToResponse(HumanBeingModel model) {
+    public static HumanBeingResponseDTO fromModelToResponse(HumanBeingModel model) {
         HumanBeingResponseDTO responseDTO = new HumanBeingResponseDTO();
+        responseDTO.setId(model.getId());
         responseDTO.setName(model.getName());
         responseDTO.setCoordinates(model.getCoordinates());
         responseDTO.setCreationDate(model.getCreationDate());
@@ -21,7 +24,7 @@ public class HumanBeingMapper {
         return responseDTO;
     }
 
-    public HumanBeingModel fromRequestToModel(HumanBeingRequestDTO dto) {
+    public static HumanBeingModel fromRequestToModel(HumanBeingRequestDTO dto) {
         HumanBeingModel model = new HumanBeingModel();
         model.setName(dto.getName());
         model.setCoordinates(dto.getCoordinates());
@@ -35,34 +38,51 @@ public class HumanBeingMapper {
         return model;
     }
 
-    public HumanBeingRequestDTO fromStringToRequest(String line) {
+    public static HumanBeingRequestDTO fromStringToRequest(String line) {
         return new HumanBeingRequestDTO();
+    }
+
+    public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
+        String[] array = obj.split(" ");
+        HumanBeingModel resultModel = new HumanBeingModel();
+        resultModel.setId(Long.parseLong(array[0]));
+        resultModel.setName(array[1]);
+        resultModel.setCoordinates(Coordinates.formString(array[2]));
+        resultModel.setCreationDate(ZonedDateTime.parse(array[3]));
+        resultModel.setRealHero(Boolean.getBoolean(array[4]));
+        resultModel.setHasToothpick(Boolean.getBoolean(array[5]));
+        resultModel.setImpactSpeed(Float.parseFloat(array[6]));
+        resultModel.setSoundtrackName(array[7]);
+        resultModel.setWeaponType(WeaponType.valueOf(array[8]));
+        resultModel.setMood(Mood.valueOf(array[9]));
+        resultModel.setCar(Car.fromString(array[10]));
+        return resultModel;
+    }
+
+    public static String fromHumanBeingModelToStringLine(HumanBeingModel model) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(model.getId());
+        sb.append(" ");
+        sb.append(model.getName());
+        sb.append(" ");
+        sb.append(model.getCoordinates().toString());
+        sb.append(" ");
+        sb.append(model.getCreationDate());
+        sb.append(" ");
+        sb.append(model.getRealHero());
+        sb.append(" ");
+        sb.append(model.getHasToothpick());
+        sb.append(" ");
+        sb.append(model.getImpactSpeed());
+        sb.append(" ");
+        sb.append(model.getSoundtrackName());
+        sb.append(" ");
+        sb.append(model.getWeaponType());
+        sb.append(" ");
+        sb.append(model.getMood());
+        sb.append(" ");
+        sb.append(model.getCar().toStringLine());
+        return sb.toString();
     }
 }
 
-/*
-Model
-private String id = UUID.randomUUID().toString();
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Boolean realHero; //Поле не может быть null
-    private Boolean hasToothpick; //Поле не может быть null
-    private Float impactSpeed; //Поле не может быть null
-    private String soundtrackName; //Поле не может быть null
-    private WeaponType weaponType; //Поле может быть null
-    private Mood mood; //Поле не может быть null
-    private Car car; //Поле может быть null
-
-  DTO
-      private String name;
-    private Coordinates coordinates;
-    private Boolean realHero;
-    private Boolean hasToothpick;
-    private Float impactSpeed;
-    private String soundtrackName;
-    private WeaponType weaponType;
-    private Mood mood;
-    private Car car;
-
- */

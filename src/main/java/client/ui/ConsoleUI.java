@@ -26,7 +26,7 @@ public class ConsoleUI {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             while (!Objects.equals(command = reader.readLine(), "exit")) {
-                executor.executeCommand(command);
+                executor.executeCommand(command, reader);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

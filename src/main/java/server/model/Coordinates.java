@@ -28,10 +28,15 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "Coordinates{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return x + "/" + y;
+    }
+
+    public static Coordinates formString(String coordinates) {
+        String[] array = coordinates.split("/");
+        Coordinates crd = new Coordinates();
+        crd.setX(Integer.parseInt(array[0]));
+        crd.setY(Double.parseDouble(array[1]));
+        return crd;
     }
 
     /**
@@ -63,10 +68,14 @@ public class Coordinates {
 
     /**
      * Sets y.
-     *
+     * Значение поля должно быть больше -897
      * @param y the y
      */
     public void setY(Double y) {
+        if (y <= -897) {
+            System.out.println("Значение 'y' должно быть больше -897");
+            return;
+        }
         this.y = y;
     }
 }

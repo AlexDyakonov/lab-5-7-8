@@ -1,13 +1,14 @@
 package server.model;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Objects;
 
 public class HumanBeingModel {
 
     private Long id;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private java.time.ZonedDateTime  creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Boolean realHero; //Поле не может быть null
     private Boolean hasToothpick; //Поле не может быть null
     private Float impactSpeed; //Поле не может быть null
@@ -17,6 +18,29 @@ public class HumanBeingModel {
     private Car car; //Поле может быть null
 
     public HumanBeingModel() {
+        this.creationDate = ZonedDateTime.now();
+    }
+
+    public HumanBeingModel(String name,
+                           Coordinates coordinates,
+                           ZonedDateTime creationDate,
+                           Boolean realHero,
+                           Boolean hasToothpick,
+                           Float impactSpeed,
+                           String soundtrackName,
+                           WeaponType weaponType,
+                           Mood mood,
+                           Car car) {
+        this.name = Objects.requireNonNull(name);
+        this.coordinates = Objects.requireNonNull(coordinates);
+        this.creationDate = ZonedDateTime.now();
+        this.realHero = Objects.requireNonNull(realHero);
+        this.hasToothpick = Objects.requireNonNull(hasToothpick);
+        this.impactSpeed = impactSpeed;
+        this.soundtrackName = Objects.requireNonNull(soundtrackName);
+        this.weaponType = Objects.requireNonNull(weaponType);
+        this.mood = Objects.requireNonNull(mood);
+        this.car = Objects.requireNonNull(car);
     }
 
     public Long getId() {
@@ -32,6 +56,7 @@ public class HumanBeingModel {
     }
 
     public void setName(String name) {
+        if (name.length() == 0) return;
         this.name = name;
     }
 
@@ -43,11 +68,11 @@ public class HumanBeingModel {
         this.coordinates = coordinates;
     }
 
-    public LocalDateTime getCreationDate() {
+    public ZonedDateTime  getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(ZonedDateTime  creationDate) {
         this.creationDate = creationDate;
     }
 
