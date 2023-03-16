@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CarBuilder {
-    public static Car carBuilder() {
+    public static Car carBuilder(BufferedReader reader) {
         String name = "";
         boolean cool = false;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try  {
             System.out.println("Enter car`s name: ");
             name = reader.readLine();
             System.out.println("Car is cool? Y/N: ");
