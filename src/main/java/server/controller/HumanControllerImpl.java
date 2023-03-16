@@ -1,10 +1,12 @@
 package server.controller;
 
+import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import server.services.HumanService;
 import server.services.HumanServiceImpl;
+import server.validation.Validation;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
+        if (id <= 0) {
+            throw new ValidationException("ID не может быть 0 или меньше 0");
+        }
         return service.getHumanById(id);
     }
 
@@ -28,16 +33,31 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
+
+        System.out.println(human);
+
+        if (!Validation.validateRequestDTO(human)) {
+            throw new ValidationException("Валидация реквеста не увенчалась успехом");
+        }
         return service.createHuman(human);
     }
 
     @Override
     public void deleteHumanById(Long id) {
+        if (id <= 0) {
+            throw new ValidationException("ID не может быть 0 или меньше 0");
+        }
         service.deleteHumanById(id);
     }
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
+        if (id <= 0) {
+            throw new ValidationException("ID не может быть 0 или меньше 0");
+        }
+        if (!Validation.validateRequestDTO(newHuman)) {
+            throw new ValidationException("Валидация реквеста не увенчалась успехом");
+        }
         return service.updateHuman(newHuman, id);
     }
 
@@ -73,16 +93,39 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
+        if (!Validation.validateRequestDTO(request)) {
+            throw new ValidationException("Валидация реквеста не увенчалась успехом");
+        }
         return service.addIfMax(request);
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
+        if (!Validation.validateRequestDTO(request)) {
+            throw new ValidationException("Валидация реквеста не увенчалась успехом");
+        }
         return service.addIfMin(request);
     }
 
     @Override
-    public int countByMood(Mood mood) {
-        return service.countByMood(mood);
+    public int countByMood(String mood) {
+        switch (mood) {
+            case "SORROW": return service.countByMood(Mood.SORROW);
+            case "GLOOM": return service.countByMood(Mood.GLOOM);
+            case "APATHY": return service.countByMood(Mood.APATHY);
+            case "CALM": return service.countByMood(Mood.CALM);
+            case "RAGE": return service.countByMood(Mood.RAGE);
+            default: throw new ValidationException("Такого mood не существует");
+        }
+    }
+
+    @Override
+    public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
+        return service.isImpactSpeedMax(dto);
+    }
+
+    @Override
+    public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
+        return service.isImpactSpeedMin(dto);
     }
 }

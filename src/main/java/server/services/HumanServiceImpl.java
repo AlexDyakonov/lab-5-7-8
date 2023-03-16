@@ -100,4 +100,14 @@ public class HumanServiceImpl implements HumanService {
     public int countByMood(Mood mood) {
         return repo.countByMood(mood);
     }
+
+    @Override
+    public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
+        return repo.isImpactSpeedMax(dto);
+    }
+
+    @Override
+    public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
+        return repo.isImpactSpeedMin(dto);
+    }
 }

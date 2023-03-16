@@ -9,16 +9,15 @@ import server.model.dto.HumanBeingResponseDTO;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class HumanDaoImpl implements HumanDao {
 
     private final DataBaseProvider source;
-    private final HumanBeingMapper mapper;
 
     public HumanDaoImpl(String fileName) {
         this.source = new DataBaseProvider(fileName);
-        this.mapper = new HumanBeingMapper();
     }
 
     @Override
@@ -26,7 +25,7 @@ public class HumanDaoImpl implements HumanDao {
         HumanBeingResponseDTO response = null;
         for (HumanBeingModel model : source.getDataBase()) {
             if (model.getId() == id) {
-                response = mapper.fromModelToResponse(model);
+                response = HumanBeingMapper.fromModelToResponse(model);
             }
         }
         return response;
@@ -35,12 +34,12 @@ public class HumanDaoImpl implements HumanDao {
     // show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
-        return source.getDataBase().stream().map(mapper::fromModelToResponse).collect(Collectors.toList());
+        return source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).collect(Collectors.toList());
     }
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
-        return source.addHumanToDatabase(mapper.fromRequestToModel(human));
+        return source.addHumanToDatabase(HumanBeingMapper.fromRequestToModel(human));
     }
 
     @Override
@@ -86,13 +85,13 @@ public class HumanDaoImpl implements HumanDao {
                 model = m;
             }
         }
-        return mapper.fromModelToResponse(model);
+        return HumanBeingMapper.fromModelToResponse(model);
     }
 
     // print_ascending : вывести элементы коллекции в порядке возрастания
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
-        List<HumanBeingResponseDTO> list = source.getDataBase().stream().map(mapper::fromModelToResponse).sorted().toList();
+        List<HumanBeingResponseDTO> list = source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).sorted().toList();
         Collections.reverse(list);
         return list;
     }
@@ -122,22 +121,28 @@ public class HumanDaoImpl implements HumanDao {
         }
         return count;
     }
+
+    @Override
+    public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
+        Set<HumanBeingModel> setFromDB = source.getDataBase();
+        Float impSpeedDto = dto.getImpactSpeed();
+        for (HumanBeingModel model : setFromDB) {
+            if (model.getImpactSpeed() > impSpeedDto) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
+        Set<HumanBeingModel> setFromDB = source.getDataBase();
+        Float impSpeedDto = dto.getImpactSpeed();
+        for (HumanBeingModel model : setFromDB) {
+            if (model.getImpactSpeed() < impSpeedDto) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
-/*
-help : вывести справку по доступным командам
-info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)
-show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении
-add {element} : добавить новый элемент в коллекцию
-update id {element} : обновить значение элемента коллекции, id которого равен заданному
-remove_by_id id : удалить элемент из коллекции по его id
-clear : очистить коллекцию
-save : сохранить коллекцию в файл
-execute_script file_name : считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
-exit : завершить программу (без сохранения в файл)
-add_if_max {element} : добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
-add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
-history : вывести последние 15 команд (без их аргументов)
-max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным
-count_by_mood mood : вывести количество элементов, значение поля mood которых равно заданному
-print_ascending : вывести элементы коллекции в порядке возрастания
- */

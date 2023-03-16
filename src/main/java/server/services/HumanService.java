@@ -23,4 +23,7 @@ public interface HumanService {
     Long addIfMax(HumanBeingRequestDTO request);
     Long addIfMin(HumanBeingRequestDTO request);
     int countByMood(Mood mood);
+
+    boolean isImpactSpeedMax(HumanBeingRequestDTO dto);
+    boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
 }

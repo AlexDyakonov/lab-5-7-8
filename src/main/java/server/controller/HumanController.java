@@ -1,6 +1,5 @@
 package server.controller;
 
-import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 
@@ -29,7 +28,10 @@ public interface HumanController {
 
     Long addIfMax(HumanBeingRequestDTO request);
     Long addIfMin(HumanBeingRequestDTO request);
-    int countByMood(Mood mood);
+    int countByMood(String mood);
+
+    boolean isImpactSpeedMax(HumanBeingRequestDTO dto);
+    boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
 }
 /*
 help : вывести справку по доступным командам
