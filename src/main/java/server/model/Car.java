@@ -26,16 +26,17 @@ public class Car {
         this.cool = cool;
     }
 
-    /**
-     * To csv string.
-     *
-     * @param car the car
-     * @return the string
-     */
-    public static String toCSV(Car car){
-        if (car == null){
+    public String toStringLine(){
+        return this.getName() + "/" + this.isCool();
+    }
+
+    public static Car fromString(String string) {
+        if (string == null) {
             return null;
-        } else return car.getName() + ";" + car.isCool();
+        }
+        String[] array = string.split("/");
+        Car car = new Car(array[0], Boolean.getBoolean(array[1]));
+        return car;
     }
 
     /**
