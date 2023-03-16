@@ -11,7 +11,8 @@ public class App {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        ConsoleUI session = new ConsoleUI(args[0]);
+        String args0 = "src/main/resources/database.csv";
+        ConsoleUI session = new ConsoleUI(args0);
         session.start();
     }
 }
