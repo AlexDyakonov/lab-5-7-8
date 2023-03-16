@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class WeaponTypeSetter {
-    public static WeaponType setWeaponType() {
+    public static WeaponType setWeaponType(BufferedReader reader) {
         int number = 0;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try {
             System.out.println("Choice weapon type: 1 = AXE, 2 = SHOTGUN, 3 = BAT");
             number = Integer.parseInt(reader.readLine());
         } catch (IOException e) {
