@@ -8,11 +8,12 @@ import static client.ui.ConsoleColors.WHITE;
  */
 public class MenuConstants {
 
+    public static final String HELLO =
+            GREEN_BRIGHT + "Добро пожаловать! Введите команду для продолжения\n";
     /**
      * The constant HELP.
      */
-    public static final String HELP =
-        GREEN_BRIGHT + "Добро пожаловать! Введите команду для продолжения\n" + GREEN_BRIGHT +
+    public static final String HELP = GREEN_BRIGHT +
             "   help : " + WHITE + "вывести справку по доступным командам\n" + GREEN_BRIGHT +
             "   info : " + WHITE
             + "вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n"

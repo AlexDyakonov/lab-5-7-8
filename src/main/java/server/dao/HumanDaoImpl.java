@@ -56,22 +56,25 @@ public class HumanDaoImpl implements HumanDao {
         return null;
     }
 
-    // info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)
     @Override
     public String info() {
-        return source.getDataBase().getClass() + " " + source.getCreationDate() + " " + source.getDataBase().size();
+        return "Класс бд: " + source.getDataBase().getClass() + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
     }
 
     //clear : очистить коллекцию
     @Override
     public void clear() {
+        int elemsBefore = source.getDataBase().size();
         source.getDataBase().clear();
+        System.out.println("Было удалено " + elemsBefore + " элементов.");
     }
 
     // save : сохранить коллекцию в файл
     @Override
     public void save(String fileName) {
         source.save(fileName);
+        System.out.println("Было удалено " + source.getDataBase().size() + " элементов.");
+
     }
 
     // max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным

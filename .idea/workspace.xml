@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +125,8 @@
       <workItem from="1677515995869" duration="1061000" />
       <workItem from="1678815286836" duration="2885000" />
       <workItem from="1678901473766" duration="934000" />
+      <workItem from="1678966975855" duration="417000" />
+      <workItem from="1678985444680" duration="1378000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -317,7 +324,84 @@
       <option name="project" value="LOCAL" />
       <updated>1678834784405</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added database reader">
+      <created>1678967026917</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967026917</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Attempt to parse DateTime">
+      <created>1678967045254</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967045254</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed &quot;Stream closed bug&quot;, when builder work">
+      <created>1678967102438</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967102438</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added add_if_max/min">
+      <created>1678967133088</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967133088</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixed &quot;Stream closed&quot; in Enum set streams">
+      <created>1678967159286</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967159286</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added Validation methods">
+      <created>1678967184743</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967184743</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Small fixes of models">
+      <created>1678967260075</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967260075</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added generateNextId method, fixed load and save methods">
+      <created>1678967286403</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967286403</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Small fix CommandExecutor.java">
+      <created>1678967332443</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967332443</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Car class changed">
+      <created>1678967352776</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967352776</updated>
+    </task>
+    <task id="LOCAL-00039" summary="workspace.xml">
+      <created>1678967384814</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967384814</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,17 +420,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added interfaces for all layers" />
-    <MESSAGE value="Added validator" />
-    <MESSAGE value="Added database realization and simple methods&#10;Added methods to Impls" />
-    <MESSAGE value="Added DB class" />
-    <MESSAGE value="Fixed name system&#10;Added addElementToCollection and info methods&#10;Added DTO classes" />
-    <MESSAGE value="Fixed DataBase class, added DataBase interface" />
-    <MESSAGE value="Added show command" />
-    <MESSAGE value="Added clear command" />
-    <MESSAGE value="Added opencsv dependency" />
-    <MESSAGE value="Colorful output of HumanBeing" />
-    <MESSAGE value="Added remove_by_id method. Catched some exceptions" />
     <MESSAGE value="Added print_ascending command. Commit before refactoring project to change Long id to UUID" />
     <MESSAGE value="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB" />
     <MESSAGE value="ScriptExecuter.java" />
@@ -361,6 +434,17 @@
     <MESSAGE value="Removed script2, moved other files" />
     <MESSAGE value="Project refactoring #3" />
     <MESSAGE value="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper" />
+    <MESSAGE value="Added database reader" />
+    <MESSAGE value="Attempt to parse DateTime" />
+    <MESSAGE value="Fixed &quot;Stream closed bug&quot;, when builder work" />
+    <MESSAGE value="Added add_if_max/min" />
+    <MESSAGE value="Fixed &quot;Stream closed&quot; in Enum set streams" />
+    <MESSAGE value="Added Validation methods" />
+    <MESSAGE value="Small fixes of models" />
+    <MESSAGE value="Added generateNextId method, fixed load and save methods" />
+    <MESSAGE value="Small fix CommandExecutor.java" />
+    <MESSAGE value="Car class changed" />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
 </project>

@@ -21,7 +21,7 @@ public class ConsoleUI {
     }
 
     public void start() {
-        System.out.println(MenuConstants.HELP);
+        System.out.println(MenuConstants.HELLO + MenuConstants.HELP);
         String command;
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
