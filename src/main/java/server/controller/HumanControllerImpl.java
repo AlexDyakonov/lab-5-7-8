@@ -33,9 +33,7 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
-
         System.out.println(human);
-
         if (!Validation.validateRequestDTO(human)) {
             throw new ValidationException("Валидация реквеста не увенчалась успехом");
         }

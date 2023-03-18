@@ -11,35 +11,35 @@ import java.util.List;
 
 public class HumanServiceImpl implements HumanService {
 
-    private final HumanDao repo;
+    private final HumanDao humanDao;
 
     public HumanServiceImpl(String fileName) {
-        this.repo = new HumanDaoImpl(fileName);
+        this.humanDao = new HumanDaoImpl(fileName);
     }
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
-        return repo.getHumanById(id);
+        return humanDao.getHumanById(id);
     }
 
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
-        return repo.getAllHuman();
+        return humanDao.getAllHuman();
     }
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
-        return repo.createHuman(human);
+        return humanDao.createHuman(human);
     }
 
     @Override
     public void deleteHumanById(Long id) {
-        repo.deleteHumanById(id);
+        humanDao.deleteHumanById(id);
     }
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
-        return repo.updateHuman(newHuman, id);
+        return humanDao.updateHuman(newHuman, id);
     }
 
     @Override
@@ -49,51 +49,51 @@ public class HumanServiceImpl implements HumanService {
 
     @Override
     public String info() {
-        return repo.info();
+        return humanDao.info();
     }
 
     @Override
     public void clear() {
-        repo.clear();
+        humanDao.clear();
     }
 
     @Override
     public void save(String fileName) {
-        repo.save(fileName);
+        humanDao.save(fileName);
     }
 
     @Override
     public HumanBeingResponseDTO max_by_impact_speed() {
-        return repo.max_by_impact_speed();
+        return humanDao.max_by_impact_speed();
     }
 
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
-        return repo.print_ascending();
+        return humanDao.print_ascending();
     }
 
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
-        return repo.addIfMax(request);
+        return humanDao.addIfMax(request);
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
-        return repo.addIfMin(request);
+        return humanDao.addIfMin(request);
     }
 
     @Override
     public int countByMood(Mood mood) {
-        return repo.countByMood(mood);
+        return humanDao.countByMood(mood);
     }
 
     @Override
     public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
-        return repo.isImpactSpeedMax(dto);
+        return humanDao.isImpactSpeedMax(dto);
     }
 
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
-        return repo.isImpactSpeedMin(dto);
+        return humanDao.isImpactSpeedMin(dto);
     }
 }
