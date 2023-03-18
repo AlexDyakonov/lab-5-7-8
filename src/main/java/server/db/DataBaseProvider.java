@@ -41,7 +41,7 @@ public class DataBaseProvider {
             }
             System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
         } catch (IOException e) {
-            System.out.println("load database from file *" + fileName + "+ error");
+            System.out.println("Ошибка базы данных из *" + fileName + "+");
         }
         return resultSet;
     }
@@ -53,7 +53,7 @@ public class DataBaseProvider {
                 writer.write(System.lineSeparator());
             }
         } catch (IOException e) {
-            System.out.println("save to file *" + fileName +"* error");
+            System.out.println("Ошибка сохранения в *" + fileName +"*");
         }
     }
 

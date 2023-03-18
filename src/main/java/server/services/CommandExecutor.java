@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
+
+import static client.ui.ConsoleColors.success;
+import static client.ui.ConsoleColors.unsuccess;
 
 public class CommandExecutor {
 
@@ -36,7 +38,7 @@ public class CommandExecutor {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Ошибка выполнения скрипта " + scriptName);
+            System.out.println(unsuccess("Ошибка выполнения скрипта " + scriptName));
         }
     }
 
@@ -101,6 +103,7 @@ public class CommandExecutor {
                         break;
                     case "print_ascending":
                         controller.print_ascending().forEach(System.out::println);
+                        System.out.println(success("Было успшно выведено " + controller.getAllHuman().size() + "элементов"));
                         break;
                     default:
                         System.out.println("Команда не распознана");

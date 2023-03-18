@@ -27,14 +27,14 @@ public class Car {
     }
 
     public String toStringLine(){
-        return this.getName() + "/" + this.isCool();
+        return "(" + this.getName() + ";" + this.isCool() + ")";
     }
 
     public static Car fromString(String string) {
         if (string == null) {
             return null;
         }
-        String[] array = string.split("/");
+        String[] array = string.split(";");
         Car car = new Car(array[0], Boolean.getBoolean(array[1]));
         return car;
     }

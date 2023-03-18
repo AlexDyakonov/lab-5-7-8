@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static client.ui.ConsoleColors.success;
+
 public class HumanDaoImpl implements HumanDao {
 
     private final DataBaseProvider source;
@@ -66,15 +68,14 @@ public class HumanDaoImpl implements HumanDao {
     public void clear() {
         int elemsBefore = source.getDataBase().size();
         source.getDataBase().clear();
-        System.out.println("Было удалено " + elemsBefore + " элементов.");
+        System.out.println(success("Было удалено " + elemsBefore + " элементов."));
     }
 
     // save : сохранить коллекцию в файл
     @Override
     public void save(String fileName) {
         source.save(fileName);
-        System.out.println("Было удалено " + source.getDataBase().size() + " элементов.");
-
+        System.out.println(success("Было сохранено " + source.getDataBase().size() + " элементов."));
     }
 
     // max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным
@@ -102,14 +103,12 @@ public class HumanDaoImpl implements HumanDao {
     // add_if_max {element} : добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
-        // о каком значении речь?
         return null;
     }
 
     // add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
-        // о каком значении речь?
         return null;
     }
 

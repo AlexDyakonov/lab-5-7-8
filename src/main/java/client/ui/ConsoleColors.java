@@ -1,6 +1,12 @@
 package client.ui;
 
 public class ConsoleColors {
+    public static final String success(String line){
+        return (GREEN + line + RESET);
+    }
+    public static final String unsuccess(String line){
+        return (RED + line + RESET);
+    }
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 

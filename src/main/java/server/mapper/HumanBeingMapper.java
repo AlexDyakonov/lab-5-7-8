@@ -1,5 +1,6 @@
 package server.mapper;
 
+import server.exception.ValidationException;
 import server.model.*;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
@@ -43,7 +44,10 @@ public class HumanBeingMapper {
     }
 
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
-        String[] array = obj.split(" ");
+        String[] array = obj.split(",");
+        if (array.length != 11){
+            throw new ValidationException("Запись некорректна и будет проигнорирована.");
+        }
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(Long.parseLong(array[0]));
         resultModel.setName(array[1]);
@@ -62,25 +66,25 @@ public class HumanBeingMapper {
     public static String fromHumanBeingModelToStringLine(HumanBeingModel model) {
         StringBuilder sb = new StringBuilder();
         sb.append(model.getId());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getName());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getCoordinates().toString());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getCreationDate());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getRealHero());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getHasToothpick());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getImpactSpeed());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getSoundtrackName());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getWeaponType());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getMood());
-        sb.append(" ");
+        sb.append(",");
         sb.append(model.getCar().toStringLine());
         return sb.toString();
     }
