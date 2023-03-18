@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static client.ui.ConsoleColors.success;
+import static client.ui.ConsoleColors.unsuccess;
 
 public class HumanDaoImpl implements HumanDao {
 
@@ -46,6 +47,9 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
+        if (getHumanById(id) == null){
+            System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
+        }
         for (HumanBeingModel human : source.getDataBase()) {
             if (human.getId() == id) {
                 source.getDataBase().remove(human);
