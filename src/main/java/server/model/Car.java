@@ -34,14 +34,14 @@ public class Car {
 
     public static Car fromString(String string) {
         try {
-            if (string == null) {
+            if (string == null || string.equals("null")) {
                 return null;
             }
             String[] array = string.replace("(", "").replace(")", "").split(";");
             Car car = new Car(array[0], Boolean.getBoolean(array[1]));
             return car;
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ValidationException("Ошибка при парсинге Car из файла. Запись будет проигнорирована.");
+            throw new ValidationException("Ошибка при парсинге Car из файла. Запись будет проигнорирована.", e);
         }
     }
 

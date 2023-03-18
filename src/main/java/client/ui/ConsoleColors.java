@@ -5,7 +5,13 @@ public class ConsoleColors {
         return (GREEN + line + RESET);
     }
     public static final String unsuccess(String line){
+        return (RED_BRIGHT + line + RESET);
+    }
+    public static final String error(String line){
         return (RED + line + RESET);
+    }
+    public static final String whiteStr(String line){
+        return (WHITE_BRIGHT + line + RESET);
     }
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
