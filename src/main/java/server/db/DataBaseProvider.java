@@ -54,6 +54,7 @@ public class DataBaseProvider {
 
     public void save(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
             for (HumanBeingModel model : dataBase) {
                 writer.write(HumanBeingMapper.fromHumanBeingModelToStringLine(model));
                 writer.write(System.lineSeparator());

@@ -1,4 +1,4 @@
+id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car3,1,0/0.0,2023-03-18T22:55:25.713617100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,null
 1,1,1/1.0,2023-03-18T18:44:08.789414500+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(Car;false)
-3,1,1/1.0,2023-03-18T22:55:25.713617100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,null
-2,1,1/1.0,2023-03-18T19:52:36.394709100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(a;false)
 4,a,1/1.0,2023-03-19T01:18:30.276700200+03:00[Europe/Moscow],true,true,1.0,1,AXE,SORROW,null
+2,1,1/1.0,2023-03-18T19:52:36.394709100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(a;false)

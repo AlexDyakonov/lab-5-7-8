@@ -24,6 +24,7 @@ public class WeaponTypeSetter {
             case 1: return WeaponType.AXE;
             case 2: return WeaponType.SHOTGUN;
             case 3: return WeaponType.BAT;
+            case 0: return null;
             default: return WeaponType.SHOTGUN;
         }
     }

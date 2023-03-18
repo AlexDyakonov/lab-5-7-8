@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed bug with saving null car">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed all builders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,6 +75,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.validation.Parser" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.validation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.utility.ScriptExecuter" />
       <module name="lab-5-num-125595" />
@@ -94,6 +104,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Parser" />
         <item itemvalue="Application.ScriptExecuter" />
       </list>
     </recent_temporary>
@@ -133,7 +144,7 @@
       <workItem from="1678966975855" duration="417000" />
       <workItem from="1678985444680" duration="1378000" />
       <workItem from="1679055817343" duration="1425000" />
-      <workItem from="1679152301218" duration="13353000" />
+      <workItem from="1679152301218" duration="15457000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -450,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679169362060</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fixed all builders">
+      <created>1679178684583</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1679178684583</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,7 +487,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added javadoc documentation" />
     <MESSAGE value="Refactored structure" />
     <MESSAGE value="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders" />
     <MESSAGE value="Refactoring project #2" />
@@ -494,6 +511,7 @@
     <MESSAGE value="Added more Validations" />
     <MESSAGE value="Renamed repo -&gt; HumanDao" />
     <MESSAGE value="Fixed bug with saving null car" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with saving null car" />
+    <MESSAGE value="Fixed all builders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all builders" />
   </component>
 </project>

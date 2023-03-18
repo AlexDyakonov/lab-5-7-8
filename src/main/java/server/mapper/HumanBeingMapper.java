@@ -5,7 +5,7 @@ import server.model.*;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 
-import java.time.ZonedDateTime;
+import static server.validation.Parser.*;
 
 public class HumanBeingMapper {
 
@@ -51,14 +51,14 @@ public class HumanBeingMapper {
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(Long.parseLong(array[0]));
         resultModel.setName(array[1]);
-        resultModel.setCoordinates(Coordinates.formString(array[2]));
-        resultModel.setCreationDate(ZonedDateTime.parse(array[3]));
-        resultModel.setRealHero(Boolean.getBoolean(array[4]));
-        resultModel.setHasToothpick(Boolean.getBoolean(array[5]));
+        resultModel.setCoordinates(Coordinates.fromString(array[2]));
+        resultModel.setCreationDate(stringToDateTime(array[3]));
+        resultModel.setRealHero(stringToBoolean(array[4]));
+        resultModel.setHasToothpick(stringToBoolean(array[5]));
         resultModel.setImpactSpeed(Float.parseFloat(array[6]));
         resultModel.setSoundtrackName(array[7]);
-        resultModel.setWeaponType(WeaponType.valueOf(array[8]));
-        resultModel.setMood(Mood.valueOf(array[9]));
+        resultModel.setWeaponType(stringToWeaponType(array[8]));
+        resultModel.setMood(stringToMood(array[9]));
         resultModel.setCar(Car.fromString(array[10]));
         return resultModel;
     }

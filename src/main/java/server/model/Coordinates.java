@@ -2,6 +2,8 @@ package server.model;
 
 import java.util.Objects;
 
+import static client.ui.ConsoleColors.error;
+
 /**
  * The type Coordinates.
  */
@@ -31,11 +33,17 @@ public class Coordinates {
         return x + "/" + y;
     }
 
-    public static Coordinates formString(String coordinates) {
+    public static Coordinates fromString(String coordinates) {
         String[] array = coordinates.split("/");
         Coordinates crd = new Coordinates();
-        crd.setX(Integer.parseInt(array[0]));
-        crd.setY(Double.parseDouble(array[1]));
+        try {
+            crd.setX(Integer.parseInt(array[0]));
+            crd.setY(Double.parseDouble(array[1]));
+        } catch (NumberFormatException e) {
+            System.out.println(error("Значения координат некорректны. Будут использованы дефолтные (0/0)"));
+            crd.setY(0d);
+            crd.setX(0);
+        }
         return crd;
     }
 
