@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed all builders">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed load/save from file, added default">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +140,7 @@
       <workItem from="1678966975855" duration="417000" />
       <workItem from="1678985444680" duration="1378000" />
       <workItem from="1679055817343" duration="1425000" />
-      <workItem from="1679152301218" duration="15457000" />
+      <workItem from="1679152301218" duration="16545000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -468,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679178684583</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fixed load/save from file, added default">
+      <created>1679180745877</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1679180745877</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Refactored structure" />
     <MESSAGE value="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders" />
     <MESSAGE value="Refactoring project #2" />
     <MESSAGE value="Changed to session" />
@@ -512,6 +514,7 @@
     <MESSAGE value="Renamed repo -&gt; HumanDao" />
     <MESSAGE value="Fixed bug with saving null car" />
     <MESSAGE value="Fixed all builders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all builders" />
+    <MESSAGE value="Fixed load/save from file, added default" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed load/save from file, added default" />
   </component>
 </project>

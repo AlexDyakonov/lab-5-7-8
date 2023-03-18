@@ -49,6 +49,7 @@ public class HumanDaoImpl implements HumanDao {
         for (HumanBeingModel human : source.getDataBase()) {
             if (human.getId() == id) {
                 source.getDataBase().remove(human);
+                System.out.println(success("Объект с id: " + id + " был удален."));
             }
         }
     }
