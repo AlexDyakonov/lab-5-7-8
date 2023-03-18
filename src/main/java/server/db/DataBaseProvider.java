@@ -1,5 +1,7 @@
 package server.db;
 
+import server.exception.FileException;
+import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
 
@@ -37,7 +39,11 @@ public class DataBaseProvider {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while (reader.ready()) {
-                resultSet.add(HumanBeingMapper.fromStringToHumanBeingModel(reader.readLine()));
+                try {
+                    resultSet.add(HumanBeingMapper.fromStringToHumanBeingModel(reader.readLine()));
+                } catch (ValidationException | FileException e){
+                    System.out.println(e.getMessage());
+                }
             }
             System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
         } catch (IOException e) {

@@ -1,5 +1,7 @@
 package server.model;
 
+import server.exception.ValidationException;
+
 import java.util.Objects;
 
 /**
@@ -31,12 +33,16 @@ public class Car {
     }
 
     public static Car fromString(String string) {
-        if (string == null) {
-            return null;
+        try {
+            if (string == null) {
+                return null;
+            }
+            String[] array = string.replace("(", "").replace(")", "").split(";");
+            Car car = new Car(array[0], Boolean.getBoolean(array[1]));
+            return car;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new ValidationException("Ошибка при парсинге Car из файла. Запись будет проигнорирована.");
         }
-        String[] array = string.split(";");
-        Car car = new Car(array[0], Boolean.getBoolean(array[1]));
-        return car;
     }
 
     /**
