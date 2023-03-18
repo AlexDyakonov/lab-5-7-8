@@ -85,7 +85,11 @@ public class HumanBeingMapper {
         sb.append(",");
         sb.append(model.getMood());
         sb.append(",");
-        sb.append(model.getCar().toStringLine());
+        if (model.getCar() == null){
+            sb.append("null");
+        } else {
+            sb.append(model.getCar().toStringLine());
+        }
         return sb.toString();
     }
 }

@@ -22,7 +22,6 @@ public class Validation {
         if (dto.getSoundtrackName().equals("")) return false;
         if (dto.getWeaponType() == null) return false;
         if (dto.getMood() == null) return false;
-        if (dto.getCar() == null) return false;
         return true;
     }
 
