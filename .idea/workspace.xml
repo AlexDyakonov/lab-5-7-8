@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small visual fixes">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed Validation exception in file loading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +124,7 @@
       <workItem from="1678966975855" duration="417000" />
       <workItem from="1678985444680" duration="1378000" />
       <workItem from="1679055817343" duration="1425000" />
-      <workItem from="1679152301218" duration="1821000" />
+      <workItem from="1679152301218" duration="2371000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -415,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679154036843</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fixed Validation exception in file loading">
+      <created>1679154328228</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1679154328228</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +439,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ScriptExecuter.java" />
     <MESSAGE value="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring" />
     <MESSAGE value="Small fix of args in commands" />
     <MESSAGE value="Some fixes" />
@@ -459,6 +463,7 @@
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Saving to CSV fix" />
     <MESSAGE value="Small visual fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small visual fixes" />
+    <MESSAGE value="Fixed Validation exception in file loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Validation exception in file loading" />
   </component>
 </project>
