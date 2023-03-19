@@ -73,7 +73,6 @@ public class CommandExecutor {
                         System.out.println(success("Объект с id: " + id + " был удален."));
                         break;
                     case "execute_script": // execute_script file_name
-                        checkCommandArg(command, 1);
                         executeScript(compositeCommand[1], reader);
                         break;
                     case "count_by_mood": //count_by_mood mood
