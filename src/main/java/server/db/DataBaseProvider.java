@@ -4,6 +4,7 @@ import server.exception.FileException;
 import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
+import server.model.dto.HumanBeingRequestDTO;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -34,6 +35,12 @@ public class DataBaseProvider {
         dataBase.add(model);
         return id;
     }
+    public Long updateInDatabase(HumanBeingModel model, Long id) {
+        model.setId(id);
+        dataBase.add(model);
+        return id;
+    }
+
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();

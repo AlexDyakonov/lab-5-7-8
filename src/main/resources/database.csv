@@ -1,4 +1,5 @@
-id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car3,1,0/0.0,2023-03-18T22:55:25.713617100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,null
-1,1,1/1.0,2023-03-18T18:44:08.789414500+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(Car;false)
+id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car1,1,1/1.0,2023-03-18T18:44:08.789414500+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(Car;false)
 4,a,1/1.0,2023-03-19T01:18:30.276700200+03:00[Europe/Moscow],true,true,1.0,1,AXE,SORROW,null
+5,Alec,1/1.0,2023-03-19T20:17:59.222661700+03:00[Europe/Moscow],false,false,0.0,beb,SHOTGUN,GLOOM,null
 2,1,1/1.0,2023-03-18T19:52:36.394709100+03:00[Europe/Moscow],false,false,1.0,1,AXE,SORROW,(a;false)
+6,Rayan,999/999.0,2023-03-19T20:19:14.275457300+03:00[Europe/Moscow],true,true,999999.0,RealHero,BAT,APATHY,(Reno Logan;true)

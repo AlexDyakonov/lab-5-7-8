@@ -54,37 +54,27 @@ public class CommandExecutor {
     }
 
     public void executeCommand(String command, BufferedReader reader) {
-        Long id;
+        long id;
         try {
             String[] compositeCommand = command.split(" ");
             history.addCommandToHistory(compositeCommand[0]);
             if (compositeCommand.length > 1) {
                 switch (compositeCommand[0]) {
                     case "update": // update id {element}
-                        checkCommandArg(command, 1);
-                        controller.updateHuman(HumanBeingRequestDTOBuilder.build(reader), Long.parseLong(compositeCommand[1]));
+                        id = Long.parseLong(compositeCommand[1]);
+                        if (controller.getHumanById(id) == null){
+                            throw new ArgumentException(unsuccess("Объект с id: " + id + " не был найден."));
+                        }
+                        controller.updateHuman(HumanBeingRequestDTOBuilder.build(reader), id);
                         break;
                     case "remove_by_id": // remove_by_id id
-                        checkCommandArg(command, 1);
-                        controller.deleteHumanById(Long.parseLong(compositeCommand[1]));
+                        id = Long.parseLong(compositeCommand[1]);
+                        controller.deleteHumanById(id);
+                        System.out.println(success("Объект с id: " + id + " был удален."));
                         break;
                     case "execute_script": // execute_script file_name
                         checkCommandArg(command, 1);
                         executeScript(compositeCommand[1], reader);
-                        break;
-                    case "add_if_max": //add_if_max {element}
-                        checkCommandArg(command, 1);
-                        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(reader);
-                        if (isImpactSpeedMax(dtoMax)) {
-                            controller.createHuman(dtoMax);
-                        }
-                        break;
-                    case "add_if_min": // add_if_min {element}
-                        checkCommandArg(command, 1);
-                        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(reader);
-                        if (isImpactSpeedMin(dtoMin)) {
-                            controller.createHuman(dtoMin);
-                        }
                         break;
                     case "count_by_mood": //count_by_mood mood
                         checkCommandArg(command, 1);
@@ -97,20 +87,28 @@ public class CommandExecutor {
                         HumanBeingRequestDTO dto = HumanBeingRequestDTOBuilder.build(reader);
                         controller.createHuman(dto);
                         break;
+                    case "add_if_max": //add_if_max {element}
+                        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(reader);
+                        if (isImpactSpeedMax(dtoMax)) {
+                            controller.createHuman(dtoMax);
+                        }
+                        break;
+                    case "add_if_min": // add_if_min {element}
+                        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(reader);
+                        if (isImpactSpeedMin(dtoMin)) {
+                            controller.createHuman(dtoMin);
+                        }
+                        break;
                     case "help":
-                        checkCommandArg(command, 0);
                         System.out.println(controller.help());
                         break;
                     case "info":
-                        checkCommandArg(command, 0);
                         System.out.println(controller.info());
                         break;
                     case "show":
-                        checkCommandArg(command, 0);
                         controller.getAllHuman().forEach(System.out::println);
                         break;
                     case "clear":
-                        checkCommandArg(command, 0);
                         controller.clear();
                         break;
                     case "save":

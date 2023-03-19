@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to fix args exceptions">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix of remove_by_id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,24 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/code/user_app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/code/user_app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\lab-5-num-125595" />
@@ -139,7 +142,8 @@
       <workItem from="1678966975855" duration="417000" />
       <workItem from="1678985444680" duration="1378000" />
       <workItem from="1679055817343" duration="1425000" />
-      <workItem from="1679152301218" duration="16670000" />
+      <workItem from="1679152301218" duration="16913000" />
+      <workItem from="1679235987708" duration="4891000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed README.md">
       <created>1675978382310</created>
@@ -477,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679181847531</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Small fix of remove_by_id">
+      <created>1679181973481</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1679181973481</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +507,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Refactoring project #2" />
     <MESSAGE value="Changed to session" />
     <MESSAGE value="Removed script2, moved other files" />
     <MESSAGE value="Project refactoring #3" />
@@ -521,6 +531,7 @@
     <MESSAGE value="Fixed all builders" />
     <MESSAGE value="Fixed load/save from file, added default" />
     <MESSAGE value="Attempt to fix args exceptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to fix args exceptions" />
+    <MESSAGE value="Small fix of remove_by_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fix of remove_by_id" />
   </component>
 </project>

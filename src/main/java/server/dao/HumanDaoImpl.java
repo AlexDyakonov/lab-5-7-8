@@ -44,7 +44,9 @@ public class HumanDaoImpl implements HumanDao {
     public Long createHuman(HumanBeingRequestDTO human) {
         return source.addHumanToDatabase(HumanBeingMapper.fromRequestToModel(human));
     }
-
+    public Long createHuman(HumanBeingRequestDTO human, Long id){
+        return source.updateInDatabase(HumanBeingMapper.fromRequestToModel(human), id);
+    }
     @Override
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null){
@@ -60,12 +62,28 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
-        return null;
+
+        HumanBeingResponseDTO responseDTO = null;
+        if (getHumanById(id) == null){
+            System.out.println(unsuccess("Объект с id: " + id + " не был найдефывфын."));
+        }
+
+        for (HumanBeingModel human : source.getDataBase()) {
+            if (human.getId() == id) {
+                source.getDataBase().remove(human);
+            }
+        }
+
+        responseDTO = getHumanById(createHuman(newHuman, id));
+
+        System.out.println(success("Объект с id: " + id + " был обновлен."));
+
+        return updateHuman(newHuman, id);
     }
 
     @Override
     public String info() {
-        return "Класс бд: " + source.getDataBase().getClass() + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
+        return "\n Класс бд: " + source.getDataBase().getClass() + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
     }
 
     //clear : очистить коллекцию
@@ -108,13 +126,13 @@ public class HumanDaoImpl implements HumanDao {
     // add_if_max {element} : добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
-        return null;
+        return createHuman(request);
     }
 
     // add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
-        return null;
+        return createHuman(request);
     }
 
     // count_by_mood mood : вывести количество элементов, значение поля mood которых равно заданному
