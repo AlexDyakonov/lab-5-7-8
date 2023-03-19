@@ -1,6 +1,7 @@
 package server.services.builders;
 
 import server.model.Car;
+import server.services.BuilderType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,12 +34,41 @@ public class CarBuilder {
         }
         return new Car(name, cool);
     }
-
-        public static Car carBuilder(BufferedReader reader) {
-        try {
-            return getCar(reader);
-        } catch (Exception e){
-            return carBuilder(reader);
+    public static Car getCarFromFile(BufferedReader reader) {
+        Car car = new Car();
+        String name = "";
+        boolean cool = false;
+        try  {
+            name = reader.readLine();
+            if (Objects.equals(name, "") || Objects.equals(name, "null")){
+                return null;
+            } else {
+                car.setName(name);
+                String answer = reader.readLine().toLowerCase();
+                if (answer.equals("t") || answer.equals("true") || answer.equals("y")) {
+                    cool = true;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(error("CarBuilder.carBuilder() -> Reading from keyboard error"));
         }
+        return new Car(name, cool);
+    }
+
+        public static Car carBuilder(BufferedReader reader, BuilderType type) {
+        if (type == BuilderType.CMD){
+            try {
+                return getCar(reader);
+            } catch (Exception e){
+                return carBuilder(reader, BuilderType.CMD);
+            }
+        } else {
+            try {
+                return getCarFromFile(reader);
+            } catch (Exception e){
+                return carBuilder(reader, BuilderType.CMD);
+            }
+        }
+
     }
 }

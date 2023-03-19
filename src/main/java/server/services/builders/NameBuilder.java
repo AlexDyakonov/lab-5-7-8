@@ -2,13 +2,13 @@ package server.services.builders;
 
 import server.exception.ApplicationException;
 import server.exception.ValidationException;
+import server.services.BuilderType;
 import server.validation.Validation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.whiteStr;
+import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validate;
 
 public class NameBuilder {
@@ -22,21 +22,22 @@ public class NameBuilder {
         }
     }
 
-    public static String nameBuilder(BufferedReader reader, String message) {
-        try {
-            System.out.println(whiteStr(message));
-            return getName(reader);
-        } catch (ValidationException e) {
-            System.out.println(e.getMessage());
-            return nameBuilder(reader, message);
-        }
-    }
-    public static String nameBuilder(BufferedReader reader) {
-        try {
-            return getName(reader);
-        } catch (ValidationException e) {
-            System.out.println(e.getMessage());
-            return nameBuilder(reader);
+    public static String nameBuilder(BufferedReader reader, String message, BuilderType type) {
+        if (type == BuilderType.CMD){
+            try {
+                System.out.println(whiteStr(message));
+                return getName(reader);
+            } catch (ValidationException e) {
+                System.out.println(e.getMessage());
+                return nameBuilder(reader, message, BuilderType.CMD);
+            }
+        } else {
+            try {
+                return getName(reader);
+            } catch (ValidationException e) {
+                System.out.println(e.getMessage());
+                return nameBuilder(reader, message, BuilderType.CMD);
+            }
         }
     }
 }

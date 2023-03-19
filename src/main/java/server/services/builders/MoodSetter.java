@@ -2,6 +2,7 @@ package server.services.builders;
 
 import server.exception.ValidationException;
 import server.model.Mood;
+import server.services.BuilderType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +14,6 @@ public class MoodSetter {
     public static Mood getMood(BufferedReader reader) {
         int number = 0;
         try {
-            System.out.println(whiteStr("Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE"));
             number = Integer.parseInt(reader.readLine());
         } catch (NumberFormatException e){
             throw new ValidationException(unsuccess("Введите числовые значения."), e);
@@ -28,12 +28,23 @@ public class MoodSetter {
             default: return Mood.RAGE;
         }
     }
-    public static Mood setMood(BufferedReader reader) {
-        try {
-            return getMood(reader);
-        } catch (ValidationException e) {
-            System.out.println(e.getMessage());
-            return setMood(reader);
+    public static Mood setMood(BufferedReader reader, BuilderType type) {
+        if (type == BuilderType.CMD){
+            try {
+                return getMood(reader);
+            } catch (ValidationException e) {
+                System.out.println(e.getMessage());
+                return setMood(reader, BuilderType.CMD);
+            }
+        } else {
+            try {
+                System.out.println(whiteStr("Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE"));
+                return getMood(reader);
+            } catch (ValidationException e) {
+                System.out.println(e.getMessage());
+                return setMood(reader, BuilderType.CMD);
+            }
         }
+
     }
 }

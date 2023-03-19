@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed save bug">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/BuilderType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to fix script executor #1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,14 +147,7 @@
       <workItem from="1678985444680" duration="1378000" />
       <workItem from="1679055817343" duration="1425000" />
       <workItem from="1679152301218" duration="16913000" />
-      <workItem from="1679235987708" duration="6036000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added getter/setter and base constructors">
-      <created>1676023230475</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1676023230475</updated>
+      <workItem from="1679235987708" duration="7608000" />
     </task>
     <task id="LOCAL-00004" summary="Added interfaces for all layers">
       <created>1676035601435</created>
@@ -493,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679246698202</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Attempt to fix script executor #1">
+      <created>1679247613907</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1679247613907</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,8 +511,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Project refactoring #3" />
-    <MESSAGE value="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper" />
     <MESSAGE value="Added database reader" />
     <MESSAGE value="Attempt to parse DateTime" />
     <MESSAGE value="Fixed &quot;Stream closed bug&quot;, when builder work" />
@@ -537,6 +534,8 @@
     <MESSAGE value="Small fix of remove_by_id" />
     <MESSAGE value="Fixed addifmin/max" />
     <MESSAGE value="Fixed save bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed save bug" />
+    <MESSAGE value="Attempt to fix script executor" />
+    <MESSAGE value="Attempt to fix script executor #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt to fix script executor #1" />
   </component>
 </project>

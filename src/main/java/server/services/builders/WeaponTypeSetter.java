@@ -2,6 +2,7 @@ package server.services.builders;
 
 import server.exception.ValidationException;
 import server.model.WeaponType;
+import server.services.BuilderType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +14,6 @@ public class WeaponTypeSetter {
     public static WeaponType getWeaponType(BufferedReader reader){
         int number = 0;
         try {
-            System.out.println(whiteStr("Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT"));
             number = Integer.parseInt(reader.readLine());
         } catch (NumberFormatException e){
             throw new ValidationException(unsuccess("Введите числовые значения."), e);
@@ -28,12 +28,23 @@ public class WeaponTypeSetter {
             default: return WeaponType.SHOTGUN;
         }
     }
-    public static WeaponType setWeaponType(BufferedReader reader) {
-        try {
-            return getWeaponType(reader);
-        } catch (ValidationException e){
-            System.out.println(e.getMessage());
-            return setWeaponType(reader);
+
+    public static WeaponType setWeaponType(BufferedReader reader, BuilderType type) {
+        if (type == BuilderType.CMD){
+            try {
+                System.out.println(whiteStr("Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT"));
+                return getWeaponType(reader);
+            } catch (ValidationException e){
+                System.out.println(e.getMessage());
+                return setWeaponType(reader, BuilderType.CMD);
+            }
+        } else {
+            try {
+                return getWeaponType(reader);
+            } catch (ValidationException e){
+                System.out.println(e.getMessage());
+                return setWeaponType(reader, BuilderType.CMD);
+            }
         }
     }
 }
