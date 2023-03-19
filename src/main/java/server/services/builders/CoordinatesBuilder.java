@@ -2,6 +2,7 @@ package server.services.builders;
 
 import server.exception.ValidationException;
 import server.model.Coordinates;
+import server.services.BuilderType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,12 +28,38 @@ public class CoordinatesBuilder {
         }
         return new Coordinates(x, y);
     }
-    public static Coordinates buildCoordinates(BufferedReader reader) {
-           try {
-               return getCoordinates(reader);
-           } catch (Exception e) {
-               System.out.println(e.getMessage());
-               return buildCoordinates(reader);
-           }
+    public static Coordinates getCoordinatesFromFile(BufferedReader reader){
+        Integer x = null;
+        Double y = null;
+        try {
+            x = Integer.parseInt(reader.readLine());
+            y = Double.parseDouble(reader.readLine());
+            if (y < -897){
+                throw new ValidationException(unsuccess("Y должен быть больше -897"));
+            }
+        } catch (NumberFormatException | IOException | ValidationException e) {
+            System.out.println(error("CoordinatesBuilder.buildCoordinates() -> Reading from file error"));
+            throw new ValidationException("Координаты X, Y должны быть численными", e);
+        }
+        return new Coordinates(x, y);
     }
+    public static Coordinates buildCoordinates(BufferedReader reader, BuilderType type) {
+        if (type == BuilderType.CMD){
+            try {
+                return getCoordinates(reader);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return buildCoordinates(reader, BuilderType.CMD);
+            }
+        } else {
+            try {
+                return getCoordinatesFromFile(reader);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return buildCoordinates(reader, BuilderType.CMD);
+            }
+        }
+
+    }
+
 }
