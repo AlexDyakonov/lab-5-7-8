@@ -32,18 +32,27 @@ public class Validation {
     private static boolean validateCoordinate(Coordinates coordinates) {
         return !(coordinates.getX() != null && coordinates.getY() != null && coordinates.getY() > -897);
     }
-    public static boolean validateFile(File file){
+    public static void validateFileExist(File file){
         if (!Files.exists(file.toPath())){
             throw new FileException("Файл не найден.");
         }
+    }
+
+
+    public static void validateFileRead(File file){
+        validateFileExist(file);
         if (!Files.isReadable(file.toPath())){
             throw new FileException("Файл недоступен для чтения");
         }
+    }
+    public static void validateFileWrite(File file){
+        validateFileExist(file);
         if (Files.isWritable(file.toPath())){
             throw new FileException("Файл недоступен для записи");
         }
-        return true;
     }
+
+
     public static boolean validateUserName(String userName){
         return (userName != null && !userName.trim().equals(""));
     }

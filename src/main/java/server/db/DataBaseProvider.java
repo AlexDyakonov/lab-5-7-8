@@ -4,7 +4,6 @@ import server.exception.FileException;
 import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
-import server.model.dto.HumanBeingRequestDTO;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -13,6 +12,8 @@ import java.util.Set;
 
 import static client.ui.ConsoleColors.GREEN_BRIGHT;
 import static client.ui.ConsoleColors.RESET;
+import static server.validation.Validation.validateFileRead;
+import static server.validation.Validation.validateFileWrite;
 
 public class DataBaseProvider {
     private final Set<HumanBeingModel> dataBase;
@@ -39,6 +40,7 @@ public class DataBaseProvider {
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            validateFileRead(new File(fileName));
             while (reader.ready()) {
                 try {
                     resultSet.add(HumanBeingMapper.fromStringToHumanBeingModel(reader.readLine()));
@@ -47,13 +49,14 @@ public class DataBaseProvider {
                 }
             }
             System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
-        } catch (IOException e) {
-            System.out.println("Ошибка базы данных из *" + fileName + "+");
+        } catch (FileException | IOException e){
+            System.out.println(e.getMessage());
         }
         return resultSet;
     }
 
     public void save(String fileName) {
+        validateFileWrite(new File(fileName));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 //            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
             for (HumanBeingModel model : dataBase) {

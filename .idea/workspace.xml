@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed script executor&#10;TODO: recursion check">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/script2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/script3" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added recursion check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +59,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\code\lab-5-num-125595" />
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
+      <recent name="E:\code\lab-5-num-125595\src" />
+      <recent name="E:\code\lab-5-num-125595" />
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
@@ -145,14 +143,7 @@
       <workItem from="1679055817343" duration="1425000" />
       <workItem from="1679152301218" duration="16913000" />
       <workItem from="1679235987708" duration="9198000" />
-      <workItem from="1679314120520" duration="5950000" />
-    </task>
-    <task id="LOCAL-00008" summary="Fixed name system&#10;Added addElementToCollection and info methods&#10;Added DTO classes">
-      <created>1676241971529</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1676241971529</updated>
+      <workItem from="1679314120520" duration="7182000" />
     </task>
     <task id="LOCAL-00009" summary="Fixed DataBase class, added DataBase interface">
       <created>1676282175591</created>
@@ -490,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679320498012</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added recursion check">
+      <created>1679322910077</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1679322910077</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +507,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed &quot;Stream closed&quot; in Enum set streams" />
     <MESSAGE value="Added Validation methods" />
     <MESSAGE value="Small fixes of models" />
     <MESSAGE value="Added generateNextId method, fixed load and save methods" />
@@ -534,6 +531,7 @@
     <MESSAGE value="Attempt to fix script executor #3" />
     <MESSAGE value="Fixed Update method" />
     <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed script executor&#10;TODO: recursion check" />
+    <MESSAGE value="Added recursion check" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added recursion check" />
   </component>
 </project>
