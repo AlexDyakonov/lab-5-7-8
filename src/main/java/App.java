@@ -11,8 +11,13 @@ public class App {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        String args0 = "~/src/main/resources/database.csv";
-        ConsoleUI session = new ConsoleUI(args0);
-        session.start();
+//        String args0 = "~/src/main/resources/database.csv";
+        try {
+            ConsoleUI session = new ConsoleUI(args[0]);
+            session.start();
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
+        }
+
     }
 }
