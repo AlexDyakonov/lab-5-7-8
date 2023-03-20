@@ -154,7 +154,7 @@ public class CommandExecutor {
         if (file.startsWith("~")) {
             String rootDirectory = new File(file).getAbsolutePath();
             rootDirectory = rootDirectory.replace("~", "");
-            System.out.println(rootDirectory);
+//            System.out.println(rootDirectory);
             file = rootDirectory;
         }
         return file;

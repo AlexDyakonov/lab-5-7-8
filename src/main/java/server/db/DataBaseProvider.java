@@ -7,11 +7,12 @@ import server.model.HumanBeingModel;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import static client.ui.ConsoleColors.GREEN_BRIGHT;
-import static client.ui.ConsoleColors.RESET;
+import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validateFileRead;
 import static server.validation.Validation.validateFileWrite;
 
@@ -39,11 +40,19 @@ public class DataBaseProvider {
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
+        List<Long> idList = new ArrayList<>();
+        String personString;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             validateFileRead(new File(fileName));
             while (reader.ready()) {
                 try {
-                    resultSet.add(HumanBeingMapper.fromStringToHumanBeingModel(reader.readLine()));
+                    personString = reader.readLine();
+                    HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
+                    if (idList.contains(person.getId())){
+                        throw new FileException(error("Найдено два пользователя с одинаковым id. Загружен первый из них."));
+                    }
+                    idList.add(person.getId());
+                    resultSet.add(person);
                 } catch (ValidationException | FileException e){
                     System.out.println(e.getMessage());
                 }
