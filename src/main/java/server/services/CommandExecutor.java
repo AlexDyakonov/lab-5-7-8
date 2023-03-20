@@ -7,10 +7,7 @@ import server.exception.ArgumentException;
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.builders.HumanBeingRequestDTOBuilder;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,7 @@ public class CommandExecutor {
     private final List<String> scriptHistory;
 
     public CommandExecutor(String fileName, List<String> scriptHistory) {
-        this.file = fileName;
+        this.file = tildaResolver(fileName);
         this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
         this.controller = new HumanControllerImpl(file);
         this.history = new HistoryManager(15); // limit history size
@@ -152,5 +149,14 @@ public class CommandExecutor {
 
     private boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return controller.isImpactSpeedMin(dto);
+    }
+    private String tildaResolver(String file) {
+        if (file.startsWith("~")) {
+            String rootDirectory = new File(file).getAbsolutePath();
+            rootDirectory = rootDirectory.replace("~", "");
+            System.out.println(rootDirectory);
+            file = rootDirectory;
+        }
+        return file;
     }
 }

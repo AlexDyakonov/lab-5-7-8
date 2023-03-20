@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added recursion check">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed javadoc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,21 +143,7 @@
       <workItem from="1679055817343" duration="1425000" />
       <workItem from="1679152301218" duration="16913000" />
       <workItem from="1679235987708" duration="9198000" />
-      <workItem from="1679314120520" duration="7182000" />
-    </task>
-    <task id="LOCAL-00009" summary="Fixed DataBase class, added DataBase interface">
-      <created>1676282175591</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1676282175591</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added show command">
-      <created>1676295125045</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1676295125045</updated>
+      <workItem from="1679314120520" duration="9222000" />
     </task>
     <task id="LOCAL-00011" summary="Added clear command">
       <created>1676389200656</created>
@@ -488,7 +474,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679322910077</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Added file exceptions (checking exist, read, write)">
+      <created>1679324295857</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1679324295857</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Removed javadoc">
+      <created>1679324337891</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1679324337891</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,8 +507,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added Validation methods" />
-    <MESSAGE value="Small fixes of models" />
     <MESSAGE value="Added generateNextId method, fixed load and save methods" />
     <MESSAGE value="Small fix CommandExecutor.java" />
     <MESSAGE value="Car class changed" />
@@ -532,6 +530,8 @@
     <MESSAGE value="Fixed Update method" />
     <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
     <MESSAGE value="Added recursion check" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added recursion check" />
+    <MESSAGE value="Added file exceptions (checking exist, read, write)" />
+    <MESSAGE value="Removed javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed javadoc" />
   </component>
 </project>
