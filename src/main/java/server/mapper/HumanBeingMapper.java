@@ -7,8 +7,17 @@ import server.model.dto.HumanBeingResponseDTO;
 
 import static server.validation.Parser.*;
 
+/**
+ * The type Human being mapper.
+ */
 public class HumanBeingMapper {
 
+    /**
+     * From model to response human being response dto.
+     *
+     * @param model the model
+     * @return the human being response dto
+     */
     public static HumanBeingResponseDTO fromModelToResponse(HumanBeingModel model) {
         HumanBeingResponseDTO responseDTO = new HumanBeingResponseDTO();
         responseDTO.setId(model.getId());
@@ -25,6 +34,12 @@ public class HumanBeingMapper {
         return responseDTO;
     }
 
+    /**
+     * From request to model human being model.
+     *
+     * @param dto the dto
+     * @return the human being model
+     */
     public static HumanBeingModel fromRequestToModel(HumanBeingRequestDTO dto) {
         HumanBeingModel model = new HumanBeingModel();
         model.setName(dto.getName());
@@ -39,10 +54,22 @@ public class HumanBeingMapper {
         return model;
     }
 
+    /**
+     * From string to request human being request dto.
+     *
+     * @param line the line
+     * @return the human being request dto
+     */
     public static HumanBeingRequestDTO fromStringToRequest(String line) {
         return new HumanBeingRequestDTO();
     }
 
+    /**
+     * From string to human being model human being model.
+     *
+     * @param obj the obj
+     * @return the human being model
+     */
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
         String[] array = obj.split(",");
         if (array.length != 11){
@@ -63,6 +90,12 @@ public class HumanBeingMapper {
         return resultModel;
     }
 
+    /**
+     * From human being model to string line string.
+     *
+     * @param model the model
+     * @return the string
+     */
     public static String fromHumanBeingModelToStringLine(HumanBeingModel model) {
         StringBuilder sb = new StringBuilder();
         sb.append(model.getId());

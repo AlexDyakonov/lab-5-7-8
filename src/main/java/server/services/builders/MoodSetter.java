@@ -10,7 +10,16 @@ import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
 
+/**
+ * The type Mood setter.
+ */
 public class MoodSetter {
+    /**
+     * Gets mood.
+     *
+     * @param reader the reader
+     * @return the mood
+     */
     public static Mood getMood(BufferedReader reader) {
         int number = 0;
         try {
@@ -28,6 +37,15 @@ public class MoodSetter {
             default: return Mood.RAGE;
         }
     }
+
+    /**
+     * Sets mood.
+     *
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param type       the type
+     * @return the mood
+     */
     public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {

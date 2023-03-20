@@ -10,7 +10,18 @@ import static server.services.builders.ImpactSpeedBuilder.impactSpeedBuilder;
 import static server.services.builders.NameBuilder.nameBuilder;
 
 
+/**
+ * The type Human being request dto builder.
+ */
 public class HumanBeingRequestDTOBuilder {
+    /**
+     * Build human being request dto.
+     *
+     * @param cmdreader   the cmdreader
+     * @param filereader  the filereader
+     * @param builderType the builder type
+     * @return the human being request dto
+     */
     public static HumanBeingRequestDTO build(BufferedReader cmdreader, BufferedReader filereader, BuilderType builderType) {
         HumanBeingRequestDTO dto = new HumanBeingRequestDTO();
 

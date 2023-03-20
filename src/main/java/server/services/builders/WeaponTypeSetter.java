@@ -10,7 +10,16 @@ import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
 
+/**
+ * The type Weapon type setter.
+ */
 public class WeaponTypeSetter {
+    /**
+     * Get weapon type weapon type.
+     *
+     * @param reader the reader
+     * @return the weapon type
+     */
     public static WeaponType getWeaponType(BufferedReader reader){
         int number = 0;
         try {
@@ -29,6 +38,14 @@ public class WeaponTypeSetter {
         }
     }
 
+    /**
+     * Sets weapon type.
+     *
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param type       the type
+     * @return the weapon type
+     */
     public static WeaponType setWeaponType(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {

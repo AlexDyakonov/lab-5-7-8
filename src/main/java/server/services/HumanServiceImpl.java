@@ -9,10 +9,18 @@ import server.model.dto.HumanBeingResponseDTO;
 
 import java.util.List;
 
+/**
+ * The type Human service.
+ */
 public class HumanServiceImpl implements HumanService {
 
     private final HumanDao humanDao;
 
+    /**
+     * Instantiates a new Human service.
+     *
+     * @param fileName the file name
+     */
     public HumanServiceImpl(String fileName) {
         this.humanDao = new HumanDaoImpl(fileName);
     }

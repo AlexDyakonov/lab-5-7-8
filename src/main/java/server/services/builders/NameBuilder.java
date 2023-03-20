@@ -11,7 +11,16 @@ import java.io.IOException;
 import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validate;
 
+/**
+ * The type Name builder.
+ */
 public class NameBuilder {
+    /**
+     * Get name string.
+     *
+     * @param reader the reader
+     * @return the string
+     */
     public static String getName(BufferedReader reader){
         try {
             String name = reader.readLine();
@@ -21,6 +30,16 @@ public class NameBuilder {
             throw new ApplicationException(error("Ошибка BufferedReader"));
         }
     }
+
+    /**
+     * Name builder string.
+     *
+     * @param reader1 the reader 1
+     * @param reader2 the reader 2
+     * @param message the message
+     * @param type    the type
+     * @return the string
+     */
     public static String nameBuilder(BufferedReader reader1, BufferedReader reader2, String message, BuilderType type) {
         if (type == BuilderType.CMD){
             try {

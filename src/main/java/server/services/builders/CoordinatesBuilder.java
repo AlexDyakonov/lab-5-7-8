@@ -10,7 +10,16 @@ import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
 
+/**
+ * The type Coordinates builder.
+ */
 public class CoordinatesBuilder {
+    /**
+     * Get coordinates coordinates.
+     *
+     * @param reader the reader
+     * @return the coordinates
+     */
     public static Coordinates getCoordinates(BufferedReader reader){
         Integer x = null;
         Double y = null;
@@ -28,6 +37,13 @@ public class CoordinatesBuilder {
         }
         return new Coordinates(x, y);
     }
+
+    /**
+     * Get coordinates from file coordinates.
+     *
+     * @param reader the reader
+     * @return the coordinates
+     */
     public static Coordinates getCoordinatesFromFile(BufferedReader reader){
         Integer x = null;
         Double y = null;
@@ -43,6 +59,15 @@ public class CoordinatesBuilder {
         }
         return new Coordinates(x, y);
     }
+
+    /**
+     * Build coordinates coordinates.
+     *
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param type       the type
+     * @return the coordinates
+     */
     public static Coordinates buildCoordinates(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {

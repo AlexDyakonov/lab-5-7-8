@@ -9,7 +9,16 @@ import java.io.IOException;
 
 import static client.ui.ConsoleColors.*;
 
+/**
+ * The type Impact speed builder.
+ */
 public class ImpactSpeedBuilder {
+    /**
+     * Get impact speed float.
+     *
+     * @param reader the reader
+     * @return the float
+     */
     public static float getImpactSpeed(BufferedReader reader){
         try {
             return Float.parseFloat(reader.readLine());
@@ -19,6 +28,15 @@ public class ImpactSpeedBuilder {
             throw new ApplicationException(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения из клавиатуры"));
         }
     }
+
+    /**
+     * Impact speed builder float.
+     *
+     * @param cmdReader  the cmd reader
+     * @param fileReader the file reader
+     * @param type       the type
+     * @return the float
+     */
     public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type){
         if (type == BuilderType.CMD){
             try {

@@ -10,7 +10,16 @@ import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.whiteStr;
 import static server.validation.Parser.stringToBoolean;
 
+/**
+ * The type Boolean builder.
+ */
 public class BooleanBuilder {
+    /**
+     * Get bool boolean.
+     *
+     * @param reader the reader
+     * @return the boolean
+     */
     public static boolean getBool(BufferedReader reader){
         boolean response = false;
         String request = "";
@@ -22,6 +31,16 @@ public class BooleanBuilder {
         }
         return response;
     }
+
+    /**
+     * Bool builder boolean.
+     *
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param message    the message
+     * @param type       the type
+     * @return the boolean
+     */
     public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String message, BuilderType type){
         if (type == BuilderType.CMD){
             try {

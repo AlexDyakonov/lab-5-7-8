@@ -16,10 +16,18 @@ import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validateFileRead;
 import static server.validation.Validation.validateFileWrite;
 
+/**
+ * The type Data base provider.
+ */
 public class DataBaseProvider {
     private final Set<HumanBeingModel> dataBase;
     private final LocalDateTime creationDate;
 
+    /**
+     * Instantiates a new Data base provider.
+     *
+     * @param fileName the file name
+     */
     public DataBaseProvider(String fileName) {
         this.dataBase = loadDataBase(fileName);
         this.creationDate = LocalDateTime.now();
@@ -31,6 +39,12 @@ public class DataBaseProvider {
                 : 1;
     }
 
+    /**
+     * Add human to database long.
+     *
+     * @param model the model
+     * @return the long
+     */
     public Long addHumanToDatabase(HumanBeingModel model) {
         Long id = generateNextId();
         model.setId(id);
@@ -68,6 +82,11 @@ public class DataBaseProvider {
         return resultSet;
     }
 
+    /**
+     * Save.
+     *
+     * @param fileName the file name
+     */
     public void save(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 //            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
@@ -81,10 +100,20 @@ public class DataBaseProvider {
         }
     }
 
+    /**
+     * Gets data base.
+     *
+     * @return the data base
+     */
     public Set<HumanBeingModel> getDataBase() {
         return dataBase;
     }
 
+    /**
+     * Gets creation date.
+     *
+     * @return the creation date
+     */
     public LocalDateTime getCreationDate() {
         return creationDate;
     }

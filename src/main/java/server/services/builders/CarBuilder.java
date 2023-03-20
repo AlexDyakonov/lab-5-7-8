@@ -11,7 +11,16 @@ import java.util.Objects;
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.whiteStr;
 
+/**
+ * The type Car builder.
+ */
 public class CarBuilder {
+    /**
+     * Gets car.
+     *
+     * @param reader the reader
+     * @return the car
+     */
     public static Car getCar(BufferedReader reader) {
         Car car = new Car();
         String name = "";
@@ -34,6 +43,13 @@ public class CarBuilder {
         }
         return new Car(name, cool);
     }
+
+    /**
+     * Gets car from file.
+     *
+     * @param reader the reader
+     * @return the car from file
+     */
     public static Car getCarFromFile(BufferedReader reader) {
         Car car = new Car();
         String name = "";
@@ -55,7 +71,15 @@ public class CarBuilder {
         return new Car(name, cool);
     }
 
-        public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
+    /**
+     * Car builder car.
+     *
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param type       the type
+     * @return the car
+     */
+    public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
                 return getCar(cmdreader);

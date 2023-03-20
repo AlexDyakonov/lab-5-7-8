@@ -16,10 +16,18 @@ import java.util.stream.Collectors;
 import static client.ui.ConsoleColors.success;
 import static client.ui.ConsoleColors.unsuccess;
 
+/**
+ * The type Human dao.
+ */
 public class HumanDaoImpl implements HumanDao {
 
     private final DataBaseProvider source;
 
+    /**
+     * Instantiates a new Human dao.
+     *
+     * @param fileName the file name
+     */
     public HumanDaoImpl(String fileName) {
         this.source = new DataBaseProvider(fileName);
     }

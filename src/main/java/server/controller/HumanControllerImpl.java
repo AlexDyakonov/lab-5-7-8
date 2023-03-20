@@ -15,10 +15,18 @@ import java.util.List;
 import static client.ui.ConsoleColors.error;
 import static server.validation.Validation.validateFileWrite;
 
+/**
+ * The type Human controller.
+ */
 public class HumanControllerImpl implements HumanController {
 
     private final HumanService service;
 
+    /**
+     * Instantiates a new Human controller.
+     *
+     * @param fileName the file name
+     */
     public HumanControllerImpl(String fileName) {
         this.service = new HumanServiceImpl(fileName);
     }

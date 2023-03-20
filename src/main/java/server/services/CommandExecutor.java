@@ -13,6 +13,9 @@ import java.util.List;
 
 import static client.ui.ConsoleColors.*;
 
+/**
+ * The type Command executor.
+ */
 public class CommandExecutor {
 
     private final HumanController controller;
@@ -21,6 +24,12 @@ public class CommandExecutor {
     private final BufferedReader reader;
     private final List<String> scriptHistory;
 
+    /**
+     * Instantiates a new Command executor.
+     *
+     * @param fileName      the file name
+     * @param scriptHistory the script history
+     */
     public CommandExecutor(String fileName, List<String> scriptHistory) {
         this.file = tildaResolver(fileName);
         this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
@@ -60,6 +69,14 @@ public class CommandExecutor {
         }
     }
 
+    /**
+     * Execute command.
+     *
+     * @param command     the command
+     * @param reader      the reader
+     * @param reader2     the reader 2
+     * @param builderType the builder type
+     */
     public void executeCommand(String command, BufferedReader reader, BufferedReader reader2, BuilderType builderType) {
         long id;
         try {
