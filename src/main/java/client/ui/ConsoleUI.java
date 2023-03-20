@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-/**
- * The type Console client.ui.
- */
 public class ConsoleUI {
 
     private final String file;
