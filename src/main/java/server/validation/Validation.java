@@ -34,7 +34,7 @@ public class Validation {
     }
     public static void validateFileExist(File file){
         if (!Files.exists(file.toPath())){
-            throw new FileException("Файл не найден.");
+            throw new FileException("Файл не найден. Будет создан файл database.csv. Чтобы использовать другой запустите программу еще раз.");
         }
     }
 
@@ -42,13 +42,13 @@ public class Validation {
     public static void validateFileRead(File file){
         validateFileExist(file);
         if (!Files.isReadable(file.toPath())){
-            throw new FileException("Файл недоступен для чтения");
+            throw new FileException("Файл недоступен для чтения. Будет создан файл database.csv. Чтобы использовать другой запустите программу еще раз.");
         }
     }
     public static void validateFileWrite(File file){
         validateFileExist(file);
-        if (Files.isWritable(file.toPath())){
-            throw new FileException("Файл недоступен для записи");
+        if (!Files.isWritable(file.toPath())){
+            throw new FileException("Файл недоступен для записи. Будет создан файл database.csv. Чтобы использовать другой запустите программу еще раз.");
         }
     }
 

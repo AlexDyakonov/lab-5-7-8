@@ -118,19 +118,15 @@ public class CommandExecutor {
                         controller.clear();
                         break;
                     case "save":
-                        checkCommandArg(command, 0);
                         controller.save(file);
                         break;
                     case "history":
-                        checkCommandArg(command, 0);
                         history.getHistoryListOfCommands().forEach(System.out::println);
                         break;
                     case "max_by_impact_speed":
-                        checkCommandArg(command, 0);
                         System.out.println(controller.max_by_impact_speed());
                         break;
                     case "print_ascending":
-                        checkCommandArg(command, 0);
                         controller.print_ascending().forEach(System.out::println);
                         System.out.println(success("Было успшно выведено " + controller.getAllHuman().size() + "элементов"));
                         break;

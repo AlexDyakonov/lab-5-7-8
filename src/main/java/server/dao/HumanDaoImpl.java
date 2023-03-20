@@ -1,6 +1,7 @@
 package server.dao;
 
 import server.db.DataBaseProvider;
+import server.exception.FileException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
 import server.model.Mood;
@@ -92,8 +93,11 @@ public class HumanDaoImpl implements HumanDao {
     // save : сохранить коллекцию в файл
     @Override
     public void save(String fileName) {
-        source.save(fileName);
-        System.out.println(success("Было сохранено " + source.getDataBase().size() + " элементов."));
+        try {
+            source.save(fileName);
+        } catch (FileException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     // max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным

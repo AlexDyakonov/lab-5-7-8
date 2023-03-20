@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.exception.FileException;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
@@ -8,7 +9,11 @@ import server.services.HumanService;
 import server.services.HumanServiceImpl;
 import server.validation.Validation;
 
+import java.io.File;
 import java.util.List;
+
+import static client.ui.ConsoleColors.error;
+import static server.validation.Validation.validateFileWrite;
 
 public class HumanControllerImpl implements HumanController {
 
@@ -76,7 +81,12 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public void save(String fileName) {
-        service.save(fileName);
+        try {
+            validateFileWrite(new File(fileName));
+            service.save(fileName);
+        } catch (FileException e){
+            System.out.println(error(e.getMessage()));
+        }
     }
 
     @Override

@@ -42,8 +42,12 @@ public class DataBaseProvider {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         List<Long> idList = new ArrayList<>();
         String personString;
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try {
             validateFileRead(new File(fileName));
+        } catch (FileException e){
+            System.out.println(error(e.getMessage()));
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while (reader.ready()) {
                 try {
                     personString = reader.readLine();
@@ -58,20 +62,20 @@ public class DataBaseProvider {
                 }
             }
             System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
-        } catch (FileException | IOException e){
+        } catch (IOException e){
             System.out.println(e.getMessage());
         }
         return resultSet;
     }
 
     public void save(String fileName) {
-        validateFileWrite(new File(fileName));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 //            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
             for (HumanBeingModel model : dataBase) {
                 writer.write(HumanBeingMapper.fromHumanBeingModelToStringLine(model));
                 writer.write(System.lineSeparator());
             }
+            System.out.println(success("Было сохранено " + dataBase.size() + " элементов."));
         } catch (IOException e) {
             System.out.println("Ошибка сохранения в *" + fileName +"*");
         }
