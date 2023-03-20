@@ -4,7 +4,6 @@ import server.services.BuilderType;
 import server.services.CommandExecutor;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
@@ -19,7 +18,7 @@ public class ConsoleUI {
 
     public ConsoleUI(String fileName) {
         this.file = fileName;
-        this.executor = new CommandExecutor(fileName);
+        this.executor = new CommandExecutor(fileName, null);
     }
 
     public void start() {

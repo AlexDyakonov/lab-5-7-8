@@ -2,6 +2,7 @@ package server.services;
 
 import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
+import server.exception.ApplicationException;
 import server.exception.ArgumentException;
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.builders.HumanBeingRequestDTOBuilder;
@@ -10,9 +11,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
-import static client.ui.ConsoleColors.success;
-import static client.ui.ConsoleColors.unsuccess;
+import static client.ui.ConsoleColors.*;
 
 public class CommandExecutor {
 
@@ -20,9 +22,11 @@ public class CommandExecutor {
     private final HistoryManager history;
     private final String file;
     private final BufferedReader reader;
+    private final List<String> scriptHistory;
 
-    public CommandExecutor(String fileName) {
+    public CommandExecutor(String fileName, List<String> scriptHistory) {
         this.file = fileName;
+        this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
         this.controller = new HumanControllerImpl(file);
         this.history = new HistoryManager(15); // limit history size
         this.reader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,18 +38,24 @@ public class CommandExecutor {
             throw new ArgumentException("Данная команда вызывается без агрументов");
         }
         if (commandArr.length - 1 < numOfArgs) {
-            throw new ArgumentException(
-                    "Количество аргументов в данной команде равно " + numOfArgs);
+            throw new ArgumentException("Количество аргументов в данной команде равно " + numOfArgs);
         }
     }
-    //todo
     private void executeScript(String scriptName, BufferedReader reader) {
+        if (scriptHistory.contains(scriptName)){
+            throw new ApplicationException(error("Обнаружена рекурсия"));
+        }
+
+        scriptHistory.add(scriptName);
         String command;
-        try (BufferedReader bf = new BufferedReader(new FileReader(scriptName))) {
-            while (bf.ready()) {
-                command = bf.readLine();
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(scriptName))) {
+            while (fileReader.ready()) {
+                command = fileReader.readLine();
                 if (!command.equals("execute_script")) {
-                    executeCommand(command, reader, bf, BuilderType.FILE);
+                    executeCommand(command, reader, fileReader, BuilderType.FILE);
+                } else {
+                    String[] execute = command.split(" ");
+                    executeScript(execute[1], reader);
                 }
             }
         } catch (IOException e) {
