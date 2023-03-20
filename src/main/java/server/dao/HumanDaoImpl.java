@@ -44,9 +44,7 @@ public class HumanDaoImpl implements HumanDao {
     public Long createHuman(HumanBeingRequestDTO human) {
         return source.addHumanToDatabase(HumanBeingMapper.fromRequestToModel(human));
     }
-    public Long createHuman(HumanBeingRequestDTO human, Long id){
-        return source.updateInDatabase(HumanBeingMapper.fromRequestToModel(human), id);
-    }
+
     @Override
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null){
@@ -62,23 +60,20 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
-
-        HumanBeingResponseDTO responseDTO = null;
         if (getHumanById(id) == null){
-            System.out.println(unsuccess("Объект с id: " + id + " не был найдефывфын."));
+            System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
         }
-
         for (HumanBeingModel human : source.getDataBase()) {
             if (human.getId() == id) {
-                source.getDataBase().remove(human);
+                human.setId(id);
+                human.setName(newHuman.getName());
+                return HumanBeingMapper.fromModelToResponse(human);
             }
         }
 
-        responseDTO = getHumanById(createHuman(newHuman, id));
-
         System.out.println(success("Объект с id: " + id + " был обновлен."));
 
-        return updateHuman(newHuman, id);
+        return null;
     }
 
     @Override
