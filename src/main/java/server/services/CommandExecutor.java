@@ -4,6 +4,7 @@ import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
 import server.exception.ApplicationException;
 import server.exception.ArgumentException;
+import server.exception.CommandException;
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.builders.HumanBeingRequestDTOBuilder;
 
@@ -80,6 +81,7 @@ public class CommandExecutor {
     public void executeCommand(String command, BufferedReader reader, BufferedReader reader2, BuilderType builderType) {
         long id;
         try {
+            System.out.println(command);
             String[] compositeCommand = command.split(" ");
             history.addCommandToHistory(compositeCommand[0]);
             if (compositeCommand.length > 1) {

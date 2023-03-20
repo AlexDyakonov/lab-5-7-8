@@ -1,5 +1,6 @@
 package client.ui;
 
+import server.exception.CommandException;
 import server.services.BuilderType;
 import server.services.CommandExecutor;
 
@@ -7,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
+
+import static client.ui.ConsoleColors.error;
 
 /**
  * The type Console ui.
@@ -34,7 +37,7 @@ public class ConsoleUI {
         String command;
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            while (!Objects.equals(command = reader.readLine(), "exit")) {
+            while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
                 executor.executeCommand(command, reader, null, BuilderType.CMD);
             }
         } catch (IOException e) {
