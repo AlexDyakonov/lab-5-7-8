@@ -4,6 +4,7 @@ import server.services.BuilderType;
 import server.services.CommandExecutor;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
@@ -27,7 +28,7 @@ public class ConsoleUI {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             while (!Objects.equals(command = reader.readLine(), "exit")) {
-                executor.executeCommand(command, reader, BuilderType.CMD);
+                executor.executeCommand(command, reader, null, BuilderType.CMD);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -55,18 +55,18 @@ public class CarBuilder {
         return new Car(name, cool);
     }
 
-        public static Car carBuilder(BufferedReader reader, BuilderType type) {
+        public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
-                return getCar(reader);
+                return getCar(cmdreader);
             } catch (Exception e){
-                return carBuilder(reader, BuilderType.CMD);
+                return carBuilder(cmdreader, filereader, BuilderType.CMD);
             }
         } else {
             try {
-                return getCarFromFile(reader);
+                return getCarFromFile(filereader);
             } catch (Exception e){
-                return carBuilder(reader, BuilderType.CMD);
+                return carBuilder(cmdreader, filereader, BuilderType.CMD);
             }
         }
 

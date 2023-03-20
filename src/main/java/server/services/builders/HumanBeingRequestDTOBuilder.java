@@ -11,22 +11,22 @@ import static server.services.builders.NameBuilder.nameBuilder;
 
 
 public class HumanBeingRequestDTOBuilder {
-    public static HumanBeingRequestDTO build(BufferedReader reader, BuilderType builderType) {
+    public static HumanBeingRequestDTO build(BufferedReader cmdreader, BufferedReader filereader, BuilderType builderType) {
         HumanBeingRequestDTO dto = new HumanBeingRequestDTO();
 
-            dto.setName(nameBuilder(reader, "Введите имя: ", builderType));
-            dto.setCoordinates(CoordinatesBuilder.buildCoordinates(reader, builderType));
+            dto.setName(nameBuilder(cmdreader, filereader,"Введите имя: ", builderType));
+            dto.setCoordinates(CoordinatesBuilder.buildCoordinates(cmdreader, filereader, builderType));
 
-            dto.setRealHero(boolBuilder(reader, "Это реальный герой? (true/t/y, default: false) ", builderType));
-            dto.setHasToothpick(boolBuilder(reader, "У него есть зубочистка? (true/t/y, default: false) ", builderType));
+            dto.setRealHero(boolBuilder(cmdreader, filereader,"Это реальный герой? (true/t/y, default: false) ", builderType));
+            dto.setHasToothpick(boolBuilder(cmdreader, filereader,"У него есть зубочистка? (true/t/y, default: false) ", builderType));
 
-            dto.setImpactSpeed(impactSpeedBuilder(reader, builderType));
-            dto.setSoundtrackName(nameBuilder(reader, "Введите название саундтрека: ", builderType));
+            dto.setImpactSpeed(impactSpeedBuilder(cmdreader, filereader, builderType));
+            dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "Введите название саундтрека: ", builderType));
 
-            dto.setWeaponType(WeaponTypeSetter.setWeaponType(reader, builderType));
-            dto.setMood(MoodSetter.setMood(reader, builderType));
+            dto.setWeaponType(WeaponTypeSetter.setWeaponType(cmdreader, filereader, builderType));
+            dto.setMood(MoodSetter.setMood(cmdreader, filereader, builderType));
 
-            dto.setCar(CarBuilder.carBuilder(reader, builderType));
+            dto.setCar(CarBuilder.carBuilder(cmdreader, filereader, builderType));
 
             return dto;
     }

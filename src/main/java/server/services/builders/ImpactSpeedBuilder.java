@@ -19,21 +19,21 @@ public class ImpactSpeedBuilder {
             throw new ApplicationException(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения из клавиатуры"));
         }
     }
-    public static float impactSpeedBuilder(BufferedReader reader, BuilderType type){
+    public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type){
         if (type == BuilderType.CMD){
             try {
                 System.out.println(whiteStr("Введите ImpactSpeed (ex: 4.61): "));
-                return getImpactSpeed(reader);
+                return getImpactSpeed(cmdReader);
             } catch (ValidationException | ApplicationException e) {
                 System.out.println(e.getMessage());
-                return impactSpeedBuilder(reader, BuilderType.CMD);
+                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD);
             }
         } else {
             try {
-                return getImpactSpeed(reader);
+                return getImpactSpeed(fileReader);
             } catch (ValidationException | ApplicationException e) {
                 System.out.println(e.getMessage());
-                return impactSpeedBuilder(reader, BuilderType.CMD);
+                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD);
             }
         }
     }

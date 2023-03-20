@@ -28,21 +28,21 @@ public class MoodSetter {
             default: return Mood.RAGE;
         }
     }
-    public static Mood setMood(BufferedReader reader, BuilderType type) {
+    public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
                 System.out.println(whiteStr("Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE"));
-                return getMood(reader);
+                return getMood(cmdreader);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return setMood(reader, BuilderType.CMD);
+                return setMood(cmdreader, filereader, BuilderType.CMD);
             }
         } else {
             try {
-                return getMood(reader);
+                return getMood(filereader);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return setMood(reader, BuilderType.CMD);
+                return setMood(cmdreader, filereader, BuilderType.CMD);
             }
         }
 

@@ -43,20 +43,20 @@ public class CoordinatesBuilder {
         }
         return new Coordinates(x, y);
     }
-    public static Coordinates buildCoordinates(BufferedReader reader, BuilderType type) {
+    public static Coordinates buildCoordinates(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
-                return getCoordinates(reader);
+                return getCoordinates(cmdreader);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                return buildCoordinates(reader, BuilderType.CMD);
+                return buildCoordinates(cmdreader, filereader, BuilderType.CMD);
             }
         } else {
             try {
-                return getCoordinatesFromFile(reader);
+                return getCoordinatesFromFile(filereader);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                return buildCoordinates(reader, BuilderType.CMD);
+                return buildCoordinates(cmdreader, filereader, BuilderType.CMD);
             }
         }
 

@@ -22,21 +22,21 @@ public class BooleanBuilder {
         }
         return response;
     }
-    public static boolean boolBuilder(BufferedReader reader, String message, BuilderType type){
+    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String message, BuilderType type){
         if (type == BuilderType.CMD){
             try {
                 System.out.println(whiteStr(message));
-                return getBool(reader);
+                return getBool(cmdreader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());
-                return boolBuilder(reader, message, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, message, BuilderType.CMD);
             }
         } else {
             try {
-                return getBool(reader);
+                return getBool(filereader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());
-                return boolBuilder(reader, message, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, message, BuilderType.CMD);
             }
         }
     }

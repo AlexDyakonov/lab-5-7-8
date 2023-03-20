@@ -21,22 +21,21 @@ public class NameBuilder {
             throw new ApplicationException(error("Ошибка BufferedReader"));
         }
     }
-
-    public static String nameBuilder(BufferedReader reader, String message, BuilderType type) {
+    public static String nameBuilder(BufferedReader reader1, BufferedReader reader2, String message, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
                 System.out.println(whiteStr(message));
-                return getName(reader);
+                return getName(reader1);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return nameBuilder(reader, message, BuilderType.CMD);
+                return nameBuilder(reader1, reader2, message, BuilderType.CMD);
             }
         } else {
             try {
-                return getName(reader);
+                return getName(reader2);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return nameBuilder(reader, message, BuilderType.CMD);
+                return nameBuilder(reader1, reader2, message, BuilderType.CMD);
             }
         }
     }

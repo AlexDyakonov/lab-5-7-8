@@ -1,6 +1,6 @@
 help
 add
-man
+
 1
 2
 t
@@ -9,5 +9,7 @@ f
 ost
 1
 2
+history
+history
 history
 //execute_script E:\code\lab-5-num-125595\src\main\resources\script

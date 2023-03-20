@@ -29,21 +29,21 @@ public class WeaponTypeSetter {
         }
     }
 
-    public static WeaponType setWeaponType(BufferedReader reader, BuilderType type) {
+    public static WeaponType setWeaponType(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
                 System.out.println(whiteStr("Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT"));
-                return getWeaponType(reader);
+                return getWeaponType(cmdreader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());
-                return setWeaponType(reader, BuilderType.CMD);
+                return setWeaponType(cmdreader, filereader, BuilderType.CMD);
             }
         } else {
             try {
-                return getWeaponType(reader);
+                return getWeaponType(filereader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());
-                return setWeaponType(reader, BuilderType.CMD);
+                return setWeaponType(cmdreader, filereader, BuilderType.CMD);
             }
         }
     }
