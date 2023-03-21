@@ -18,6 +18,5 @@ public class App {
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
         }
-
     }
 }

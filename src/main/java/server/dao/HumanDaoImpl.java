@@ -76,12 +76,17 @@ public class HumanDaoImpl implements HumanDao {
             if (human.getId() == id) {
                 human.setId(id);
                 human.setName(newHuman.getName());
+                human.setCoordinates(newHuman.getCoordinates());
+                human.setHasToothpick(newHuman.getHasToothpick());
+                human.setRealHero(newHuman.getRealHero());
+                human.setImpactSpeed(newHuman.getImpactSpeed());
+                human.setMood(newHuman.getMood());
+                human.setWeaponType(newHuman.getWeaponType());
+                human.setCar(newHuman.getCar());
+                System.out.println(success("Объект с id: " + id + " был обновлен."));
                 return HumanBeingMapper.fromModelToResponse(human);
             }
         }
-
-        System.out.println(success("Объект с id: " + id + " был обновлен."));
-
         return null;
     }
 
