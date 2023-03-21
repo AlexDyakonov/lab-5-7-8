@@ -99,6 +99,7 @@ public class CommandExecutor {
                         break;
                     case "execute_script": // execute_script file_name
                         executeScript(compositeCommand[1], reader);
+                        scriptHistory.clear();
                         break;
                     case "count_by_mood": //count_by_mood mood
                         checkCommandArg(command, 1);
