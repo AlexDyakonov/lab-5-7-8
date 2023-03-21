@@ -130,7 +130,7 @@ public class HumanDaoImpl implements HumanDao {
     // print_ascending : вывести элементы коллекции в порядке возрастания
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
-        List<HumanBeingResponseDTO> list = source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).sorted().toList();
+        List<HumanBeingResponseDTO> list = new java.util.ArrayList<>(source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).sorted().toList());
         Collections.reverse(list);
         return list;
     }

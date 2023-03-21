@@ -10,7 +10,7 @@ import java.time.ZonedDateTime;
 /**
  * The type Human being response dto.
  */
-public class HumanBeingResponseDTO {
+public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     private Long id;
     private String name;
     private Coordinates coordinates;
@@ -269,5 +269,10 @@ public class HumanBeingResponseDTO {
                 "   mood \033[0m = " + mood + "\n \033[0;32m" +
                 "   car \033[0m = " + car + "\n" +
                 '}';
+    }
+
+    @Override
+    public int compareTo(HumanBeingResponseDTO o) {
+        return (int) (impactSpeed - o.impactSpeed);
     }
 }
