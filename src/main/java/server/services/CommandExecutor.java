@@ -81,7 +81,6 @@ public class CommandExecutor {
     public void executeCommand(String command, BufferedReader reader, BufferedReader reader2, BuilderType builderType) {
         long id;
         try {
-            System.out.println(command);
             String[] compositeCommand = command.split(" ");
             history.addCommandToHistory(compositeCommand[0]);
             if (compositeCommand.length > 1) {
