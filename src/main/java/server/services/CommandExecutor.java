@@ -95,7 +95,6 @@ public class CommandExecutor {
                     case "remove_by_id": // remove_by_id id
                         id = Long.parseLong(compositeCommand[1]);
                         controller.deleteHumanById(id);
-                        System.out.println(success("Объект с id: " + id + " был удален."));
                         break;
                     case "execute_script": // execute_script file_name
                         executeScript(compositeCommand[1], reader);
@@ -104,6 +103,9 @@ public class CommandExecutor {
                     case "count_by_mood": //count_by_mood mood
                         checkCommandArg(command, 1);
                         System.out.println(controller.countByMood(compositeCommand[1]));
+                        break;
+                    default:
+                        System.out.println("Команда не распознана.");
                         break;
                 }
             } else {

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to add abstract Asker">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix of recursion detection.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script2" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

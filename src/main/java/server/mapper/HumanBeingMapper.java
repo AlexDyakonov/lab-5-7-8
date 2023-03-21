@@ -77,19 +77,32 @@ public class HumanBeingMapper {
         }
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(Long.parseLong(array[0]));
-        resultModel.setName(array[1]);
+        resultModel.setName(csvToString(array[1]));
         resultModel.setCoordinates(Coordinates.fromString(array[2]));
         resultModel.setCreationDate(stringToDateTime(array[3]));
         resultModel.setRealHero(stringToBoolean(array[4]));
         resultModel.setHasToothpick(stringToBoolean(array[5]));
         resultModel.setImpactSpeed(Float.parseFloat(array[6]));
-        resultModel.setSoundtrackName(array[7]);
+        resultModel.setSoundtrackName(csvToString(array[7]));
         resultModel.setWeaponType(stringToWeaponType(array[8]));
         resultModel.setMood(stringToMood(array[9]));
         resultModel.setCar(Car.fromString(array[10]));
         return resultModel;
     }
 
+    /**
+     * Так как используемый формат -- csv, то важно заменять , на COMMA, чтобы данные не путались
+     * Далее приведены два метода для преобразования из строки с запятой в строку без и обратно
+     *
+     * @param str
+     * @return
+     */
+    private static String csvToString(String str){
+        return str.replaceAll("%COMMA%", ",");
+    }
+    private static String stringToCsv(String str){
+        return str.replaceAll(",", "%COMMA%");
+    }
     /**
      * From human being model to string line string.
      *
@@ -98,26 +111,16 @@ public class HumanBeingMapper {
      */
     public static String fromHumanBeingModelToStringLine(HumanBeingModel model) {
         StringBuilder sb = new StringBuilder();
-        sb.append(model.getId());
-        sb.append(",");
-        sb.append(model.getName());
-        sb.append(",");
-        sb.append(model.getCoordinates().toString());
-        sb.append(",");
-        sb.append(model.getCreationDate());
-        sb.append(",");
-        sb.append(model.getRealHero());
-        sb.append(",");
-        sb.append(model.getHasToothpick());
-        sb.append(",");
-        sb.append(model.getImpactSpeed());
-        sb.append(",");
-        sb.append(model.getSoundtrackName());
-        sb.append(",");
-        sb.append(model.getWeaponType());
-        sb.append(",");
-        sb.append(model.getMood());
-        sb.append(",");
+        sb.append(model.getId()).append(",");
+        sb.append(stringToCsv(model.getName())).append(",");
+        sb.append(model.getCoordinates().toString()).append(",");
+        sb.append(model.getCreationDate()).append(",");
+        sb.append(model.getRealHero()).append(",");
+        sb.append(model.getHasToothpick()).append(",");
+        sb.append(model.getImpactSpeed()).append(",");
+        sb.append(stringToCsv(model.getSoundtrackName())).append(",");
+        sb.append(model.getWeaponType()).append(",");
+        sb.append(model.getMood()).append(",");
         if (model.getCar() == null){
             sb.append("null");
         } else {
