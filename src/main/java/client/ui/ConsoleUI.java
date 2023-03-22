@@ -13,8 +13,7 @@ import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
 import static server.validation.Parser.tildaResolver;
-import static server.validation.Validation.validateFileExist;
-import static server.validation.Validation.validateFileName;
+import static server.validation.Validation.*;
 
 /**
  * The type Console ui.
@@ -30,10 +29,7 @@ public class ConsoleUI {
      * @param fileName the file name
      */
     public ConsoleUI(String fileName) {
-        if (!validateFileName(fileName)){
-            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь."));
-        }
-        validateFileExist(new File(fileName));
+        validateFile(fileName);
         fileName = tildaResolver(fileName);
         this.file = fileName;
         this.executor = new CommandExecutor(fileName, null);

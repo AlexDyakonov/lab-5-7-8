@@ -45,6 +45,16 @@ public class ConsoleColors {
     }
 
     /**
+     * warning line (colored yellow)
+     *
+     * @param line the line
+     * @return the string
+     */
+    public static final String warning(String line){
+        return (YELLOW_BRIGHT + line + RESET);
+    }
+
+    /**
      * The constant RESET.
      */
 // Reset

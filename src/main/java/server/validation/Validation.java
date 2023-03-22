@@ -13,6 +13,8 @@ import java.nio.file.InvalidPathException;
 import java.util.function.Function;
 
 import static client.ui.ConsoleColors.error;
+import static client.ui.ConsoleColors.warning;
+import static server.validation.Parser.tildaResolver;
 
 /**
  * The type Validation.
@@ -63,7 +65,6 @@ public class Validation {
      * @param file the file
      */
     public static void validateFileRead(File file){
-        validateFileExist(file);
         if (!Files.isReadable(file.toPath())){
             throw new FileException("Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.");
         }
@@ -75,7 +76,6 @@ public class Validation {
      * @param file the file
      */
     public static void validateFileWrite(File file){
-        validateFileExist(file);
         if (!Files.isWritable(file.toPath())){
             throw new FileException("Файл недоступен для записи. Чтобы использовать другой запустите программу еще раз.");
         }
@@ -96,12 +96,31 @@ public class Validation {
         }
     }
 
-    /**
-     * Validate user name boolean.
-     *
-     * @param userName the user name
-     * @return the boolean
-     */
+    public static void validateFile(String fileName){
+        if (!validateFileName(fileName)){
+            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь."));
+        }
+        File file = new File(tildaResolver(fileName));
+        validateFileExist(file);
+        try {
+            validateFileRead(file);
+        } catch (FileException e){
+            System.out.println(warning("Файл недоступен к чтению! База данных не будет использована."));
+        }
+        try {
+            validateFileWrite(file);
+        } catch (FileException e){
+            System.out.println(warning("Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал."));
+        }
+    }
+
+
+        /**
+         * Validate user name boolean.
+         *
+         * @param userName the user name
+         * @return the boolean
+         */
     public static boolean validateUserName(String userName){
         return (userName != null && !userName.trim().equals(""));
     }

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added tildasolver for executeScript">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed tilda. Now, project wont load if file name is incorrect or file not exist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
-      <option name="PROGRAM_PARAMETERS" value="sas" />
+      <option name="PROGRAM_PARAMETERS" value="E:\code\lab-5-num-125595\src\main\resources\database.csv" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,14 +161,7 @@
       <workItem from="1679314120520" duration="11021000" />
       <workItem from="1679357702003" duration="365000" />
       <workItem from="1679447297897" duration="2536000" />
-      <workItem from="1679500238528" duration="1741000" />
-    </task>
-    <task id="LOCAL-00018" summary="Finished ScriptExecuter.java. Refactored project: added AbstractAsker, 2 types of asker, UI refactoring">
-      <created>1677412420017</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1677412420017</updated>
+      <workItem from="1679500238528" duration="3518000" />
     </task>
     <task id="LOCAL-00019" summary="Small fix of args in commands">
       <created>1677413047199</created>
@@ -504,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679451714996</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Fixed tilda. Now, project wont load if file name is incorrect or file not exist">
+      <created>1679510119114</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1679510119115</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added more Validations" />
     <MESSAGE value="Renamed repo -&gt; HumanDao" />
     <MESSAGE value="Fixed bug with saving null car" />
     <MESSAGE value="Fixed all builders" />
@@ -560,6 +561,7 @@
     <MESSAGE value="Small fix with unexecutable pathname" />
     <MESSAGE value="Attempt to fix /// and \\\ with tilda" />
     <MESSAGE value="Added tildasolver for executeScript" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tildasolver for executeScript" />
+    <MESSAGE value="Fixed tilda. Now, project wont load if file name is incorrect or file not exist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed tilda. Now, project wont load if file name is incorrect or file not exist" />
   </component>
 </project>
