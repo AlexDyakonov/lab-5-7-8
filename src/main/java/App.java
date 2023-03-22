@@ -1,5 +1,8 @@
 import client.ui.ConsoleUI;
 
+import java.io.File;
+import java.util.Scanner;
+
 /**
  * The type App.
  */

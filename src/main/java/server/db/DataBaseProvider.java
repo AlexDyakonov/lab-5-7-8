@@ -6,6 +6,7 @@ import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
 
 import java.io.*;
+import java.nio.file.InvalidPathException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,7 +15,6 @@ import java.util.Set;
 
 import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validateFileRead;
-import static server.validation.Validation.validateFileWrite;
 
 /**
  * The type Data base provider.
@@ -51,16 +51,26 @@ public class DataBaseProvider {
         dataBase.add(model);
         return id;
     }
+    private static void isFileNameValid(String fileName){
+        try {
+            (new File(fileName)).toPath();
+        } catch (InvalidPathException e) {
+            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз и введите нормальный путь."), e);
+        }
+    }
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         List<Long> idList = new ArrayList<>();
+
         String personString;
         try {
+            isFileNameValid(fileName);
             validateFileRead(new File(fileName));
         } catch (FileException e){
             System.out.println(error(e.getMessage()));
         }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while (reader.ready()) {
                 try {
