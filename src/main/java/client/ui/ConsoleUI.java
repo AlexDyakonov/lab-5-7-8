@@ -6,12 +6,14 @@ import server.services.BuilderType;
 import server.services.CommandExecutor;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
 import static server.validation.Parser.tildaResolver;
+import static server.validation.Validation.validateFileExist;
 import static server.validation.Validation.validateFileName;
 
 /**
@@ -29,8 +31,9 @@ public class ConsoleUI {
      */
     public ConsoleUI(String fileName) {
         if (!validateFileName(fileName)){
-            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз и введите нормальный путь."));
+            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь."));
         }
+        validateFileExist(new File(fileName));
         fileName = tildaResolver(fileName);
         this.file = fileName;
         this.executor = new CommandExecutor(fileName, null);
