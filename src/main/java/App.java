@@ -1,4 +1,6 @@
 import client.ui.ConsoleUI;
+import server.exception.ApplicationException;
+import server.exception.FileException;
 
 import java.io.File;
 import java.util.Scanner;
@@ -20,6 +22,8 @@ public class App {
             session.start();
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
+        } catch (FileException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

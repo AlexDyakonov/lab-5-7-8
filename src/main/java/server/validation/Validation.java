@@ -9,7 +9,10 @@ import server.model.dto.HumanBeingRequestDTO;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.util.function.Function;
+
+import static client.ui.ConsoleColors.error;
 
 /**
  * The type Validation.
@@ -78,6 +81,20 @@ public class Validation {
         }
     }
 
+    /** Проверяет путь к файлу на корректность.
+     *
+     * @param fileName
+     */
+    public static boolean validateFileName(String fileName){
+        boolean answ = false;
+        try {
+            (new File(fileName)).toPath();
+            return true;
+        } catch (InvalidPathException e) {
+            return false;
+//            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз и введите нормальный путь."), e);
+        }
+    }
 
     /**
      * Validate user name boolean.

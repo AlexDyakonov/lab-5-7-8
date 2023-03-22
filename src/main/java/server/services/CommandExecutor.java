@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static client.ui.ConsoleColors.*;
+import static server.validation.Parser.tildaResolver;
 
 /**
  * The type Command executor.
@@ -32,7 +33,7 @@ public class CommandExecutor {
      * @param scriptHistory the script history
      */
     public CommandExecutor(String fileName, List<String> scriptHistory) {
-        this.file = tildaResolver(fileName);
+        this.file = fileName;
         this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
         this.controller = new HumanControllerImpl(file);
         this.history = new HistoryManager(15); // limit history size
@@ -166,14 +167,5 @@ public class CommandExecutor {
 
     private boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return controller.isImpactSpeedMin(dto);
-    }
-    private String tildaResolver(String file) {
-        if (file.startsWith("~")) {
-            String rootDirectory = new File(file).getAbsolutePath();
-            rootDirectory = rootDirectory.replace("~", "");
-//            System.out.println(rootDirectory);
-            file = rootDirectory;
-        }
-        return file;
     }
 }

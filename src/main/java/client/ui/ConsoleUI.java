@@ -1,6 +1,7 @@
 package client.ui;
 
 import server.exception.CommandException;
+import server.exception.FileException;
 import server.services.BuilderType;
 import server.services.CommandExecutor;
 
@@ -10,6 +11,8 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
+import static server.validation.Parser.tildaResolver;
+import static server.validation.Validation.validateFileName;
 
 /**
  * The type Console ui.
@@ -25,6 +28,10 @@ public class ConsoleUI {
      * @param fileName the file name
      */
     public ConsoleUI(String fileName) {
+        if (!validateFileName(fileName)){
+            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз и введите нормальный путь."));
+        }
+        fileName = tildaResolver(fileName);
         this.file = fileName;
         this.executor = new CommandExecutor(fileName, null);
     }

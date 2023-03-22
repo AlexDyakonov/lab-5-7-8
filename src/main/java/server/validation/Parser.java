@@ -4,6 +4,8 @@ import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.WeaponType;
 
+import java.io.File;
+import java.nio.file.FileSystems;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZonedDateTime;
@@ -15,6 +17,19 @@ import static client.ui.ConsoleColors.error;
  * The type Parser.
  */
 public class Parser {
+    public static String tildaResolver(String file) {
+        if (file.startsWith("~")) {
+            try {
+                String separator = FileSystems.getDefault().getSeparator();
+                String rootDirectory = new File(file).getAbsolutePath().split(separator)[1];
+                file = rootDirectory + file.split("~")[1];
+                if (!separator.equals("\\\\")) {
+                    file = separator + file;
+                }
+            } catch (Exception ignored) {}
+        }
+        return file;
+    }
     /**
      * String to boolean boolean.
      *

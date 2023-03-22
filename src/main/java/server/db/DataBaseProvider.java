@@ -51,13 +51,6 @@ public class DataBaseProvider {
         dataBase.add(model);
         return id;
     }
-    private static void isFileNameValid(String fileName){
-        try {
-            (new File(fileName)).toPath();
-        } catch (InvalidPathException e) {
-            throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз и введите нормальный путь."), e);
-        }
-    }
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
@@ -65,7 +58,6 @@ public class DataBaseProvider {
 
         String personString;
         try {
-            isFileNameValid(fileName);
             validateFileRead(new File(fileName));
         } catch (FileException e){
             System.out.println(error(e.getMessage()));

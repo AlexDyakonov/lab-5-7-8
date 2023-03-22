@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed systemout of command">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix with unexecutable pathname">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +77,7 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
-      <option name="PROGRAM_PARAMETERS" value="\\\" />
+      <option name="PROGRAM_PARAMETERS" value="~\\\" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,14 +162,7 @@
       <workItem from="1679235987708" duration="9198000" />
       <workItem from="1679314120520" duration="11021000" />
       <workItem from="1679357702003" duration="365000" />
-      <workItem from="1679447297897" duration="1053000" />
-    </task>
-    <task id="LOCAL-00015" summary="Added print_ascending command. Commit before refactoring project to change Long id to UUID">
-      <created>1676907262500</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1676907262500</updated>
+      <workItem from="1679447297897" duration="2411000" />
     </task>
     <task id="LOCAL-00016" summary="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
       <created>1677019015543</created>
@@ -504,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679337226895</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Small fix with unexecutable pathname">
+      <created>1679450285791</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1679450285791</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Saving to CSV fix" />
     <MESSAGE value="Small visual fixes" />
     <MESSAGE value="Fixed Validation exception in file loading" />
     <MESSAGE value="Added more Validations" />
@@ -560,6 +562,7 @@
     <MESSAGE value="Added checkid from csv file." />
     <MESSAGE value="Added UML and small fix of UI" />
     <MESSAGE value="Fixed EOF (ctrl + D)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed EOF (ctrl + D)" />
+    <MESSAGE value="Small fix with unexecutable pathname" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fix with unexecutable pathname" />
   </component>
 </project>
