@@ -92,7 +92,7 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public String info() {
-        return "\n Класс бд: " + source.getDataBase().getClass() + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
+        return "\n Класс бд: " + source.getDataBase().getClass().getTypeName().split("\\.")[2] + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
     }
 
     //clear : очистить коллекцию

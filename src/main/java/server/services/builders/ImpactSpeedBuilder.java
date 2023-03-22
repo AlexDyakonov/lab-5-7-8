@@ -1,6 +1,7 @@
 package server.services.builders;
 
 import server.exception.ApplicationException;
+import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
 
@@ -21,7 +22,11 @@ public class ImpactSpeedBuilder {
      */
     public static float getImpactSpeed(BufferedReader reader){
         try {
-            return Float.parseFloat(reader.readLine());
+            String num = reader.readLine();
+            if (num == null){
+                throw new FileException(error("Встречен null при чтения файла для поля impact speed."));
+            }
+            return Float.parseFloat(num);
         } catch (NumberFormatException e) {
             throw new ValidationException(unsuccess("Значение impactSpeed должно быть числом. Введите еще раз."), e);
         } catch (IOException e2){
@@ -49,7 +54,7 @@ public class ImpactSpeedBuilder {
         } else {
             try {
                 return getImpactSpeed(fileReader);
-            } catch (ValidationException | ApplicationException e) {
+            } catch (ValidationException | ApplicationException | FileException e) {
                 System.out.println(e.getMessage());
                 return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD);
             }

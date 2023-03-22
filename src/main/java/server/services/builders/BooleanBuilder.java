@@ -1,5 +1,6 @@
 package server.services.builders;
 
+import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
 
@@ -24,10 +25,14 @@ public class BooleanBuilder {
         boolean response = false;
         String request = "";
         try {
-            request = reader.readLine().toLowerCase();
+            request = reader.readLine();
+            if (request == null){
+                throw new FileException(error("Встречен null при чтения файла для boolean поля."));
+            }
+            request = request.toLowerCase();
             response = stringToBoolean(request);
         } catch (IOException e) {
-            System.out.println(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения из клавиатуры"));
+            System.out.println(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения"));
         }
         return response;
     }
@@ -53,7 +58,7 @@ public class BooleanBuilder {
         } else {
             try {
                 return getBool(filereader);
-            } catch (ValidationException e){
+            } catch (ValidationException | FileException e){
                 System.out.println(e.getMessage());
                 return boolBuilder(cmdreader, filereader, message, BuilderType.CMD);
             }

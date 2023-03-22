@@ -6,7 +6,9 @@ import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
+import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -118,5 +120,12 @@ public class DataBaseProvider {
      */
     public LocalDateTime getCreationDate() {
         return creationDate;
+    }
+    public FileTime getFileCreationDate(String fileName) {
+        try {
+            return (FileTime) Files.getAttribute((new File(fileName)).toPath(), "creationTime");
+        } catch (IOException e) {
+            return null;
+        }
     }
 }
