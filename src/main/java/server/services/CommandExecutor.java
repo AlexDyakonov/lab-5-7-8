@@ -50,6 +50,7 @@ public class CommandExecutor {
         }
     }
     private void executeScript(String scriptName, BufferedReader reader) {
+        scriptName = tildaResolver(scriptName);
         if (scriptHistory.contains(scriptName)){
             throw new ApplicationException(error("Обнаружена рекурсия"));
         }

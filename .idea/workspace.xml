@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix with unexecutable pathname">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to fix /// and \\\ with tilda">
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,14 +156,7 @@
       <workItem from="1679235987708" duration="9198000" />
       <workItem from="1679314120520" duration="11021000" />
       <workItem from="1679357702003" duration="365000" />
-      <workItem from="1679447297897" duration="2411000" />
-    </task>
-    <task id="LOCAL-00016" summary="Added validator class, added UI colors. Realised scanning csv file with database, realised loading of DB">
-      <created>1677019015543</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1677019015543</updated>
+      <workItem from="1679447297897" duration="2510000" />
     </task>
     <task id="LOCAL-00017" summary="ScriptExecuter.java">
       <created>1677246899099</created>
@@ -507,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679450285791</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Attempt to fix /// and \\\ with tilda">
+      <created>1679451657799</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1679451657799</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +532,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Small visual fixes" />
     <MESSAGE value="Fixed Validation exception in file loading" />
     <MESSAGE value="Added more Validations" />
     <MESSAGE value="Renamed repo -&gt; HumanDao" />
@@ -563,6 +556,7 @@
     <MESSAGE value="Added UML and small fix of UI" />
     <MESSAGE value="Fixed EOF (ctrl + D)" />
     <MESSAGE value="Small fix with unexecutable pathname" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fix with unexecutable pathname" />
+    <MESSAGE value="Attempt to fix /// and \\\ with tilda" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt to fix /// and \\\ with tilda" />
   </component>
 </project>
