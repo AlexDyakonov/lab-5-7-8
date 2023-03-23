@@ -101,6 +101,9 @@ public class Validation {
             throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь."));
         }
         File file = new File(tildaResolver(fileName));
+        if (Files.isDirectory(file.toPath())){
+            throw new FileException(error("Путь ведет к директории. Укажите другой файл, чтобы запустить программу."));
+        }
         validateFileExist(file);
         try {
             validateFileRead(file);

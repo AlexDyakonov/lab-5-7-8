@@ -10,18 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added javadoc documentation">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lab_5_num_125595_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Parser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Parser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uml.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/uml.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/uml.puml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +168,7 @@
       <workItem from="1679500238528" duration="6585000" />
       <workItem from="1679565498940" duration="54000" />
       <workItem from="1679566050739" duration="3235000" />
+      <workItem from="1679575598055" duration="600000" />
     </task>
     <task id="LOCAL-00022" summary="Refactored structure">
       <created>1678709312425</created>
