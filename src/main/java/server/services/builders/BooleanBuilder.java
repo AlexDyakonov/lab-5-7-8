@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.whiteStr;
-import static server.validation.Parser.stringToBoolean;
+import static util.Parser.stringToBoolean;
 
 /**
  * The type Boolean builder.

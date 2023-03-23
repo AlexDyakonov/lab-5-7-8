@@ -1,18 +1,14 @@
 package client.ui;
 
-import server.exception.CommandException;
-import server.exception.FileException;
 import server.services.BuilderType;
 import server.services.CommandExecutor;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-import static client.ui.ConsoleColors.error;
-import static server.validation.Parser.tildaResolver;
+import static util.Parser.tildaResolver;
 import static server.validation.Validation.*;
 
 /**

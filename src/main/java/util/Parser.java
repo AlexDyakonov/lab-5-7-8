@@ -1,4 +1,4 @@
-package server.validation;
+package util;
 
 import server.exception.ValidationException;
 import server.model.Mood;
@@ -32,14 +32,7 @@ public class Parser {
      */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {
-            try {
-                String separator = FileSystems.getDefault().getSeparator();
-                String rootDirectory = new File(file).getAbsolutePath().split(separator)[1];
-                file = rootDirectory + file.split("~")[1];
-                if (!separator.equals("\\\\")) {
-                    file = separator + file;
-                }
-            } catch (Exception ignored) {}
+                file = file.replaceFirst("^~", System.getProperty("user.home"));
         }
         return file;
     }

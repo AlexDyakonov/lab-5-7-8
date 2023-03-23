@@ -4,7 +4,6 @@ import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
 import server.exception.ApplicationException;
 import server.exception.ArgumentException;
-import server.exception.CommandException;
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.builders.HumanBeingRequestDTOBuilder;
 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static client.ui.ConsoleColors.*;
-import static server.validation.Parser.tildaResolver;
+import static util.Parser.tildaResolver;
 
 /**
  * The type Command executor.
@@ -144,7 +143,7 @@ public class CommandExecutor {
                         controller.save(file);
                         break;
                     case "history":
-                        history.getHistoryListOfCommands().forEach(System.out::println);
+                        history.getHistoryListOfCommands().forEach(s -> System.out.print(s + ";"));
                         break;
                     case "max_by_impact_speed":
                         System.out.println(controller.max_by_impact_speed());

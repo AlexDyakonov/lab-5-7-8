@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.warning;
-import static server.validation.Parser.tildaResolver;
+import static util.Parser.tildaResolver;
 
 /**
  * The type Validation.

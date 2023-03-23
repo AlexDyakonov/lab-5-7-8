@@ -6,7 +6,7 @@ import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 
 import static client.ui.ConsoleColors.unsuccess;
-import static server.validation.Parser.*;
+import static util.Parser.*;
 
 /**
  * The type Human being mapper.
