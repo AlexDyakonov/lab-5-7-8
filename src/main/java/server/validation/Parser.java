@@ -12,11 +12,24 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
 import static client.ui.ConsoleColors.error;
+import static client.ui.ConsoleColors.unsuccess;
 
 /**
  * The type Parser.
  */
 public class Parser {
+    public static Long stringToId(String string){
+        try {
+            return Long.parseLong(string);
+        } catch (NumberFormatException e){
+            throw new ValidationException(unsuccess("Id пользователя некорректно. Запись будет проигнорирована"));
+        }
+    }
+    /**
+     * Преобразует путь до файла с тильдой, начинающийся с тильды
+     * @param file
+     * @return
+     */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {
             try {

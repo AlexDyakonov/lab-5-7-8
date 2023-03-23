@@ -5,6 +5,7 @@ import server.model.*;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 
+import static client.ui.ConsoleColors.unsuccess;
 import static server.validation.Parser.*;
 
 /**
@@ -73,10 +74,10 @@ public class HumanBeingMapper {
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
         String[] array = obj.split(",");
         if (array.length != 11){
-            throw new ValidationException("Запись некорректна и будет проигнорирована.");
+            throw new ValidationException(unsuccess("Запись некорректна и будет проигнорирована."));
         }
         HumanBeingModel resultModel = new HumanBeingModel();
-        resultModel.setId(Long.parseLong(array[0]));
+        resultModel.setId(stringToId(array[0]));
         resultModel.setName(csvToString(array[1]));
         resultModel.setCoordinates(Coordinates.fromString(array[2]));
         resultModel.setCreationDate(stringToDateTime(array[3]));
