@@ -49,7 +49,7 @@ public class MoodSetter {
     public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
-                System.out.println(whiteStr("Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE"));
+                System.out.println(whiteStr("Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)"));
                 return getMood(cmdreader);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());

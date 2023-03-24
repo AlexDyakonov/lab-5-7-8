@@ -49,7 +49,7 @@ public class WeaponTypeSetter {
     public static WeaponType setWeaponType(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
         if (type == BuilderType.CMD){
             try {
-                System.out.println(whiteStr("Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT"));
+                System.out.println(whiteStr("Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)"));
                 return getWeaponType(cmdreader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());

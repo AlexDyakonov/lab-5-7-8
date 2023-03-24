@@ -24,7 +24,7 @@ public class ImpactSpeedBuilder {
         try {
             String num = reader.readLine();
             if (num == null){
-                throw new FileException(error("Встречен null при чтения файла для поля impact speed."));
+                throw new ValidationException(error("Встречен null при чтения строки для поля impact speed."));
             }
             return Float.parseFloat(num);
         } catch (NumberFormatException e) {

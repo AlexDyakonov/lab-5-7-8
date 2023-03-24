@@ -27,7 +27,7 @@ public class BooleanBuilder {
         try {
             request = reader.readLine();
             if (request == null){
-                throw new FileException(error("Встречен null при чтения файла для boolean поля."));
+                throw new ValidationException(error("Встречен null при чтения строки для boolean поля."));
             }
             request = request.toLowerCase();
             response = stringToBoolean(request);

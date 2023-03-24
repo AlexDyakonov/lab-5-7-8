@@ -28,7 +28,7 @@ public class CarBuilder {
         try  {
             System.out.println(whiteStr("Введите название машины. Если ее нет, то введите null/пустую строку"));
             name = reader.readLine();
-            if (Objects.equals(name, "") || Objects.equals(name, "null")){
+            if (Objects.equals(name, "") || Objects.equals(name, "null") || name == null){
                 return null;
             } else {
                 car.setName(name);
