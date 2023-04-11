@@ -1,0 +1,17 @@
+{
+  "en": {
+    "message": {
+
+    },
+    "error": {
+      "same_id": "Found 2 users with same id. First met will be downloaded."
+    }
+  },
+  "ru": {
+    "message": {
+    },
+    "error": {
+      "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них."
+    }
+  }
+}
