@@ -3,12 +3,14 @@ package server.services.builders;
 import server.exception.ValidationException;
 import server.model.Coordinates;
 import server.services.BuilderType;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
+import static util.Message.getMessage;
 
 /**
  * The type Coordinates builder.
@@ -24,9 +26,9 @@ public class CoordinatesBuilder {
         Integer x = null;
         Double y = null;
         try {
-            System.out.println(whiteStr("Введите координату X: "));
+            System.out.println(getMessage("input_coordinate_x", LANGUAGE.RU));
             x = Integer.parseInt(reader.readLine());
-            System.out.println(whiteStr("Введите координату Y (больше -897): "));
+            System.out.println(getMessage("input_coordinate_y", LANGUAGE.RU));
             y = Double.parseDouble(reader.readLine());
             if (y < -897){
                 throw new ValidationException(unsuccess("Y должен быть больше -897"));

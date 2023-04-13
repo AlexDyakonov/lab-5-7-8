@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static client.ui.ConsoleColors.error;
+import static client.ui.ConsoleColors.whiteStr;
+
 public class Message {
     private static String content;
 
@@ -21,7 +24,7 @@ public class Message {
     public static String getMessage(String messageName, LANGUAGE language) {
         try {
             JSONObject jsonObject = new JSONObject(content);
-            return jsonObject.getJSONObject(language.toString()).getJSONObject("message").getString(messageName);
+            return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("message").getString(messageName));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -30,7 +33,7 @@ public class Message {
     public static String getError(String messageName, LANGUAGE language) {
         try {
             JSONObject jsonObject = new JSONObject(content);
-            return jsonObject.getJSONObject(language.toString()).getJSONObject("error").getString(messageName);
+            return error(jsonObject.getJSONObject(language.toString()).getJSONObject("error").getString(messageName));
         } catch (Exception e) {
             e.printStackTrace();
             return null;

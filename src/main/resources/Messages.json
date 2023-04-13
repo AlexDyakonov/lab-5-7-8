@@ -1,7 +1,17 @@
 {
   "en": {
     "message": {
-
+      "input_name" : "Insert name: ",
+      "input_soundtrack" : "Insert soundtrack name: ",
+      "input_realhero" : "Is it real hero? (true/t/y, default: false) ",
+      "input_has_toothpick" : "Does it has toothpick? (true/t/y, default: false) ",
+      "input_car_name" : "Insert car name. If it is not exist insert \"null\" / or empty line.",
+      "input_car_cool" : "Does it cool? (true/false/t/f):",
+      "input_coordinate_x" : "Insert coordinate X: ",
+      "input_coordinate_y" : "Insert coordinate Y (>-897): ",
+      "input_mood" : "Choose mood: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
+      "input_weapon" :"Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
+      "input_impact_speed" :"Insert ImpactSpeed (ex: 4.61): "
     },
     "error": {
       "same_id": "Found 2 users with same id. First met will be downloaded."
@@ -9,9 +19,26 @@
   },
   "ru": {
     "message": {
+      "input_name" : "Введите имя: ",
+      "input_soundtrack" : "Введите название саундтрека: ",
+      "input_realhero" : "Это реальный герой? (true/t/y, default: false) ",
+      "input_has_toothpick" : "У него есть зубочистка? (true/t/y, default: false) ",
+      "input_car_name" : "Введите название машины. Если ее нет, то введите null/пустую строку",
+      "input_car_cool" : "Введите крутая ли она? (true/false/t/f):",
+      "input_coordinate_x" : "Введите координату X: ",
+      "input_coordinate_y" : "Введите координату Y (больше -897): ",
+      "input_mood" : "Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
+      "input_weapon" :"Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
+      "input_impact_speed" :"Введите ImpactSpeed (ex: 4.61): "
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них."
+    },
+    "success": {
+      "user_added":"Пользователь с %id% успешно добавлен."
+    },
+    "unsuccessful": {
+      "user_not_added": "Не удалось добавить пользователя"
     }
   }
 }

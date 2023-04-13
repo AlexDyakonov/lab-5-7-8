@@ -4,11 +4,13 @@ import server.exception.ApplicationException;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.*;
+import static util.Message.getMessage;
 
 /**
  * The type Impact speed builder.
@@ -45,7 +47,7 @@ public class ImpactSpeedBuilder {
     public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type){
         if (type == BuilderType.CMD){
             try {
-                System.out.println(whiteStr("Введите ImpactSpeed (ex: 4.61): "));
+                System.out.println(getMessage("input_impact_speed", LANGUAGE.RU));
                 return getImpactSpeed(cmdReader);
             } catch (ValidationException | ApplicationException e) {
                 System.out.println(e.getMessage());

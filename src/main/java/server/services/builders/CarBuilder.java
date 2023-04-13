@@ -1,15 +1,17 @@
 package server.services.builders;
 
+import org.apache.commons.collections.map.LazyMap;
 import server.model.Car;
 import server.services.BuilderType;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.whiteStr;
+import static util.Message.getMessage;
 
 /**
  * The type Car builder.
@@ -26,13 +28,13 @@ public class CarBuilder {
         String name = "";
         boolean cool = false;
         try  {
-            System.out.println(whiteStr("Введите название машины. Если ее нет, то введите null/пустую строку"));
+            System.out.println(getMessage("input_car_name", LANGUAGE.RU));
             name = reader.readLine();
             if (Objects.equals(name, "") || Objects.equals(name, "null") || name == null){
                 return null;
             } else {
                 car.setName(name);
-                System.out.println(whiteStr("Введите крутая ли она? (true/false/t/f):"));
+                System.out.println(getMessage("input_car_cool", LANGUAGE.RU));
                 String answer = reader.readLine().toLowerCase();
                 if (answer.equals("t") || answer.equals("true") || answer.equals("y")) {
                     cool = true;

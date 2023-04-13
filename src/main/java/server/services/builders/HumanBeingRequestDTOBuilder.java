@@ -25,14 +25,14 @@ public class HumanBeingRequestDTOBuilder {
     public static HumanBeingRequestDTO build(BufferedReader cmdreader, BufferedReader filereader, BuilderType builderType) {
         HumanBeingRequestDTO dto = new HumanBeingRequestDTO();
 
-            dto.setName(nameBuilder(cmdreader, filereader,"Введите имя: ", builderType));
+            dto.setName(nameBuilder(cmdreader, filereader,"input_name", builderType));
             dto.setCoordinates(CoordinatesBuilder.buildCoordinates(cmdreader, filereader, builderType));
 
-            dto.setRealHero(boolBuilder(cmdreader, filereader,"Это реальный герой? (true/t/y, default: false) ", builderType));
-            dto.setHasToothpick(boolBuilder(cmdreader, filereader,"У него есть зубочистка? (true/t/y, default: false) ", builderType));
+            dto.setRealHero(boolBuilder(cmdreader, filereader,"input_realhero", builderType));
+            dto.setHasToothpick(boolBuilder(cmdreader, filereader,"input_has_toothpick", builderType));
 
             dto.setImpactSpeed(impactSpeedBuilder(cmdreader, filereader, builderType));
-            dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "Введите название саундтрека: ", builderType));
+            dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "input_soundtrack", builderType));
 
             dto.setWeaponType(WeaponTypeSetter.setWeaponType(cmdreader, filereader, builderType));
             dto.setMood(MoodSetter.setMood(cmdreader, filereader, builderType));

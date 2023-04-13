@@ -3,12 +3,14 @@ package server.services.builders;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.whiteStr;
+import static util.Message.getMessage;
 import static util.Parser.stringToBoolean;
 
 /**
@@ -42,25 +44,25 @@ public class BooleanBuilder {
      *
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
-     * @param message    the message
+     * @param messageId    the message
      * @param type       the type
      * @return the boolean
      */
-    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String message, BuilderType type){
+    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type){
         if (type == BuilderType.CMD){
             try {
-                System.out.println(whiteStr(message));
+                System.out.println(getMessage(messageId, LANGUAGE.RU));
                 return getBool(cmdreader);
             } catch (ValidationException e){
                 System.out.println(e.getMessage());
-                return boolBuilder(cmdreader, filereader, message, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
             }
         } else {
             try {
                 return getBool(filereader);
             } catch (ValidationException | FileException e){
                 System.out.println(e.getMessage());
-                return boolBuilder(cmdreader, filereader, message, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
             }
         }
     }
