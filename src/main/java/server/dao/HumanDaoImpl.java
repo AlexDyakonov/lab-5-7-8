@@ -56,7 +56,7 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
-        if (getHumanById(id) == null){
+        if (getHumanById(id) == null) {
             System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
         }
         for (HumanBeingModel human : source.getDataBase()) {
@@ -69,7 +69,7 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
-        if (getHumanById(id) == null){
+        if (getHumanById(id) == null) {
             System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
         }
         for (HumanBeingModel human : source.getDataBase()) {
@@ -108,7 +108,7 @@ public class HumanDaoImpl implements HumanDao {
     public void save(String fileName) {
         try {
             source.save(fileName);
-        } catch (FileException e){
+        } catch (FileException e) {
             System.out.println(e.getMessage());
         }
     }

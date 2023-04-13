@@ -23,12 +23,12 @@ public class BooleanBuilder {
      * @param reader the reader
      * @return the boolean
      */
-    public static boolean getBool(BufferedReader reader){
+    public static boolean getBool(BufferedReader reader) {
         boolean response = false;
         String request = "";
         try {
             request = reader.readLine();
-            if (request == null){
+            if (request == null) {
                 throw new ValidationException(error("Встречен null при чтения строки для boolean поля."));
             }
             request = request.toLowerCase();
@@ -44,23 +44,23 @@ public class BooleanBuilder {
      *
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
-     * @param messageId    the message
+     * @param messageId  the message
      * @param type       the type
      * @return the boolean
      */
-    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type){
-        if (type == BuilderType.CMD){
+    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type) {
+        if (type == BuilderType.CMD) {
             try {
                 System.out.println(getMessage(messageId, LANGUAGE.RU));
                 return getBool(cmdreader);
-            } catch (ValidationException e){
+            } catch (ValidationException e) {
                 System.out.println(e.getMessage());
                 return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
             }
         } else {
             try {
                 return getBool(filereader);
-            } catch (ValidationException | FileException e){
+            } catch (ValidationException | FileException e) {
                 System.out.println(e.getMessage());
                 return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
             }

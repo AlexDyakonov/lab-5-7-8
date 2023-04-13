@@ -9,9 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added data sources">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Code reformatting for whole project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleColors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ApplicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ApplicationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ArgumentException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/FileException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/HumanBeingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
@@ -20,8 +36,98 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/LANGUAGE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/LANGUAGE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/App.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/ConsoleColors.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/ConsoleColors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/ConsoleUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/ConsoleUI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/MenuConstants.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/MenuConstants.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/client/ui/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-20.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/legal/jquery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/legal/jqueryUI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/HumanController.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/HumanController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/HumanControllerImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/HumanControllerImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/controller/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/HumanDao.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/HumanDao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/HumanDaoImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/HumanDaoImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/dao/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/DataBaseProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/DataBaseProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/db/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ApplicationException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ApplicationException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ArgumentException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ArgumentException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/CommandException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/CommandException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/FileException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/FileException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ValidationException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/ValidationException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/exception/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/HumanBeingMapper.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/HumanBeingMapper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/mapper/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Car.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Car.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Coordinates.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Coordinates.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/HumanBeingModel.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/HumanBeingModel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Mood.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/Mood.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/WeaponType.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/WeaponType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/HumanBeingRequestDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/HumanBeingRequestDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/HumanBeingResponseDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/HumanBeingResponseDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/dto/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/model/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/BuilderType.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/BuilderType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/CommandExecutor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/CommandExecutor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HistoryManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HistoryManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HumanService.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HumanService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HumanServiceImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/HumanServiceImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/BooleanBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/BooleanBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/CarBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/CarBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/CoordinatesBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/CoordinatesBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/HumanBeingRequestDTOBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/HumanBeingRequestDTOBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/ImpactSpeedBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/ImpactSpeedBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/MoodSetter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/MoodSetter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/NameBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/NameBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/WeaponTypeSetter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/WeaponTypeSetter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/builders/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/services/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Parser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Parser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/Validation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/server/validation/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/util/DateParser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/util/DateParser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/util/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/util/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Documentation/util/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Documentation/util/package-tree.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,13 +300,7 @@
       <workItem from="1679575598055" duration="600000" />
       <workItem from="1681230027963" duration="510000" />
       <workItem from="1681234387428" duration="3867000" />
-    </task>
-    <task id="LOCAL-00022" summary="Refactored structure">
-      <created>1678709312425</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1678709312425</updated>
+      <workItem from="1681372355511" duration="797000" />
     </task>
     <task id="LOCAL-00023" summary="Refactored structure">
       <created>1678709337229</created>
@@ -538,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679569397298</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Added ru and en localization for builders (input lines)">
+      <created>1681366472314</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1681366472314</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,8 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed load/save from file, added default" />
-    <MESSAGE value="Attempt to fix args exceptions" />
     <MESSAGE value="Small fix of remove_by_id" />
     <MESSAGE value="Fixed addifmin/max" />
     <MESSAGE value="Fixed save bug" />
@@ -594,6 +699,9 @@
     <MESSAGE value="Added more file exception checks. Added warning." />
     <MESSAGE value="Fixed id reading from file(catching exception)" />
     <MESSAGE value="Added javadoc documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added javadoc documentation" />
+    <MESSAGE value="Added ru and en localization for builders (input lines)" />
+    <MESSAGE value="Code reformatting for whole project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code reformatting for whole project" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

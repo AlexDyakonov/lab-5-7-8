@@ -22,7 +22,7 @@ public class CoordinatesBuilder {
      * @param reader the reader
      * @return the coordinates
      */
-    public static Coordinates getCoordinates(BufferedReader reader){
+    public static Coordinates getCoordinates(BufferedReader reader) {
         Integer x = null;
         Double y = null;
         try {
@@ -30,7 +30,7 @@ public class CoordinatesBuilder {
             x = Integer.parseInt(reader.readLine());
             System.out.println(getMessage("input_coordinate_y", LANGUAGE.RU));
             y = Double.parseDouble(reader.readLine());
-            if (y < -897){
+            if (y < -897) {
                 throw new ValidationException(unsuccess("Y должен быть больше -897"));
             }
         } catch (NumberFormatException | IOException | ValidationException e) {
@@ -46,13 +46,13 @@ public class CoordinatesBuilder {
      * @param reader the reader
      * @return the coordinates
      */
-    public static Coordinates getCoordinatesFromFile(BufferedReader reader){
+    public static Coordinates getCoordinatesFromFile(BufferedReader reader) {
         Integer x = null;
         Double y = null;
         try {
             x = Integer.parseInt(reader.readLine());
             y = Double.parseDouble(reader.readLine());
-            if (y < -897){
+            if (y < -897) {
                 throw new ValidationException(unsuccess("Y должен быть больше -897"));
             }
         } catch (NumberFormatException | IOException | ValidationException e) {
@@ -71,7 +71,7 @@ public class CoordinatesBuilder {
      * @return the coordinates
      */
     public static Coordinates buildCoordinates(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
-        if (type == BuilderType.CMD){
+        if (type == BuilderType.CMD) {
             try {
                 return getCoordinates(cmdreader);
             } catch (Exception e) {

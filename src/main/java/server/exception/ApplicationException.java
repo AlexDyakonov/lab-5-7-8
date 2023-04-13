@@ -3,7 +3,7 @@ package server.exception;
 /**
  * The type Application exception.
  */
-public class ApplicationException extends RuntimeException{
+public class ApplicationException extends RuntimeException {
     /**
      * Instantiates a new Application exception.
      *

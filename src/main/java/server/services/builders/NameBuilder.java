@@ -23,12 +23,12 @@ public class NameBuilder {
      * @param reader the reader
      * @return the string
      */
-    public static String getName(BufferedReader reader){
+    public static String getName(BufferedReader reader) {
         try {
             String name = reader.readLine();
             validate(name, Validation::validateUserName, error("Имя не должно быть пустым и должно быть больше 0 символа"));
             return name;
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new ApplicationException(error("Ошибка BufferedReader"));
         }
     }
@@ -36,14 +36,14 @@ public class NameBuilder {
     /**
      * Name builder string.
      *
-     * @param cmdreader the reader 1
+     * @param cmdreader  the reader 1
      * @param filereader the reader 2
-     * @param messageId the message
-     * @param type    the type
+     * @param messageId  the message
+     * @param type       the type
      * @return the string
      */
     public static String nameBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type) {
-        if (type == BuilderType.CMD){
+        if (type == BuilderType.CMD) {
             try {
                 System.out.println(getMessage(messageId, LANGUAGE.RU));
                 return getName(cmdreader);

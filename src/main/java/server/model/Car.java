@@ -33,7 +33,7 @@ public class Car {
      *
      * @return the string
      */
-    public String toStringLine(){
+    public String toStringLine() {
         return "(" + this.getName() + ";" + this.isCool() + ")";
     }
 

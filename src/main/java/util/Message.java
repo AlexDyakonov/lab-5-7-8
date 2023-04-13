@@ -30,6 +30,7 @@ public class Message {
             return null;
         }
     }
+
     public static String getError(String messageName, LANGUAGE language) {
         try {
             JSONObject jsonObject = new JSONObject(content);

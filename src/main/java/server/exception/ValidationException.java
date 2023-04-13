@@ -3,7 +3,7 @@ package server.exception;
 /**
  * The type Validation exception.
  */
-public class ValidationException extends RuntimeException{
+public class ValidationException extends RuntimeException {
     /**
      * Instantiates a new Validation exception.
      *

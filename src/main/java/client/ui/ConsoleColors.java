@@ -10,7 +10,7 @@ public class ConsoleColors {
      * @param line the line
      * @return the string
      */
-    public static final String success(String line){
+    public static final String success(String line) {
         return (GREEN + line + RESET);
     }
 
@@ -20,7 +20,7 @@ public class ConsoleColors {
      * @param line the line
      * @return the string
      */
-    public static final String unsuccess(String line){
+    public static final String unsuccess(String line) {
         return (RED_BRIGHT + line + RESET);
     }
 
@@ -30,7 +30,7 @@ public class ConsoleColors {
      * @param line the line
      * @return the string
      */
-    public static final String error(String line){
+    public static final String error(String line) {
         return (RED + line + RESET);
     }
 
@@ -40,7 +40,7 @@ public class ConsoleColors {
      * @param line the line
      * @return the string
      */
-    public static final String whiteStr(String line){
+    public static final String whiteStr(String line) {
         return (WHITE_BRIGHT + line + RESET);
     }
 
@@ -50,7 +50,7 @@ public class ConsoleColors {
      * @param line the line
      * @return the string
      */
-    public static final String warning(String line){
+    public static final String warning(String line) {
         return (YELLOW_BRIGHT + line + RESET);
     }
 

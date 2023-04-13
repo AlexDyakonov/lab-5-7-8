@@ -52,8 +52,8 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileExist(File file){
-        if (!Files.exists(file.toPath())){
+    public static void validateFileExist(File file) {
+        if (!Files.exists(file.toPath())) {
             throw new FileException(error("Файл не найден. Чтобы использовать другой запустите программу еще раз."));
         }
     }
@@ -64,8 +64,8 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileRead(File file){
-        if (!Files.isReadable(file.toPath())){
+    public static void validateFileRead(File file) {
+        if (!Files.isReadable(file.toPath())) {
             throw new FileException("Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.");
         }
     }
@@ -75,17 +75,18 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileWrite(File file){
-        if (!Files.isWritable(file.toPath())){
+    public static void validateFileWrite(File file) {
+        if (!Files.isWritable(file.toPath())) {
             throw new FileException("Файл недоступен для записи. Чтобы использовать другой запустите программу еще раз.");
         }
     }
 
-    /** Проверяет путь к файлу на корректность.
+    /**
+     * Проверяет путь к файлу на корректность.
      *
      * @param fileName
      */
-    public static boolean validateFileName(String fileName){
+    public static boolean validateFileName(String fileName) {
         boolean answ = false;
         try {
             (new File(fileName.replace("~", ""))).toPath();
@@ -96,35 +97,35 @@ public class Validation {
         }
     }
 
-    public static void validateFile(String fileName){
-        if (!validateFileName(fileName)){
+    public static void validateFile(String fileName) {
+        if (!validateFileName(fileName)) {
             throw new FileException(error("Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь."));
         }
         File file = new File(tildaResolver(fileName));
-        if (Files.isDirectory(file.toPath())){
+        if (Files.isDirectory(file.toPath())) {
             throw new FileException(error("Путь ведет к директории. Укажите другой файл, чтобы запустить программу."));
         }
         validateFileExist(file);
         try {
             validateFileRead(file);
-        } catch (FileException e){
+        } catch (FileException e) {
             System.out.println(warning("Файл недоступен к чтению! База данных не будет использована."));
         }
         try {
             validateFileWrite(file);
-        } catch (FileException e){
+        } catch (FileException e) {
             System.out.println(warning("Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал."));
         }
     }
 
 
-        /**
-         * Validate user name boolean.
-         *
-         * @param userName the user name
-         * @return the boolean
-         */
-    public static boolean validateUserName(String userName){
+    /**
+     * Validate user name boolean.
+     *
+     * @param userName the user name
+     * @return the boolean
+     */
+    public static boolean validateUserName(String userName) {
         return (userName != null && !userName.trim().equals(""));
     }
 
@@ -134,7 +135,7 @@ public class Validation {
      * @param carNamr the car namr
      * @return the boolean
      */
-    public static boolean validateCarName(String carNamr){
+    public static boolean validateCarName(String carNamr) {
         return (carNamr != null && !carNamr.trim().equals(""));
     }
 
@@ -144,7 +145,7 @@ public class Validation {
      * @param coordinates the coordinates
      * @return the boolean
      */
-    public static boolean validateCoordinates(Coordinates coordinates){
+    public static boolean validateCoordinates(Coordinates coordinates) {
         return coordinates.getX() != null && coordinates.getY() != null;
     }
 
@@ -154,7 +155,7 @@ public class Validation {
      * @param bool the bool
      * @return the boolean
      */
-    public static boolean validateBoolean(Boolean bool){
+    public static boolean validateBoolean(Boolean bool) {
         return bool != null;
     }
 
@@ -164,7 +165,7 @@ public class Validation {
      * @param impactSpeed the impact speed
      * @return the boolean
      */
-    public static boolean validateImpactSpeed(Float impactSpeed){
+    public static boolean validateImpactSpeed(Float impactSpeed) {
         return (impactSpeed != null);
     }
 
@@ -174,7 +175,7 @@ public class Validation {
      * @param soundtrackName the soundtrack name
      * @return the boolean
      */
-    public static boolean validateSoundtrackName(String soundtrackName){
+    public static boolean validateSoundtrackName(String soundtrackName) {
         return (soundtrackName != null && !soundtrackName.trim().equals(""));
     }
 
@@ -184,7 +185,7 @@ public class Validation {
      * @param mood the mood
      * @return the boolean
      */
-    public static boolean validateMood(Mood mood){
+    public static boolean validateMood(Mood mood) {
         return (mood != null);
     }
 
@@ -194,7 +195,7 @@ public class Validation {
      * @param id the id
      * @return the boolean
      */
-    public static boolean validateId(String id){
+    public static boolean validateId(String id) {
         return (id != null && !id.contains(","));
     }
 
@@ -206,8 +207,8 @@ public class Validation {
      * @param validator    the validator
      * @param errorMessage the error message
      */
-    public static <T> void validate(T object, Function<T, Boolean> validator, String errorMessage){
-        if (!validator.apply(object)){
+    public static <T> void validate(T object, Function<T, Boolean> validator, String errorMessage) {
+        if (!validator.apply(object)) {
             throw new ValidationException(ConsoleColors.RED_BRIGHT + errorMessage + ConsoleColors.RESET);
         }
     }

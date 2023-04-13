@@ -21,7 +21,7 @@ public class App {
 //            ConsoleUI session = new ConsoleUI(args[0]);
             ConsoleUI session = new ConsoleUI(args0);
             session.start();
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
         } catch (FileException e) {
             System.out.println(e.getMessage());

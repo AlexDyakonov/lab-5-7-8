@@ -18,33 +18,36 @@ import static client.ui.ConsoleColors.unsuccess;
  * The type Parser.
  */
 public class Parser {
-    public static Long stringToId(String string){
+    public static Long stringToId(String string) {
         try {
             return Long.parseLong(string);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ValidationException(unsuccess("Id пользователя некорректно. Запись будет проигнорирована"));
         }
     }
+
     /**
      * Преобразует путь до файла с тильдой, начинающийся с тильды
+     *
      * @param file
      * @return
      */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {
-                file = file.replaceFirst("^~", System.getProperty("user.home"));
+            file = file.replaceFirst("^~", System.getProperty("user.home"));
         }
         return file;
     }
+
     /**
      * String to boolean boolean.
      *
      * @param line the line
      * @return the boolean
      */
-    public static boolean stringToBoolean(String line){
+    public static boolean stringToBoolean(String line) {
         boolean response = false;
-        if (line.equals("true") || line.equals("t") || line.equals("y")){
+        if (line.equals("true") || line.equals("t") || line.equals("y")) {
             response = true;
         }
         return response;
@@ -56,7 +59,7 @@ public class Parser {
      * @param line the line
      * @return the zoned date time
      */
-    public static ZonedDateTime stringToDateTime(String line){
+    public static ZonedDateTime stringToDateTime(String line) {
         ZonedDateTime response = ZonedDateTime.parse("1991-01-01T00:00:00.713617100+03:00[Europe/Moscow]");
         try {
             response = ZonedDateTime.parse(line);
@@ -72,8 +75,8 @@ public class Parser {
      * @param line the line
      * @return the mood
      */
-    public static Mood stringToMood(String line){
-        switch (line.trim().toLowerCase()){
+    public static Mood stringToMood(String line) {
+        switch (line.trim().toLowerCase()) {
             case "sorrow" -> {
                 return Mood.SORROW;
             }
@@ -83,7 +86,7 @@ public class Parser {
             case "apathy" -> {
                 return Mood.APATHY;
             }
-            case "calm"-> {
+            case "calm" -> {
                 return Mood.CALM;
             }
             case "rage" -> {
@@ -102,8 +105,8 @@ public class Parser {
      * @param line the line
      * @return the weapon type
      */
-    public static WeaponType stringToWeaponType(String line){
-        switch (line.trim().toLowerCase()){
+    public static WeaponType stringToWeaponType(String line) {
+        switch (line.trim().toLowerCase()) {
             case "axe" -> {
                 return WeaponType.AXE;
             }

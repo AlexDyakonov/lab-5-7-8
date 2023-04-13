@@ -73,7 +73,7 @@ public class HumanBeingMapper {
      */
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
         String[] array = obj.split(",");
-        if (array.length != 11){
+        if (array.length != 11) {
             throw new ValidationException(unsuccess("Запись некорректна и будет проигнорирована."));
         }
         HumanBeingModel resultModel = new HumanBeingModel();
@@ -98,12 +98,14 @@ public class HumanBeingMapper {
      * @param str
      * @return
      */
-    private static String csvToString(String str){
+    private static String csvToString(String str) {
         return str.replaceAll("%COMMA%", ",");
     }
-    private static String stringToCsv(String str){
+
+    private static String stringToCsv(String str) {
         return str.replaceAll(",", "%COMMA%");
     }
+
     /**
      * From human being model to string line string.
      *
@@ -122,7 +124,7 @@ public class HumanBeingMapper {
         sb.append(stringToCsv(model.getSoundtrackName())).append(",");
         sb.append(model.getWeaponType()).append(",");
         sb.append(model.getMood()).append(",");
-        if (model.getCar() == null){
+        if (model.getCar() == null) {
             sb.append("null");
         } else {
             sb.append(model.getCar().toStringLine());

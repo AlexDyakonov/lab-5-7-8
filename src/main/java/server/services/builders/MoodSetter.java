@@ -26,17 +26,22 @@ public class MoodSetter {
         int number = 0;
         try {
             number = Integer.parseInt(reader.readLine());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ValidationException(unsuccess("Введите числовые значения."), e);
         } catch (IOException e) {
             System.out.println(error("Ошибка BufferedReader."));
         }
         switch (number) {
-            case 1: return Mood.SORROW;
-            case 2: return Mood.GLOOM;
-            case 3: return Mood.APATHY;
-            case 4: return Mood.CALM;
-            default: return Mood.RAGE;
+            case 1:
+                return Mood.SORROW;
+            case 2:
+                return Mood.GLOOM;
+            case 3:
+                return Mood.APATHY;
+            case 4:
+                return Mood.CALM;
+            default:
+                return Mood.RAGE;
         }
     }
 
@@ -49,7 +54,7 @@ public class MoodSetter {
      * @return the mood
      */
     public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
-        if (type == BuilderType.CMD){
+        if (type == BuilderType.CMD) {
             try {
                 System.out.println(getMessage("input_weapon", LANGUAGE.RU));
                 return getMood(cmdreader);

@@ -22,16 +22,16 @@ public class ImpactSpeedBuilder {
      * @param reader the reader
      * @return the float
      */
-    public static float getImpactSpeed(BufferedReader reader){
+    public static float getImpactSpeed(BufferedReader reader) {
         try {
             String num = reader.readLine();
-            if (num == null){
+            if (num == null) {
                 throw new ValidationException(error("Встречен null при чтения строки для поля impact speed."));
             }
             return Float.parseFloat(num);
         } catch (NumberFormatException e) {
             throw new ValidationException(unsuccess("Значение impactSpeed должно быть числом. Введите еще раз."), e);
-        } catch (IOException e2){
+        } catch (IOException e2) {
             throw new ApplicationException(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения из клавиатуры"));
         }
     }
@@ -44,8 +44,8 @@ public class ImpactSpeedBuilder {
      * @param type       the type
      * @return the float
      */
-    public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type){
-        if (type == BuilderType.CMD){
+    public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type) {
+        if (type == BuilderType.CMD) {
             try {
                 System.out.println(getMessage("input_impact_speed", LANGUAGE.RU));
                 return getImpactSpeed(cmdReader);

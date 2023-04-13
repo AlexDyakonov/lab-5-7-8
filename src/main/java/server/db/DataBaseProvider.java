@@ -61,7 +61,7 @@ public class DataBaseProvider {
         String personString;
         try {
             validateFileRead(new File(fileName));
-        } catch (FileException e){
+        } catch (FileException e) {
             System.out.println(error(e.getMessage()));
         }
 
@@ -70,17 +70,17 @@ public class DataBaseProvider {
                 try {
                     personString = reader.readLine();
                     HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
-                    if (idList.contains(person.getId())){
+                    if (idList.contains(person.getId())) {
                         throw new FileException(error("Найдено два пользователя с одинаковым id. Загружен первый из них."));
                     }
                     idList.add(person.getId());
                     resultSet.add(person);
-                } catch (ValidationException | FileException e){
+                } catch (ValidationException | FileException e) {
                     System.out.println(e.getMessage());
                 }
             }
             System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return resultSet;
@@ -100,7 +100,7 @@ public class DataBaseProvider {
             }
             System.out.println(success("Было сохранено " + dataBase.size() + " элементов."));
         } catch (IOException e) {
-            System.out.println("Ошибка сохранения в *" + fileName +"*");
+            System.out.println("Ошибка сохранения в *" + fileName + "*");
         }
     }
 
@@ -121,6 +121,7 @@ public class DataBaseProvider {
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
+
     public FileTime getFileCreationDate(String fileName) {
         try {
             return (FileTime) Files.getAttribute((new File(fileName)).toPath(), "creationTime");

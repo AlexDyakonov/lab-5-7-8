@@ -49,7 +49,7 @@ public interface HumanController {
      * @param id       the id
      * @return the human being response dto
      */
-    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id );
+    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 
     // additional commands
 

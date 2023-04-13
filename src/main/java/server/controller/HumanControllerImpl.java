@@ -92,7 +92,7 @@ public class HumanControllerImpl implements HumanController {
         try {
             validateFileWrite(new File(fileName));
             service.save(fileName);
-        } catch (FileException e){
+        } catch (FileException e) {
             System.out.println(error(e.getMessage()));
         }
     }
@@ -126,12 +126,18 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public int countByMood(String mood) {
         switch (mood) {
-            case "SORROW": return service.countByMood(Mood.SORROW);
-            case "GLOOM": return service.countByMood(Mood.GLOOM);
-            case "APATHY": return service.countByMood(Mood.APATHY);
-            case "CALM": return service.countByMood(Mood.CALM);
-            case "RAGE": return service.countByMood(Mood.RAGE);
-            default: throw new ValidationException("Такого mood не существует");
+            case "SORROW":
+                return service.countByMood(Mood.SORROW);
+            case "GLOOM":
+                return service.countByMood(Mood.GLOOM);
+            case "APATHY":
+                return service.countByMood(Mood.APATHY);
+            case "CALM":
+                return service.countByMood(Mood.CALM);
+            case "RAGE":
+                return service.countByMood(Mood.RAGE);
+            default:
+                throw new ValidationException("Такого mood не существует");
         }
     }
 

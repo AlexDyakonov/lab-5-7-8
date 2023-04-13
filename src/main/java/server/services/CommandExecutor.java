@@ -39,7 +39,7 @@ public class CommandExecutor {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    private void checkCommandArg(String command, int numOfArgs){
+    private void checkCommandArg(String command, int numOfArgs) {
         String[] commandArr = command.split(" ");
         if (numOfArgs == 0 && commandArr.length - 1 > 0) {
             throw new ArgumentException("Данная команда вызывается без агрументов");
@@ -48,9 +48,10 @@ public class CommandExecutor {
             throw new ArgumentException("Количество аргументов в данной команде равно " + numOfArgs);
         }
     }
+
     private void executeScript(String scriptName, BufferedReader reader) {
         scriptName = tildaResolver(scriptName);
-        if (scriptHistory.contains(scriptName)){
+        if (scriptHistory.contains(scriptName)) {
             throw new ApplicationException(error("Обнаружена рекурсия"));
         }
 
@@ -88,7 +89,7 @@ public class CommandExecutor {
                 switch (compositeCommand[0]) {
                     case "update": // update id {element}
                         id = Long.parseLong(compositeCommand[1]);
-                        if (controller.getHumanById(id) == null){
+                        if (controller.getHumanById(id) == null) {
                             throw new ArgumentException(unsuccess("Объект с id: " + id + " не был найден."));
                         }
                         controller.updateHuman(HumanBeingRequestDTOBuilder.build(reader, reader2, builderType), id);

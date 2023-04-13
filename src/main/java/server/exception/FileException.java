@@ -3,7 +3,7 @@ package server.exception;
 /**
  * The type File exception.
  */
-public class FileException extends RuntimeException{
+public class FileException extends RuntimeException {
     /**
      * Instantiates a new File exception.
      *

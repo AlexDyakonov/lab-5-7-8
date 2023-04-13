@@ -27,10 +27,10 @@ public class CarBuilder {
         Car car = new Car();
         String name = "";
         boolean cool = false;
-        try  {
+        try {
             System.out.println(getMessage("input_car_name", LANGUAGE.RU));
             name = reader.readLine();
-            if (Objects.equals(name, "") || Objects.equals(name, "null") || name == null){
+            if (Objects.equals(name, "") || Objects.equals(name, "null") || name == null) {
                 return null;
             } else {
                 car.setName(name);
@@ -56,9 +56,9 @@ public class CarBuilder {
         Car car = new Car();
         String name = "";
         boolean cool = false;
-        try  {
+        try {
             name = reader.readLine();
-            if (Objects.equals(name, "") || Objects.equals(name, "null")){
+            if (Objects.equals(name, "") || Objects.equals(name, "null")) {
                 return null;
             } else {
                 car.setName(name);
@@ -82,16 +82,16 @@ public class CarBuilder {
      * @return the car
      */
     public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
-        if (type == BuilderType.CMD){
+        if (type == BuilderType.CMD) {
             try {
                 return getCar(cmdreader);
-            } catch (Exception e){
+            } catch (Exception e) {
                 return carBuilder(cmdreader, filereader, BuilderType.CMD);
             }
         } else {
             try {
                 return getCarFromFile(filereader);
-            } catch (Exception e){
+            } catch (Exception e) {
                 return carBuilder(cmdreader, filereader, BuilderType.CMD);
             }
         }
