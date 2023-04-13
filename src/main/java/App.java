@@ -1,9 +1,5 @@
 import client.ui.ConsoleUI;
-import server.exception.ApplicationException;
 import server.exception.FileException;
-
-import java.io.File;
-import java.util.Scanner;
 
 /**
  * The type App.

@@ -7,7 +7,6 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
 import static util.Message.getMessage;
@@ -23,8 +22,8 @@ public class CoordinatesBuilder {
      * @return the coordinates
      */
     public static Coordinates getCoordinates(BufferedReader reader) {
-        Integer x = null;
-        Double y = null;
+        Integer x;
+        Double y;
         try {
             System.out.println(getMessage("input_coordinate_x", LANGUAGE.RU));
             x = Integer.parseInt(reader.readLine());
@@ -47,8 +46,8 @@ public class CoordinatesBuilder {
      * @return the coordinates
      */
     public static Coordinates getCoordinatesFromFile(BufferedReader reader) {
-        Integer x = null;
-        Double y = null;
+        Integer x;
+        Double y;
         try {
             x = Integer.parseInt(reader.readLine());
             y = Double.parseDouble(reader.readLine());

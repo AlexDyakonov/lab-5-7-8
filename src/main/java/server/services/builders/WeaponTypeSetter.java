@@ -7,7 +7,6 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import static client.ui.ConsoleColors.*;
 import static util.Message.getMessage;

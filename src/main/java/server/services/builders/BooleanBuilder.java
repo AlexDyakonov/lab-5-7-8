@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.whiteStr;
 import static util.Message.getMessage;
 import static util.Parser.stringToBoolean;
 
@@ -25,7 +24,7 @@ public class BooleanBuilder {
      */
     public static boolean getBool(BufferedReader reader) {
         boolean response = false;
-        String request = "";
+        String request;
         try {
             request = reader.readLine();
             if (request == null) {

@@ -1,6 +1,5 @@
 package server.services.builders;
 
-import org.apache.commons.collections.map.LazyMap;
 import server.model.Car;
 import server.services.BuilderType;
 import util.LANGUAGE;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.whiteStr;
 import static util.Message.getMessage;
 
 /**
