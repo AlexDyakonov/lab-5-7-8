@@ -9,16 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Code reformatting for whole project">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix of Message.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/NewUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/AddCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/HelpCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/HistoryCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/scripts/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scripts/script" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,16 +33,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="issfix" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,26 +60,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/code/java/text-lab3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/code/java/text-lab3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
@@ -193,6 +198,7 @@
       <workItem from="1681230027963" duration="510000" />
       <workItem from="1681234387428" duration="3867000" />
       <workItem from="1681372355511" duration="1795000" />
+      <workItem from="1681414040696" duration="9341000" />
     </task>
     <task id="LOCAL-00024" summary="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders">
       <created>1678709628237</created>

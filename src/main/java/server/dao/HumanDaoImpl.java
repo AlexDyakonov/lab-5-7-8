@@ -87,7 +87,7 @@ public class HumanDaoImpl implements HumanDao {
                 return HumanBeingMapper.fromModelToResponse(human);
             }
         }
-        return null;
+        return null; //TODO инициализация выше цикла
     }
 
     @Override

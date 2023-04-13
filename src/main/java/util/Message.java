@@ -40,4 +40,14 @@ public class Message {
             return null;
         }
     }
+
+    public static String getCommandDescription(String messageName, LANGUAGE language) {
+        try {
+            JSONObject jsonObject = new JSONObject(content);
+            return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("command_description").getString(messageName));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
