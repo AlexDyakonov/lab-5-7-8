@@ -1,5 +1,11 @@
 import client.ui.ConsoleUI;
+import client.ui.NewUI;
+import server.commands.Invoker;
 import server.exception.FileException;
+import server.services.BuilderType;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /**
  * The type App.
@@ -15,8 +21,10 @@ public class App {
         String args0 = "src/main/resources/database.csv";
         try {
 //            ConsoleUI session = new ConsoleUI(args[0]);
-            ConsoleUI session = new ConsoleUI(args0);
+//            ConsoleUI session = new ConsoleUI(args0);
+            NewUI session = new NewUI(args0, new Invoker(args0, null, null, BuilderType.CMD));
             session.start();
+
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
         } catch (FileException e) {
