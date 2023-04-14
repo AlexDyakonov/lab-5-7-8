@@ -34,7 +34,8 @@ public class Invoker {
         init();
     }
 
-    private void init() {
+    public void init() {
+        commandsMap.clear();
         addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType));
         addCommand("help", new HelpCommand());
         addCommand("show", new ShowCommand(controller));
@@ -72,24 +73,27 @@ public class Invoker {
         return cmdReader;
     }
 
-    public void setCmdReader(BufferedReader cmdReader) {
+    public Invoker setCmdReader(BufferedReader cmdReader) {
         this.cmdReader = cmdReader;
+        return this;
     }
 
     public BufferedReader getFileReader() {
         return fileReader;
     }
 
-    public void setFileReader(BufferedReader fileReader) {
+    public Invoker setFileReader(BufferedReader fileReader) {
         this.fileReader = fileReader;
+        return this;
     }
 
     public BuilderType getBuilderType() {
         return builderType;
     }
 
-    public void setBuilderType(BuilderType builderType) {
+    public Invoker setBuilderType(BuilderType builderType) {
         this.builderType = builderType;
+        return this;
     }
 
     public List<String> getScriptHistory() {

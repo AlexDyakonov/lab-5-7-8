@@ -22,10 +22,10 @@ public class ExecuteScriptCommand implements Command {
     public void execute(String[] args) {
 //        tildaSolver(args[1]);
         invoker.getScriptHistory().add(args[1]);
-        invoker.setBuilderType(BuilderType.FILE);
         String command;
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(args[1]));
+            invoker.setFileReader(fileReader).setBuilderType(BuilderType.FILE).init();
             while (fileReader.ready()) {
                 command = fileReader.readLine();
                 if (!command.split(" ")[0].equals("execute_script")) {
@@ -36,7 +36,8 @@ public class ExecuteScriptCommand implements Command {
                     invoker.execute(command);
                 }
             }
-            fileReader.close();
+            invoker.getScriptHistory().clear();
+            invoker.setBuilderType(BuilderType.CMD).init();
         } catch (IOException e) {
             System.out.println(unsuccess("Ошибка выполнения скрипта"));
         }
