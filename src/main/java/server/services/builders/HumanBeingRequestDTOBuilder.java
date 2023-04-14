@@ -2,6 +2,7 @@ package server.services.builders;
 
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.BuilderType;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 
@@ -22,17 +23,17 @@ public class HumanBeingRequestDTOBuilder {
      * @param builderType the builder type
      * @return the human being request dto
      */
-    public static HumanBeingRequestDTO build(BufferedReader cmdreader, BufferedReader filereader, BuilderType builderType) {
+    public static HumanBeingRequestDTO build(BufferedReader cmdreader, BufferedReader filereader, BuilderType builderType, LANGUAGE language) {
         HumanBeingRequestDTO dto = new HumanBeingRequestDTO();
 
-        dto.setName(nameBuilder(cmdreader, filereader, "input_name", builderType));
+        dto.setName(nameBuilder(cmdreader, filereader, "input_name", builderType, language));
         dto.setCoordinates(CoordinatesBuilder.buildCoordinates(cmdreader, filereader, builderType));
 
         dto.setRealHero(boolBuilder(cmdreader, filereader, "input_realhero", builderType));
         dto.setHasToothpick(boolBuilder(cmdreader, filereader, "input_has_toothpick", builderType));
 
         dto.setImpactSpeed(impactSpeedBuilder(cmdreader, filereader, builderType));
-        dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "input_soundtrack", builderType));
+        dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "input_soundtrack", builderType, language));
 
         dto.setWeaponType(WeaponTypeSetter.setWeaponType(cmdreader, filereader, builderType));
         dto.setMood(MoodSetter.setMood(cmdreader, filereader, builderType));

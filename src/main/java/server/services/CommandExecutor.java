@@ -6,6 +6,7 @@ import server.exception.ApplicationException;
 import server.exception.ArgumentException;
 import server.model.dto.HumanBeingRequestDTO;
 import server.services.builders.HumanBeingRequestDTOBuilder;
+import util.LANGUAGE;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import static util.Parser.tildaResolver;
 /**
  * The type Command executor.
  */
+@Deprecated
 public class CommandExecutor {
 
     private final HumanController controller;
@@ -92,7 +94,7 @@ public class CommandExecutor {
                         if (controller.getHumanById(id) == null) {
                             throw new ArgumentException(unsuccess("Объект с id: " + id + " не был найден."));
                         }
-                        controller.updateHuman(HumanBeingRequestDTOBuilder.build(reader, reader2, builderType), id);
+                        controller.updateHuman(HumanBeingRequestDTOBuilder.build(reader, reader2, builderType, LANGUAGE.RU), id);
                         break;
                     case "remove_by_id": // remove_by_id id
                         id = Long.parseLong(compositeCommand[1]);
@@ -113,17 +115,17 @@ public class CommandExecutor {
             } else {
                 switch (command) {
                     case "add": // add {element}
-                        HumanBeingRequestDTO dto = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType);
+                        HumanBeingRequestDTO dto = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType, LANGUAGE.RU);
                         controller.createHuman(dto);
                         break;
                     case "add_if_max": //add_if_max {element}
-                        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType);
+                        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType, LANGUAGE.RU);
                         if (isImpactSpeedMax(dtoMax)) {
                             controller.createHuman(dtoMax);
                         }
                         break;
                     case "add_if_min": // add_if_min {element}
-                        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType);
+                        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(reader, reader2, builderType, LANGUAGE.RU);
                         if (isImpactSpeedMin(dtoMin)) {
                             controller.createHuman(dtoMin);
                         }

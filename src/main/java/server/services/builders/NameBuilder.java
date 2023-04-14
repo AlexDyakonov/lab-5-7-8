@@ -42,21 +42,21 @@ public class NameBuilder {
      * @param type       the type
      * @return the string
      */
-    public static String nameBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type) {
+    public static String nameBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type, LANGUAGE language) {
         if (type == BuilderType.CMD) {
             try {
-                System.out.println(getMessage(messageId, LANGUAGE.RU));
+                System.out.println(getMessage(messageId, language));
                 return getName(cmdreader);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return nameBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
+                return nameBuilder(cmdreader, filereader, messageId, BuilderType.CMD, language);
             }
         } else {
             try {
                 return getName(filereader);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return nameBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
+                return nameBuilder(cmdreader, filereader, messageId, BuilderType.CMD, language);
             }
         }
     }

@@ -14,12 +14,14 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
 public class AddCommand implements Command {
+    private LANGUAGE language;
     private final HumanController controller;
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
 
-    public AddCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+    public AddCommand(LANGUAGE language, HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+        this.language = language;
         this.controller = controller;
         this.cmdReader = cmdReader;
         this.fileReader = fileReader;
@@ -29,13 +31,13 @@ public class AddCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
-        controller.createHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType));
+        controller.createHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language));
     }
 
     @Override
     public String description() {
-        return getCommandDescription("add", LANGUAGE.RU);
+        return getCommandDescription("add", language);
     }
 }

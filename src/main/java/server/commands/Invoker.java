@@ -43,15 +43,15 @@ public class Invoker {
         addCommand("help", new HelpCommand());
         addCommand("info", new InfoCommand(controller));
         addCommand("show", new ShowCommand(controller));
-        addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType));
-        addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType));
+        addCommand("add", new AddCommand(language, controller, cmdReader, fileReader, builderType));
+        addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("remove_by_id", new RemoveByIdCommand(controller));
         addCommand("clear", new ClearCommand(controller));
         addCommand("save", new SaveCommand(controller, fileName));
         addCommand("execute_script", new ExecuteScriptCommand(this)); //TODO fix bugs with recursion!!!
         addCommand("exit", new ExitCommand());
-        addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType));
-        addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType));
+        addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
+        addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("history", new HistoryCommand(history));
         addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller));
         addCommand("count_by_mood", new CountByMoodCommand(controller));
@@ -118,6 +118,7 @@ public class Invoker {
 
     public void setLanguage(LANGUAGE language) {
         this.language = language;
+        init();
     }
 
     public List<String> getScriptHistory() {

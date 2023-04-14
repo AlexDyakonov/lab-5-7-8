@@ -18,8 +18,10 @@ public class AddIfMinCommand implements Command {
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
+    private LANGUAGE language;
 
-    public AddIfMinCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+    public AddIfMinCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
+        this.language = language;
         this.controller = controller;
         this.cmdReader = cmdReader;
         this.fileReader = fileReader;
@@ -31,7 +33,7 @@ public class AddIfMinCommand implements Command {
         if (args.length > 1) {
             throw new ArgumentException(getError("no_args", LANGUAGE.RU));
         }
-        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType);
+        HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language);
         if (controller.isImpactSpeedMin(dtoMin)) {
             controller.createHuman(dtoMin);
         }

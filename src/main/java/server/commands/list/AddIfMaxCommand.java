@@ -18,12 +18,14 @@ public class AddIfMaxCommand implements Command {
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
+    private LANGUAGE language;
 
-    public AddIfMaxCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+    public AddIfMaxCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.controller = controller;
         this.cmdReader = cmdReader;
         this.fileReader = fileReader;
         this.builderType = builderType;
+        this.language = language;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class AddIfMaxCommand implements Command {
         if (args.length > 1) {
             throw new ArgumentException(getError("no_args", LANGUAGE.RU));
         }
-        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType);
+        HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language);
         if (controller.isImpactSpeedMax(dtoMax)) {
             controller.createHuman(dtoMax);
         }
