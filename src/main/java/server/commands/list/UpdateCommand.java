@@ -8,18 +8,18 @@ import server.services.builders.HumanBeingRequestDTOBuilder;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 
+import static client.ui.ConsoleColors.unsuccess;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
-public class AddCommand implements Command {
+public class UpdateCommand implements Command {
     private final HumanController controller;
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
 
-    public AddCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+    public UpdateCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
         this.controller = controller;
         this.cmdReader = cmdReader;
         this.fileReader = fileReader;
@@ -28,14 +28,18 @@ public class AddCommand implements Command {
 
     @Override
     public void execute(String[] args) {
-        if (args.length != 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+        if (args.length != 2) {
+            throw new ArgumentException(getError("one_arg", LANGUAGE.RU));
         }
-        controller.createHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType));
+        Long id = Long.parseLong(args[1]);
+        if (controller.getHumanById(id) == null) {
+            throw new ArgumentException(unsuccess("Объект с id: " + id + " не был найден."));
+        }
+        controller.updateHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType), id);
     }
 
     @Override
     public String description() {
-        return getCommandDescription("add", LANGUAGE.RU);
+        return getCommandDescription("update", LANGUAGE.RU);
     }
 }

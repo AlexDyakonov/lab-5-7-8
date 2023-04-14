@@ -9,11 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="First commands using command pattern">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/AddIfMaxCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/AddIfMinCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ClearCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/CountByMoodCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExitCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/LanguageCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/MaxByImpactSpeedCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/RemoveByIdCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/LanguageBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/AddCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/scripts/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scripts/script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/scripts/script2" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scripts/script2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +42,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,26 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/code/java/text-lab3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/code/java/itmo-math",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
@@ -188,14 +206,8 @@
       <workItem from="1681230027963" duration="510000" />
       <workItem from="1681234387428" duration="3867000" />
       <workItem from="1681372355511" duration="1795000" />
-      <workItem from="1681449035967" duration="705000" />
-    </task>
-    <task id="LOCAL-00024" summary="Removed code duplications, added ScriptExecutor and executor classes, refactored class folders">
-      <created>1678709628237</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1678709628237</updated>
+      <workItem from="1681449035967" duration="821000" />
+      <workItem from="1681468326778" duration="10095000" />
     </task>
     <task id="LOCAL-00025" summary="Refactoring project #2">
       <created>1678709744277</created>
@@ -533,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681373520715</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output">
+      <created>1681449812793</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1681449812793</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Small fix of remove_by_id" />
     <MESSAGE value="Fixed addifmin/max" />
     <MESSAGE value="Fixed save bug" />
     <MESSAGE value="Attempt to fix script executor" />
@@ -589,7 +607,8 @@
     <MESSAGE value="Added javadoc documentation" />
     <MESSAGE value="Added ru and en localization for builders (input lines)" />
     <MESSAGE value="Code reformatting for whole project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code reformatting for whole project" />
+    <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
