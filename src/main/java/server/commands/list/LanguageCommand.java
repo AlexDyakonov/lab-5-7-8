@@ -19,11 +19,10 @@ public class LanguageCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", invoker.getLanguage()));
         }
         try {
             invoker.setLanguage(LanguageBuilder.getLanguage(invoker.getLanguage(), invoker.getCmdReader()));
-            System.out.println(invoker.getLanguage());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -31,6 +30,6 @@ public class LanguageCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("language", LANGUAGE.RU);
+        return getCommandDescription("language", invoker.getLanguage());
     }
 }

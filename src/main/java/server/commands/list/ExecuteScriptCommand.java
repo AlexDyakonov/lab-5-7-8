@@ -15,9 +15,11 @@ import static util.Message.getCommandDescription;
 
 public class ExecuteScriptCommand implements Command {
     private final Invoker invoker;
+    private LANGUAGE language;
 
-    public ExecuteScriptCommand(Invoker invoker) {
+    public ExecuteScriptCommand(Invoker invoker, LANGUAGE language) {
         this.invoker = invoker;
+        this.language = language;
     }
 
     @Override
@@ -55,6 +57,6 @@ public class ExecuteScriptCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("execute_script", LANGUAGE.RU);
+        return getCommandDescription("execute_script", language);
     }
 }

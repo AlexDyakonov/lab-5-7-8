@@ -11,10 +11,16 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
 public class HelpCommand implements Command {
+    private LANGUAGE language;
+
+    public HelpCommand(LANGUAGE language) {
+        this.language = language;
+    }
+
     @Override
     public void execute(String[] args) {
         if (args.length > 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         try {
             for (Map.Entry<String, Command> pair : Invoker.getCommandsMap().entrySet()) {
@@ -27,6 +33,6 @@ public class HelpCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("help", LANGUAGE.RU);
+        return getCommandDescription("help", language);
     }
 }

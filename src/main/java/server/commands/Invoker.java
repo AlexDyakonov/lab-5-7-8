@@ -40,22 +40,22 @@ public class Invoker {
 
     public void init() {
         commandsMap.clear();
-        addCommand("help", new HelpCommand());
-        addCommand("info", new InfoCommand(controller));
-        addCommand("show", new ShowCommand(controller));
-        addCommand("add", new AddCommand(language, controller, cmdReader, fileReader, builderType));
+        addCommand("help", new HelpCommand(language));
+        addCommand("info", new InfoCommand(controller, language));
+        addCommand("show", new ShowCommand(controller, language));
+        addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("remove_by_id", new RemoveByIdCommand(controller));
-        addCommand("clear", new ClearCommand(controller));
-        addCommand("save", new SaveCommand(controller, fileName));
-        addCommand("execute_script", new ExecuteScriptCommand(this)); //TODO fix bugs with recursion!!!
-        addCommand("exit", new ExitCommand());
+        addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
+        addCommand("clear", new ClearCommand(controller, language));
+        addCommand("save", new SaveCommand(controller, fileName, language));
+        addCommand("execute_script", new ExecuteScriptCommand(this, language)); //TODO fix bugs with recursion!!!
+        addCommand("exit", new ExitCommand(language));
         addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("history", new HistoryCommand(history));
-        addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller));
-        addCommand("count_by_mood", new CountByMoodCommand(controller));
-        addCommand("print_ascending", new PrintAscendingCommand(controller));
+        addCommand("history", new HistoryCommand(history, language));
+        addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller, language));
+        addCommand("count_by_mood", new CountByMoodCommand(controller, language));
+        addCommand("print_ascending", new PrintAscendingCommand(controller, language));
         addCommand("language", new LanguageCommand(this));
     }
 

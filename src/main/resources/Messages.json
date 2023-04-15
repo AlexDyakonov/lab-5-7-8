@@ -4,17 +4,44 @@
       "input_name" : "Insert name: ",
       "input_soundtrack" : "Insert soundtrack name: ",
       "input_realhero" : "Is it real hero? (true/t/y, default: false) ",
-      "input_has_toothpick" : "Does it has toothpick? (true/t/y, default: false) ",
-      "input_car_name" : "Insert car name. If it is not exist insert \"null\" / or empty line.",
-      "input_car_cool" : "Does it cool? (true/false/t/f):",
-      "input_coordinate_x" : "Insert coordinate X: ",
-      "input_coordinate_y" : "Insert coordinate Y (>-897): ",
-      "input_mood" : "Choose mood: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
-      "input_weapon" :"Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
-      "input_impact_speed" :"Insert ImpactSpeed (ex: 4.61): "
+      "input_has_toothpick": "Does it has toothpick? (true/t/y, default: false) ",
+      "input_car_name": "Insert car name. If it is not exist insert \"null\" / or empty line.",
+      "input_car_cool": "Does it cool? (true/false/t/f):",
+      "input_coordinate_x": "Insert coordinate X: ",
+      "input_coordinate_y": "Insert coordinate Y (>-897): ",
+      "input_mood": "Choose mood: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
+      "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
+      "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): "
     },
     "error": {
-      "same_id": "Found 2 users with same id. First met will be downloaded."
+      "same_id": "Found to HumanBeing with same *id*. First will be loaded.",
+      "no_args": "Command should contains no args.",
+      "one_arg": "Command contains one argument."
+    },
+    "success": {
+      "user_added": "HumanBeing with id - %id% added."
+    },
+    "unsuccessful": {
+      "user_not_added": "HumanBeing wasn't added."
+    },
+    "command_description": {
+      "help": "display info about all commands.",
+      "info": "display information about the collection.",
+      "show": "display all HumanBeing.",
+      "add": "add new HumanBeing.",
+      "add_if_min": "add a new element to the collection if its ImpactSpeed value is greater than the value of the largest element in this collection.",
+      "add_if_max": "add a new element to the collection if its ImpactSpeed value is less than that of the smallest element in this collection.",
+      "update": "update the value of the collection element whose id is equal to the given one.",
+      "remove_by_id": "removing HumanBeing with given id.",
+      "clear": "clear collection.",
+      "save": "save collection to file.",
+      "history": "display the last 15 commands without arguments",
+      "exit": "end program (without saving).",
+      "execute_script": "read and execute a script from the specified file.",
+      "max_by_impact_speed": "display any object from the collection whose impactSpeed field value is the maximum.",
+      "count_by_mood": "display the number of elements whose mood field value is equal to the specified value.",
+      "print_ascending": "display the elements of the collection in ascending order.",
+      "language": "choose language program."
     }
   },
   "ru": {

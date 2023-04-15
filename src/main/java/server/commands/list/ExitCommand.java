@@ -8,16 +8,22 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
 public class ExitCommand implements Command {
+    private LANGUAGE language;
+
+    public ExitCommand(LANGUAGE language) {
+        this.language = language;
+    }
+
     @Override
     public void execute(String[] args) {
         if (args.length > 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         System.exit(0);
     }
 
     @Override
     public String description() {
-        return getCommandDescription("exit", LANGUAGE.RU);
+        return getCommandDescription("exit", language);
     }
 }

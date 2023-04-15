@@ -10,21 +10,23 @@ import static util.Message.getError;
 
 public class MaxByImpactSpeedCommand implements Command {
     private final HumanController controller;
+    private LANGUAGE language;
 
-    public MaxByImpactSpeedCommand(HumanController controller) {
+    public MaxByImpactSpeedCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
+        this.language = language;
     }
 
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         controller.max_by_impact_speed();
     }
 
     @Override
     public String description() {
-        return getCommandDescription("max_by_impact_speed", LANGUAGE.RU);
+        return getCommandDescription("max_by_impact_speed", language);
     }
 }

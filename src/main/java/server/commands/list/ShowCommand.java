@@ -10,21 +10,23 @@ import static util.Message.getError;
 
 public class ShowCommand implements Command {
     private final HumanController controller;
+    private LANGUAGE language;
 
-    public ShowCommand(HumanController controller) {
+    public ShowCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
+        this.language = language;
     }
 
     @Override
     public void execute(String[] args) {
         if (args.length > 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         controller.getAllHuman().forEach(System.out::println);
     }
 
     @Override
     public String description() {
-        return getCommandDescription("show", LANGUAGE.RU);
+        return getCommandDescription("show", language);
     }
 }

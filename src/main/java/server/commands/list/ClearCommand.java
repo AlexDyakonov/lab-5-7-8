@@ -10,21 +10,23 @@ import static util.Message.getError;
 
 public class ClearCommand implements Command {
     private final HumanController controller;
+    private LANGUAGE language;
 
-    public ClearCommand(HumanController controller) {
+    public ClearCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
+        this.language = language;
     }
 
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         controller.clear();
     }
 
     @Override
     public String description() {
-        return getCommandDescription("clear", LANGUAGE.RU);
+        return getCommandDescription("clear", language);
     }
 }

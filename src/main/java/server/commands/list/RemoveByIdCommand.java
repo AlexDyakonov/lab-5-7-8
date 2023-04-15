@@ -10,15 +10,17 @@ import static util.Message.getError;
 
 public class RemoveByIdCommand implements Command {
     private final HumanController controller;
+    private LANGUAGE language;
 
-    public RemoveByIdCommand(HumanController controller) {
+    public RemoveByIdCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
+        this.language = language;
     }
 
     @Override
     public void execute(String[] args) {
         if (args.length != 2) {
-            throw new ArgumentException(getError("one_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("one_args", language));
         }
         Long id = Long.parseLong(args[1]);
         controller.deleteHumanById(id);
@@ -26,6 +28,6 @@ public class RemoveByIdCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("remove_by_id", LANGUAGE.RU);
+        return getCommandDescription("remove_by_id", language);
     }
 }

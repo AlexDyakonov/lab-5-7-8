@@ -20,7 +20,7 @@ public class AddCommand implements Command {
     private final BufferedReader fileReader;
     private final BuilderType builderType;
 
-    public AddCommand(LANGUAGE language, HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType) {
+    public AddCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.language = language;
         this.controller = controller;
         this.cmdReader = cmdReader;

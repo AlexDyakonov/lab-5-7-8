@@ -7,9 +7,11 @@ import static util.Message.getCommandDescription;
 
 public class PrintAscendingCommand implements Command {
     private final HumanController controller;
+    private LANGUAGE language;
 
-    public PrintAscendingCommand(HumanController controller) {
+    public PrintAscendingCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
+        this.language = language;
     }
 
     @Override
@@ -20,6 +22,6 @@ public class PrintAscendingCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("print_ascending", LANGUAGE.RU);
+        return getCommandDescription("print_ascending", language);
     }
 }
