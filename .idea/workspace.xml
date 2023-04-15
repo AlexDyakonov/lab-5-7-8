@@ -9,24 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added en localization for add commands">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added en localization for all command descriptions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/AddCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ClearCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ClearCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/CountByMoodCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/CountByMoodCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/HelpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/HistoryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/HistoryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/LanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/LanguageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/MaxByImpactSpeedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/MaxByImpactSpeedCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/RemoveByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/RemoveByIdCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/LanguageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/LanguageBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/validation/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,14 +195,7 @@
       <workItem from="1681449035967" duration="821000" />
       <workItem from="1681468326778" duration="10751000" />
       <workItem from="1681558340796" duration="595000" />
-      <workItem from="1681558943033" duration="1672000" />
-    </task>
-    <task id="LOCAL-00027" summary="Removed script2, moved other files">
-      <created>1678831731073</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1678831731073</updated>
+      <workItem from="1681558943033" duration="6233000" />
     </task>
     <task id="LOCAL-00028" summary="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper">
       <created>1678834784405</created>
@@ -549,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681507208225</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added en localization for all command descriptions">
+      <created>1681563093280</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1681563093281</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +571,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attempt to fix script executor" />
     <MESSAGE value="Attempt to fix script executor #1" />
     <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
     <MESSAGE value="Attempt to fix script executor #3" />
@@ -605,7 +595,8 @@
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
     <MESSAGE value="Added en localization for add commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added en localization for add commands" />
+    <MESSAGE value="Added en localization for all command descriptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added en localization for all command descriptions" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

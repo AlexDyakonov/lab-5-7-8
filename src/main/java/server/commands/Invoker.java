@@ -27,8 +27,7 @@ public class Invoker {
 
 
     public Invoker(String fileName, BufferedReader cmdReader, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
-        validateFile(fileName);
-        this.fileName = tildaResolver(fileName);
+        this.fileName = fileName;
         this.controller = new HumanControllerImpl(fileName);
         this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
         this.history = new HistoryManager(15); // limit history size

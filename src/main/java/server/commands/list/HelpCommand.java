@@ -7,6 +7,8 @@ import util.LANGUAGE;
 
 import java.util.Map;
 
+import static client.ui.ConsoleColors.GREEN;
+import static client.ui.ConsoleColors.RESET;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
@@ -24,7 +26,7 @@ public class HelpCommand implements Command {
         }
         try {
             for (Map.Entry<String, Command> pair : Invoker.getCommandsMap().entrySet()) {
-                System.out.println(pair.getKey() + " : " + pair.getValue().description());
+                System.out.println(GREEN + pair.getKey() + RESET + " : " + pair.getValue().description());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

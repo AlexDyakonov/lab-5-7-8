@@ -1,9 +1,9 @@
 {
   "en": {
     "message": {
-      "input_name" : "Insert name: ",
-      "input_soundtrack" : "Insert soundtrack name: ",
-      "input_realhero" : "Is it real hero? (true/t/y, default: false) ",
+      "input_name": "Insert name: ",
+      "input_soundtrack": "Insert soundtrack name: ",
+      "input_realhero": "Is it real hero? (true/t/y, default: false) ",
       "input_has_toothpick": "Does it has toothpick? (true/t/y, default: false) ",
       "input_car_name": "Insert car name. If it is not exist insert \"null\" / or empty line.",
       "input_car_cool": "Does it cool? (true/false/t/f):",
@@ -11,18 +11,20 @@
       "input_coordinate_y": "Insert coordinate Y (>-897): ",
       "input_mood": "Choose mood: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
       "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
-      "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): "
+      "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): ",
+      "input_language": "Type RU/EN to choose app language: "
     },
     "error": {
       "same_id": "Found to HumanBeing with same *id*. First will be loaded.",
       "no_args": "Command should contains no args.",
-      "one_arg": "Command contains one argument."
+      "one_arg": "Command contains one argument.",
+      "user_not_added": "HumanBeing wasn't added."
+    },
+    "warning": {
+      "default_language": "Can not recognize input language. Set default language: RU."
     },
     "success": {
       "user_added": "HumanBeing with id - %id% added."
-    },
-    "unsuccessful": {
-      "user_not_added": "HumanBeing wasn't added."
     },
     "command_description": {
       "help": "display info about all commands.",
@@ -46,28 +48,36 @@
   },
   "ru": {
     "message": {
-      "input_name" : "Введите имя: ",
-      "input_soundtrack" : "Введите название саундтрека: ",
-      "input_realhero" : "Это реальный герой? (true/t/y, default: false) ",
-      "input_has_toothpick" : "У него есть зубочистка? (true/t/y, default: false) ",
-      "input_car_name" : "Введите название машины. Если ее нет, то введите null/пустую строку",
-      "input_car_cool" : "Введите крутая ли она? (true/false/t/f):",
-      "input_coordinate_x" : "Введите координату X: ",
-      "input_coordinate_y" : "Введите координату Y (больше -897): ",
-      "input_mood" : "Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
-      "input_weapon" :"Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
-      "input_impact_speed" :"Введите ImpactSpeed (ex: 4.61): "
+      "input_name": "Введите имя: ",
+      "input_soundtrack": "Введите название саундтрека: ",
+      "input_realhero": "Это реальный герой? (true/t/y, default: false) ",
+      "input_has_toothpick": "У него есть зубочистка? (true/t/y, default: false) ",
+      "input_car_name": "Введите название машины. Если ее нет, то введите null/пустую строку",
+      "input_car_cool": "Введите крутая ли она? (true/false/t/f):",
+      "input_coordinate_x": "Введите координату X: ",
+      "input_coordinate_y": "Введите координату Y (больше -897): ",
+      "input_mood": "Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
+      "input_weapon": "Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
+      "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
+      "input_language": "Введите RU/EN для выбора языка системы: "
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",
       "no_args": "Команда не должна содержать аргументы.",
-      "one_arg": "Команда содержит один аргумент."
+      "one_arg": "Команда содержит один аргумент.",
+      "user_not_added": "Не удалось добавить пользователя",
+      "db_file_not_readable": "Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.",
+      "db_file_not_found": "Файл не найден. Чтобы использовать другой запустите программу еще раз.",
+      "file_not_writable": "Файл недоступен для записи. Чтобы использовать другой запустите программу еще раз.",
+      "invalid_file_name": "Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь.",
+      "file_is_directory": "Путь ведет к директории. Укажите другой файл, чтобы запустить программу."
+    },
+    "warning": {
+      "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",
+      "db_file_not_writable": "Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал."
     },
     "success": {
       "user_added": "Пользователь с %id% успешно добавлен."
-    },
-    "unsuccessful": {
-      "user_not_added": "Не удалось добавить пользователя"
     },
     "command_description": {
       "help": "вывести справку о всех командах.",
