@@ -7,19 +7,22 @@ import server.model.HumanBeingModel;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static client.ui.ConsoleColors.success;
-import static client.ui.ConsoleColors.unsuccess;
+import static util.Message.*;
 
 /**
  * The type Human dao.
  */
 public class HumanDaoImpl implements HumanDao {
+    private LANGUAGE language;
 
     private final DataBaseProvider source;
 
@@ -30,13 +33,14 @@ public class HumanDaoImpl implements HumanDao {
      */
     public HumanDaoImpl(String fileName) {
         this.source = new DataBaseProvider(fileName);
+        source.setLanguage(language);
     }
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
         HumanBeingResponseDTO response = null;
         for (HumanBeingModel model : source.getDataBase()) {
-            if (model.getId() == id) {
+            if (Objects.equals(model.getId(), id)) {
                 response = HumanBeingMapper.fromModelToResponse(model);
             }
         }
@@ -57,10 +61,10 @@ public class HumanDaoImpl implements HumanDao {
     @Override
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null) {
-            System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
+            System.out.println(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
         }
         for (HumanBeingModel human : source.getDataBase()) {
-            if (human.getId() == id) {
+            if (Objects.equals(human.getId(), id)) {
                 source.getDataBase().remove(human);
                 System.out.println(success("Объект с id: " + id + " был удален."));
             }
@@ -69,11 +73,12 @@ public class HumanDaoImpl implements HumanDao {
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
+        HumanBeingResponseDTO responseDTO = new HumanBeingResponseDTO();
         if (getHumanById(id) == null) {
-            System.out.println(unsuccess("Объект с id: " + id + " не был найден."));
+            System.out.println(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
         }
         for (HumanBeingModel human : source.getDataBase()) {
-            if (human.getId() == id) {
+            if (Objects.equals(human.getId(), id)) {
                 human.setId(id);
                 human.setName(newHuman.getName());
                 human.setCoordinates(newHuman.getCoordinates());
@@ -83,16 +88,20 @@ public class HumanDaoImpl implements HumanDao {
                 human.setMood(newHuman.getMood());
                 human.setWeaponType(newHuman.getWeaponType());
                 human.setCar(newHuman.getCar());
-                System.out.println(success("Объект с id: " + id + " был обновлен."));
-                return HumanBeingMapper.fromModelToResponse(human);
+                System.out.println(getSuccessMessage("user_updated", language));
+                responseDTO = HumanBeingMapper.fromModelToResponse(human);
             }
         }
-        return null; //TODO инициализация выше цикла
+        return responseDTO;
     }
 
     @Override
     public String info() {
-        return "\n Класс бд: " + source.getDataBase().getClass().getTypeName().split("\\.")[2] + " \n Создано: " + source.getCreationDate() + "\n Внутри элементов:" + source.getDataBase().size();
+        String answer = Objects.requireNonNull(getMessage("info_about_dataset", language));
+        answer = answer.replace("%class%", source.getDataBase().getClass().getTypeName().split("\\.")[2]);
+        answer = answer.replace("%date%", source.getCreationDate().toString());
+        answer = answer.replace("%size%", String.valueOf(source.getDataBase().size()));
+        return answer;
     }
 
     //clear : очистить коллекцию
@@ -100,7 +109,7 @@ public class HumanDaoImpl implements HumanDao {
     public void clear() {
         int elemsBefore = source.getDataBase().size();
         source.getDataBase().clear();
-        System.out.println(success("Было удалено " + elemsBefore + " элементов."));
+        System.out.println(Objects.requireNonNull(getSuccessMessage("cleared", language)).replace("%num%", String.valueOf(elemsBefore)));
     }
 
     // save : сохранить коллекцию в файл
@@ -116,7 +125,7 @@ public class HumanDaoImpl implements HumanDao {
     // max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным
     @Override
     public HumanBeingResponseDTO max_by_impact_speed() {
-        HumanBeingModel model = null;
+        HumanBeingModel model = new HumanBeingModel();
         float max = 0;
         for (HumanBeingModel m : source.getDataBase()) {
             if (m.getImpactSpeed() > max) {
@@ -181,5 +190,16 @@ public class HumanDaoImpl implements HumanDao {
             }
         }
         return true;
+    }
+
+    @Override
+    public LANGUAGE getLanguage() {
+        return language;
+    }
+
+    @Override
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
+        source.setLanguage(language);
     }
 }

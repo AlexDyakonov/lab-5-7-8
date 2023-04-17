@@ -143,7 +143,7 @@ public class CommandExecutor {
                         controller.clear();
                         break;
                     case "save":
-                        controller.save(file);
+                        controller.save(file, LANGUAGE.RU);
                         break;
                     case "history":
                         history.getHistoryListOfCommands().forEach(s -> System.out.print(s + ";"));

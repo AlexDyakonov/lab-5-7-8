@@ -2,6 +2,7 @@ package client.ui;
 
 import server.services.BuilderType;
 import server.services.CommandExecutor;
+import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class ConsoleUI {
      * @param fileName the file name
      */
     public ConsoleUI(String fileName) {
-        validateFile(fileName);
+        validateFile(fileName, LANGUAGE.RU);
         fileName = tildaResolver(fileName);
         this.file = fileName;
         this.executor = new CommandExecutor(fileName, null);

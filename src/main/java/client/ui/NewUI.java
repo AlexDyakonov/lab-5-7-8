@@ -1,12 +1,7 @@
 package client.ui;
-
-import server.commands.Command;
 import server.commands.Invoker;
-
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Map;
 import java.util.Objects;
 
 import static server.validation.Validation.validateFile;
@@ -23,7 +18,7 @@ public class NewUI {
      * @param invoker
      */
     public NewUI(String fileName, Invoker invoker) {
-        validateFile(fileName);
+        validateFile(fileName, invoker.getLanguage());
         fileName = tildaResolver(fileName);
         this.file = fileName;
         this.invoker = invoker;
@@ -38,6 +33,7 @@ public class NewUI {
         System.out.println("Напишите help чтобы вывести все команды");
 
         invoker.setFileReader(null);
+
         BufferedReader reader = invoker.getCmdReader();
 
         try (reader) {

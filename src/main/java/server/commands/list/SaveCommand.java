@@ -25,7 +25,7 @@ public class SaveCommand implements Command {
         if (args.length != 1) {
             throw new ArgumentException(getError("no_args", language));
         }
-        controller.save(fileName);
+        controller.save(fileName, language);
     }
 
     @Override

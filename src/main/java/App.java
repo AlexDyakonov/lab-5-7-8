@@ -1,12 +1,11 @@
-import client.ui.ConsoleUI;
 import client.ui.NewUI;
 import server.commands.Invoker;
 import server.exception.FileException;
 import server.services.BuilderType;
 import util.LANGUAGE;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
+import static util.Message.getError;
 
 /**
  * The type App.
@@ -23,11 +22,10 @@ public class App {
         try {
 //            ConsoleUI session = new ConsoleUI(args[0]);
 //            ConsoleUI session = new ConsoleUI(args0);
-            NewUI session = new NewUI(args0, new Invoker(args0, null, null, BuilderType.CMD, LANGUAGE.RU));
+            NewUI session = new NewUI(args0, new Invoker(args0, null, BuilderType.CMD, LANGUAGE.RU));
             session.start();
-
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Необходимо ввести название файла с базой данных при запуске программы.");
+            System.out.println(getError("no_arg_main", LANGUAGE.RU));
         } catch (FileException e) {
             System.out.println(e.getMessage());
         }

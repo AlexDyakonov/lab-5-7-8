@@ -6,6 +6,7 @@ import server.dao.HumanDaoImpl;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * The type Human service.
  */
 public class HumanServiceImpl implements HumanService {
+    private LANGUAGE language;
 
     private final HumanDao humanDao;
 
@@ -23,6 +25,7 @@ public class HumanServiceImpl implements HumanService {
      */
     public HumanServiceImpl(String fileName) {
         this.humanDao = new HumanDaoImpl(fileName);
+        humanDao.setLanguage(language);
     }
 
     @Override
@@ -103,5 +106,16 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return humanDao.isImpactSpeedMin(dto);
+    }
+
+    @Override
+    public LANGUAGE getLanguage() {
+        return language;
+    }
+
+    @Override
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
+        humanDao.setLanguage(language);
     }
 }

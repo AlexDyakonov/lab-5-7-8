@@ -4,19 +4,17 @@ import client.ui.ConsoleColors;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.model.Coordinates;
-import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import util.LANGUAGE;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
 import java.util.function.Function;
 
-import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.warning;
+
 import static util.Message.getError;
-import static util.Message.getWarning;
 import static util.Parser.tildaResolver;
 
 /**
@@ -55,9 +53,9 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileExist(File file) {
+    public static void validateFileExist(File file, LANGUAGE language) {
         if (!Files.exists(file.toPath())) {
-            throw new FileException(getError("db_file_not_found", LANGUAGE.RU));
+            throw new FileException(getError("db_file_not_found", language));
         }
     }
 
@@ -67,9 +65,9 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileRead(File file) {
+    public static void validateFileRead(File file, LANGUAGE language) {
         if (!Files.isReadable(file.toPath())) {
-            throw new FileException(getError("db_file_not_readable", LANGUAGE.RU));
+            throw new FileException(getError("db_file_not_readable", language));
         }
     }
 
@@ -78,9 +76,9 @@ public class Validation {
      *
      * @param file the file
      */
-    public static void validateFileWrite(File file) {
+    public static void validateFileWrite(File file, LANGUAGE language) {
         if (!Files.isWritable(file.toPath())) {
-            throw new FileException(getError("file_not_writable", LANGUAGE.RU));
+            throw new FileException(getError("file_not_writable", language));
         }
     }
 
@@ -89,34 +87,29 @@ public class Validation {
      *
      * @param fileName
      */
-    public static boolean validateFileName(String fileName) {
+    public static void validateFileName(String fileName, LANGUAGE language) {
         try {
             (new File(fileName.replace("~", ""))).toPath();
-            return true;
         } catch (InvalidPathException e) {
-            return false;
+            throw new FileException(getError("invalid_file_name", language));
         }
     }
 
-    public static void validateFile(String fileName) {
-        if (!validateFileName(fileName)) {
-            throw new FileException(getError("invalid_file_name", LANGUAGE.RU));
+    public static void validateFileDirectory(String fileName, LANGUAGE language) {
+        if (Files.isDirectory(Paths.get(fileName))) {
+            throw new FileException(getError("file_is_directory", language));
         }
-        File file = new File(tildaResolver(fileName));
-        if (Files.isDirectory(file.toPath())) {
-            throw new FileException(getError("file_is_directory", LANGUAGE.RU));
-        }
-        validateFileExist(file);
-        try {
-            validateFileRead(file);
-        } catch (FileException e) {
-            System.out.println(warning("Файл недоступен к чтению! База данных не будет использована."));
-        }
-        try {
-            validateFileWrite(file);
-        } catch (FileException e) {
-            System.out.println(getWarning("db_file_not_writable", LANGUAGE.RU));
-        }
+    }
+
+
+    public static void validateFile(String fileName, LANGUAGE language) {
+        fileName = tildaResolver(fileName);
+        validateFileName(fileName, language);
+        File file = new File(fileName);
+        validateFileDirectory(fileName, language);
+        validateFileExist(file, language);
+        validateFileRead(file, language);
+        validateFileWrite(file, language);
     }
 
 

@@ -12,19 +12,37 @@
       "input_mood": "Choose mood: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
       "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): ",
-      "input_language": "Type RU/EN to choose app language: "
+      "input_language": "Type RU/EN to choose app language: ",
+      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;"
     },
     "error": {
       "same_id": "Found to HumanBeing with same *id*. First will be loaded.",
       "no_args": "Command should contains no args.",
       "one_arg": "Command contains one argument.",
-      "user_not_added": "HumanBeing wasn't added."
+      "user_not_added": "HumanBeing wasn't added.",
+      "db_file_not_readable": "File is not readable. Use other to start the app.",
+      "db_file_not_found": "File not found. Use other path to start the app.",
+      "file_not_writable": "File is not writable. Use other.",
+      "invalid_file_name": "Invalid filepath name.",
+      "file_is_directory": "Path leads the directory. Use other.",
+      "no_args_main": "You must enter the name of the file with the database when starting the program.",
+      "id_more_than_zero": "ID must be more than 0.",
+      "request_not_validated": "Request was not validate successfully.",
+      "mood_not_exist": "Такого mood не существует.",
+      "save_error": "Saving error into *%file%*."
     },
     "warning": {
-      "default_language": "Can not recognize input language. Set default language: RU."
+      "default_language": "Can not recognize input language. Set default language: RU.",
+      "db_file_not_writable": "File is not writable! The functionality of the program is limited (impossible to save). Run the program with a different file to get full functionality.",
+      "command_not_found": "The command you entered was not recognized.",
+      "user_not_found": "HumanBeing with id - %id% not found"
     },
     "success": {
-      "user_added": "HumanBeing with id - %id% added."
+      "user_added": "HumanBeing with id - %id% added.",
+      "user_updated": "HumanBeing with id - %id% was updated.",
+      "cleared": "%num% elements was deleted.",
+      "data_base_loaded": "Successfully loaded %size% items.",
+      "data_base_saved": "Successfully saved %size% items."
     },
     "command_description": {
       "help": "display info about all commands.",
@@ -59,7 +77,8 @@
       "input_mood": "Выберите настроение: 1 = SORROW, 2 = GLOOM, 3 = APATHY, 4 = CALM, 5 = RAGE (default = RAGE)",
       "input_weapon": "Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
-      "input_language": "Введите RU/EN для выбора языка системы: "
+      "input_language": "Введите RU/EN для выбора языка системы: ",
+      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;"
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",
@@ -68,16 +87,27 @@
       "user_not_added": "Не удалось добавить пользователя",
       "db_file_not_readable": "Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.",
       "db_file_not_found": "Файл не найден. Чтобы использовать другой запустите программу еще раз.",
-      "file_not_writable": "Файл недоступен для записи. Чтобы использовать другой запустите программу еще раз.",
+      "file_not_writable": "Файл недоступен для записи. Выберите другой.",
       "invalid_file_name": "Недопустимое имя файла. Запустите программу еще раз ииспользуя допустимый путь.",
-      "file_is_directory": "Путь ведет к директории. Укажите другой файл, чтобы запустить программу."
+      "file_is_directory": "Путь ведет к директории. Укажите другой файл, чтобы запустить программу.",
+      "no_args_main": "Необходимо ввести название файла с базой данных при запуске программы.",
+      "id_more_than_zero": "ID не может быть 0 или меньше 0",
+      "request_not_validated": "Валидация реквеста не увенчалась успехом",
+      "mood_not_exist": "Такого mood не существует.",
+      "save_error": "Ошибка сохранения базы данных в *%file%*."
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",
-      "db_file_not_writable": "Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал."
+      "db_file_not_writable": "Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал.",
+      "command_not_found": "Введенная команда не распознана.",
+      "user_not_found": "Пользователь с id - %id% не найден"
     },
     "success": {
-      "user_added": "Пользователь с %id% успешно добавлен."
+      "user_added": "Пользователь с %id% успешно добавлен.",
+      "user_updated": "HumanBeing с id - %id% был успешно обновлен.",
+      "cleared": "Было удалено %num% элементов.",
+      "data_base_loaded": "Успешно загружено %size% элементов.",
+      "data_base_saved": "Успешно сохранено %size% элементов."
     },
     "command_description": {
       "help": "вывести справку о всех командах.",

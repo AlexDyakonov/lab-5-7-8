@@ -3,6 +3,7 @@ package server.commands;
 import server.commands.list.*;
 import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
+import server.exception.*;
 import server.services.BuilderType;
 import server.services.HistoryManager;
 import util.LANGUAGE;
@@ -11,8 +12,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-import static server.validation.Validation.validateFile;
-import static util.Parser.tildaResolver;
+import static util.Message.getWarning;
+
 
 public class Invoker {
     private static final Map<String, Command> commandsMap = new LinkedHashMap<>();
@@ -26,7 +27,7 @@ public class Invoker {
     private LANGUAGE language;
 
 
-    public Invoker(String fileName, BufferedReader cmdReader, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
+    public Invoker(String fileName, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
         this.fileName = fileName;
         this.controller = new HumanControllerImpl(fileName);
         this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
@@ -34,6 +35,7 @@ public class Invoker {
         this.cmdReader = cmdReader == null ? new BufferedReader(new InputStreamReader(System.in)) : cmdReader;
         this.builderType = builderType;
         this.language = language;
+        controller.setLanguage(language);
         init();
     }
 
@@ -69,9 +71,9 @@ public class Invoker {
                 }
             }
             if (!Invoker.getCommandsMap().containsKey(commandArray[0])) {
-                System.out.println("Команды нет.");
+                System.out.println(getWarning("command_not_found", language));
             }
-        } catch (Exception e) {
+        } catch (ApplicationException | ArgumentException | CommandException | FileException | ValidationException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -117,7 +119,12 @@ public class Invoker {
 
     public void setLanguage(LANGUAGE language) {
         this.language = language;
+        controller.setLanguage(language);
         init();
+    }
+
+    public HumanController getController() {
+        return controller;
     }
 
     public List<String> getScriptHistory() {

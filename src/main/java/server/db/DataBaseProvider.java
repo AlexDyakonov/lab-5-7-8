@@ -4,6 +4,7 @@ import server.exception.FileException;
 import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
+import util.LANGUAGE;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -16,6 +17,8 @@ import java.util.Set;
 
 import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validateFileRead;
+import static util.Message.getError;
+import static util.Message.getSuccessMessage;
 
 /**
  * The type Data base provider.
@@ -23,6 +26,7 @@ import static server.validation.Validation.validateFileRead;
 public class DataBaseProvider {
     private final Set<HumanBeingModel> dataBase;
     private final LocalDateTime creationDate;
+    private LANGUAGE language;
 
     /**
      * Instantiates a new Data base provider.
@@ -53,13 +57,17 @@ public class DataBaseProvider {
         return id;
     }
 
+    private static String getmsg() {
+        return getSuccessMessage("data_base_loaded", language);
+    }
+
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         List<Long> idList = new ArrayList<>();
 
         String personString;
         try {
-            validateFileRead(new File(fileName));
+            validateFileRead(new File(fileName), LANGUAGE.RU);
         } catch (FileException e) {
             System.out.println(error(e.getMessage()));
         }
@@ -70,15 +78,15 @@ public class DataBaseProvider {
                     personString = reader.readLine();
                     HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
                     if (idList.contains(person.getId())) {
-                        throw new FileException(error("Найдено два пользователя с одинаковым id. Загружен первый из них."));
+                        throw new FileException(getError("same_id", language));
                     }
                     idList.add(person.getId());
                     resultSet.add(person);
                 } catch (ValidationException | FileException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println(getmsg());
                 }
             }
-            System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
+            System.out.println();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -92,14 +100,13 @@ public class DataBaseProvider {
      */
     public void save(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-//            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
             for (HumanBeingModel model : dataBase) {
                 writer.write(HumanBeingMapper.fromHumanBeingModelToStringLine(model));
                 writer.write(System.lineSeparator());
             }
-            System.out.println(success("Было сохранено " + dataBase.size() + " элементов."));
+            System.out.println(getSuccessMessage("data_base_saved", language));
         } catch (IOException e) {
-            System.out.println("Ошибка сохранения в *" + fileName + "*");
+            System.out.println(getError("save_error", language));
         }
     }
 
@@ -127,5 +134,13 @@ public class DataBaseProvider {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    public LANGUAGE getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
     }
 }

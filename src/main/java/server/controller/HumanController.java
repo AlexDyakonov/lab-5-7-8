@@ -2,6 +2,7 @@ package server.controller;
 
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -77,7 +78,7 @@ public interface HumanController {
      *
      * @param fileName the file name
      */
-    void save(String fileName);
+    void save(String fileName, LANGUAGE language);
 
     /**
      * Max by impact speed human being response dto.
@@ -134,4 +135,8 @@ public interface HumanController {
      * @return the boolean
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
+
+    LANGUAGE getLanguage();
+
+    void setLanguage(LANGUAGE language);
 }

@@ -3,6 +3,7 @@ package server.services;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -128,4 +129,8 @@ public interface HumanService {
      * @return the boolean
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
+
+    LANGUAGE getLanguage();
+
+    void setLanguage(LANGUAGE language);
 }
