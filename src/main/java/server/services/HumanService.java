@@ -51,13 +51,6 @@ public interface HumanService {
     HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 
     /**
-     * Help string.
-     *
-     * @return the string
-     */
-    String help();
-
-    /**
      * Info string.
      *
      * @return the string

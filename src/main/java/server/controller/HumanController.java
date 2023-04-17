@@ -51,16 +51,6 @@ public interface HumanController {
      * @return the human being response dto
      */
     HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
-
-    // additional commands
-
-    /**
-     * Help string.
-     *
-     * @return the string
-     */
-    String help();
-
     /**
      * Info string.
      *

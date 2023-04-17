@@ -57,9 +57,9 @@ public class DataBaseProvider {
         return id;
     }
 
-    private static String getmsg() {
-        return getSuccessMessage("data_base_loaded", language);
-    }
+//    private static String getmsg() {
+//        return getSuccessMessage("data_base_loaded", language);
+//    }
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
@@ -78,12 +78,12 @@ public class DataBaseProvider {
                     personString = reader.readLine();
                     HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
                     if (idList.contains(person.getId())) {
-                        throw new FileException(getError("same_id", language));
+                        throw new FileException(getError("same_id", LANGUAGE.RU));
                     }
                     idList.add(person.getId());
                     resultSet.add(person);
                 } catch (ValidationException | FileException e) {
-                    System.out.println(getmsg());
+                    System.out.println("sad");
                 }
             }
             System.out.println();

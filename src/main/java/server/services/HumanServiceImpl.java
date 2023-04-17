@@ -1,6 +1,5 @@
 package server.services;
 
-import client.ui.MenuConstants;
 import server.dao.HumanDao;
 import server.dao.HumanDaoImpl;
 import server.model.Mood;
@@ -51,11 +50,6 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
         return humanDao.updateHuman(newHuman, id);
-    }
-
-    @Override
-    public String help() {
-        return MenuConstants.HELP;
     }
 
     @Override

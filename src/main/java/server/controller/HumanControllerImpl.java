@@ -77,11 +77,6 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
-    public String help() {
-        return service.help();
-    }
-
-    @Override
     public String info() {
         return service.info();
     }

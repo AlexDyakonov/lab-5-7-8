@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class HistoryManager {
     private List<String> historyListOfCommands;
-    private int historySizeLimit;
+    private final int historySizeLimit;
 
     /**
      * Instantiates a new History manager.
