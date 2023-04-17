@@ -3,15 +3,16 @@ package server.commands.list;
 import server.commands.Command;
 import server.controller.HumanController;
 import server.exception.ArgumentException;
+import server.exception.ValidationException;
 import server.services.BuilderType;
 import server.services.builders.HumanBeingRequestDTOBuilder;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 
 import static client.ui.ConsoleColors.unsuccess;
-import static util.Message.getCommandDescription;
-import static util.Message.getError;
+import static util.Message.*;
 
 public class UpdateCommand implements Command {
     private final HumanController controller;
@@ -33,11 +34,18 @@ public class UpdateCommand implements Command {
         if (args.length != 2) {
             throw new ArgumentException(getError("one_arg", language));
         }
-        Long id = Long.parseLong(args[1]);
-        if (controller.getHumanById(id) == null) {
-            throw new ArgumentException(unsuccess("Объект с id: " + id + " не был найден."));
+        try {
+            Long id = Long.parseLong(args[1]);
+            if (id <= 0) {
+                throw new ValidationException(getError("id_more_than_zero", language));
+            }
+            if (controller.getHumanById(id) == null) {
+                throw new ValidationException(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
+            }
+            controller.updateHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language), id);
+        } catch (NumberFormatException e) {
+            throw new ArgumentException(getError("number_error", language));
         }
-        controller.updateHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language), id);
     }
 
     @Override

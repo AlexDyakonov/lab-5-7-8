@@ -74,9 +74,6 @@ public class HumanDaoImpl implements HumanDao {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
         HumanBeingResponseDTO responseDTO = new HumanBeingResponseDTO();
-        if (getHumanById(id) == null) {
-            System.out.println(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
-        }
         for (HumanBeingModel human : source.getDataBase()) {
             if (Objects.equals(human.getId(), id)) {
                 human.setId(id);

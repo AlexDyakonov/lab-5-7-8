@@ -12,10 +12,12 @@ import util.LANGUAGE;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 import static client.ui.ConsoleColors.error;
 import static server.validation.Validation.validateFileWrite;
 import static util.Message.getError;
+import static util.Message.getWarning;
 
 /**
  * The type Human controller.
@@ -67,9 +69,6 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
-        if (id <= 0) {
-            throw new ValidationException(getError("id_more_than_zero", language));
-        }
         if (!Validation.validateRequestDTO(newHuman)) {
             throw new ValidationException(getError("request_not_validated", language));
         }

@@ -68,22 +68,23 @@ public class DataBaseProvider {
         } catch (FileException e) {
             System.out.println(error(e.getMessage()));
         }
-
+        int num = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while (reader.ready()) {
                 try {
                     personString = reader.readLine();
                     HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
                     if (idList.contains(person.getId())) {
-                        throw new FileException(getError("same_id", LANGUAGE.RU));
+                        throw new FileException(Objects.requireNonNull(getError("same_id", LANGUAGE.EN)).replace("%id%", person.getId().toString()));
                     }
                     idList.add(person.getId());
                     resultSet.add(person);
+                    num++;
                 } catch (ValidationException | FileException e) {
-                    System.out.println("sad");
+                    System.out.println(e.getMessage());
                 }
             }
-            System.out.println();
+            System.out.println(Objects.requireNonNull(getSuccessMessage("data_base_loaded", LANGUAGE.EN)).replace("%size%", String.valueOf(num)));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

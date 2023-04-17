@@ -21,18 +21,18 @@ public class CarBuilder {
      * @param reader the reader
      * @return the car
      */
-    public static Car getCar(BufferedReader reader) {
+    public static Car getCar(BufferedReader reader, LANGUAGE language) {
         Car car = new Car();
         String name = "";
         boolean cool = false;
         try {
-            System.out.println(getMessage("input_car_name", LANGUAGE.RU));
+            System.out.println(getMessage("input_car_name", language));
             name = reader.readLine();
             if (Objects.equals(name, "") || Objects.equals(name, "null") || name == null) {
                 return null;
             } else {
                 car.setName(name);
-                System.out.println(getMessage("input_car_cool", LANGUAGE.RU));
+                System.out.println(getMessage("input_car_cool", language));
                 String answer = reader.readLine().toLowerCase();
                 if (answer.equals("t") || answer.equals("true") || answer.equals("y")) {
                     cool = true;
@@ -50,7 +50,7 @@ public class CarBuilder {
      * @param reader the reader
      * @return the car from file
      */
-    public static Car getCarFromFile(BufferedReader reader) {
+    public static Car getCarFromFile(BufferedReader reader, LANGUAGE language) {
         Car car = new Car();
         String name = "";
         boolean cool = false;
@@ -79,18 +79,18 @@ public class CarBuilder {
      * @param type       the type
      * @return the car
      */
-    public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
+    public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {
         if (type == BuilderType.CMD) {
             try {
-                return getCar(cmdreader);
+                return getCar(cmdreader, language);
             } catch (Exception e) {
-                return carBuilder(cmdreader, filereader, BuilderType.CMD);
+                return carBuilder(cmdreader, filereader, BuilderType.CMD, language);
             }
         } else {
             try {
-                return getCarFromFile(filereader);
+                return getCarFromFile(filereader, language);
             } catch (Exception e) {
-                return carBuilder(cmdreader, filereader, BuilderType.CMD);
+                return carBuilder(cmdreader, filereader, BuilderType.CMD, language);
             }
         }
 

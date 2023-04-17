@@ -9,10 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed unused classes and some their methods">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed russian text from en localization.&#10;TO FIX: add messages and load message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,13 +199,6 @@
       <workItem from="1681372355511" duration="1795000" />
       <workItem from="1681449035967" duration="821000" />
       <workItem from="1681468326778" duration="10680000" />
-    </task>
-    <task id="LOCAL-00027" summary="Removed script2, moved other files">
-      <created>1678831731073</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1678831731073</updated>
     </task>
     <task id="LOCAL-00028" summary="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper">
       <created>1678834784405</created>
@@ -534,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681736450270</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Removed russian text from en localization.&#10;TO FIX: add messages and load message">
+      <created>1681737634540</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1681737634540</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attempt to fix script executor" />
     <MESSAGE value="Attempt to fix script executor #1" />
     <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
     <MESSAGE value="Attempt to fix script executor #3" />
@@ -590,7 +598,8 @@
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
     <MESSAGE value="Removed unused classes and some their methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused classes and some their methods" />
+    <MESSAGE value="Removed russian text from en localization.&#10;TO FIX: add messages and load message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed russian text from en localization.&#10;TO FIX: add messages and load message" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

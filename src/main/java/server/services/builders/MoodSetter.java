@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.*;
+import static util.Message.getError;
 import static util.Message.getMessage;
 
 /**
@@ -21,14 +22,14 @@ public class MoodSetter {
      * @param reader the reader
      * @return the mood
      */
-    public static Mood getMood(BufferedReader reader) {
+    public static Mood getMood(BufferedReader reader, LANGUAGE language) {
         int number = 0;
         try {
             number = Integer.parseInt(reader.readLine());
         } catch (NumberFormatException e) {
-            throw new ValidationException(unsuccess("Введите числовые значения."), e);
+            throw new ValidationException(getError("number_error", language), e);
         } catch (IOException e) {
-            System.out.println(error("Ошибка BufferedReader."));
+            System.out.println(e.getMessage());
         }
         switch (number) {
             case 1:
@@ -52,21 +53,21 @@ public class MoodSetter {
      * @param type       the type
      * @return the mood
      */
-    public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type) {
+    public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {
         if (type == BuilderType.CMD) {
             try {
-                System.out.println(getMessage("input_weapon", LANGUAGE.RU));
-                return getMood(cmdreader);
+                System.out.println(getMessage("input_mood", language));
+                return getMood(cmdreader, language);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return setMood(cmdreader, filereader, BuilderType.CMD);
+                return setMood(cmdreader, filereader, BuilderType.CMD, language);
             }
         } else {
             try {
-                return getMood(filereader);
+                return getMood(filereader, language);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return setMood(cmdreader, filereader, BuilderType.CMD);
+                return setMood(cmdreader, filereader, BuilderType.CMD, language);
             }
         }
 

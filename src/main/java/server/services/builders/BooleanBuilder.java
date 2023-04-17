@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.error;
+import static util.Message.getError;
 import static util.Message.getMessage;
 import static util.Parser.stringToBoolean;
 
@@ -22,13 +23,13 @@ public class BooleanBuilder {
      * @param reader the reader
      * @return the boolean
      */
-    public static boolean getBool(BufferedReader reader) {
+    public static boolean getBool(BufferedReader reader, LANGUAGE language) {
         boolean response = false;
         String request;
         try {
             request = reader.readLine();
             if (request == null) {
-                throw new ValidationException(error("Встречен null при чтения строки для boolean поля."));
+                throw new ValidationException(getError("bool_null", language));
             }
             request = request.toLowerCase();
             response = stringToBoolean(request);
@@ -47,21 +48,21 @@ public class BooleanBuilder {
      * @param type       the type
      * @return the boolean
      */
-    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type) {
+    public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type, LANGUAGE language) {
         if (type == BuilderType.CMD) {
             try {
-                System.out.println(getMessage(messageId, LANGUAGE.RU));
-                return getBool(cmdreader);
+                System.out.println(getMessage(messageId, language));
+                return getBool(cmdreader, language);
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD, language);
             }
         } else {
             try {
-                return getBool(filereader);
+                return getBool(filereader, language);
             } catch (ValidationException | FileException e) {
                 System.out.println(e.getMessage());
-                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD);
+                return boolBuilder(cmdreader, filereader, messageId, BuilderType.CMD, language);
             }
         }
     }

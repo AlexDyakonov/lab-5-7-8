@@ -27,18 +27,18 @@ public class HumanBeingRequestDTOBuilder {
         HumanBeingRequestDTO dto = new HumanBeingRequestDTO();
 
         dto.setName(nameBuilder(cmdreader, filereader, "input_name", builderType, language));
-        dto.setCoordinates(CoordinatesBuilder.buildCoordinates(cmdreader, filereader, builderType));
+        dto.setCoordinates(CoordinatesBuilder.buildCoordinates(cmdreader, filereader, builderType, language));
 
-        dto.setRealHero(boolBuilder(cmdreader, filereader, "input_realhero", builderType));
-        dto.setHasToothpick(boolBuilder(cmdreader, filereader, "input_has_toothpick", builderType));
+        dto.setRealHero(boolBuilder(cmdreader, filereader, "input_realhero", builderType, language));
+        dto.setHasToothpick(boolBuilder(cmdreader, filereader, "input_has_toothpick", builderType, language));
 
-        dto.setImpactSpeed(impactSpeedBuilder(cmdreader, filereader, builderType));
+        dto.setImpactSpeed(impactSpeedBuilder(cmdreader, filereader, builderType, language));
         dto.setSoundtrackName(nameBuilder(cmdreader, filereader, "input_soundtrack", builderType, language));
 
-        dto.setWeaponType(WeaponTypeSetter.setWeaponType(cmdreader, filereader, builderType));
-        dto.setMood(MoodSetter.setMood(cmdreader, filereader, builderType));
+        dto.setWeaponType(WeaponTypeSetter.setWeaponType(cmdreader, filereader, builderType, language));
+        dto.setMood(MoodSetter.setMood(cmdreader, filereader, builderType, language));
 
-        dto.setCar(CarBuilder.carBuilder(cmdreader, filereader, builderType));
+        dto.setCar(CarBuilder.carBuilder(cmdreader, filereader, builderType, language));
 
         return dto;
     }

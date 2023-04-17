@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.*;
+import static util.Message.getError;
 import static util.Message.getMessage;
 
 /**
@@ -22,11 +23,11 @@ public class ImpactSpeedBuilder {
      * @param reader the reader
      * @return the float
      */
-    public static float getImpactSpeed(BufferedReader reader) {
+    public static float getImpactSpeed(BufferedReader reader, LANGUAGE language) {
         try {
             String num = reader.readLine();
             if (num == null) {
-                throw new ValidationException(error("Встречен null при чтения строки для поля impact speed."));
+                throw new ValidationException(getError("impact_speed_null", language));
             }
             return Float.parseFloat(num);
         } catch (NumberFormatException e) {
@@ -44,21 +45,21 @@ public class ImpactSpeedBuilder {
      * @param type       the type
      * @return the float
      */
-    public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type) {
+    public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type, LANGUAGE language) {
         if (type == BuilderType.CMD) {
             try {
-                System.out.println(getMessage("input_impact_speed", LANGUAGE.RU));
-                return getImpactSpeed(cmdReader);
+                System.out.println(getMessage("input_impact_speed", language));
+                return getImpactSpeed(cmdReader, language);
             } catch (ValidationException | ApplicationException e) {
                 System.out.println(e.getMessage());
-                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD);
+                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD, language);
             }
         } else {
             try {
-                return getImpactSpeed(fileReader);
+                return getImpactSpeed(fileReader, language);
             } catch (ValidationException | ApplicationException | FileException e) {
                 System.out.println(e.getMessage());
-                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD);
+                return impactSpeedBuilder(cmdReader, fileReader, BuilderType.CMD, language);
             }
         }
     }

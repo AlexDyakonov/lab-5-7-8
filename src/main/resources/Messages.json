@@ -16,7 +16,7 @@
       "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;"
     },
     "error": {
-      "same_id": "Found to HumanBeing with same *id*. First will be loaded.",
+      "same_id": "Found two HumanBeing with same %id%. First will be loaded.",
       "no_args": "Command should contains no args.",
       "one_arg": "Command contains one argument.",
       "user_not_added": "HumanBeing wasn't added.",
@@ -29,7 +29,10 @@
       "id_more_than_zero": "ID must be more than 0.",
       "request_not_validated": "Request was not validate successfully.",
       "mood_not_exist": "This mood does not exist.",
-      "save_error": "Saving error into *%file%*."
+      "save_error": "Saving error into *%file%*.",
+      "bool_null": "Null met while boolean reading. It is not null parameter.",
+      "impact_speed_null": "Null met while impact speed reading. It is not null parameter.",
+      "number_error": "Insert number."
     },
     "warning": {
       "default_language": "Can not recognize input language. Set default language: RU.",
@@ -95,7 +98,10 @@
       "id_more_than_zero": "ID не может быть 0 или меньше 0",
       "request_not_validated": "Валидация реквеста не увенчалась успехом",
       "mood_not_exist": "Такого mood не существует.",
-      "save_error": "Ошибка сохранения базы данных в *%file%*."
+      "save_error": "Ошибка сохранения базы данных в *%file%*.",
+      "bool_null": "Встречен null при чтения строки для boolean поля. Это поле не может быть null.",
+      "impact_speed_null": "Встречен null при чтения строки для поля impact speed. Это поле не может быть null.",
+      "number_error": "Введите числовые значения."
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",
