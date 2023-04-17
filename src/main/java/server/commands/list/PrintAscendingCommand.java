@@ -1,5 +1,6 @@
-package server.commands;
+package server.commands.list;
 
+import server.commands.Command;
 import server.controller.HumanController;
 import util.LANGUAGE;
 
