@@ -4,6 +4,7 @@ import server.commands.Command;
 import server.commands.Invoker;
 import server.exception.ApplicationException;
 import server.services.BuilderType;
+import server.services.ScriptManager;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
@@ -15,41 +16,43 @@ import static util.Message.getCommandDescription;
 
 public class ExecuteScriptCommand implements Command {
     private final Invoker invoker;
+    private ScriptManager scriptManager;
     private LANGUAGE language;
 
-    public ExecuteScriptCommand(Invoker invoker, LANGUAGE language) {
+    public ExecuteScriptCommand(Invoker invoker, ScriptManager scriptManager, LANGUAGE language) {
         this.invoker = invoker;
+        this.scriptManager = scriptManager;
         this.language = language;
     }
 
     @Override
     public void execute(String[] args) {
 //        tildaSolver(args[1]);
-        invoker.getScriptHistory().add(args[1]);
+        scriptManager.addToScripts(args[1]);
         String command;
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(args[1]));
             invoker.setFileReader(fileReader).setBuilderType(BuilderType.FILE).init();
             while (fileReader.ready()) {
                 command = fileReader.readLine();
-                if (!command.split(" ")[0].equals("execute_script")) {
-                    invoker.execute(command);
-                } else {
-                    invoker.getScriptHistory().add(command.split(" ")[1]);
+                if (command.split(" ")[0].equals("execute_script")) {
+                    if (scriptManager.getScripts().contains(command.split(" ")[1])) {
+                        throw new ApplicationException("RECURSION");
+                    }
+                    scriptManager.addToScripts(command.split(" ")[1]);
                     System.out.println("---");
-                    System.out.println(invoker.getScriptHistory());
+                    System.out.println(scriptManager.getScripts());
                     System.out.println("---");
                     System.out.println("другой файл выполняется: ");
-                    execute(command.split(" "));
-                    if (invoker.getScriptHistory().contains(command.split(" ")[1])) {
-                        throw new ApplicationException("Recursion");
-                    }
                 }
+                invoker.execute(command);
             }
             invoker.setBuilderType(BuilderType.CMD).init();
+            invoker.setFileReader(null);
+            scriptManager.clearScripts();
+            fileReader.close();
         } catch (ApplicationException e) {
             System.out.println(e.getMessage());
-            invoker.getScriptHistory().clear();
         } catch (IOException e) {
             System.out.println(unsuccess(e.getMessage()));
         }

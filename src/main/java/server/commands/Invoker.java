@@ -6,6 +6,7 @@ import server.controller.HumanControllerImpl;
 import server.exception.*;
 import server.services.BuilderType;
 import server.services.HistoryManager;
+import server.services.ScriptManager;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
@@ -16,9 +17,9 @@ import static util.Message.getWarning;
 
 
 public class Invoker {
-    private static final Map<String, Command> commandsMap = new LinkedHashMap<>();
+    private static final Map<String, Command> commandsMap = new HashMap<>();
+    private final ScriptManager scriptManager = new ScriptManager(null);
     private HistoryManager history;
-    private List<String> scriptHistory;
     private String fileName;
     private HumanController controller;
     private BufferedReader cmdReader;
@@ -30,7 +31,6 @@ public class Invoker {
     public Invoker(String fileName, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
         this.fileName = fileName;
         this.controller = new HumanControllerImpl(fileName);
-        this.scriptHistory = scriptHistory == null ? new ArrayList<>() : scriptHistory;
         this.history = new HistoryManager(15); // limit history size
         this.cmdReader = cmdReader == null ? new BufferedReader(new InputStreamReader(System.in)) : cmdReader;
         this.builderType = builderType;
@@ -39,8 +39,12 @@ public class Invoker {
         init();
     }
 
-    public void init() {
+    public Invoker clearMap() {
         commandsMap.clear();
+        return this;
+    }
+
+    public void init() {
         addCommand("help", new HelpCommand(language));
         addCommand("info", new InfoCommand(controller, language));
         addCommand("show", new ShowCommand(controller, language));
@@ -49,7 +53,7 @@ public class Invoker {
         addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
         addCommand("clear", new ClearCommand(controller, language));
         addCommand("save", new SaveCommand(controller, fileName, language));
-        addCommand("execute_script", new ExecuteScriptCommand(this, language)); //TODO fix bugs with recursion!!!
+        addCommand("execute_script", new ExecuteScriptCommand(this, scriptManager, language));
         addCommand("exit", new ExitCommand(language));
         addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
@@ -127,7 +131,4 @@ public class Invoker {
         return controller;
     }
 
-    public List<String> getScriptHistory() {
-        return scriptHistory;
-    }
 }

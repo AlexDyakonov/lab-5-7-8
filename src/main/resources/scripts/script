@@ -1,5 +1,5 @@
 add
-Aa
+Name
 1
 2
 t
@@ -11,4 +11,4 @@ ost
 history
 car
 true
-execute_script C:\code\java\lab-5-num-125595\src\main\resources\scripts\script2
+execute_script /home/alex/Документы/code/java/lab-5-num-125595/src/main/resources/scripts/script

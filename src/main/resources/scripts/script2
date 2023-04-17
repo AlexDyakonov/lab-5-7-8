@@ -10,4 +10,5 @@ ost
 1
 2
 false
-execute_script C:\code\java\lab-5-num-125595\src\main\resources\scripts\script
+true
+execute_script /home/alex/Документы/code/java/lab-5-num-125595/src/main/resources/scripts/script

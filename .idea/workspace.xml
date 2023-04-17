@@ -9,20 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed russian text from en localization.&#10;TO FIX: add messages and load message">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/scripts/script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scripts/script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/scripts/script2" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scripts/script2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,20 +192,8 @@
       <workItem from="1681372355511" duration="1795000" />
       <workItem from="1681449035967" duration="821000" />
       <workItem from="1681468326778" duration="10680000" />
-    </task>
-    <task id="LOCAL-00028" summary="Project refactoring #3&#10;Removed Utility, Added Exceptions, Removed DB (added DB provider), refactored naming to Human.., Added Enum Setters. Created Mapper">
-      <created>1678834784405</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1678834784405</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Added database reader">
-      <created>1678967026917</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967026917</updated>
+      <workItem from="1681742726846" duration="37000" />
+      <workItem from="1681742812304" duration="2357000" />
     </task>
     <task id="LOCAL-00030" summary="Attempt to parse DateTime">
       <created>1678967045254</created>
@@ -543,7 +524,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681737634540</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Added all messages in en/ru localizations&#10;TO FIX: execute_script&#10;TO DO: logging">
+      <created>1681742091289</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1681742091289</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging">
+      <created>1681742251052</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1681742251053</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,8 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attempt to fix script executor #1" />
-    <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
     <MESSAGE value="Attempt to fix script executor #3" />
     <MESSAGE value="Fixed Update method" />
     <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
@@ -599,7 +592,9 @@
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
     <MESSAGE value="Removed unused classes and some their methods" />
     <MESSAGE value="Removed russian text from en localization.&#10;TO FIX: add messages and load message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed russian text from en localization.&#10;TO FIX: add messages and load message" />
+    <MESSAGE value="Added all messages in en/ru localizations&#10;TO FIX: execute_script&#10;TO DO: logging" />
+    <MESSAGE value="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
