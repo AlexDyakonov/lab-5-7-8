@@ -9,19 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added all commands, need to fix ExecuteCommand and language changes">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed unused classes and some their methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/MenuConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/NewUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/PrintAscendingCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/CommandExecutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,13 +190,6 @@
       <workItem from="1681372355511" duration="1795000" />
       <workItem from="1681449035967" duration="821000" />
       <workItem from="1681468326778" duration="10680000" />
-    </task>
-    <task id="LOCAL-00026" summary="Changed to session">
-      <created>1678815309653</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1678815309654</updated>
     </task>
     <task id="LOCAL-00027" summary="Removed script2, moved other files">
       <created>1678831731073</created>
@@ -542,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681506604560</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Removed unused classes and some their methods">
+      <created>1681736450269</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1681736450270</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +565,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed save bug" />
     <MESSAGE value="Attempt to fix script executor" />
     <MESSAGE value="Attempt to fix script executor #1" />
     <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
@@ -598,7 +589,8 @@
     <MESSAGE value="Code reformatting for whole project" />
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all commands, need to fix ExecuteCommand and language changes" />
+    <MESSAGE value="Removed unused classes and some their methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused classes and some their methods" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

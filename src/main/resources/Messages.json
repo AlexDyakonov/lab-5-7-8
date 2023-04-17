@@ -28,7 +28,7 @@
       "no_args_main": "You must enter the name of the file with the database when starting the program.",
       "id_more_than_zero": "ID must be more than 0.",
       "request_not_validated": "Request was not validate successfully.",
-      "mood_not_exist": "Такого mood не существует.",
+      "mood_not_exist": "This mood does not exist.",
       "save_error": "Saving error into *%file%*."
     },
     "warning": {
@@ -42,7 +42,8 @@
       "user_updated": "HumanBeing with id - %id% was updated.",
       "cleared": "%num% elements was deleted.",
       "data_base_loaded": "Successfully loaded %size% items.",
-      "data_base_saved": "Successfully saved %size% items."
+      "data_base_saved": "Successfully saved %size% items.",
+      "output_db": "%num% elements was showed."
     },
     "command_description": {
       "help": "display info about all commands.",
@@ -107,7 +108,8 @@
       "user_updated": "HumanBeing с id - %id% был успешно обновлен.",
       "cleared": "Было удалено %num% элементов.",
       "data_base_loaded": "Успешно загружено %size% элементов.",
-      "data_base_saved": "Успешно сохранено %size% элементов."
+      "data_base_saved": "Успешно сохранено %size% элементов.",
+      "output_db": "Было успешно выведено %num% элементов."
     },
     "command_description": {
       "help": "вывести справку о всех командах.",

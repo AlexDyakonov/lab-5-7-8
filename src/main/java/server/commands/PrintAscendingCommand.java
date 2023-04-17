@@ -3,7 +3,10 @@ package server.commands;
 import server.controller.HumanController;
 import util.LANGUAGE;
 
+import java.util.Objects;
+
 import static util.Message.getCommandDescription;
+import static util.Message.getSuccessMessage;
 
 public class PrintAscendingCommand implements Command {
     private final HumanController controller;
@@ -17,7 +20,7 @@ public class PrintAscendingCommand implements Command {
     @Override
     public void execute(String[] args) {
         controller.print_ascending().forEach(System.out::println);
-        System.out.println("Было успшно выведено " + controller.getAllHuman().size() + "элементов");
+        System.out.println(Objects.requireNonNull(getSuccessMessage("output_db", language)).replace("%num%", String.valueOf(controller.getAllHuman().size())));
     }
 
     @Override

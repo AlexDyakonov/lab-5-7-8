@@ -10,10 +10,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static client.ui.ConsoleColors.*;
 import static server.validation.Validation.validateFileRead;
@@ -104,7 +101,7 @@ public class DataBaseProvider {
                 writer.write(HumanBeingMapper.fromHumanBeingModelToStringLine(model));
                 writer.write(System.lineSeparator());
             }
-            System.out.println(getSuccessMessage("data_base_saved", language));
+            System.out.println(Objects.requireNonNull(getSuccessMessage("data_base_saved", language)).replace("%size%", String.valueOf(dataBase.size())));
         } catch (IOException e) {
             System.out.println(getError("save_error", language));
         }
