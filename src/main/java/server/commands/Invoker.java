@@ -13,6 +13,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
+
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.getWarning;
 
 
@@ -26,7 +31,7 @@ public class Invoker {
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-
+    public static final Logger logger = Logger.getLogger(Invoker.class.getName());
 
     public Invoker(String fileName, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
         this.fileName = fileName;
@@ -37,6 +42,7 @@ public class Invoker {
         this.language = language;
         controller.setLanguage(language);
         init();
+        setupLogger(logger);
     }
 
     public Invoker clearMap() {
@@ -79,6 +85,7 @@ public class Invoker {
             }
         } catch (ApplicationException | ArgumentException | CommandException | FileException | ValidationException e) {
             System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
