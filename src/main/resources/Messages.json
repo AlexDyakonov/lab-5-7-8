@@ -13,7 +13,8 @@
       "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): ",
       "input_language": "Type RU/EN to choose app language: ",
-      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;"
+      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;",
+      "executing_file": "Executing file *%file%*."
     },
     "error": {
       "same_id": "Found two HumanBeing with same %id%. First will be loaded.",
@@ -32,7 +33,8 @@
       "save_error": "Saving error into *%file%*.",
       "bool_null": "Null met while boolean reading. It is not null parameter.",
       "impact_speed_null": "Null met while impact speed reading. It is not null parameter.",
-      "number_error": "Insert number."
+      "number_error": "Insert number.",
+      "recursion_met": "Recursion encountered. Script execution stopped."
     },
     "warning": {
       "default_language": "Can not recognize input language. Set default language: RU.",
@@ -82,7 +84,8 @@
       "input_weapon": "Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
       "input_language": "Введите RU/EN для выбора языка системы: ",
-      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;"
+      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;",
+      "executing_file": "Выполняется файл *%file%*."
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",
@@ -101,7 +104,8 @@
       "save_error": "Ошибка сохранения базы данных в *%file%*.",
       "bool_null": "Встречен null при чтения строки для boolean поля. Это поле не может быть null.",
       "impact_speed_null": "Встречен null при чтения строки для поля impact speed. Это поле не может быть null.",
-      "number_error": "Введите числовые значения."
+      "number_error": "Введите числовые значения.",
+      "recursion_met": "Встречена рекурсия. Выполнение скрипта остановлено."
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",
