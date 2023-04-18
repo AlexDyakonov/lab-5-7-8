@@ -54,10 +54,6 @@ public class DataBaseProvider {
         return id;
     }
 
-//    private static String getmsg() {
-//        return getSuccessMessage("data_base_loaded", language);
-//    }
-
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
         Set<HumanBeingModel> resultSet = new HashSet<>();
         List<Long> idList = new ArrayList<>();

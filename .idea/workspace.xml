@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small message fixes &#10;TO DO: logging">
-      <change afterPath="$PROJECT_DIR$/mylog.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logic in Message Class, added javadoc for its. Added more messages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mylog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alex/Документы/code/repo/no5_170123_600900&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/code/java/itmo-math&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -73,6 +72,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src" />
       <recent name="E:\code\lab-5-num-125595" />
@@ -190,11 +190,41 @@
       <workItem from="1681234387428" duration="3867000" />
       <workItem from="1681372355511" duration="1795000" />
       <workItem from="1681449035967" duration="821000" />
-      <workItem from="1681468326778" duration="10680000" />
-      <workItem from="1681742726846" duration="37000" />
-      <workItem from="1681742812304" duration="2634000" />
-      <workItem from="1681808667206" duration="2102000" />
-      <workItem from="1681810784107" duration="1093000" />
+      <workItem from="1681468326778" duration="10751000" />
+      <workItem from="1681558340796" duration="595000" />
+      <workItem from="1681558943033" duration="6262000" />
+      <workItem from="1681590583142" duration="606000" />
+      <workItem from="1681598650429" duration="499000" />
+      <workItem from="1681713586205" duration="12000" />
+      <workItem from="1681722286818" duration="8362000" />
+    </task>
+    <task id="LOCAL-00029" summary="Added database reader">
+      <created>1678967026917</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967026917</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Attempt to parse DateTime">
+      <created>1678967045254</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967045254</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed &quot;Stream closed bug&quot;, when builder work">
+      <created>1678967102438</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967102438</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added add_if_max/min">
+      <created>1678967133088</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1678967133088</updated>
     </task>
     <task id="LOCAL-00033" summary="Fixed &quot;Stream closed&quot; in Enum set streams">
       <created>1678967159286</created>
@@ -490,56 +520,28 @@
       <option name="project" value="LOCAL" />
       <updated>1681506604560</updated>
     </task>
-    <task id="LOCAL-00075" summary="Removed unused classes and some their methods">
-      <created>1681736450269</created>
+    <task id="LOCAL-00075" summary="Added en localization for add commands">
+      <created>1681507208225</created>
       <option name="number" value="00075" />
       <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1681736450270</updated>
+      <updated>1681507208225</updated>
     </task>
-    <task id="LOCAL-00076" summary="Removed russian text from en localization.&#10;TO FIX: add messages and load message">
-      <created>1681737634540</created>
+    <task id="LOCAL-00076" summary="Added en localization for all command descriptions">
+      <created>1681563093280</created>
       <option name="number" value="00076" />
       <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1681737634540</updated>
+      <updated>1681563093281</updated>
     </task>
-    <task id="LOCAL-00077" summary="Added all messages in en/ru localizations&#10;TO FIX: execute_script&#10;TO DO: logging">
-      <created>1681742091289</created>
+    <task id="LOCAL-00077" summary="Added logic in Message Class, added javadoc for its. Added more messages">
+      <created>1681584226282</created>
       <option name="number" value="00077" />
       <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1681742091289</updated>
+      <updated>1681584226282</updated>
     </task>
-    <task id="LOCAL-00078" summary="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging">
-      <created>1681742251052</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1681742251053</updated>
-    </task>
-    <task id="LOCAL-00079" summary="FIXED ExecuteScriptCommand&#10;TO DO: logging">
-      <created>1681745199893</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1681745199894</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging">
-      <created>1681810039891</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1681810039894</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Small message fixes &#10;TO DO: logging">
-      <created>1681810370063</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1681810370063</updated>
-    </task>
-    <option name="localTasksCounter" value="82" />
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,6 +572,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
+    <MESSAGE value="Attempt to fix script executor #3" />
+    <MESSAGE value="Fixed Update method" />
+    <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
     <MESSAGE value="Added recursion check" />
     <MESSAGE value="Added file exceptions (checking exist, read, write)" />
     <MESSAGE value="Removed javadoc" />
@@ -588,14 +594,10 @@
     <MESSAGE value="Code reformatting for whole project" />
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
-    <MESSAGE value="Removed unused classes and some their methods" />
-    <MESSAGE value="Removed russian text from en localization.&#10;TO FIX: add messages and load message" />
-    <MESSAGE value="Added all messages in en/ru localizations&#10;TO FIX: execute_script&#10;TO DO: logging" />
-    <MESSAGE value="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging" />
-    <MESSAGE value="FIXED ExecuteScriptCommand&#10;TO DO: logging" />
-    <MESSAGE value="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging" />
-    <MESSAGE value="Small message fixes &#10;TO DO: logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small message fixes &#10;TO DO: logging" />
+    <MESSAGE value="Added en localization for add commands" />
+    <MESSAGE value="Added en localization for all command descriptions" />
+    <MESSAGE value="Added logic in Message Class, added javadoc for its. Added more messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logic in Message Class, added javadoc for its. Added more messages" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

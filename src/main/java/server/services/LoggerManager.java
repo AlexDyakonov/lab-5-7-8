@@ -7,7 +7,7 @@ import java.util.logging.SimpleFormatter;
 
 public class LoggerManager {
     private static final Logger loggerManager = Logger.getLogger(LoggerManager.class.getName());
-    private static final String LOG_FILE_NAME = "mylog.log";
+    private static final String LOG_FILE_NAME = "src/main/resources/mylog.log";
 
     public static void setupLogger(Logger logger) {
         try {
