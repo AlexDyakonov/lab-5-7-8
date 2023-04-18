@@ -3,6 +3,7 @@ package server.commands.list;
 import server.commands.Command;
 import server.commands.Invoker;
 import server.exception.ApplicationException;
+import server.exception.ArgumentException;
 import server.services.BuilderType;
 import server.services.ScriptManager;
 import util.LANGUAGE;
@@ -28,6 +29,9 @@ public class ExecuteScriptCommand implements Command {
 
     @Override
     public void execute(String[] args) {
+        if (args.length != 2) {
+            throw new ArgumentException(getError("one_arg", language));
+        }
         scriptManager.addToScripts(args[1]);
         String command;
         try {
@@ -44,8 +48,7 @@ public class ExecuteScriptCommand implements Command {
                 }
                 invoker.execute(command);
             }
-            invoker.setBuilderType(BuilderType.CMD).init();
-            invoker.setFileReader(null);
+            invoker.setFileReader(null).setBuilderType(BuilderType.CMD).init();
             scriptManager.clearScripts();
             fileReader.close();
         } catch (IOException e) {

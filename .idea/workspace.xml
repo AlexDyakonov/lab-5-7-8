@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="FIXED ExecuteScriptCommand&#10;TO DO: logging">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/RemoveByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/RemoveByIdCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,14 +192,7 @@
       <workItem from="1681468326778" duration="10680000" />
       <workItem from="1681742726846" duration="37000" />
       <workItem from="1681742812304" duration="2634000" />
-      <workItem from="1681808667206" duration="1047000" />
-    </task>
-    <task id="LOCAL-00031" summary="Fixed &quot;Stream closed bug&quot;, when builder work">
-      <created>1678967102438</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967102438</updated>
+      <workItem from="1681808667206" duration="1689000" />
     </task>
     <task id="LOCAL-00032" summary="Added add_if_max/min">
       <created>1678967133088</created>
@@ -536,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681745199894</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging">
+      <created>1681810039891</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1681810039894</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed Update method" />
     <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
     <MESSAGE value="Added recursion check" />
     <MESSAGE value="Added file exceptions (checking exist, read, write)" />
@@ -592,7 +592,8 @@
     <MESSAGE value="Added all messages in en/ru localizations&#10;TO FIX: execute_script&#10;TO DO: logging" />
     <MESSAGE value="Refactored ascending command&#10;TO FIX: execute_script&#10;TO DO: logging" />
     <MESSAGE value="FIXED ExecuteScriptCommand&#10;TO DO: logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIXED ExecuteScriptCommand&#10;TO DO: logging" />
+    <MESSAGE value="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small visual fix of ExecuteScriptCommand&#10;TO DO: logging" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

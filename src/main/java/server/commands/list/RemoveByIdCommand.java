@@ -20,7 +20,7 @@ public class RemoveByIdCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length != 2) {
-            throw new ArgumentException(getError("one_args", language));
+            throw new ArgumentException(getError("one_arg", language));
         }
         Long id = Long.parseLong(args[1]);
         controller.deleteHumanById(id);

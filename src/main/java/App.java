@@ -23,7 +23,7 @@ public class App {
             ConsoleUI session = new ConsoleUI(args0, new Invoker(args0, null, BuilderType.CMD, LANGUAGE.RU));
             session.start();
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(getError("no_arg_main", LANGUAGE.RU));
+            System.out.println(getError("no_args_main", LANGUAGE.RU));
         } catch (FileException e) {
             System.out.println(e.getMessage());
         }
