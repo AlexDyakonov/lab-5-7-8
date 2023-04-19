@@ -17,6 +17,7 @@ public class LoggerManager {
         try {
             fileHandler = new FileHandler(LOG_FILE_NAME);
             fileHandler.setFormatter(new SimpleFormatter());
+            fileHandler.setLevel(Level.ALL);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +33,7 @@ public class LoggerManager {
     public static void setupLogger(Logger logger) {
         try {
             logger.addHandler(fileHandler);
-            logger.setLevel(Level.ALL);
+            logger.setLevel(logger.getLevel());
         } catch (Exception e) {
             loggerManager.log(Level.SEVERE, "Error creating file handler", e);
         }

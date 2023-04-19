@@ -12,11 +12,14 @@ import static client.ui.ConsoleColors.*;
  * The type Message.
  */
 public class Message {
-    private static String content;
+    private static final String content;
+    private static final JSONObject jsonObject;
+
 
     static {
         try {
             content = new String(Files.readAllBytes(Paths.get("src/main/resources/Messages.json")));
+            jsonObject = new JSONObject(content);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -31,13 +34,7 @@ public class Message {
      * @return the message
      */
     public static String getMessage(String messageName, LANGUAGE language) {
-        try {
-            JSONObject jsonObject = new JSONObject(content);
-            return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("message").getString(messageName));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("message").getString(messageName));
     }
 
     /**
@@ -48,13 +45,7 @@ public class Message {
      * @return the error
      */
     public static String getError(String messageName, LANGUAGE language) {
-        try {
-            JSONObject jsonObject = new JSONObject(content);
-            return error(jsonObject.getJSONObject(language.toString()).getJSONObject("error").getString(messageName));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return error(jsonObject.getJSONObject(language.toString()).getJSONObject("error").getString(messageName));
     }
 
     /**
@@ -66,13 +57,7 @@ public class Message {
      * @return the warning
      */
     public static String getWarning(String messageName, LANGUAGE language) {
-        try {
-            JSONObject jsonObject = new JSONObject(content);
-            return warning(jsonObject.getJSONObject(language.toString()).getJSONObject("warning").getString(messageName));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return warning(jsonObject.getJSONObject(language.toString()).getJSONObject("warning").getString(messageName));
     }
 
     /**
@@ -83,13 +68,7 @@ public class Message {
      * @return the success message
      */
     public static String getSuccessMessage(String messageName, LANGUAGE language) {
-        try {
-            JSONObject jsonObject = new JSONObject(content);
-            return success(jsonObject.getJSONObject(language.toString()).getJSONObject("success").getString(messageName));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return success(jsonObject.getJSONObject(language.toString()).getJSONObject("success").getString(messageName));
     }
 
     /**
@@ -100,12 +79,16 @@ public class Message {
      * @return the command description
      */
     public static String getCommandDescription(String messageName, LANGUAGE language) {
-        try {
-            JSONObject jsonObject = new JSONObject(content);
-            return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("command_description").getString(messageName));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("command_description").getString(messageName));
+    }
+
+    /**
+     * Gets logs from json file with no color.
+     *
+     * @param messageName the message name
+     * @return the command description
+     */
+    public static String getLog(String messageName) {
+        return jsonObject.getJSONObject("en").getJSONObject("log_info").getString(messageName);
     }
 }
