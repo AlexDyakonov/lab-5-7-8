@@ -1,0 +1,8 @@
+апр. 19, 2023 11:15:09 PM server.commands.Invoker execute
+SEVERE: [0;31mКоманда не должна содержать аргументы.[0m
+апр. 19, 2023 11:15:11 PM server.commands.Invoker execute
+SEVERE: [0;31mКоманда не должна содержать аргументы.[0m
+апр. 19, 2023 11:15:24 PM server.dao.HumanDaoImpl deleteHumanById
+INFO: [0;32mHumanBeing with id - 1 was deleted.[0m
+апр. 19, 2023 11:15:29 PM server.dao.HumanDaoImpl deleteHumanById
+SEVERE: [0;31mHumanBeing wasn't deleted.[0m
