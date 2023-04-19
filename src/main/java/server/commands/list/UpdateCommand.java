@@ -40,7 +40,7 @@ public class UpdateCommand implements Command {
                 throw new ValidationException(getError("id_more_than_zero", language));
             }
             if (controller.getHumanById(id) == null) {
-                throw new ValidationException(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
+                throw new ValidationException((getWarning("user_not_found", language)).replace("%id%", id.toString()));
             }
             controller.updateHuman(HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language), id);
         } catch (NumberFormatException e) {

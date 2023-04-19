@@ -21,7 +21,7 @@ public class PrintAscendingCommand implements Command {
     @Override
     public void execute(String[] args) {
         controller.print_ascending().forEach(System.out::println);
-        System.out.println(Objects.requireNonNull(getSuccessMessage("output_db", language)).replace("%num%", String.valueOf(controller.getAllHuman().size())));
+        System.out.println((getSuccessMessage("output_db", language)).replace("%num%", String.valueOf(controller.getAllHuman().size())));
     }
 
     @Override

@@ -63,14 +63,14 @@ public class HumanDaoImpl implements HumanDao {
     @Override
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null) {
-            System.out.println(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
-            logger.info(Objects.requireNonNull(getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
+            System.out.println((getWarning("user_not_found", language)).replace("%id%", id.toString()));
+            logger.info((getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
         }
         if (source.removeHumanFromDataBase(id)) {
             System.out.println(getSuccessMessage("done", language));
-            logger.info(Objects.requireNonNull(getSuccessMessage("user_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
+            logger.info((getSuccessMessage("user_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
         } else {
-            logger.severe(Objects.requireNonNull(getError("user_not_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
+            logger.severe((getError("user_not_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
         }
     }
 
@@ -92,13 +92,13 @@ public class HumanDaoImpl implements HumanDao {
                 responseDTO = HumanBeingMapper.fromModelToResponse(human);
             }
         }
-        logger.info(Objects.requireNonNull(getSuccessMessage("user_updated", language)).replace("%id%", id.toString()));
+        logger.info((getSuccessMessage("user_updated", language)).replace("%id%", id.toString()));
         return responseDTO;
     }
 
     @Override
     public String info() {
-        String answer = Objects.requireNonNull(getMessage("info_about_dataset", language));
+        String answer = (getMessage("info_about_dataset", language));
         answer = answer.replace("%class%", source.getDataBase().getClass().getTypeName().split("\\.")[2]);
         answer = answer.replace("%date%", source.getCreationDate().toString());
         answer = answer.replace("%size%", String.valueOf(source.getDataBase().size()));
@@ -110,7 +110,7 @@ public class HumanDaoImpl implements HumanDao {
     public void clear() {
         int elemsBefore = source.getDataBase().size();
         source.getDataBase().clear();
-        System.out.println(Objects.requireNonNull(getSuccessMessage("cleared", language)).replace("%num%", String.valueOf(elemsBefore)));
+        System.out.println((getSuccessMessage("cleared", language)).replace("%num%", String.valueOf(elemsBefore)));
     }
 
     // save : сохранить коллекцию в файл

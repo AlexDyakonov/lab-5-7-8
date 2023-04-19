@@ -37,7 +37,7 @@ public class ExecuteScriptCommand implements Command {
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(args[1]));
             invoker.setFileReader(fileReader).setBuilderType(BuilderType.FILE).init();
-            System.out.println(Objects.requireNonNull(getMessage("executing_file", language)).replace("%file%", args[1]));
+            System.out.println((getMessage("executing_file", language)).replace("%file%", args[1]));
             while (fileReader.ready()) {
                 command = fileReader.readLine();
                 if (command.split(" ")[0].equals("execute_script")) {

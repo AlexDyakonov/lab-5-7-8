@@ -31,7 +31,6 @@
       "id_more_than_zero": "ID must be more than 0.",
       "request_not_validated": "Request was not validate successfully.",
       "mood_not_exist": "This mood does not exist.",
-      "save_error": "Saving error into *%file%*.",
       "bool_null": "Null met while boolean reading. It is not null parameter.",
       "impact_speed_null": "Null met while impact speed reading. It is not null parameter.",
       "number_error": "Insert number.",
@@ -52,8 +51,6 @@
       "user_updated": "HumanBeing with id - %id% was updated.",
       "user_deleted": "HumanBeing with id - %id% was deleted.",
       "cleared": "%num% elements was deleted.",
-      "data_base_loaded": "Successfully loaded %size% items.",
-      "data_base_saved": "Successfully saved %size% items.",
       "output_db": "%num% elements was showed.",
       "done": "Success!"
     },
@@ -75,6 +72,16 @@
       "count_by_mood": "display the number of elements whose mood field value is equal to the specified value.",
       "print_ascending": "display the elements of the collection in ascending order.",
       "language": "choose language program."
+    },
+    "log_info": {
+      "start_saving": "Saving data base is starting.",
+      "load_starting": "Data base is loading.",
+      "set_ready": "HashSet created.",
+      "humanbeing_added_to_set": "HumanBeing *%hb%* added to set.",
+      "data_base_loaded": "Successfully loaded %size% items.",
+      "data_base_saved": "Successfully saved %size% items.",
+      "save_error": "Saving error into *%file%*.",
+      "same_id": "Found two HumanBeing with same %id%. First will be loaded."
     }
   },
   "ru": {
@@ -109,7 +116,6 @@
       "id_more_than_zero": "ID не может быть 0 или меньше 0",
       "request_not_validated": "Валидация реквеста не увенчалась успехом",
       "mood_not_exist": "Такого mood не существует.",
-      "save_error": "Ошибка сохранения базы данных в *%file%*.",
       "bool_null": "Встречен null при чтения строки для boolean поля. Это поле не может быть null.",
       "impact_speed_null": "Встречен null при чтения строки для поля impact speed. Это поле не может быть null.",
       "number_error": "Введите числовые значения.",
@@ -130,8 +136,6 @@
       "user_updated": "HumanBeing с id - %id% был успешно обновлен.",
       "user_deleted": "HumanBeing с id - %id% был успешно удален.",
       "cleared": "Было удалено %num% элементов.",
-      "data_base_loaded": "Успешно загружено %size% элементов.",
-      "data_base_saved": "Успешно сохранено %size% элементов.",
       "output_db": "Было успешно выведено %num% элементов.",
       "done": "Успешно!"
     },

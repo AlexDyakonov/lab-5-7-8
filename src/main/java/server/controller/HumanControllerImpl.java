@@ -26,9 +26,9 @@ import static util.Message.getWarning;
  * The type Human controller.
  */
 public class HumanControllerImpl implements HumanController {
+    private static final Logger logger = Logger.getLogger(HumanControllerImpl.class.getName());
     private final HumanService service;
     private LANGUAGE language;
-    private static final Logger logger = Logger.getLogger(HumanControllerImpl.class.getName());
     /**
      * Instantiates a new Human controller.
      *
