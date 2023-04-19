@@ -87,6 +87,17 @@ public class DataBaseProvider {
         return resultSet;
     }
 
+    public boolean removeHumanFromDataBase(Long id) {
+        Set<HumanBeingModel> copy = new LinkedHashSet<>(dataBase);
+        for (HumanBeingModel humanBeingModel : copy) {
+            if (humanBeingModel.getId().equals(id)) {
+                dataBase.remove(humanBeingModel);
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Save.
      *

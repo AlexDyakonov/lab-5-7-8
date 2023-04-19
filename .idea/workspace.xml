@@ -9,11 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logic in Message Class, added javadoc for its. Added more messages">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Now logger saves in one file with normal name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mylog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/mapper/HumanBeingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="5ace2945c075a7586db5054de526fc98d5e899d8" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -135,9 +139,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.Message" />
         <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.Parser" />
+        <item itemvalue="Application.Message" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -197,13 +201,6 @@
       <workItem from="1681598650429" duration="499000" />
       <workItem from="1681713586205" duration="12000" />
       <workItem from="1681722286818" duration="8362000" />
-    </task>
-    <task id="LOCAL-00029" summary="Added database reader">
-      <created>1678967026917</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967026917</updated>
     </task>
     <task id="LOCAL-00030" summary="Attempt to parse DateTime">
       <created>1678967045254</created>
@@ -541,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681584226282</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Now logger saves in one file with normal name">
+      <created>1681935368580</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1681935368580</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attempt to fix script executor #2 Added builderType for all builders" />
     <MESSAGE value="Attempt to fix script executor #3" />
     <MESSAGE value="Fixed Update method" />
     <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
@@ -597,7 +600,8 @@
     <MESSAGE value="Added en localization for add commands" />
     <MESSAGE value="Added en localization for all command descriptions" />
     <MESSAGE value="Added logic in Message Class, added javadoc for its. Added more messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logic in Message Class, added javadoc for its. Added more messages" />
+    <MESSAGE value="Now logger saves in one file with normal name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now logger saves in one file with normal name" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

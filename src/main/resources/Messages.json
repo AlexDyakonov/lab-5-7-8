@@ -21,6 +21,7 @@
       "no_args": "Command should contains no args.",
       "one_arg": "Command contains one argument.",
       "user_not_added": "HumanBeing wasn't added.",
+      "user_not_deleted": "HumanBeing wasn't deleted.",
       "db_file_not_readable": "File is not readable. Use other to start the app.",
       "db_file_not_found": "File not found. Use other path to start the app.",
       "file_not_writable": "File is not writable. Use other.",
@@ -34,21 +35,27 @@
       "bool_null": "Null met while boolean reading. It is not null parameter.",
       "impact_speed_null": "Null met while impact speed reading. It is not null parameter.",
       "number_error": "Insert number.",
-      "recursion_met": "Recursion encountered. Script execution stopped."
+      "recursion_met": "Recursion encountered. Script execution stopped.",
+      "not_done": "Failed to execute.",
+      "id_not_correct": "The HumanBeing id is incorrect. The entry will be ignored."
     },
     "warning": {
       "default_language": "Can not recognize input language. Set default language: RU.",
       "db_file_not_writable": "File is not writable! The functionality of the program is limited (impossible to save). Run the program with a different file to get full functionality.",
       "command_not_found": "The command you entered was not recognized.",
-      "user_not_found": "HumanBeing with id - %id% not found"
+      "user_not_found": "HumanBeing with id - %id% not found",
+      "incorrect_line": "The entry is invalid and will be ignored.",
+      "y_more_than": "Y must be greater than -897."
     },
     "success": {
-      "user_added": "HumanBeing with id - %id% added.",
+      "user_added": "HumanBeing with id - %id% was added.",
       "user_updated": "HumanBeing with id - %id% was updated.",
+      "user_deleted": "HumanBeing with id - %id% was deleted.",
       "cleared": "%num% elements was deleted.",
       "data_base_loaded": "Successfully loaded %size% items.",
       "data_base_saved": "Successfully saved %size% items.",
-      "output_db": "%num% elements was showed."
+      "output_db": "%num% elements was showed.",
+      "done": "Success!"
     },
     "command_description": {
       "help": "display info about all commands.",
@@ -92,6 +99,7 @@
       "no_args": "Команда не должна содержать аргументы.",
       "one_arg": "Команда содержит один аргумент.",
       "user_not_added": "Не удалось добавить пользователя",
+      "user_not_deleted": "HumanBeing не был добавлен.",
       "db_file_not_readable": "Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.",
       "db_file_not_found": "Файл не найден. Чтобы использовать другой запустите программу еще раз.",
       "file_not_writable": "Файл недоступен для записи. Выберите другой.",
@@ -105,21 +113,27 @@
       "bool_null": "Встречен null при чтения строки для boolean поля. Это поле не может быть null.",
       "impact_speed_null": "Встречен null при чтения строки для поля impact speed. Это поле не может быть null.",
       "number_error": "Введите числовые значения.",
-      "recursion_met": "Встречена рекурсия. Выполнение скрипта остановлено."
+      "recursion_met": "Встречена рекурсия. Выполнение скрипта остановлено.",
+      "not_done": "Не удалось выполнить.",
+      "id_not_correct": "Id HumanBeing некорректно. Запись будет проигнорирована"
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",
       "db_file_not_writable": "Файл недоступен к изменением! Функционал программы ограничен(невозможно сохранять). Запустите программу, указав другой файл, чтобы получить полный функционал.",
       "command_not_found": "Введенная команда не распознана.",
-      "user_not_found": "Пользователь с id - %id% не найден"
+      "user_not_found": "Пользователь с id - %id% не найден",
+      "incorrect_line": "Запись некорректна и будет проигнорирована.",
+      "y_more_than": "Y должен быть больше -897."
     },
     "success": {
       "user_added": "Пользователь с %id% успешно добавлен.",
       "user_updated": "HumanBeing с id - %id% был успешно обновлен.",
+      "user_deleted": "HumanBeing с id - %id% был успешно удален.",
       "cleared": "Было удалено %num% элементов.",
       "data_base_loaded": "Успешно загружено %size% элементов.",
       "data_base_saved": "Успешно сохранено %size% элементов.",
-      "output_db": "Было успешно выведено %num% элементов."
+      "output_db": "Было успешно выведено %num% элементов.",
+      "done": "Успешно!"
     },
     "command_description": {
       "help": "вывести справку о всех командах.",

@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import static client.ui.ConsoleColors.*;
-import static util.Message.getMessage;
+import static util.Message.*;
 
 /**
  * The type Coordinates builder.
@@ -22,18 +22,18 @@ public class CoordinatesBuilder {
      * @return the coordinates
      */
     public static Coordinates getCoordinates(BufferedReader reader, LANGUAGE language) {
-        Integer x;
-        Double y;
+        int x;
+        double y;
         try {
             System.out.println(getMessage("input_coordinate_x", language));
             x = Integer.parseInt(reader.readLine());
             System.out.println(getMessage("input_coordinate_y", language));
             y = Double.parseDouble(reader.readLine());
             if (y < -897) {
-                throw new ValidationException(unsuccess("Y должен быть больше -897"));
+                throw new ValidationException(getWarning("y_more_than", language));
             }
         } catch (NumberFormatException | IOException | ValidationException e) {
-            throw new ValidationException("Координаты X, Y должны быть численными", e);
+            throw new ValidationException(getError("number_error", language), e);
         }
         return new Coordinates(x, y);
     }
@@ -44,17 +44,17 @@ public class CoordinatesBuilder {
      * @param reader the reader
      * @return the coordinates
      */
-    public static Coordinates getCoordinatesFromFile(BufferedReader reader) {
+    public static Coordinates getCoordinatesFromFile(BufferedReader reader, LANGUAGE language) {
         int x;
         double y;
         try {
             x = Integer.parseInt(reader.readLine());
             y = Double.parseDouble(reader.readLine());
             if (y < -897) {
-                throw new ValidationException(unsuccess("Y должен быть больше -897"));
+                throw new ValidationException(getWarning("y_more_than", language));
             }
         } catch (NumberFormatException | IOException | ValidationException e) {
-            throw new ValidationException("Координаты X, Y должны быть численными", e);
+            throw new ValidationException(getError("number_error", language), e);
         }
         return new Coordinates(x, y);
     }
@@ -77,7 +77,7 @@ public class CoordinatesBuilder {
             }
         } else {
             try {
-                return getCoordinatesFromFile(filereader);
+                return getCoordinatesFromFile(filereader, language);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 return buildCoordinates(cmdreader, filereader, BuilderType.CMD, language);

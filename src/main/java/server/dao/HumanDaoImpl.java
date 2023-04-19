@@ -13,18 +13,20 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static client.ui.ConsoleColors.success;
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
 /**
  * The type Human dao.
  */
 public class HumanDaoImpl implements HumanDao {
-    private LANGUAGE language;
-
     private final DataBaseProvider source;
+    private LANGUAGE language;
+    private static final Logger logger = Logger.getLogger(HumanDaoImpl.class.getName());
 
     /**
      * Instantiates a new Human dao.
@@ -34,6 +36,7 @@ public class HumanDaoImpl implements HumanDao {
     public HumanDaoImpl(String fileName) {
         this.source = new DataBaseProvider(fileName);
         source.setLanguage(language);
+        setupLogger(logger);
     }
 
     @Override
@@ -47,7 +50,6 @@ public class HumanDaoImpl implements HumanDao {
         return response;
     }
 
-    // show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
         return source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).collect(Collectors.toList());
@@ -62,12 +64,13 @@ public class HumanDaoImpl implements HumanDao {
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null) {
             System.out.println(Objects.requireNonNull(getWarning("user_not_found", language)).replace("%id%", id.toString()));
+            logger.info(Objects.requireNonNull(getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
         }
-        for (HumanBeingModel human : source.getDataBase()) {
-            if (Objects.equals(human.getId(), id)) {
-                source.getDataBase().remove(human);
-                System.out.println(success("Объект с id: " + id + " был удален."));
-            }
+        if (source.removeHumanFromDataBase(id)) {
+            System.out.println(getSuccessMessage("done", language));
+            logger.info(Objects.requireNonNull(getSuccessMessage("user_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
+        } else {
+            logger.severe(Objects.requireNonNull(getError("user_not_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
         }
     }
 
@@ -85,10 +88,11 @@ public class HumanDaoImpl implements HumanDao {
                 human.setMood(newHuman.getMood());
                 human.setWeaponType(newHuman.getWeaponType());
                 human.setCar(newHuman.getCar());
-                System.out.println(getSuccessMessage("user_updated", language));
+                System.out.println(getSuccessMessage("done", language));
                 responseDTO = HumanBeingMapper.fromModelToResponse(human);
             }
         }
+        logger.info(Objects.requireNonNull(getSuccessMessage("user_updated", language)).replace("%id%", id.toString()));
         return responseDTO;
     }
 

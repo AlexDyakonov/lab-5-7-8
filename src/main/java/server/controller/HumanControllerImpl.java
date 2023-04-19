@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.dao.HumanDaoImpl;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.model.Mood;
@@ -13,8 +14,10 @@ import util.LANGUAGE;
 import java.io.File;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.error;
+import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileWrite;
 import static util.Message.getError;
 import static util.Message.getWarning;
@@ -23,10 +26,9 @@ import static util.Message.getWarning;
  * The type Human controller.
  */
 public class HumanControllerImpl implements HumanController {
-
     private final HumanService service;
     private LANGUAGE language;
-
+    private static final Logger logger = Logger.getLogger(HumanControllerImpl.class.getName());
     /**
      * Instantiates a new Human controller.
      *
@@ -35,6 +37,7 @@ public class HumanControllerImpl implements HumanController {
     public HumanControllerImpl(String fileName) {
         this.service = new HumanServiceImpl(fileName);
         service.setLanguage(language);
+        setupLogger(logger);
     }
 
     @Override

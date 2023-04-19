@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.unsuccess;
+import static util.Message.getError;
 
 /**
  * The type Parser.
@@ -18,7 +19,7 @@ public class Parser {
         try {
             return Long.parseLong(string);
         } catch (NumberFormatException e) {
-            throw new ValidationException(unsuccess("Id пользователя некорректно. Запись будет проигнорирована"));
+            throw new ValidationException(getError("id_not_correct", LANGUAGE.EN));
         }
     }
 

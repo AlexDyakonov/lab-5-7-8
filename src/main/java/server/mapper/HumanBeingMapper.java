@@ -4,8 +4,10 @@ import server.exception.ValidationException;
 import server.model.*;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import static client.ui.ConsoleColors.unsuccess;
+import static util.Message.getWarning;
 import static util.Parser.*;
 
 /**
@@ -74,7 +76,7 @@ public class HumanBeingMapper {
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
         String[] array = obj.split(",");
         if (array.length != 11) {
-            throw new ValidationException(unsuccess("Запись некорректна и будет проигнорирована."));
+            throw new ValidationException(getWarning("incorrect_line", LANGUAGE.EN));
         }
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(stringToId(array[0]));
