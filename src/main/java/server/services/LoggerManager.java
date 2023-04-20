@@ -1,5 +1,6 @@
 package server.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +8,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+
+import static util.FileManager.createDirectory;
 
 /**
  * The type Logger manager.
@@ -32,11 +35,12 @@ public class LoggerManager {
      * @param appName the app name
      * @return the log file name
      */
-    public static String getLogFileName(String appName) {
+    private static String getLogFileName(String appName) {
+        createDirectory("logs");
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
         String formattedDateTime = currentDateTime.format(formatter);
-        return appName + "_" + formattedDateTime + ".log";
+        return "logs\\" + appName + "_" + formattedDateTime + ".log";
     }
 
     /**

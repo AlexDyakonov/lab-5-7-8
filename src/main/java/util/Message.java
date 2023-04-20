@@ -18,7 +18,7 @@ public class Message {
 
     static {
         try {
-            content = new String(Files.readAllBytes(Paths.get("src/main/resources/Messages.json")));
+            content = new String(Files.readAllBytes(Paths.get("Messages.json")));
             jsonObject = new JSONObject(content);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -102,7 +102,11 @@
       "script_added_to_sm": "Script *%script%* is added to script list.",
       "executing_file": "Executing file *%file%*.",
       "cleared_scripts": "Script history cleared.",
-      "new_script": "Met new script. Executing."
+      "new_script": "Met new script. Executing.",
+      "dir_exist": "Directory already exists.",
+      "par_dir_fail": "Failed to create parent directory.",
+      "dir_created": "Directory created successfully.",
+      "dir_failed": "Failed to create directory."
     }
   },
   "ru": {
