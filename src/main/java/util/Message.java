@@ -8,6 +8,7 @@ import java.nio.file.Path;
 
 import static client.ui.ConsoleColors.*;
 import static util.FileManager.downloadFile;
+import static util.FileManager.updateFile;
 
 /**
  * The type Message.
@@ -20,9 +21,7 @@ public class Message {
     static {
         try {
             Path json = Path.of("Messages.json");
-            if (!Files.exists(json)) {
-                downloadFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/issfix/Messages.json", "Messages.json");
-            }
+            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/issfix/Messages.json", "Messages.json");
             content = new String(Files.readAllBytes(json));
             jsonObject = new JSONObject(content);
         } catch (IOException e) {
