@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added autodownloading Messages.json">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed decorator. Added some logging for Builder classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,19 +90,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.FileManager" />
-      <module name="lab-5-num-125595" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Message" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="util.Message" />
       <module name="lab-5-num-125595" />
@@ -143,7 +130,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.FileManager" />
       <item itemvalue="Application.Message" />
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Parser" />
@@ -152,10 +138,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.FileManager" />
         <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.Parser" />
         <item itemvalue="Application.Message" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +202,13 @@
       <workItem from="1681722286818" duration="8362000" />
       <workItem from="1681943248971" duration="13984000" />
       <workItem from="1681961005400" duration="378000" />
-      <workItem from="1681978425565" duration="6722000" />
+    </task>
+    <task id="LOCAL-00043" summary="Added more Validations">
+      <created>1679154832044</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1679154832044</updated>
     </task>
     <task id="LOCAL-00044" summary="Renamed repo -&gt; HumanDao">
       <created>1679155386459</created>
@@ -554,14 +546,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681960757776</updated>
     </task>
-    <task id="LOCAL-00092" summary="Added autodownloading Messages.json">
-      <created>1681979870847</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1681979870849</updated>
-    </task>
-    <option name="localTasksCounter" value="93" />
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,6 +577,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added more file exception checks. Added warning." />
     <MESSAGE value="Fixed id reading from file(catching exception)" />
     <MESSAGE value="Added javadoc documentation" />
     <MESSAGE value="Added ru and en localization for builders (input lines)" />
@@ -616,8 +602,7 @@
     <MESSAGE value="Build .jar using maven (added plugin for libs inside jar)&#10;Added dir creating for logs." />
     <MESSAGE value="Attempt to make decorator for logging functions" />
     <MESSAGE value="Removed decorator. Added some logging for Builder classes" />
-    <MESSAGE value="Added autodownloading Messages.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added autodownloading Messages.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed decorator. Added some logging for Builder classes" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
+import static util.Parser.tildaResolver;
 
 /**
  * The type Execute script command. Execute any script and execute commands inside.
@@ -45,13 +46,15 @@ public class ExecuteScriptCommand implements Command {
         if (args.length != 2) {
             throw new ArgumentException(getError("one_arg", language));
         }
-        scriptManager.addToScripts(args[1]);
         String command;
+        String scriptName;
+        String currentScript = tildaResolver(args[1]);
+        scriptManager.addToScripts(currentScript);
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(args[1]));
+            BufferedReader fileReader = new BufferedReader(new FileReader(currentScript));
             invoker.setFileReader(fileReader).setBuilderType(BuilderType.FILE).init();
 
-            logger.info(getLog("executing_file").replace("%file%", Paths.get(args[1]).getFileName().toString()));
+            logger.info(getLog("executing_file").replace("%file%", Paths.get(currentScript).getFileName().toString()));
 
             while (fileReader.ready()) {
                 command = fileReader.readLine();
@@ -59,10 +62,12 @@ public class ExecuteScriptCommand implements Command {
 
                     logger.info(getLog("new_script"));
 
-                    if (scriptManager.getScripts().contains(command.split(" ")[1])) {
+                    scriptName = tildaResolver(command.split(" ")[1]);
+
+                    if (scriptManager.getScripts().contains(scriptName)) {
                         throw new ApplicationException(getError("recursion_met", language));
                     }
-                    scriptManager.addToScripts(command.split(" ")[1]);
+                    scriptManager.addToScripts(scriptName);
                 }
                 invoker.execute(command);
             }
