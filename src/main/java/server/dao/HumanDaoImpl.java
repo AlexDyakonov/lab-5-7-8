@@ -68,7 +68,7 @@ public class HumanDaoImpl implements HumanDao {
             System.out.println(getSuccessMessage("done", language));
             logger.info((getLog("user_deleted")).replace("%id%", id.toString()));
         } else {
-            System.out.println(getError("not_done", language));
+            System.out.println(getError("user_not_deleted", language));
             logger.severe((getLog("user_not_deleted")).replace("%id%", id.toString()));
         }
     }

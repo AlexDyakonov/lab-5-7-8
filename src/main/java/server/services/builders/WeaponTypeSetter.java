@@ -7,7 +7,9 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.getError;
 import static util.Message.getMessage;
 
@@ -15,6 +17,12 @@ import static util.Message.getMessage;
  * The type Weapon type setter.
  */
 public class WeaponTypeSetter {
+    private static final Logger logger = Logger.getLogger(WeaponTypeSetter.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets weapon type.
      *
@@ -29,7 +37,7 @@ public class WeaponTypeSetter {
         } catch (NumberFormatException e) {
             throw new ValidationException(getError("number_error", language), e);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            logger.severe(e.getMessage());
         }
         switch (number) {
             case 1:

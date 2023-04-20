@@ -3,12 +3,15 @@ package server.services.builders;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
+import server.services.HistoryManager;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.error;
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.getError;
 import static util.Message.getMessage;
 import static util.Parser.stringToBoolean;
@@ -17,6 +20,12 @@ import static util.Parser.stringToBoolean;
  * The type Boolean builder.
  */
 public class BooleanBuilder {
+    private static final Logger logger = Logger.getLogger(BooleanBuilder.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets bool.
      *
@@ -35,7 +44,7 @@ public class BooleanBuilder {
             request = request.toLowerCase();
             response = stringToBoolean(request);
         } catch (IOException e) {
-            System.out.println(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения"));
+            logger.severe(e.getMessage());
         }
         return response;
     }
@@ -68,5 +77,4 @@ public class BooleanBuilder {
             }
         }
     }
-
 }

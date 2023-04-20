@@ -35,7 +35,8 @@
       "recursion_met": "Recursion encountered. Script execution stopped.",
       "not_done": "Failed to execute.",
       "id_not_correct": "The HumanBeing id is incorrect. The entry will be ignored.",
-      "invalid_name": "The name must not be empty and must be greater than 0 characters."
+      "invalid_name": "The name must not be empty and must be greater than 0 characters.",
+      "user_not_deleted": "HumanBeing wasn't deleted."
     },
     "warning": {
       "default_language": "Can not recognize input language. Set default language: RU.",
@@ -106,7 +107,9 @@
       "dir_exist": "Directory already exists.",
       "par_dir_fail": "Failed to create parent directory.",
       "dir_created": "Directory created successfully.",
-      "dir_failed": "Failed to create directory."
+      "dir_failed": "Failed to create directory.",
+      "language_start": "Started language selecting.",
+      "language_finish": "Ended language selecting."
     }
   },
   "ru": {
@@ -145,7 +148,8 @@
       "recursion_met": "Встречена рекурсия. Выполнение скрипта остановлено.",
       "not_done": "Не удалось выполнить.",
       "id_not_correct": "Id HumanBeing некорректно. Запись будет проигнорирована",
-      "invalid_name": "Имя не должно быть пустым и должно быть больше 0 символа"
+      "invalid_name": "Имя не должно быть пустым и должно быть больше 0 символа",
+      "user_not_deleted": "HumanBeing не был удален."
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",

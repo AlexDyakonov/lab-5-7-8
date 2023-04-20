@@ -7,14 +7,22 @@ import util.LANGUAGE;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.error;
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.getMessage;
 
 /**
  * The type Car builder.
  */
 public class CarBuilder {
+    private static final Logger logger = Logger.getLogger(CarBuilder.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets car.
      *
@@ -40,7 +48,7 @@ public class CarBuilder {
                 }
             }
         } catch (IOException e) {
-            System.out.println(error("CarBuilder.carBuilder() -> Reading from keyboard error"));
+            logger.severe(e.getMessage());
         }
         return new Car(name, cool);
     }
@@ -67,7 +75,7 @@ public class CarBuilder {
                 }
             }
         } catch (IOException e) {
-            System.out.println(error("CarBuilder.carBuilder() -> Reading from keyboard error"));
+            logger.severe(e.getMessage());
         }
         return new Car(name, cool);
     }

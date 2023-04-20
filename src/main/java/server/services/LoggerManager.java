@@ -57,10 +57,4 @@ public class LoggerManager {
             loggerManager.log(Level.SEVERE, "Error creating file handler", e);
         }
     }
-
-    public static void logFunctionStartEnd(Runnable func, Logger logger, String fun1descr, String fun2descr) {
-        logger.info(getLog(fun1descr));
-        func.run();
-        logger.info(getLog(fun2descr));
-    }
 }

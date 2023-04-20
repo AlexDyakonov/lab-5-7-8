@@ -15,6 +15,10 @@ public class HistoryManager {
     private final List<String> historyListOfCommands;
     private final int historySizeLimit;
 
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Instantiates a new History manager.
      *
@@ -23,7 +27,6 @@ public class HistoryManager {
     public HistoryManager(int historySizeLimit) {
         this.historyListOfCommands = new LinkedList<>();
         this.historySizeLimit = historySizeLimit;
-        setupLogger(logger);
         logger.info(getLog("hm_init_finish"));
     }
 

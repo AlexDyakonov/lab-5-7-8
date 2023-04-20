@@ -7,13 +7,21 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
 /**
  * The type Coordinates builder.
  */
 public class CoordinatesBuilder {
+    private static final Logger logger = Logger.getLogger(CoordinatesBuilder.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets coordinates.
      *
@@ -32,8 +40,12 @@ public class CoordinatesBuilder {
             if (y < -897) {
                 throw new ValidationException(getWarning("y_more_than", language));
             }
-        } catch (NumberFormatException | IOException | ValidationException e) {
+        } catch (NumberFormatException | ValidationException e) {
             throw new ValidationException(getError("number_error", language), e);
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+            x = 0;
+            y = 0;
         }
         return new Coordinates(x, y);
     }
@@ -54,8 +66,12 @@ public class CoordinatesBuilder {
             if (y < -897) {
                 throw new ValidationException(getWarning("y_more_than", language));
             }
-        } catch (NumberFormatException | IOException | ValidationException e) {
+        } catch (NumberFormatException | ValidationException e) {
             throw new ValidationException(getError("number_error", language), e);
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+            x = 0;
+            y = 0;
         }
         return new Coordinates(x, y);
     }

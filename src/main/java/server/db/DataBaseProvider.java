@@ -138,6 +138,7 @@ public class DataBaseProvider {
         } catch (IOException e) {
             System.out.println(getError("not_done", language));
             logger.severe(getLog("save_error"));
+            logger.severe(e.getMessage());
         }
     }
 

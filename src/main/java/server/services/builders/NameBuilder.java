@@ -8,8 +8,10 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.error;
+import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validate;
 import static util.Message.getError;
 import static util.Message.getMessage;
@@ -18,6 +20,12 @@ import static util.Message.getMessage;
  * The type Name builder.
  */
 public class NameBuilder {
+    private static final Logger logger = Logger.getLogger(NameBuilder.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets name.
      *
@@ -30,7 +38,8 @@ public class NameBuilder {
             validate(name, Validation::validateUserName, getError("invalid_name", LANGUAGE.EN));
             return name;
         } catch (IOException e) {
-            throw new ApplicationException(error("Ошибка BufferedReader"));
+            logger.severe(e.getMessage());
+            return "ErrorName";
         }
     }
 

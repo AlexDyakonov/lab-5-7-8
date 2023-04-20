@@ -8,9 +8,11 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.error;
 import static client.ui.ConsoleColors.unsuccess;
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.getError;
 import static util.Message.getMessage;
 
@@ -18,6 +20,12 @@ import static util.Message.getMessage;
  * The type Impact speed builder.
  */
 public class ImpactSpeedBuilder {
+    private static final Logger logger = Logger.getLogger(ImpactSpeedBuilder.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Gets impact speed.
      *
@@ -33,9 +41,10 @@ public class ImpactSpeedBuilder {
             }
             return Float.parseFloat(num);
         } catch (NumberFormatException e) {
-            throw new ValidationException(unsuccess("Значение impactSpeed должно быть числом. Введите еще раз."), e);
-        } catch (IOException e2) {
-            throw new ApplicationException(error("HumanBeingRequestDTOBuilder.build -> Ошибка чтения из клавиатуры"));
+            throw new ValidationException(getError("number_error", language), e);
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+            return -1;
         }
     }
 
