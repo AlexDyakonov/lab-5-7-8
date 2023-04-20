@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import static util.FileManager.createDirectory;
+import static util.Message.getLog;
 
 /**
  * The type Logger manager.
@@ -55,5 +56,11 @@ public class LoggerManager {
         } catch (Exception e) {
             loggerManager.log(Level.SEVERE, "Error creating file handler", e);
         }
+    }
+
+    public static void logFunctionStartEnd(Runnable func, Logger logger, String fun1descr, String fun2descr) {
+        logger.info(getLog(fun1descr));
+        func.run();
+        logger.info(getLog(fun2descr));
     }
 }
