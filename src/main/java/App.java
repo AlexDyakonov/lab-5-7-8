@@ -17,9 +17,8 @@ public class App {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        String args0 = "src/main/resources/database.csv";
         try {
-            ConsoleUI session = new ConsoleUI(args0, new Invoker(args0, BuilderType.CMD, LANGUAGE.RU));
+            ConsoleUI session = new ConsoleUI(args[0], new Invoker(args[0], BuilderType.CMD, LANGUAGE.RU));
             session.start();
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(getError("no_args_main", LANGUAGE.RU));
