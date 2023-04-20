@@ -3,14 +3,12 @@ package server.services.builders;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.services.BuilderType;
-import server.services.HistoryManager;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import static client.ui.ConsoleColors.error;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.getError;
 import static util.Message.getMessage;

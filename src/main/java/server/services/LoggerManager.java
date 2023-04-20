@@ -1,6 +1,5 @@
 package server.services;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.time.LocalDateTime;
@@ -11,7 +10,6 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import static util.FileManager.createDirectory;
-import static util.Message.getLog;
 
 /**
  * The type Logger manager.

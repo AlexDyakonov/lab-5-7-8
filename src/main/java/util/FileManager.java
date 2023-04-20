@@ -1,6 +1,11 @@
 package util;
 
+import org.codehaus.plexus.util.FileUtils;
+
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import static util.Message.getLog;
@@ -44,5 +49,22 @@ public class FileManager {
             }
         }
         return false;
+    }
+
+    /***
+     * Method to download file from url to path
+     * @param url
+     * @param destinationPath
+     */
+    public static void downloadFile(String url, String destinationPath) {
+        logger.info("File from url *%url%* is loading.".replace("%url%", url));
+        try {
+            FileUtils.copyURLToFile(new URL(url), new File(destinationPath));
+            logger.info("File from url *%url%* downloaded.".replace("%url%", url));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

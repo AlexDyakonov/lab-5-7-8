@@ -13,7 +13,7 @@ import static util.Message.getLog;
  */
 public class ScriptManager {
     private static final Logger logger = Logger.getLogger(ScriptManager.class.getName());
-    private List<String> scripts;
+    private final List<String> scripts;
 
 
     /**

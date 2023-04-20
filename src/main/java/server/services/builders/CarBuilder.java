@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-import static client.ui.ConsoleColors.error;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.getMessage;
 

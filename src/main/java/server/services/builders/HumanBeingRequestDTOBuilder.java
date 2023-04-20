@@ -11,7 +11,6 @@ import static server.services.LoggerManager.setupLogger;
 import static server.services.builders.BooleanBuilder.boolBuilder;
 import static server.services.builders.ImpactSpeedBuilder.impactSpeedBuilder;
 import static server.services.builders.NameBuilder.nameBuilder;
-import static util.Message.getLog;
 
 
 /**

@@ -4,9 +4,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 
 import static client.ui.ConsoleColors.*;
+import static util.FileManager.downloadFile;
 
 /**
  * The type Message.
@@ -18,7 +19,11 @@ public class Message {
 
     static {
         try {
-            content = new String(Files.readAllBytes(Paths.get("Messages.json")));
+            Path json = Path.of("Messages.json");
+            if (!Files.exists(json)) {
+                downloadFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/issfix/Messages.json", "Messages.json");
+            }
+            content = new String(Files.readAllBytes(json));
             jsonObject = new JSONObject(content);
         } catch (IOException e) {
             throw new RuntimeException(e);
