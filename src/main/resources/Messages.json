@@ -100,7 +100,8 @@
       "script_manager_init_finish": "Initializing script manager finished.",
       "script_added_to_sm": "Script *%script%* is added to script list.",
       "executing_file": "Executing file *%file%*.",
-      "cleared_scripts": "Script history cleared."
+      "cleared_scripts": "Script history cleared.",
+      "new_script": "Met new script. Executing."
     }
   },
   "ru": {

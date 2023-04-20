@@ -48,6 +48,9 @@ public class ExecuteScriptCommand implements Command {
             while (fileReader.ready()) {
                 command = fileReader.readLine();
                 if (command.split(" ")[0].equals("execute_script")) {
+
+                    logger.info(getLog("new_script"));
+
                     if (scriptManager.getScripts().contains(command.split(" ")[1])) {
                         throw new ApplicationException(getError("recursion_met", language));
                     }

@@ -9,19 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logs in DBProvider and removed Objects.requireNonNull">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logging and fixed Invoker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-5_2023-04-20_01-54-19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/CommandException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
     </list>
@@ -207,14 +197,7 @@
       <workItem from="1681598650429" duration="499000" />
       <workItem from="1681713586205" duration="12000" />
       <workItem from="1681722286818" duration="8362000" />
-      <workItem from="1681943248971" duration="5654000" />
-    </task>
-    <task id="LOCAL-00033" summary="Fixed &quot;Stream closed&quot; in Enum set streams">
-      <created>1678967159286</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967159286</updated>
+      <workItem from="1681943248971" duration="6029000" />
     </task>
     <task id="LOCAL-00034" summary="Added Validation methods">
       <created>1678967184743</created>
@@ -552,7 +535,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681945058714</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Added logging and fixed Invoker">
+      <created>1681948961857</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1681948961857</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added recursion check" />
     <MESSAGE value="Added file exceptions (checking exist, read, write)" />
     <MESSAGE value="Removed javadoc" />
     <MESSAGE value="Made tilda resolving in path" />
@@ -608,7 +597,8 @@
     <MESSAGE value="Removed all lines with success/unsuccess" />
     <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
     <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logs in DBProvider and removed Objects.requireNonNull" />
+    <MESSAGE value="Added logging and fixed Invoker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logging and fixed Invoker" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
