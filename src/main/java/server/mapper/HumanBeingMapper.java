@@ -1,11 +1,14 @@
 package server.mapper;
 
 import server.exception.ValidationException;
-import server.model.*;
+import server.model.Car;
+import server.model.Coordinates;
+import server.model.HumanBeingModel;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
-import static client.ui.ConsoleColors.unsuccess;
+import static util.Message.getWarning;
 import static util.Parser.*;
 
 /**
@@ -56,16 +59,6 @@ public class HumanBeingMapper {
     }
 
     /**
-     * From string to request human being request dto.
-     *
-     * @param line the line
-     * @return the human being request dto
-     */
-    public static HumanBeingRequestDTO fromStringToRequest(String line) {
-        return new HumanBeingRequestDTO();
-    }
-
-    /**
      * From string to human being model human being model.
      *
      * @param obj the obj
@@ -73,8 +66,8 @@ public class HumanBeingMapper {
      */
     public static HumanBeingModel fromStringToHumanBeingModel(String obj) {
         String[] array = obj.split(",");
-        if (array.length != 11){
-            throw new ValidationException(unsuccess("Запись некорректна и будет проигнорирована."));
+        if (array.length != 11) {
+            throw new ValidationException(getWarning("incorrect_line", LANGUAGE.EN));
         }
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(stringToId(array[0]));
@@ -91,19 +84,14 @@ public class HumanBeingMapper {
         return resultModel;
     }
 
-    /**
-     * Так как используемый формат -- csv, то важно заменять , на COMMA, чтобы данные не путались
-     * Далее приведены два метода для преобразования из строки с запятой в строку без и обратно
-     *
-     * @param str
-     * @return
-     */
-    private static String csvToString(String str){
+    private static String csvToString(String str) {
         return str.replaceAll("%COMMA%", ",");
     }
-    private static String stringToCsv(String str){
+
+    private static String stringToCsv(String str) {
         return str.replaceAll(",", "%COMMA%");
     }
+
     /**
      * From human being model to string line string.
      *
@@ -122,7 +110,7 @@ public class HumanBeingMapper {
         sb.append(stringToCsv(model.getSoundtrackName())).append(",");
         sb.append(model.getWeaponType()).append(",");
         sb.append(model.getMood()).append(",");
-        if (model.getCar() == null){
+        if (model.getCar() == null) {
             sb.append("null");
         } else {
             sb.append(model.getCar().toStringLine());

@@ -2,13 +2,22 @@ package server.services;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import static server.services.LoggerManager.setupLogger;
+import static util.Message.getLog;
 
 /**
  * The type History manager.
  */
 public class HistoryManager {
-    private List<String> historyListOfCommands;
-    private int historySizeLimit;
+    private static final Logger logger = Logger.getLogger(HistoryManager.class.getName());
+    private final List<String> historyListOfCommands;
+    private final int historySizeLimit;
+
+    static {
+        setupLogger(logger);
+    }
 
     /**
      * Instantiates a new History manager.
@@ -18,6 +27,7 @@ public class HistoryManager {
     public HistoryManager(int historySizeLimit) {
         this.historyListOfCommands = new LinkedList<>();
         this.historySizeLimit = historySizeLimit;
+        logger.info(getLog("hm_init_finish"));
     }
 
     /**
@@ -32,6 +42,7 @@ public class HistoryManager {
             historyListOfCommands.remove(0);
             historyListOfCommands.add(command);
         }
+        logger.info(getLog("command_to_hm"));
     }
 
     /**
@@ -43,10 +54,4 @@ public class HistoryManager {
         return historyListOfCommands;
     }
 
-    /**
-     * Clear history list of commands.
-     */
-    public void clearHistoryListOfCommands() {
-        historyListOfCommands.clear();
-    }
 }

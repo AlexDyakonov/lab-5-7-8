@@ -10,7 +10,7 @@ import java.time.ZonedDateTime;
 /**
  * The type Human being response dto.
  */
-public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
+public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> {
     private Long id;
     private String name;
     private Coordinates coordinates;
@@ -59,30 +59,12 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
      * Sets id.
      *
      * @param id the id
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
     }
 
     /**
@@ -95,30 +77,12 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets coordinates.
-     *
-     * @return the coordinates
-     */
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    /**
      * Sets coordinates.
      *
      * @param coordinates the coordinates
      */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
-    }
-
-    /**
-     * Gets creation date.
-     *
-     * @return the creation date
-     */
-    public ZonedDateTime getCreationDate() {
-        return creationDate;
     }
 
     /**
@@ -131,30 +95,12 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets real hero.
-     *
-     * @return the real hero
-     */
-    public Boolean getRealHero() {
-        return realHero;
-    }
-
-    /**
      * Sets real hero.
      *
      * @param realHero the real hero
      */
     public void setRealHero(Boolean realHero) {
         this.realHero = realHero;
-    }
-
-    /**
-     * Gets has toothpick.
-     *
-     * @return the has toothpick
-     */
-    public Boolean getHasToothpick() {
-        return hasToothpick;
     }
 
     /**
@@ -167,30 +113,12 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets impact speed.
-     *
-     * @return the impact speed
-     */
-    public Float getImpactSpeed() {
-        return impactSpeed;
-    }
-
-    /**
      * Sets impact speed.
      *
      * @param impactSpeed the impact speed
      */
     public void setImpactSpeed(Float impactSpeed) {
         this.impactSpeed = impactSpeed;
-    }
-
-    /**
-     * Gets soundtrack name.
-     *
-     * @return the soundtrack name
-     */
-    public String getSoundtrackName() {
-        return soundtrackName;
     }
 
     /**
@@ -203,30 +131,12 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets weapon type.
-     *
-     * @return the weapon type
-     */
-    public WeaponType getWeaponType() {
-        return weaponType;
-    }
-
-    /**
      * Sets weapon type.
      *
      * @param weaponType the weapon type
      */
     public void setWeaponType(WeaponType weaponType) {
         this.weaponType = weaponType;
-    }
-
-    /**
-     * Gets mood.
-     *
-     * @return the mood
-     */
-    public Mood getMood() {
-        return mood;
     }
 
     /**
@@ -239,15 +149,6 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     }
 
     /**
-     * Gets car.
-     *
-     * @return the car
-     */
-    public Car getCar() {
-        return car;
-    }
-
-    /**
      * Sets car.
      *
      * @param car the car
@@ -255,6 +156,7 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO>{
     public void setCar(Car car) {
         this.car = car;
     }
+
     @Override
     public String toString() {
         return " \033[0;33m HumanBeing \033[0m (id = " + id + "){\n" + "\033[0;32m" +

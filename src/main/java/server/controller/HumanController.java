@@ -2,6 +2,7 @@ package server.controller;
 
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -10,7 +11,6 @@ import java.util.List;
  */
 public interface HumanController {
 
-    // core commands
 
     /**
      * Gets human by id.
@@ -49,16 +49,7 @@ public interface HumanController {
      * @param id       the id
      * @return the human being response dto
      */
-    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id );
-
-    // additional commands
-
-    /**
-     * Help string.
-     *
-     * @return the string
-     */
-    String help();
+    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 
     /**
      * Info string.
@@ -76,8 +67,9 @@ public interface HumanController {
      * Save.
      *
      * @param fileName the file name
+     * @param language the language
      */
-    void save(String fileName);
+    void save(String fileName, LANGUAGE language);
 
     /**
      * Max by impact speed human being response dto.
@@ -94,22 +86,6 @@ public interface HumanController {
     List<HumanBeingResponseDTO> print_ascending();
 
     // additional composite commands
-
-    /**
-     * Add if max long.
-     *
-     * @param request the request
-     * @return the long
-     */
-    Long addIfMax(HumanBeingRequestDTO request);
-
-    /**
-     * Add if min long.
-     *
-     * @param request the request
-     * @return the long
-     */
-    Long addIfMin(HumanBeingRequestDTO request);
 
     /**
      * Count by mood int.
@@ -134,4 +110,11 @@ public interface HumanController {
      * @return the boolean
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
+
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
+    void setLanguage(LANGUAGE language);
 }

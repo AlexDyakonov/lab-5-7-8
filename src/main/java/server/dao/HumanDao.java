@@ -3,6 +3,7 @@ package server.dao;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public interface HumanDao {
      * @param id       the id
      * @return the human being response dto
      */
-    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id );
+    HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 
     /**
      * Info string.
@@ -121,4 +122,11 @@ public interface HumanDao {
      * @return the boolean
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
+
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
+    void setLanguage(LANGUAGE language);
 }

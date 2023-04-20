@@ -1,11 +1,11 @@
 package server.services;
 
-import client.ui.MenuConstants;
 import server.dao.HumanDao;
 import server.dao.HumanDaoImpl;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
+import util.LANGUAGE;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import java.util.List;
  * The type Human service.
  */
 public class HumanServiceImpl implements HumanService {
-
     private final HumanDao humanDao;
+    private LANGUAGE language;
 
     /**
      * Instantiates a new Human service.
@@ -23,6 +23,7 @@ public class HumanServiceImpl implements HumanService {
      */
     public HumanServiceImpl(String fileName) {
         this.humanDao = new HumanDaoImpl(fileName);
+        humanDao.setLanguage(language);
     }
 
     @Override
@@ -48,11 +49,6 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
         return humanDao.updateHuman(newHuman, id);
-    }
-
-    @Override
-    public String help() {
-        return MenuConstants.HELP;
     }
 
     @Override
@@ -103,5 +99,11 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return humanDao.isImpactSpeedMin(dto);
+    }
+
+    @Override
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
+        humanDao.setLanguage(language);
     }
 }

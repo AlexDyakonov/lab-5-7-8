@@ -4,26 +4,31 @@ import server.exception.FileException;
 import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
+import util.LANGUAGE;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.logging.Logger;
 
-import static client.ui.ConsoleColors.*;
+import static client.ui.ConsoleColors.error;
+import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileRead;
+import static util.Message.*;
 
 /**
  * The type Data base provider.
  */
 public class DataBaseProvider {
+    private static final Logger logger = Logger.getLogger(DataBaseProvider.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     private final Set<HumanBeingModel> dataBase;
     private final LocalDateTime creationDate;
+    private LANGUAGE language;
 
     /**
      * Instantiates a new Data base provider.
@@ -33,6 +38,51 @@ public class DataBaseProvider {
     public DataBaseProvider(String fileName) {
         this.dataBase = loadDataBase(fileName);
         this.creationDate = LocalDateTime.now();
+    }
+
+    private static Set<HumanBeingModel> loadDataBase(String fileName) {
+        logger.info(getLog("load_starting"));
+
+        Set<HumanBeingModel> resultSet = new HashSet<>();
+
+        logger.info(getLog("set_ready"));
+
+        List<Long> idList = new ArrayList<>();
+
+        String personString;
+        try {
+            validateFileRead(new File(fileName), LANGUAGE.RU);
+        } catch (FileException e) {
+            System.out.println(error(e.getMessage()));
+            logger.severe(e.getMessage());
+        }
+        int num = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            while (reader.ready()) {
+                try {
+                    personString = reader.readLine();
+                    HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
+                    if (idList.contains(person.getId())) {
+                        logger.warning(getLog("same_id").replace("%id%", person.getId().toString()));
+                        throw new FileException((getError("same_id", LANGUAGE.EN)).replace("%id%", person.getId().toString()));
+                    }
+                    idList.add(person.getId());
+                    resultSet.add(person);
+                    logger.fine(getLog("humanbeing_added_to_set").replace("%hb%", personString));
+                    num++;
+                } catch (ValidationException e) {
+                    System.out.println(e.getMessage());
+                    logger.warning(e.getMessage());
+                } catch (FileException e) {
+                    System.out.println(e.getMessage());
+                    logger.severe(e.getMessage());
+                }
+            }
+            logger.info((getLog("data_base_loaded")).replace("%size%", String.valueOf(num)));
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+        }
+        return resultSet;
     }
 
     private synchronized Long generateNextId() {
@@ -54,36 +104,21 @@ public class DataBaseProvider {
         return id;
     }
 
-    private static Set<HumanBeingModel> loadDataBase(String fileName) {
-        Set<HumanBeingModel> resultSet = new HashSet<>();
-        List<Long> idList = new ArrayList<>();
-
-        String personString;
-        try {
-            validateFileRead(new File(fileName));
-        } catch (FileException e){
-            System.out.println(error(e.getMessage()));
-        }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            while (reader.ready()) {
-                try {
-                    personString = reader.readLine();
-                    HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
-                    if (idList.contains(person.getId())){
-                        throw new FileException(error("Найдено два пользователя с одинаковым id. Загружен первый из них."));
-                    }
-                    idList.add(person.getId());
-                    resultSet.add(person);
-                } catch (ValidationException | FileException e){
-                    System.out.println(e.getMessage());
-                }
+    /**
+     * Remove human from data base boolean.
+     *
+     * @param id the id
+     * @return the boolean
+     */
+    public boolean removeHumanFromDataBase(Long id) {
+        Set<HumanBeingModel> copy = new LinkedHashSet<>(dataBase);
+        for (HumanBeingModel humanBeingModel : copy) {
+            if (humanBeingModel.getId().equals(id)) {
+                dataBase.remove(humanBeingModel);
+                return true;
             }
-            System.out.println(GREEN_BRIGHT + "Успешно загружено " + resultSet.size() + " элементов." + RESET);
-        } catch (IOException e){
-            System.out.println(e.getMessage());
         }
-        return resultSet;
+        return false;
     }
 
     /**
@@ -92,15 +127,18 @@ public class DataBaseProvider {
      * @param fileName the file name
      */
     public void save(String fileName) {
+        logger.info(getLog("start_saving"));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-//            writer.write("id, name, coordinates, LocalDateTime, realHero, hasToothpick, ImpactSpeed, SoundtrackName, weaponType, Mood, Car");
             for (HumanBeingModel model : dataBase) {
                 writer.write(HumanBeingMapper.fromHumanBeingModelToStringLine(model));
                 writer.write(System.lineSeparator());
             }
-            System.out.println(success("Было сохранено " + dataBase.size() + " элементов."));
+            System.out.println(getSuccessMessage("done", language));
+            logger.info((getLog("data_base_saved")).replace("%size%", String.valueOf(dataBase.size())));
         } catch (IOException e) {
-            System.out.println("Ошибка сохранения в *" + fileName +"*");
+            System.out.println(getError("not_done", language));
+            logger.severe(getLog("save_error"));
+            logger.severe(e.getMessage());
         }
     }
 
@@ -121,11 +159,13 @@ public class DataBaseProvider {
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
-    public FileTime getFileCreationDate(String fileName) {
-        try {
-            return (FileTime) Files.getAttribute((new File(fileName)).toPath(), "creationTime");
-        } catch (IOException e) {
-            return null;
-        }
+
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
     }
 }

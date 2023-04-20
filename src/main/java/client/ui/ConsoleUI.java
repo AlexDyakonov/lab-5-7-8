@@ -1,49 +1,50 @@
 package client.ui;
 
-import server.services.BuilderType;
-import server.services.CommandExecutor;
+import server.commands.Invoker;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Objects;
 
+import static server.validation.Validation.validateFile;
 import static util.Parser.tildaResolver;
-import static server.validation.Validation.*;
 
 /**
  * The type Console ui.
  */
 public class ConsoleUI {
-
-    private final String file;
-    private final CommandExecutor executor;
+    private final Invoker invoker;
 
     /**
      * Instantiates a new Console ui.
      *
      * @param fileName the file name
+     * @param invoker  the invoker
      */
-    public ConsoleUI(String fileName) {
-        validateFile(fileName);
+    public ConsoleUI(String fileName, Invoker invoker) {
+        validateFile(fileName, invoker.getLanguage());
         fileName = tildaResolver(fileName);
-        this.file = fileName;
-        this.executor = new CommandExecutor(fileName, null);
+        this.invoker = invoker;
     }
 
     /**
      * Start.
      */
     public void start() {
-        System.out.println(MenuConstants.HELLO + MenuConstants.HELP);
         String command;
+        System.out.println("Напишите help чтобы вывести все команды");
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        invoker.setFileReader(null);
+
+        BufferedReader reader = invoker.getCmdReader();
+
+        try (reader) {
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
-                executor.executeCommand(command, reader, null, BuilderType.CMD);
+                invoker.execute(command);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
+
 }

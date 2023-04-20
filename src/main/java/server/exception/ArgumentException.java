@@ -3,7 +3,7 @@ package server.exception;
 /**
  * The type Argument exception.
  */
-public class ArgumentException extends RuntimeException{
+public class ArgumentException extends RuntimeException {
     /**
      * Instantiates a new Argument exception.
      *

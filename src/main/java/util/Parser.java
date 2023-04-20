@@ -4,49 +4,51 @@ import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.WeaponType;
 
-import java.io.File;
-import java.nio.file.FileSystems;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
 import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.unsuccess;
+import static util.Message.getError;
 
 /**
  * The type Parser.
  */
 public class Parser {
-    public static Long stringToId(String string){
+    /**
+     * String to id long.
+     *
+     * @param string the string
+     * @return the long
+     */
+    public static Long stringToId(String string) {
         try {
             return Long.parseLong(string);
-        } catch (NumberFormatException e){
-            throw new ValidationException(unsuccess("Id пользователя некорректно. Запись будет проигнорирована"));
+        } catch (NumberFormatException e) {
+            throw new ValidationException(getError("id_not_correct", LANGUAGE.EN));
         }
     }
+
     /**
-     * Преобразует путь до файла с тильдой, начинающийся с тильды
-     * @param file
-     * @return
+     * Tilda resolver string.
+     *
+     * @param file the file
+     * @return the string
      */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {
-                file = file.replaceFirst("^~", System.getProperty("user.home"));
+            file = file.replaceFirst("^~", System.getProperty("user.home"));
         }
         return file;
     }
+
     /**
      * String to boolean boolean.
      *
      * @param line the line
      * @return the boolean
      */
-    public static boolean stringToBoolean(String line){
-        boolean response = false;
-        if (line.equals("true") || line.equals("t") || line.equals("y")){
-            response = true;
-        }
+    public static boolean stringToBoolean(String line) {
+        boolean response = line.equals("true") || line.equals("t") || line.equals("y");
         return response;
     }
 
@@ -56,7 +58,7 @@ public class Parser {
      * @param line the line
      * @return the zoned date time
      */
-    public static ZonedDateTime stringToDateTime(String line){
+    public static ZonedDateTime stringToDateTime(String line) {
         ZonedDateTime response = ZonedDateTime.parse("1991-01-01T00:00:00.713617100+03:00[Europe/Moscow]");
         try {
             response = ZonedDateTime.parse(line);
@@ -72,8 +74,8 @@ public class Parser {
      * @param line the line
      * @return the mood
      */
-    public static Mood stringToMood(String line){
-        switch (line.trim().toLowerCase()){
+    public static Mood stringToMood(String line) {
+        switch (line.trim().toLowerCase()) {
             case "sorrow" -> {
                 return Mood.SORROW;
             }
@@ -83,7 +85,7 @@ public class Parser {
             case "apathy" -> {
                 return Mood.APATHY;
             }
-            case "calm"-> {
+            case "calm" -> {
                 return Mood.CALM;
             }
             case "rage" -> {
@@ -102,8 +104,8 @@ public class Parser {
      * @param line the line
      * @return the weapon type
      */
-    public static WeaponType stringToWeaponType(String line){
-        switch (line.trim().toLowerCase()){
+    public static WeaponType stringToWeaponType(String line) {
+        switch (line.trim().toLowerCase()) {
             case "axe" -> {
                 return WeaponType.AXE;
             }
