@@ -29,15 +29,6 @@ public class Car {
     }
 
     /**
-     * To string line string.
-     *
-     * @return the string
-     */
-    public String toStringLine() {
-        return "(" + this.getName() + ";" + this.isCool() + ")";
-    }
-
-    /**
      * From string car.
      *
      * @param string the string
@@ -54,6 +45,15 @@ public class Car {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ValidationException("Ошибка при парсинге Car из файла. Запись будет проигнорирована.", e);
         }
+    }
+
+    /**
+     * To string line string.
+     *
+     * @return the string
+     */
+    public String toStringLine() {
+        return "(" + this.getName() + ";" + this.isCool() + ")";
     }
 
     /**
@@ -81,15 +81,6 @@ public class Car {
      */
     public boolean isCool() {
         return cool;
-    }
-
-    /**
-     * Sets cool.
-     *
-     * @param cool the cool
-     */
-    public void setCool(boolean cool) {
-        this.cool = cool;
     }
 
     @Override

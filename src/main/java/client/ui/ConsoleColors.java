@@ -5,6 +5,31 @@ package client.ui;
  */
 public class ConsoleColors {
     /**
+     * The constant RESET.
+     */
+    public static final String RESET = "\033[0m";
+    /**
+     * The constant RED.
+     */
+    public static final String RED = "\033[0;31m";
+    /**
+     * The constant GREEN.
+     */
+    public static final String GREEN = "\033[0;32m";
+    /**
+     * The constant RED_BRIGHT.
+     */
+    public static final String RED_BRIGHT = "\033[0;91m";
+    /**
+     * The constant YELLOW_BRIGHT.
+     */
+    public static final String YELLOW_BRIGHT = "\033[0;93m";
+    /**
+     * The constant WHITE_BRIGHT.
+     */
+    public static final String WHITE_BRIGHT = "\033[0;97m";
+
+    /**
      * Success string.
      *
      * @param line the line
@@ -53,35 +78,6 @@ public class ConsoleColors {
     public static final String warning(String line) {
         return (YELLOW_BRIGHT + line + RESET);
     }
-
-    /**
-     * The constant RESET.
-     */
-    public static final String RESET = "\033[0m";
-
-    /**
-     * The constant RED.
-     */
-    public static final String RED = "\033[0;31m";
-    /**
-     * The constant GREEN.
-     */
-    public static final String GREEN = "\033[0;32m";
-
-    /**
-     * The constant RED_BRIGHT.
-     */
-    public static final String RED_BRIGHT = "\033[0;91m";
-
-    /**
-     * The constant YELLOW_BRIGHT.
-     */
-    public static final String YELLOW_BRIGHT = "\033[0;93m";
-
-    /**
-     * The constant WHITE_BRIGHT.
-     */
-    public static final String WHITE_BRIGHT = "\033[0;97m";
 
 
 }

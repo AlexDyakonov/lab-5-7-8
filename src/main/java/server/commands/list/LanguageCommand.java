@@ -4,7 +4,6 @@ import server.commands.Command;
 import server.commands.Invoker;
 import server.exception.ArgumentException;
 import server.services.builders.LanguageBuilder;
-import util.LANGUAGE;
 
 import static util.Message.getCommandDescription;
 import static util.Message.getError;

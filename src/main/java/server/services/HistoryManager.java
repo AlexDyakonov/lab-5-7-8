@@ -51,10 +51,4 @@ public class HistoryManager {
         return historyListOfCommands;
     }
 
-    /**
-     * Clear history list of commands.
-     */
-    public void clearHistoryListOfCommands() {
-        historyListOfCommands.clear();
-    }
 }

@@ -9,8 +9,8 @@ import static server.services.LoggerManager.setupLogger;
 import static util.Message.getLog;
 
 public class ScriptManager {
-    private List<String> scripts;
     private static final Logger logger = Logger.getLogger(ScriptManager.class.getName());
+    private List<String> scripts;
 
 
     public ScriptManager(List<String> scripts) {
@@ -34,7 +34,4 @@ public class ScriptManager {
         return scripts;
     }
 
-    public void setScripts(List<String> scripts) {
-        this.scripts = scripts;
-    }
 }

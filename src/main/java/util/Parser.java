@@ -8,7 +8,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
 import static client.ui.ConsoleColors.error;
-import static client.ui.ConsoleColors.unsuccess;
 import static util.Message.getError;
 
 /**

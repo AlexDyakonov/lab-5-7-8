@@ -5,7 +5,8 @@ import server.exception.ArgumentException;
 import server.services.HistoryManager;
 import util.LANGUAGE;
 
-import static util.Message.*;
+import static util.Message.getCommandDescription;
+import static util.Message.getError;
 
 public class HistoryCommand implements Command {
     private final HistoryManager history;

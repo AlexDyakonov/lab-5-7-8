@@ -28,11 +28,6 @@ public class Coordinates {
         this.y = Objects.requireNonNull(y);
     }
 
-    @Override
-    public String toString() {
-        return x + "/" + y;
-    }
-
     /**
      * From string coordinates.
      *
@@ -51,6 +46,11 @@ public class Coordinates {
             crd.setX(0);
         }
         return crd;
+    }
+
+    @Override
+    public String toString() {
+        return x + "/" + y;
     }
 
     /**

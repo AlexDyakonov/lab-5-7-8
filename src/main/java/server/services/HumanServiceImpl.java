@@ -13,9 +13,8 @@ import java.util.List;
  * The type Human service.
  */
 public class HumanServiceImpl implements HumanService {
-    private LANGUAGE language;
-
     private final HumanDao humanDao;
+    private LANGUAGE language;
 
     /**
      * Instantiates a new Human service.
@@ -100,11 +99,6 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return humanDao.isImpactSpeedMin(dto);
-    }
-
-    @Override
-    public LANGUAGE getLanguage() {
-        return language;
     }
 
     @Override

@@ -123,7 +123,5 @@ public interface HumanDao {
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
 
-    LANGUAGE getLanguage();
-
     void setLanguage(LANGUAGE language);
 }

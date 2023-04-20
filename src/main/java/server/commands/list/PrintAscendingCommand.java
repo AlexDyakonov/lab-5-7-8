@@ -4,8 +4,6 @@ import server.commands.Command;
 import server.controller.HumanController;
 import util.LANGUAGE;
 
-import java.util.Objects;
-
 import static util.Message.getCommandDescription;
 import static util.Message.getSuccessMessage;
 

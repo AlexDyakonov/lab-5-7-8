@@ -8,7 +8,6 @@ import server.services.builders.HumanBeingRequestDTOBuilder;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 
 import static util.Message.getCommandDescription;
 import static util.Message.getError;

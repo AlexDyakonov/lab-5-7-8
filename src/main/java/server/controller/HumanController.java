@@ -87,22 +87,6 @@ public interface HumanController {
     // additional composite commands
 
     /**
-     * Add if max long.
-     *
-     * @param request the request
-     * @return the long
-     */
-    Long addIfMax(HumanBeingRequestDTO request);
-
-    /**
-     * Add if min long.
-     *
-     * @param request the request
-     * @return the long
-     */
-    Long addIfMin(HumanBeingRequestDTO request);
-
-    /**
      * Count by mood int.
      *
      * @param mood the mood
@@ -125,8 +109,6 @@ public interface HumanController {
      * @return the boolean
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
-
-    LANGUAGE getLanguage();
 
     void setLanguage(LANGUAGE language);
 }

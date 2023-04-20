@@ -9,9 +9,7 @@ import server.services.builders.HumanBeingRequestDTOBuilder;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
-import java.util.Objects;
 
-import static client.ui.ConsoleColors.unsuccess;
 import static util.Message.*;
 
 public class UpdateCommand implements Command {

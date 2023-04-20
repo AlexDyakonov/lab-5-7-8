@@ -50,7 +50,7 @@ public class CarBuilder {
      * @param reader the reader
      * @return the car from file
      */
-    public static Car getCarFromFile(BufferedReader reader, LANGUAGE language) {
+    public static Car getCarFromFile(BufferedReader reader) {
         Car car = new Car();
         String name = "";
         boolean cool = false;
@@ -88,7 +88,7 @@ public class CarBuilder {
             }
         } else {
             try {
-                return getCarFromFile(filereader, language);
+                return getCarFromFile(filereader);
             } catch (Exception e) {
                 return carBuilder(cmdreader, filereader, BuilderType.CMD, language);
             }

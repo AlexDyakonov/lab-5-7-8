@@ -3,7 +3,10 @@ package server.commands;
 import server.commands.list.*;
 import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
-import server.exception.*;
+import server.exception.ApplicationException;
+import server.exception.ArgumentException;
+import server.exception.FileException;
+import server.exception.ValidationException;
 import server.services.BuilderType;
 import server.services.HistoryManager;
 import server.services.ScriptManager;
@@ -11,11 +14,9 @@ import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
-import java.util.logging.Level;
-
 
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.getLog;
@@ -23,6 +24,7 @@ import static util.Message.getWarning;
 
 
 public class Invoker {
+    public static final Logger logger = Logger.getLogger(Invoker.class.getName());
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
@@ -32,7 +34,6 @@ public class Invoker {
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-    public static final Logger logger = Logger.getLogger(Invoker.class.getName());
 
     public Invoker(String fileName, BuilderType builderType, LANGUAGE language) {
         setupLogger(logger);
@@ -46,6 +47,10 @@ public class Invoker {
         controller.setLanguage(language);
         init();
         logger.info(getLog("invoker_init_finish"));
+    }
+
+    public static Map<String, Command> getCommandsMap() {
+        return commandsMap;
     }
 
     public void init() {
@@ -99,30 +104,13 @@ public class Invoker {
         commandsMap.put(commandName, command);
     }
 
-    public static Map<String, Command> getCommandsMap() {
-        return commandsMap;
-    }
-
     public BufferedReader getCmdReader() {
         return cmdReader;
-    }
-
-    public Invoker setCmdReader(BufferedReader cmdReader) {
-        this.cmdReader = cmdReader;
-        return this;
-    }
-
-    public BufferedReader getFileReader() {
-        return fileReader;
     }
 
     public Invoker setFileReader(BufferedReader fileReader) {
         this.fileReader = fileReader;
         return this;
-    }
-
-    public BuilderType getBuilderType() {
-        return builderType;
     }
 
     public Invoker setBuilderType(BuilderType builderType) {
@@ -138,10 +126,6 @@ public class Invoker {
         this.language = language;
         controller.setLanguage(language);
         init();
-    }
-
-    public HumanController getController() {
-        return controller;
     }
 
 }

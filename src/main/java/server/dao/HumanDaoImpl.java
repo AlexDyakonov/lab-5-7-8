@@ -23,9 +23,9 @@ import static util.Message.*;
  * The type Human dao.
  */
 public class HumanDaoImpl implements HumanDao {
+    private static final Logger logger = Logger.getLogger(HumanDaoImpl.class.getName());
     private final DataBaseProvider source;
     private LANGUAGE language;
-    private static final Logger logger = Logger.getLogger(HumanDaoImpl.class.getName());
 
     /**
      * Instantiates a new Human dao.
@@ -186,11 +186,6 @@ public class HumanDaoImpl implements HumanDao {
             }
         }
         return true;
-    }
-
-    @Override
-    public LANGUAGE getLanguage() {
-        return language;
     }
 
     @Override

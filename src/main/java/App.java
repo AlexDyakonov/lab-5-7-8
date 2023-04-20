@@ -4,7 +4,6 @@ import server.exception.FileException;
 import server.services.BuilderType;
 import util.LANGUAGE;
 
-
 import static util.Message.getError;
 
 /**

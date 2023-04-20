@@ -1,7 +1,5 @@
 package server.controller;
 
-import server.dao.HumanDaoImpl;
-import server.exception.FileException;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
@@ -13,14 +11,11 @@ import util.LANGUAGE;
 
 import java.io.File;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Logger;
 
-import static client.ui.ConsoleColors.error;
 import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileWrite;
 import static util.Message.getError;
-import static util.Message.getWarning;
 
 /**
  * The type Human controller.
@@ -106,22 +101,6 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
-    public Long addIfMax(HumanBeingRequestDTO request) {
-        if (!Validation.validateRequestDTO(request)) {
-            throw new ValidationException(getError("request_not_validated", language));
-        }
-        return service.addIfMax(request);
-    }
-
-    @Override
-    public Long addIfMin(HumanBeingRequestDTO request) {
-        if (!Validation.validateRequestDTO(request)) {
-            throw new ValidationException(getError("request_not_validated", language));
-        }
-        return service.addIfMin(request);
-    }
-
-    @Override
     public int countByMood(String mood) {
         switch (mood) {
             case "SORROW":
@@ -147,11 +126,6 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return service.isImpactSpeedMin(dto);
-    }
-
-    @Override
-    public LANGUAGE getLanguage() {
-        return language;
     }
 
     @Override

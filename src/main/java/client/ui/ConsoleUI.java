@@ -10,7 +10,6 @@ import static server.validation.Validation.validateFile;
 import static util.Parser.tildaResolver;
 
 public class ConsoleUI {
-    private final String file;
     private final Invoker invoker;
 
     /**
@@ -22,7 +21,6 @@ public class ConsoleUI {
     public ConsoleUI(String fileName, Invoker invoker) {
         validateFile(fileName, invoker.getLanguage());
         fileName = tildaResolver(fileName);
-        this.file = fileName;
         this.invoker = invoker;
     }
 

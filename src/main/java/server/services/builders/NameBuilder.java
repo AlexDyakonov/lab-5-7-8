@@ -9,7 +9,7 @@ import util.LANGUAGE;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import static client.ui.ConsoleColors.*;
+import static client.ui.ConsoleColors.error;
 import static server.validation.Validation.validate;
 import static util.Message.getMessage;
 

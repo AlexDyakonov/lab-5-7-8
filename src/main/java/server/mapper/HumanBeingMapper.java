@@ -1,12 +1,13 @@
 package server.mapper;
 
 import server.exception.ValidationException;
-import server.model.*;
+import server.model.Car;
+import server.model.Coordinates;
+import server.model.HumanBeingModel;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
 
-import static client.ui.ConsoleColors.unsuccess;
 import static util.Message.getWarning;
 import static util.Parser.*;
 
@@ -55,16 +56,6 @@ public class HumanBeingMapper {
         model.setMood(dto.getMood());
         model.setCar(dto.getCar());
         return model;
-    }
-
-    /**
-     * From string to request human being request dto.
-     *
-     * @param line the line
-     * @return the human being request dto
-     */
-    public static HumanBeingRequestDTO fromStringToRequest(String line) {
-        return new HumanBeingRequestDTO();
     }
 
     /**

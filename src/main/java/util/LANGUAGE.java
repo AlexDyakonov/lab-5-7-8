@@ -9,10 +9,6 @@ public enum LANGUAGE {
         this.lan = lan;
     }
 
-    public String getLan() {
-        return lan;
-    }
-
     @Override
     public String toString() {
         return lan;

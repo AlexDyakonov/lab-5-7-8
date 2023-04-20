@@ -1,24 +1,17 @@
 package server.db;
 
-import server.controller.HumanControllerImpl;
 import server.exception.FileException;
 import server.exception.ValidationException;
 import server.mapper.HumanBeingMapper;
 import server.model.HumanBeingModel;
-import server.services.LoggerManager;
 import util.LANGUAGE;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
-import static client.ui.ConsoleColors.*;
+import static client.ui.ConsoleColors.error;
 import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileRead;
 import static util.Message.*;
@@ -28,13 +21,14 @@ import static util.Message.*;
  */
 public class DataBaseProvider {
     private static final Logger logger = Logger.getLogger(DataBaseProvider.class.getName());
-    private final Set<HumanBeingModel> dataBase;
-    private final LocalDateTime creationDate;
-    private LANGUAGE language;
 
     static {
         setupLogger(logger);
     }
+
+    private final Set<HumanBeingModel> dataBase;
+    private final LocalDateTime creationDate;
+    private LANGUAGE language;
 
     /**
      * Instantiates a new Data base provider.
@@ -44,25 +38,6 @@ public class DataBaseProvider {
     public DataBaseProvider(String fileName) {
         this.dataBase = loadDataBase(fileName);
         this.creationDate = LocalDateTime.now();
-    }
-
-    private synchronized Long generateNextId() {
-        return dataBase.stream().mapToLong(HumanBeingModel::getId).max().isPresent()
-                ? dataBase.stream().mapToLong(HumanBeingModel::getId).max().getAsLong() + 1
-                : 1;
-    }
-
-    /**
-     * Add human to database long.
-     *
-     * @param model the model
-     * @return the long
-     */
-    public Long addHumanToDatabase(HumanBeingModel model) {
-        Long id = generateNextId();
-        model.setId(id);
-        dataBase.add(model);
-        return id;
     }
 
     private static Set<HumanBeingModel> loadDataBase(String fileName) {
@@ -108,6 +83,25 @@ public class DataBaseProvider {
             logger.severe(e.getMessage());
         }
         return resultSet;
+    }
+
+    private synchronized Long generateNextId() {
+        return dataBase.stream().mapToLong(HumanBeingModel::getId).max().isPresent()
+                ? dataBase.stream().mapToLong(HumanBeingModel::getId).max().getAsLong() + 1
+                : 1;
+    }
+
+    /**
+     * Add human to database long.
+     *
+     * @param model the model
+     * @return the long
+     */
+    public Long addHumanToDatabase(HumanBeingModel model) {
+        Long id = generateNextId();
+        model.setId(id);
+        dataBase.add(model);
+        return id;
     }
 
     public boolean removeHumanFromDataBase(Long id) {
@@ -157,19 +151,6 @@ public class DataBaseProvider {
      */
     public LocalDateTime getCreationDate() {
         return creationDate;
-    }
-
-    public FileTime getFileCreationDate(String fileName) {
-        try {
-            return (FileTime) Files.getAttribute((new File(fileName)).toPath(), "creationTime");
-        } catch (IOException e) {
-            logger.severe(e.getMessage());
-            return null;
-        }
-    }
-
-    public LANGUAGE getLanguage() {
-        return language;
     }
 
     public void setLanguage(LANGUAGE language) {

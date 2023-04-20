@@ -2,7 +2,6 @@ package server.commands.list;
 
 import server.commands.Command;
 import server.controller.HumanController;
-import server.dao.HumanDaoImpl;
 import server.exception.ArgumentException;
 import util.LANGUAGE;
 
