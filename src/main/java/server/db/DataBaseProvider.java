@@ -104,6 +104,12 @@ public class DataBaseProvider {
         return id;
     }
 
+    /**
+     * Remove human from data base boolean.
+     *
+     * @param id the id
+     * @return the boolean
+     */
     public boolean removeHumanFromDataBase(Long id) {
         Set<HumanBeingModel> copy = new LinkedHashSet<>(dataBase);
         for (HumanBeingModel humanBeingModel : copy) {
@@ -153,6 +159,11 @@ public class DataBaseProvider {
         return creationDate;
     }
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     public void setLanguage(LANGUAGE language) {
         this.language = language;
     }

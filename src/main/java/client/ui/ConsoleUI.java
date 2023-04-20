@@ -9,6 +9,9 @@ import java.util.Objects;
 import static server.validation.Validation.validateFile;
 import static util.Parser.tildaResolver;
 
+/**
+ * The type Console ui.
+ */
 public class ConsoleUI {
     private final Invoker invoker;
 
@@ -16,7 +19,7 @@ public class ConsoleUI {
      * Instantiates a new Console ui.
      *
      * @param fileName the file name
-     * @param invoker
+     * @param invoker  the invoker
      */
     public ConsoleUI(String fileName, Invoker invoker) {
         validateFile(fileName, invoker.getLanguage());

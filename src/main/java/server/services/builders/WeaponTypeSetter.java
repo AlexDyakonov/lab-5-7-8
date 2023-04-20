@@ -16,9 +16,10 @@ import static util.Message.getMessage;
  */
 public class WeaponTypeSetter {
     /**
-     * Get weapon type weapon type.
+     * Gets weapon type.
      *
-     * @param reader the reader
+     * @param reader   the reader
+     * @param language the language
      * @return the weapon type
      */
     public static WeaponType getWeaponType(BufferedReader reader, LANGUAGE language) {
@@ -50,6 +51,7 @@ public class WeaponTypeSetter {
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
      * @param type       the type
+     * @param language   the language
      * @return the weapon type
      */
     public static WeaponType setWeaponType(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {

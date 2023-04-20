@@ -8,10 +8,19 @@ import util.LANGUAGE;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Clear command. Clears database.
+ */
 public class ClearCommand implements Command {
     private final HumanController controller;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Clear command.
+     *
+     * @param controller the controller
+     * @param language   the language
+     */
     public ClearCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
         this.language = language;

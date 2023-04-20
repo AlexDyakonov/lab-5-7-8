@@ -18,7 +18,8 @@ public class MoodSetter {
     /**
      * Gets mood.
      *
-     * @param reader the reader
+     * @param reader   the reader
+     * @param language the language
      * @return the mood
      */
     public static Mood getMood(BufferedReader reader, LANGUAGE language) {
@@ -50,6 +51,7 @@ public class MoodSetter {
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
      * @param type       the type
+     * @param language   the language
      * @return the mood
      */
     public static Mood setMood(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {

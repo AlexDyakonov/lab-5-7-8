@@ -23,7 +23,13 @@ import static util.Message.getLog;
 import static util.Message.getWarning;
 
 
+/**
+ * The type Invoker. Execute commands.
+ */
 public class Invoker {
+    /**
+     * The constant logger.
+     */
     public static final Logger logger = Logger.getLogger(Invoker.class.getName());
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
@@ -35,6 +41,13 @@ public class Invoker {
     private BuilderType builderType;
     private LANGUAGE language;
 
+    /**
+     * Instantiates a new Invoker.
+     *
+     * @param fileName    the file name
+     * @param builderType the builder type
+     * @param language    the language
+     */
     public Invoker(String fileName, BuilderType builderType, LANGUAGE language) {
         setupLogger(logger);
         logger.info(getLog("invoker_init_start"));
@@ -49,10 +62,18 @@ public class Invoker {
         logger.info(getLog("invoker_init_finish"));
     }
 
+    /**
+     * Gets commands map.
+     *
+     * @return the commands map
+     */
     public static Map<String, Command> getCommandsMap() {
         return commandsMap;
     }
 
+    /**
+     * Init.
+     */
     public void init() {
         logger.info(getLog("command_init_start"));
         addCommand("help", new HelpCommand(language));
@@ -75,6 +96,11 @@ public class Invoker {
         logger.info(getLog("command_init_finish"));
     }
 
+    /**
+     * Execute.
+     *
+     * @param input the input
+     */
     public void execute(String input) {
         try {
             String[] commandArray = input.split(" ");
@@ -104,24 +130,51 @@ public class Invoker {
         commandsMap.put(commandName, command);
     }
 
+    /**
+     * Gets cmd reader.
+     *
+     * @return the cmd reader
+     */
     public BufferedReader getCmdReader() {
         return cmdReader;
     }
 
+    /**
+     * Sets file reader.
+     *
+     * @param fileReader the file reader
+     * @return the file reader
+     */
     public Invoker setFileReader(BufferedReader fileReader) {
         this.fileReader = fileReader;
         return this;
     }
 
+    /**
+     * Sets builder type.
+     *
+     * @param builderType the builder type
+     * @return the builder type
+     */
     public Invoker setBuilderType(BuilderType builderType) {
         this.builderType = builderType;
         return this;
     }
 
+    /**
+     * Gets language.
+     *
+     * @return the language
+     */
     public LANGUAGE getLanguage() {
         return language;
     }
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         controller.setLanguage(language);

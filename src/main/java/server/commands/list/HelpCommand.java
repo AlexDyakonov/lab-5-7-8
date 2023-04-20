@@ -12,9 +12,17 @@ import static client.ui.ConsoleColors.RESET;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Help command. Shows all commands.
+ */
 public class HelpCommand implements Command {
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Help command.
+     *
+     * @param language the language
+     */
     public HelpCommand(LANGUAGE language) {
         this.language = language;
     }

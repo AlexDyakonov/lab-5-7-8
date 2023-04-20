@@ -67,6 +67,7 @@ public interface HumanController {
      * Save.
      *
      * @param fileName the file name
+     * @param language the language
      */
     void save(String fileName, LANGUAGE language);
 
@@ -110,5 +111,10 @@ public interface HumanController {
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     void setLanguage(LANGUAGE language);
 }

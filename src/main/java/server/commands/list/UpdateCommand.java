@@ -12,6 +12,9 @@ import java.io.BufferedReader;
 
 import static util.Message.*;
 
+/**
+ * The type Update command. Update HumanBeing with id
+ */
 public class UpdateCommand implements Command {
     private final HumanController controller;
     private final BufferedReader cmdReader;
@@ -19,6 +22,15 @@ public class UpdateCommand implements Command {
     private final BuilderType builderType;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Update command.
+     *
+     * @param controller  the controller
+     * @param cmdReader   the cmd reader
+     * @param fileReader  the file reader
+     * @param builderType the builder type
+     * @param language    the language
+     */
     public UpdateCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.controller = controller;
         this.cmdReader = cmdReader;

@@ -8,11 +8,21 @@ import util.LANGUAGE;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Save command. Saves database to csv file.
+ */
 public class SaveCommand implements Command {
     private final HumanController controller;
     private final String fileName;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Save command.
+     *
+     * @param controller the controller
+     * @param fileName   the file name
+     * @param language   the language
+     */
     public SaveCommand(HumanController controller, String fileName, LANGUAGE language) {
         this.controller = controller;
         this.fileName = fileName;

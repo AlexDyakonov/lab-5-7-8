@@ -12,6 +12,9 @@ import java.io.BufferedReader;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Add command. Adds HumanBeing to db.
+ */
 public class AddCommand implements Command {
     private final LANGUAGE language;
     private final HumanController controller;
@@ -19,6 +22,15 @@ public class AddCommand implements Command {
     private final BufferedReader fileReader;
     private final BuilderType builderType;
 
+    /**
+     * Instantiates a new Add command.
+     *
+     * @param controller  the controller
+     * @param cmdReader   the cmd reader
+     * @param fileReader  the file reader
+     * @param builderType the builder type
+     * @param language    the language
+     */
     public AddCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.language = language;
         this.controller = controller;

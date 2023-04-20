@@ -70,7 +70,7 @@ public class ConsoleColors {
     }
 
     /**
-     * warning line (colored yellow)
+     * Warning string.
      *
      * @param line the line
      * @return the string

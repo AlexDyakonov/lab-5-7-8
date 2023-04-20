@@ -18,10 +18,11 @@ import static util.Parser.stringToBoolean;
  */
 public class BooleanBuilder {
     /**
-     * Get bool boolean.
+     * Gets bool.
      *
-     * @param reader the reader
-     * @return the boolean
+     * @param reader   the reader
+     * @param language the language
+     * @return the bool
      */
     public static boolean getBool(BufferedReader reader, LANGUAGE language) {
         boolean response = false;
@@ -44,8 +45,9 @@ public class BooleanBuilder {
      *
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
-     * @param messageId  the message
+     * @param messageId  the message id
      * @param type       the type
+     * @param language   the language
      * @return the boolean
      */
     public static boolean boolBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type, LANGUAGE language) {

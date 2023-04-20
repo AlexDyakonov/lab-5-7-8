@@ -18,7 +18,8 @@ public class CarBuilder {
     /**
      * Gets car.
      *
-     * @param reader the reader
+     * @param reader   the reader
+     * @param language the language
      * @return the car
      */
     public static Car getCar(BufferedReader reader, LANGUAGE language) {
@@ -77,6 +78,7 @@ public class CarBuilder {
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
      * @param type       the type
+     * @param language   the language
      * @return the car
      */
     public static Car carBuilder(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {

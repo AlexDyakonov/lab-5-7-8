@@ -8,10 +8,19 @@ import util.LANGUAGE;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Count by mood command. Counts number of HumanBeing with selected Mood.
+ */
 public class CountByMoodCommand implements Command {
     private final HumanController controller;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Count by mood command.
+     *
+     * @param controller the controller
+     * @param language   the language
+     */
     public CountByMoodCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
         this.language = language;

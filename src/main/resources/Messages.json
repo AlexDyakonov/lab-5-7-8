@@ -34,7 +34,8 @@
       "number_error": "Insert number.",
       "recursion_met": "Recursion encountered. Script execution stopped.",
       "not_done": "Failed to execute.",
-      "id_not_correct": "The HumanBeing id is incorrect. The entry will be ignored."
+      "id_not_correct": "The HumanBeing id is incorrect. The entry will be ignored.",
+      "invalid_name": "The name must not be empty and must be greater than 0 characters."
     },
     "warning": {
       "default_language": "Can not recognize input language. Set default language: RU.",
@@ -118,7 +119,7 @@
       "input_weapon": "Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
       "input_language": "Введите RU/EN для выбора языка системы: ",
-      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;",
+      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;"
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",
@@ -139,7 +140,8 @@
       "number_error": "Введите числовые значения.",
       "recursion_met": "Встречена рекурсия. Выполнение скрипта остановлено.",
       "not_done": "Не удалось выполнить.",
-      "id_not_correct": "Id HumanBeing некорректно. Запись будет проигнорирована"
+      "id_not_correct": "Id HumanBeing некорректно. Запись будет проигнорирована",
+      "invalid_name": "Имя не должно быть пустым и должно быть больше 0 символа"
     },
     "warning": {
       "default_language": "Не могу распознать язык, который вы выбрали. Установлен язык по умолчанию: RU.",

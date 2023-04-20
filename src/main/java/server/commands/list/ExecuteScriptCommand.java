@@ -17,12 +17,22 @@ import java.util.logging.Logger;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
+/**
+ * The type Execute script command. Execute any script and execute commands inside.
+ */
 public class ExecuteScriptCommand implements Command {
     private static final Logger logger = Logger.getLogger(ExecuteScriptCommand.class.getName());
     private final Invoker invoker;
     private final ScriptManager scriptManager;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Execute script command.
+     *
+     * @param invoker       the invoker
+     * @param scriptManager the script manager
+     * @param language      the language
+     */
     public ExecuteScriptCommand(Invoker invoker, ScriptManager scriptManager, LANGUAGE language) {
         this.invoker = invoker;
         this.scriptManager = scriptManager;

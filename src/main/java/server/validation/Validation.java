@@ -49,7 +49,8 @@ public class Validation {
     /**
      * Validate file exist.
      *
-     * @param file the file
+     * @param file     the file
+     * @param language the language
      */
     public static void validateFileExist(File file, LANGUAGE language) {
         if (!Files.exists(file.toPath())) {
@@ -61,7 +62,8 @@ public class Validation {
     /**
      * Validate file read.
      *
-     * @param file the file
+     * @param file     the file
+     * @param language the language
      */
     public static void validateFileRead(File file, LANGUAGE language) {
         if (!Files.isReadable(file.toPath())) {
@@ -72,7 +74,8 @@ public class Validation {
     /**
      * Validate file write.
      *
-     * @param file the file
+     * @param file     the file
+     * @param language the language
      */
     public static void validateFileWrite(File file, LANGUAGE language) {
         if (!Files.isWritable(file.toPath())) {
@@ -81,9 +84,10 @@ public class Validation {
     }
 
     /**
-     * Проверяет путь к файлу на корректность.
+     * Validate file name.
      *
-     * @param fileName
+     * @param fileName the file name
+     * @param language the language
      */
     public static void validateFileName(String fileName, LANGUAGE language) {
         try {
@@ -93,6 +97,12 @@ public class Validation {
         }
     }
 
+    /**
+     * Validate file directory.
+     *
+     * @param fileName the file name
+     * @param language the language
+     */
     public static void validateFileDirectory(String fileName, LANGUAGE language) {
         if (Files.isDirectory(Paths.get(fileName))) {
             throw new FileException(getError("file_is_directory", language));
@@ -100,6 +110,12 @@ public class Validation {
     }
 
 
+    /**
+     * Validate file.
+     *
+     * @param fileName the file name
+     * @param language the language
+     */
     public static void validateFile(String fileName, LANGUAGE language) {
         fileName = tildaResolver(fileName);
         validateFileName(fileName, language);

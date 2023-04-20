@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import static client.ui.ConsoleColors.error;
 import static server.validation.Validation.validate;
+import static util.Message.getError;
 import static util.Message.getMessage;
 
 /**
@@ -18,15 +19,15 @@ import static util.Message.getMessage;
  */
 public class NameBuilder {
     /**
-     * Get name string.
+     * Gets name.
      *
      * @param reader the reader
-     * @return the string
+     * @return the name
      */
     public static String getName(BufferedReader reader) {
         try {
             String name = reader.readLine();
-            validate(name, Validation::validateUserName, error("Имя не должно быть пустым и должно быть больше 0 символа"));
+            validate(name, Validation::validateUserName, getError("invalid_name", LANGUAGE.EN));
             return name;
         } catch (IOException e) {
             throw new ApplicationException(error("Ошибка BufferedReader"));
@@ -36,10 +37,11 @@ public class NameBuilder {
     /**
      * Name builder string.
      *
-     * @param cmdreader  the reader 1
-     * @param filereader the reader 2
-     * @param messageId  the message
+     * @param cmdreader  the cmdreader
+     * @param filereader the filereader
+     * @param messageId  the message id
      * @param type       the type
+     * @param language   the language
      * @return the string
      */
     public static String nameBuilder(BufferedReader cmdreader, BufferedReader filereader, String messageId, BuilderType type, LANGUAGE language) {

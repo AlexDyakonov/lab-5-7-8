@@ -8,10 +8,19 @@ import util.LANGUAGE;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type History command. Shows history of commands.
+ */
 public class HistoryCommand implements Command {
     private final HistoryManager history;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new History command.
+     *
+     * @param history  the history
+     * @param language the language
+     */
     public HistoryCommand(HistoryManager history, LANGUAGE language) {
         this.history = history;
         this.language = language;

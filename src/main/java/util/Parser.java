@@ -14,6 +14,12 @@ import static util.Message.getError;
  * The type Parser.
  */
 public class Parser {
+    /**
+     * String to id long.
+     *
+     * @param string the string
+     * @return the long
+     */
     public static Long stringToId(String string) {
         try {
             return Long.parseLong(string);
@@ -23,10 +29,10 @@ public class Parser {
     }
 
     /**
-     * Преобразует путь до файла с тильдой, начинающийся с тильды
+     * Tilda resolver string.
      *
-     * @param file
-     * @return
+     * @param file the file
+     * @return the string
      */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {

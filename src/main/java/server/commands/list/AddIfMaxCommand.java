@@ -13,6 +13,9 @@ import java.io.BufferedReader;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Add if max command. Adds HumanBeing to db if impact speed is max.
+ */
 public class AddIfMaxCommand implements Command {
     private final HumanController controller;
     private final BufferedReader cmdReader;
@@ -20,6 +23,15 @@ public class AddIfMaxCommand implements Command {
     private final BuilderType builderType;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Add if max command.
+     *
+     * @param controller  the controller
+     * @param cmdReader   the cmd reader
+     * @param fileReader  the file reader
+     * @param builderType the builder type
+     * @param language    the language
+     */
     public AddIfMaxCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.controller = controller;
         this.cmdReader = cmdReader;

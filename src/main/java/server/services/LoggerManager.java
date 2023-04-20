@@ -8,6 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * The type Logger manager.
+ */
 public class LoggerManager {
     private static final Logger loggerManager = Logger.getLogger(LoggerManager.class.getName());
     private static final String LOG_FILE_NAME = getLogFileName("lab-5");
@@ -23,6 +26,12 @@ public class LoggerManager {
         }
     }
 
+    /**
+     * Gets log file name.
+     *
+     * @param appName the app name
+     * @return the log file name
+     */
     public static String getLogFileName(String appName) {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
@@ -30,6 +39,11 @@ public class LoggerManager {
         return appName + "_" + formattedDateTime + ".log";
     }
 
+    /**
+     * Sets logger.
+     *
+     * @param logger the logger
+     */
     public static void setupLogger(Logger logger) {
         try {
             logger.addHandler(fileHandler);

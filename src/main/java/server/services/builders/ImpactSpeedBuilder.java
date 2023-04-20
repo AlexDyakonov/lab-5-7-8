@@ -19,10 +19,11 @@ import static util.Message.getMessage;
  */
 public class ImpactSpeedBuilder {
     /**
-     * Get impact speed float.
+     * Gets impact speed.
      *
-     * @param reader the reader
-     * @return the float
+     * @param reader   the reader
+     * @param language the language
+     * @return the impact speed
      */
     public static float getImpactSpeed(BufferedReader reader, LANGUAGE language) {
         try {
@@ -44,6 +45,7 @@ public class ImpactSpeedBuilder {
      * @param cmdReader  the cmd reader
      * @param fileReader the file reader
      * @param type       the type
+     * @param language   the language
      * @return the float
      */
     public static float impactSpeedBuilder(BufferedReader cmdReader, BufferedReader fileReader, BuilderType type, LANGUAGE language) {

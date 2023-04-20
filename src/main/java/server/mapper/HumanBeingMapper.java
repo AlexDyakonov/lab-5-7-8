@@ -84,13 +84,6 @@ public class HumanBeingMapper {
         return resultModel;
     }
 
-    /**
-     * Так как используемый формат -- csv, то важно заменять , на COMMA, чтобы данные не путались
-     * Далее приведены два метода для преобразования из строки с запятой в строку без и обратно
-     *
-     * @param str
-     * @return
-     */
     private static String csvToString(String str) {
         return str.replaceAll("%COMMA%", ",");
     }

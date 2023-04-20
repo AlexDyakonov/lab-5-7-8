@@ -8,10 +8,19 @@ import util.LANGUAGE;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Remove by id command. Removes HumanBeing from database
+ */
 public class RemoveByIdCommand implements Command {
     private final HumanController controller;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Remove by id command.
+     *
+     * @param controller the controller
+     * @param language   the language
+     */
     public RemoveByIdCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
         this.language = language;

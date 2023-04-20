@@ -15,9 +15,10 @@ import static util.Message.*;
  */
 public class CoordinatesBuilder {
     /**
-     * Get coordinates coordinates.
+     * Gets coordinates.
      *
-     * @param reader the reader
+     * @param reader   the reader
+     * @param language the language
      * @return the coordinates
      */
     public static Coordinates getCoordinates(BufferedReader reader, LANGUAGE language) {
@@ -38,10 +39,11 @@ public class CoordinatesBuilder {
     }
 
     /**
-     * Get coordinates from file coordinates.
+     * Gets coordinates from file.
      *
-     * @param reader the reader
-     * @return the coordinates
+     * @param reader   the reader
+     * @param language the language
+     * @return the coordinates from file
      */
     public static Coordinates getCoordinatesFromFile(BufferedReader reader, LANGUAGE language) {
         int x;
@@ -64,6 +66,7 @@ public class CoordinatesBuilder {
      * @param cmdreader  the cmdreader
      * @param filereader the filereader
      * @param type       the type
+     * @param language   the language
      * @return the coordinates
      */
     public static Coordinates buildCoordinates(BufferedReader cmdreader, BufferedReader filereader, BuilderType type, LANGUAGE language) {

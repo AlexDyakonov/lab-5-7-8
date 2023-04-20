@@ -8,9 +8,17 @@ import server.services.builders.LanguageBuilder;
 import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
+/**
+ * The type Language command. Change language of system.
+ */
 public class LanguageCommand implements Command {
     private final Invoker invoker;
 
+    /**
+     * Instantiates a new Language command.
+     *
+     * @param invoker the invoker
+     */
     public LanguageCommand(Invoker invoker) {
         this.invoker = invoker;
     }

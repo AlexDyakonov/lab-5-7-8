@@ -123,5 +123,10 @@ public interface HumanService {
      */
     boolean isImpactSpeedMin(HumanBeingRequestDTO dto);
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     void setLanguage(LANGUAGE language);
 }
