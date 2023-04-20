@@ -29,6 +29,7 @@ public class HumanControllerImpl implements HumanController {
     private static final Logger logger = Logger.getLogger(HumanControllerImpl.class.getName());
     private final HumanService service;
     private LANGUAGE language;
+
     /**
      * Instantiates a new Human controller.
      *

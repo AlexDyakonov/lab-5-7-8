@@ -18,7 +18,7 @@ public class AddIfMinCommand implements Command {
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public AddIfMinCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.language = language;

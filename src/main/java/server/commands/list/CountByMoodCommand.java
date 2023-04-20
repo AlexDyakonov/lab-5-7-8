@@ -10,7 +10,7 @@ import static util.Message.getError;
 
 public class CountByMoodCommand implements Command {
     private final HumanController controller;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public CountByMoodCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;

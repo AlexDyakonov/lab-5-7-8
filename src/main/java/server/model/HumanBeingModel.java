@@ -9,16 +9,16 @@ import java.util.Objects;
 public class HumanBeingModel {
 
     private Long id;
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Boolean realHero; //Поле не может быть null
-    private Boolean hasToothpick; //Поле не может быть null
-    private Float impactSpeed; //Поле не может быть null
-    private String soundtrackName; //Поле не может быть null
-    private WeaponType weaponType; //Поле может быть null
-    private Mood mood; //Поле не может быть null
-    private Car car; //Поле может быть null
+    private String name;
+    private Coordinates coordinates;
+    private java.time.ZonedDateTime creationDate;
+    private Boolean realHero;
+    private Boolean hasToothpick;
+    private Float impactSpeed;
+    private String soundtrackName;
+    private WeaponType weaponType;
+    private Mood mood;
+    private Car car;
 
     /**
      * Instantiates a new Human being model.

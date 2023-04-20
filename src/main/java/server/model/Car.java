@@ -8,7 +8,7 @@ import java.util.Objects;
  * The type Car.
  */
 public class Car {
-    private String name; //Поле не может быть null
+    private String name;
     private boolean cool;
 
     /**

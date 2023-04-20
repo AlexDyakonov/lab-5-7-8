@@ -36,8 +36,7 @@ public class Validation {
         if (dto.getSoundtrackName() == null) return false;
         if (dto.getSoundtrackName().equals("")) return false;
         if (dto.getWeaponType() == null) return false;
-        if (dto.getMood() == null) return false;
-        return true;
+        return dto.getMood() != null;
     }
 
     private static boolean validateName(String name) {

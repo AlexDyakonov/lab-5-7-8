@@ -8,8 +8,8 @@ import util.LANGUAGE;
 import static util.Message.*;
 
 public class HistoryCommand implements Command {
-    private HistoryManager history;
-    private LANGUAGE language;
+    private final HistoryManager history;
+    private final LANGUAGE language;
 
     public HistoryCommand(HistoryManager history, LANGUAGE language) {
         this.history = history;

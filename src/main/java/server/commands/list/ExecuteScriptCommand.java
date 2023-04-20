@@ -12,18 +12,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Objects;
 import java.util.logging.Logger;
 
-import static client.ui.ConsoleColors.unsuccess;
+
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
 public class ExecuteScriptCommand implements Command {
     private static final Logger logger = Logger.getLogger(ExecuteScriptCommand.class.getName());
     private final Invoker invoker;
-    private ScriptManager scriptManager;
-    private LANGUAGE language;
+    private final ScriptManager scriptManager;
+    private final LANGUAGE language;
 
     public ExecuteScriptCommand(Invoker invoker, ScriptManager scriptManager, LANGUAGE language) {
         this.invoker = invoker;

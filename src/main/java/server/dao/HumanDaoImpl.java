@@ -147,6 +147,7 @@ public class HumanDaoImpl implements HumanDao {
     public Long addIfMax(HumanBeingRequestDTO request) {
         return createHuman(request);
     }
+
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
         return createHuman(request);

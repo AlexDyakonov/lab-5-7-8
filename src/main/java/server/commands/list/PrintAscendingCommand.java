@@ -11,7 +11,7 @@ import static util.Message.getSuccessMessage;
 
 public class PrintAscendingCommand implements Command {
     private final HumanController controller;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public PrintAscendingCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;

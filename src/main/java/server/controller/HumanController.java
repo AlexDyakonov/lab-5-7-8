@@ -11,7 +11,6 @@ import java.util.List;
  */
 public interface HumanController {
 
-    // core commands
 
     /**
      * Gets human by id.
@@ -51,6 +50,7 @@ public interface HumanController {
      * @return the human being response dto
      */
     HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
+
     /**
      * Info string.
      *

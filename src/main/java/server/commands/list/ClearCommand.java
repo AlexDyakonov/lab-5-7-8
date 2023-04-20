@@ -10,7 +10,7 @@ import static util.Message.getError;
 
 public class ClearCommand implements Command {
     private final HumanController controller;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public ClearCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;

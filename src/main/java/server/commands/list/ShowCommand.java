@@ -14,7 +14,7 @@ import static util.Message.*;
 public class ShowCommand implements Command {
     private static final Logger logger = Logger.getLogger(ShowCommand.class.getName());
     private final HumanController controller;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public ShowCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;

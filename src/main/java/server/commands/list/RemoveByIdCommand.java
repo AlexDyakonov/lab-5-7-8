@@ -10,7 +10,7 @@ import static util.Message.getError;
 
 public class RemoveByIdCommand implements Command {
     private final HumanController controller;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public RemoveByIdCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;

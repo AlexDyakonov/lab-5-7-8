@@ -14,7 +14,7 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
 public class AddCommand implements Command {
-    private LANGUAGE language;
+    private final LANGUAGE language;
     private final HumanController controller;
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;

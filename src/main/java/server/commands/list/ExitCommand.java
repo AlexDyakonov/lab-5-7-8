@@ -8,7 +8,7 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 
 public class ExitCommand implements Command {
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public ExitCommand(LANGUAGE language) {
         this.language = language;

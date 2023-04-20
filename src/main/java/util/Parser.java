@@ -43,10 +43,7 @@ public class Parser {
      * @return the boolean
      */
     public static boolean stringToBoolean(String line) {
-        boolean response = false;
-        if (line.equals("true") || line.equals("t") || line.equals("y")) {
-            response = true;
-        }
+        boolean response = line.equals("true") || line.equals("t") || line.equals("y");
         return response;
     }
 

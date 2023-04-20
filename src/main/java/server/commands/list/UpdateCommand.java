@@ -19,7 +19,7 @@ public class UpdateCommand implements Command {
     private final BufferedReader cmdReader;
     private final BufferedReader fileReader;
     private final BuilderType builderType;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public UpdateCommand(HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.controller = controller;

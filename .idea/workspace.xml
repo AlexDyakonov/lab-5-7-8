@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logging and fixed Invoker">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added example of logs file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,21 +194,7 @@
       <workItem from="1681598650429" duration="499000" />
       <workItem from="1681713586205" duration="12000" />
       <workItem from="1681722286818" duration="8362000" />
-      <workItem from="1681943248971" duration="6029000" />
-    </task>
-    <task id="LOCAL-00034" summary="Added Validation methods">
-      <created>1678967184743</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967184743</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Small fixes of models">
-      <created>1678967260075</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967260075</updated>
+      <workItem from="1681943248971" duration="6466000" />
     </task>
     <task id="LOCAL-00036" summary="Added generateNextId method, fixed load and save methods">
       <created>1678967286403</created>
@@ -542,7 +525,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681948961857</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments">
+      <created>1681949345693</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1681949345693</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Added example of logs file">
+      <created>1681949454667</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1681949454667</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,8 +570,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added file exceptions (checking exist, read, write)" />
-    <MESSAGE value="Removed javadoc" />
     <MESSAGE value="Made tilda resolving in path" />
     <MESSAGE value="Added checkid from csv file." />
     <MESSAGE value="Added UML and small fix of UI" />
@@ -598,7 +593,9 @@
     <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
     <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
     <MESSAGE value="Added logging and fixed Invoker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logging and fixed Invoker" />
+    <MESSAGE value="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments" />
+    <MESSAGE value="Added example of logs file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added example of logs file" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
