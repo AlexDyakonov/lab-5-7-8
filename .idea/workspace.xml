@@ -9,22 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to make decorator for logging functions">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed decorator. Added some logging for Builder classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/LoggerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/BooleanBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CarBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/CoordinatesBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/HumanBeingRequestDTOBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/ImpactSpeedBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/LanguageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/LanguageBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/MoodSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/NameBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/WeaponTypeSetter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,26 +51,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/code/java/itmo-math",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.291954",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/code/java/itmo-math&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.291954&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\code\java\lab-5-num-125595" />
@@ -212,14 +199,8 @@
       <workItem from="1681598650429" duration="499000" />
       <workItem from="1681713586205" duration="12000" />
       <workItem from="1681722286818" duration="8362000" />
-      <workItem from="1681943248971" duration="13932000" />
-    </task>
-    <task id="LOCAL-00042" summary="Fixed Validation exception in file loading">
-      <created>1679154328228</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1679154328228</updated>
+      <workItem from="1681943248971" duration="13984000" />
+      <workItem from="1681961005400" duration="378000" />
     </task>
     <task id="LOCAL-00043" summary="Added more Validations">
       <created>1679154832044</created>
@@ -557,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681960596811</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Removed decorator. Added some logging for Builder classes">
+      <created>1681960757776</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1681960757776</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed tilda. Now, project wont load if file name is incorrect or file not exist" />
     <MESSAGE value="Added more file exception checks. Added warning." />
     <MESSAGE value="Fixed id reading from file(catching exception)" />
     <MESSAGE value="Added javadoc documentation" />
@@ -613,7 +600,8 @@
     <MESSAGE value="Fixed pom.xml and App.java. Build .jar using maven" />
     <MESSAGE value="Build .jar using maven (added plugin for libs inside jar)&#10;Added dir creating for logs." />
     <MESSAGE value="Attempt to make decorator for logging functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to make decorator for logging functions" />
+    <MESSAGE value="Removed decorator. Added some logging for Builder classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed decorator. Added some logging for Builder classes" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
