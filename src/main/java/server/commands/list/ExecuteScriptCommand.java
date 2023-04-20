@@ -11,12 +11,16 @@ import util.LANGUAGE;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 import static client.ui.ConsoleColors.unsuccess;
+import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
 public class ExecuteScriptCommand implements Command {
+    private static final Logger logger = Logger.getLogger(ExecuteScriptCommand.class.getName());
     private final Invoker invoker;
     private ScriptManager scriptManager;
     private LANGUAGE language;
@@ -25,6 +29,7 @@ public class ExecuteScriptCommand implements Command {
         this.invoker = invoker;
         this.scriptManager = scriptManager;
         this.language = language;
+        setupLogger(logger);
     }
 
     @Override
@@ -37,7 +42,9 @@ public class ExecuteScriptCommand implements Command {
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(args[1]));
             invoker.setFileReader(fileReader).setBuilderType(BuilderType.FILE).init();
-            System.out.println((getMessage("executing_file", language)).replace("%file%", args[1]));
+
+            logger.info(getLog("executing_file").replace("%file%", Paths.get(args[1]).getFileName().toString()));
+
             while (fileReader.ready()) {
                 command = fileReader.readLine();
                 if (command.split(" ")[0].equals("execute_script")) {
@@ -48,11 +55,14 @@ public class ExecuteScriptCommand implements Command {
                 }
                 invoker.execute(command);
             }
+
             invoker.setFileReader(null).setBuilderType(BuilderType.CMD).init();
             scriptManager.clearScripts();
             fileReader.close();
+
+            System.out.println(getSuccessMessage("done", language));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            logger.severe(e.getMessage());
         }
     }
 

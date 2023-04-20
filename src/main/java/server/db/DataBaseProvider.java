@@ -88,12 +88,12 @@ public class DataBaseProvider {
                     personString = reader.readLine();
                     HumanBeingModel person = HumanBeingMapper.fromStringToHumanBeingModel(personString);
                     if (idList.contains(person.getId())) {
-                        logger.warning(getLog("same_id"));
+                        logger.warning(getLog("same_id").replace("%id%", person.getId().toString()));
                         throw new FileException((getError("same_id", LANGUAGE.EN)).replace("%id%", person.getId().toString()));
                     }
                     idList.add(person.getId());
                     resultSet.add(person);
-                    logger.info(getLog("humanbeing_added_to_set").replace("%hb%", personString));
+                    logger.fine(getLog("humanbeing_added_to_set").replace("%hb%", personString));
                     num++;
                 } catch (ValidationException e) {
                     System.out.println(e.getMessage());

@@ -18,22 +18,25 @@ import java.util.logging.Level;
 
 
 import static server.services.LoggerManager.setupLogger;
+import static util.Message.getLog;
 import static util.Message.getWarning;
 
 
 public class Invoker {
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
-    private HistoryManager history;
-    private String fileName;
-    private HumanController controller;
+    private final HistoryManager history;
+    private final String fileName;
+    private final HumanController controller;
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
     public static final Logger logger = Logger.getLogger(Invoker.class.getName());
 
-    public Invoker(String fileName, List<String> scriptHistory, BuilderType builderType, LANGUAGE language) {
+    public Invoker(String fileName, BuilderType builderType, LANGUAGE language) {
+        setupLogger(logger);
+        logger.info(getLog("invoker_init_start"));
         this.fileName = fileName;
         this.controller = new HumanControllerImpl(fileName);
         this.history = new HistoryManager(15); // limit history size
@@ -42,15 +45,11 @@ public class Invoker {
         this.language = language;
         controller.setLanguage(language);
         init();
-        setupLogger(logger);
-    }
-
-    public Invoker clearMap() {
-        commandsMap.clear();
-        return this;
+        logger.info(getLog("invoker_init_finish"));
     }
 
     public void init() {
+        logger.info(getLog("command_init_start"));
         addCommand("help", new HelpCommand(language));
         addCommand("info", new InfoCommand(controller, language));
         addCommand("show", new ShowCommand(controller, language));
@@ -68,6 +67,7 @@ public class Invoker {
         addCommand("count_by_mood", new CountByMoodCommand(controller, language));
         addCommand("print_ascending", new PrintAscendingCommand(controller, language));
         addCommand("language", new LanguageCommand(this));
+        logger.info(getLog("command_init_finish"));
     }
 
     public void execute(String input) {
@@ -76,16 +76,22 @@ public class Invoker {
             String command = commandArray[0];
             for (Map.Entry<String, Command> pair : Invoker.getCommandsMap().entrySet()) {
                 if (pair.getKey().equals(commandArray[0])) {
+                    logger.info(getLog("command_executing").replace("%command%", command));
                     pair.getValue().execute(commandArray);
                     history.addCommandToHistory(command);
+                    logger.info(getLog("command_executed").replace("%command%", command));
                 }
             }
             if (!Invoker.getCommandsMap().containsKey(commandArray[0])) {
                 System.out.println(getWarning("command_not_found", language));
+                logger.warning(getLog("command_not_found"));
             }
-        } catch (ApplicationException | ArgumentException | CommandException | FileException | ValidationException e) {
+        } catch (ApplicationException | FileException | ValidationException e) {
             System.out.println(e.getMessage());
-            logger.log(Level.SEVERE, e.getMessage());
+            logger.severe(e.getMessage());
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+            logger.warning(getLog("no_args"));
         }
     }
 

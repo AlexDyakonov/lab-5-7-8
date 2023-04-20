@@ -16,7 +16,6 @@ import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static client.ui.ConsoleColors.success;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
 
@@ -64,18 +63,19 @@ public class HumanDaoImpl implements HumanDao {
     public void deleteHumanById(Long id) {
         if (getHumanById(id) == null) {
             System.out.println((getWarning("user_not_found", language)).replace("%id%", id.toString()));
-            logger.info((getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
-        }
-        if (source.removeHumanFromDataBase(id)) {
+            logger.warning((getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
+        } else if (source.removeHumanFromDataBase(id)) {
             System.out.println(getSuccessMessage("done", language));
-            logger.info((getSuccessMessage("user_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
+            logger.info((getLog("user_deleted")).replace("%id%", id.toString()));
         } else {
-            logger.severe((getError("user_not_deleted", LANGUAGE.EN)).replace("%id%", id.toString()));
+            System.out.println(getError("not_done", language));
+            logger.severe((getLog("user_not_deleted")).replace("%id%", id.toString()));
         }
     }
 
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
+        logger.info(getLog("update_starting").replace("%id%", id.toString()));
         HumanBeingResponseDTO responseDTO = new HumanBeingResponseDTO();
         for (HumanBeingModel human : source.getDataBase()) {
             if (Objects.equals(human.getId(), id)) {
@@ -92,7 +92,7 @@ public class HumanDaoImpl implements HumanDao {
                 responseDTO = HumanBeingMapper.fromModelToResponse(human);
             }
         }
-        logger.info((getSuccessMessage("user_updated", language)).replace("%id%", id.toString()));
+        logger.info((getLog("update_finished")).replace("%id%", id.toString()));
         return responseDTO;
     }
 
@@ -102,18 +102,18 @@ public class HumanDaoImpl implements HumanDao {
         answer = answer.replace("%class%", source.getDataBase().getClass().getTypeName().split("\\.")[2]);
         answer = answer.replace("%date%", source.getCreationDate().toString());
         answer = answer.replace("%size%", String.valueOf(source.getDataBase().size()));
+        logger.info(getLog("info_got"));
         return answer;
     }
 
-    //clear : очистить коллекцию
     @Override
     public void clear() {
         int elemsBefore = source.getDataBase().size();
         source.getDataBase().clear();
-        System.out.println((getSuccessMessage("cleared", language)).replace("%num%", String.valueOf(elemsBefore)));
+        System.out.println(getSuccessMessage("done", language));
+        logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore)));
     }
 
-    // save : сохранить коллекцию в файл
     @Override
     public void save(String fileName) {
         try {
@@ -123,7 +123,6 @@ public class HumanDaoImpl implements HumanDao {
         }
     }
 
-    // max_by_impact_speed : вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным
     @Override
     public HumanBeingResponseDTO max_by_impact_speed() {
         HumanBeingModel model = new HumanBeingModel();
@@ -137,7 +136,6 @@ public class HumanDaoImpl implements HumanDao {
         return HumanBeingMapper.fromModelToResponse(model);
     }
 
-    // print_ascending : вывести элементы коллекции в порядке возрастания
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
         List<HumanBeingResponseDTO> list = new java.util.ArrayList<>(source.getDataBase().stream().map(HumanBeingMapper::fromModelToResponse).sorted().toList());
@@ -145,19 +143,15 @@ public class HumanDaoImpl implements HumanDao {
         return list;
     }
 
-    // add_if_max {element} : добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
         return createHuman(request);
     }
-
-    // add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
         return createHuman(request);
     }
 
-    // count_by_mood mood : вывести количество элементов, значение поля mood которых равно заданному
     @Override
     public int countByMood(Mood mood) {
         int count = 0;

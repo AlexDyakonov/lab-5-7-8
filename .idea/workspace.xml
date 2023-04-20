@@ -9,18 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Simplified Message class and fixed LoggerManager.java">
-      <change afterPath="$PROJECT_DIR$/lab-5_2023-04-20_01-54-19.log" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added logs in DBProvider and removed Objects.requireNonNull">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-5_2023-04-19_23-15-06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-5_2023-04-20_01-54-19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/PrintAscendingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/PrintAscendingCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/UpdateCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/InfoCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ShowCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/DataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/CommandException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/ScriptManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Messages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mylog.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,14 +207,7 @@
       <workItem from="1681598650429" duration="499000" />
       <workItem from="1681713586205" duration="12000" />
       <workItem from="1681722286818" duration="8362000" />
-      <workItem from="1681943248971" duration="1763000" />
-    </task>
-    <task id="LOCAL-00032" summary="Added add_if_max/min">
-      <created>1678967133088</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1678967133088</updated>
+      <workItem from="1681943248971" duration="5654000" />
     </task>
     <task id="LOCAL-00033" summary="Fixed &quot;Stream closed&quot; in Enum set streams">
       <created>1678967159286</created>
@@ -549,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681944556137</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Added logs in DBProvider and removed Objects.requireNonNull">
+      <created>1681945058714</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1681945058714</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed script executor&#10;TODO: recursion check" />
     <MESSAGE value="Added recursion check" />
     <MESSAGE value="Added file exceptions (checking exist, read, write)" />
     <MESSAGE value="Removed javadoc" />
@@ -605,7 +607,8 @@
     <MESSAGE value="Now logger saves in one file with normal name" />
     <MESSAGE value="Removed all lines with success/unsuccess" />
     <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplified Message class and fixed LoggerManager.java" />
+    <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logs in DBProvider and removed Objects.requireNonNull" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

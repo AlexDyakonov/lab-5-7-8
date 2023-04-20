@@ -13,15 +13,13 @@
       "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): ",
       "input_language": "Type RU/EN to choose app language: ",
-      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;",
-      "executing_file": "Executing file *%file%*."
+      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;"
     },
     "error": {
       "same_id": "Found two HumanBeing with same %id%. First will be loaded.",
       "no_args": "Command should contains no args.",
       "one_arg": "Command contains one argument.",
       "user_not_added": "HumanBeing wasn't added.",
-      "user_not_deleted": "HumanBeing wasn't deleted.",
       "db_file_not_readable": "File is not readable. Use other to start the app.",
       "db_file_not_found": "File not found. Use other path to start the app.",
       "file_not_writable": "File is not writable. Use other.",
@@ -48,9 +46,6 @@
     },
     "success": {
       "user_added": "HumanBeing with id - %id% was added.",
-      "user_updated": "HumanBeing with id - %id% was updated.",
-      "user_deleted": "HumanBeing with id - %id% was deleted.",
-      "cleared": "%num% elements was deleted.",
       "output_db": "%num% elements was showed.",
       "done": "Success!"
     },
@@ -81,7 +76,31 @@
       "data_base_loaded": "Successfully loaded %size% items.",
       "data_base_saved": "Successfully saved %size% items.",
       "save_error": "Saving error into *%file%*.",
-      "same_id": "Found two HumanBeing with same %id%. First will be loaded."
+      "same_id": "Found two HumanBeing with same %id%. First will be loaded.",
+      "no_args": "Command should contains no args.",
+      "no_args_main": "You must enter the name of the file with the database when starting the program.",
+      "command_not_found": "The command you entered was not recognized.",
+      "command_init_start": "Initializing commands starting.",
+      "command_init_finish": "Initializing commands finished.",
+      "user_deleted": "HumanBeing with id - %id% was deleted.",
+      "user_not_deleted": "HumanBeing wasn't deleted.",
+      "update_starting": "HumanBeing with id - %id% is updating.",
+      "update_finished": "HumanBeing with id - %id% is updated.",
+      "info_got": "Info about set got.",
+      "info_shown": "Info was shown.",
+      "cleared": "%num% elements was deleted.",
+      "command_executing": "Command *%command%* is executing.",
+      "command_executed": "Command *%command%* executed.",
+      "invoker_init_start": "Initializing invoker starting.",
+      "invoker_init_finish": "Initializing invoker finished.",
+      "elements_showed": "%num% elements was shown.",
+      "hm_init_finish": "HistoryManager initialized.",
+      "command_to_hm": "Command was added to history manager.",
+      "script_manager_init_start": "Initializing script manager starting.",
+      "script_manager_init_finish": "Initializing script manager finished.",
+      "script_added_to_sm": "Script *%script%* is added to script list.",
+      "executing_file": "Executing file *%file%*.",
+      "cleared_scripts": "Script history cleared."
     }
   },
   "ru": {
@@ -99,14 +118,12 @@
       "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
       "input_language": "Введите RU/EN для выбора языка системы: ",
       "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;",
-      "executing_file": "Выполняется файл *%file%*."
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",
       "no_args": "Команда не должна содержать аргументы.",
       "one_arg": "Команда содержит один аргумент.",
       "user_not_added": "Не удалось добавить пользователя",
-      "user_not_deleted": "HumanBeing не был добавлен.",
       "db_file_not_readable": "Файл недоступен для чтения. Чтобы использовать другой запустите программу еще раз.",
       "db_file_not_found": "Файл не найден. Чтобы использовать другой запустите программу еще раз.",
       "file_not_writable": "Файл недоступен для записи. Выберите другой.",
@@ -133,9 +150,6 @@
     },
     "success": {
       "user_added": "Пользователь с %id% успешно добавлен.",
-      "user_updated": "HumanBeing с id - %id% был успешно обновлен.",
-      "user_deleted": "HumanBeing с id - %id% был успешно удален.",
-      "cleared": "Было удалено %num% элементов.",
       "output_db": "Было успешно выведено %num% элементов.",
       "done": "Успешно!"
     },

@@ -5,16 +5,20 @@ import server.controller.HumanController;
 import server.exception.ArgumentException;
 import util.LANGUAGE;
 
-import static util.Message.getCommandDescription;
-import static util.Message.getError;
+import java.util.logging.Logger;
+
+import static server.services.LoggerManager.setupLogger;
+import static util.Message.*;
 
 public class InfoCommand implements Command {
-    private LANGUAGE language;
+    private static final Logger logger = Logger.getLogger(InfoCommand.class.getName());
     private final HumanController controller;
+    private LANGUAGE language;
 
     public InfoCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
         this.language = language;
+        setupLogger(logger);
     }
 
     @Override
@@ -23,6 +27,7 @@ public class InfoCommand implements Command {
             throw new ArgumentException(getError("no_args", language));
         }
         System.out.println(controller.info());
+        logger.info(getLog("info_shown"));
     }
 
     @Override
