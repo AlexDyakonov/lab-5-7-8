@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed decorator. Added some logging for Builder classes">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed README.md and added photo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="5ace2945c075a7586db5054de526fc98d5e899d8" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -202,13 +203,6 @@
       <workItem from="1681722286818" duration="8362000" />
       <workItem from="1681943248971" duration="13984000" />
       <workItem from="1681961005400" duration="378000" />
-    </task>
-    <task id="LOCAL-00043" summary="Added more Validations">
-      <created>1679154832044</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1679154832044</updated>
     </task>
     <task id="LOCAL-00044" summary="Renamed repo -&gt; HumanDao">
       <created>1679155386459</created>
@@ -546,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681960757776</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Fixed README.md and added photo">
+      <created>1682099860386</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1682099860386</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,7 +564,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="issfix" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -577,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added more file exception checks. Added warning." />
     <MESSAGE value="Fixed id reading from file(catching exception)" />
     <MESSAGE value="Added javadoc documentation" />
     <MESSAGE value="Added ru and en localization for builders (input lines)" />
@@ -602,7 +602,8 @@
     <MESSAGE value="Build .jar using maven (added plugin for libs inside jar)&#10;Added dir creating for logs." />
     <MESSAGE value="Attempt to make decorator for logging functions" />
     <MESSAGE value="Removed decorator. Added some logging for Builder classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed decorator. Added some logging for Builder classes" />
+    <MESSAGE value="Fixed README.md and added photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed README.md and added photo" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
