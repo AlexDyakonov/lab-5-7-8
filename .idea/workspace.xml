@@ -9,10 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed System.exit(0)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added class for Dao layer using db with postgresql">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +62,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/code/java/itmo-math",
+    "last_opened_file_path": "C:/code/java/user_app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,14 +82,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
       <recent name="C:\code\java\lab-5-num-125595" />
       <recent name="C:\code\java\lab-5-num-125595\target" />
-      <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.SQLDataBaseProvider">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -121,6 +124,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SQLDataBaseProvider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.db.SQLDataBaseProvider" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.utility.ScriptExecuter" />
       <module name="lab-5-num-125595" />
@@ -135,6 +151,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.SQLDataBaseProvider" />
       <item itemvalue="Application.Message" />
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Parser" />
@@ -142,11 +159,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.Parser" />
         <item itemvalue="Application.Message" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -211,14 +228,8 @@
       <workItem from="1682371612938" duration="95000" />
       <workItem from="1682372575332" duration="3000" />
       <workItem from="1682372961553" duration="382000" />
-      <workItem from="1682439308716" duration="2649000" />
-    </task>
-    <task id="LOCAL-00046" summary="Fixed all builders">
-      <created>1679178684583</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1679178684583</updated>
+      <workItem from="1682439308716" duration="4701000" />
+      <workItem from="1682446529133" duration="9126000" />
     </task>
     <task id="LOCAL-00047" summary="Fixed load/save from file, added default">
       <created>1679180745877</created>
@@ -556,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682441567614</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Added class for Dao layer using db with postgresql">
+      <created>1682442074486</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1682442074486</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +608,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added ru and en localization for builders (input lines)" />
     <MESSAGE value="Code reformatting for whole project" />
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
     <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
@@ -615,7 +632,8 @@
     <MESSAGE value="Fixed README.md and added photo" />
     <MESSAGE value="Added SQLConnection.java class" />
     <MESSAGE value="Removed System.exit(0)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed System.exit(0)" />
+    <MESSAGE value="Added class for Dao layer using db with postgresql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added class for Dao layer using db with postgresql" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

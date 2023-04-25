@@ -17,7 +17,9 @@ public class SQLConnection {
             String password = PropertiesProvider.getAppProperties().getProperty("datasource.password");
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            throw new ApplicationException("Не удалось создать соединение");
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+//            throw new ApplicationException("Не удалось создать соединение");
         }
     }
 
