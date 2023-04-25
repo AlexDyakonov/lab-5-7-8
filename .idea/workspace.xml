@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Fixed README.md and added photo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed System.exit(0)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,26 +52,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/code/java/itmo-math&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.291954&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/code/java/itmo-math",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.291954",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\code\java\lab-5-num-125595" />
@@ -203,20 +207,11 @@
       <workItem from="1681722286818" duration="8362000" />
       <workItem from="1681943248971" duration="13984000" />
       <workItem from="1681961005400" duration="378000" />
-    </task>
-    <task id="LOCAL-00044" summary="Renamed repo -&gt; HumanDao">
-      <created>1679155386459</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1679155386459</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Fixed bug with saving null car">
-      <created>1679169362060</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1679169362060</updated>
+      <workItem from="1682272119892" duration="1000" />
+      <workItem from="1682371612938" duration="95000" />
+      <workItem from="1682372575332" duration="3000" />
+      <workItem from="1682372961553" duration="382000" />
+      <workItem from="1682439308716" duration="2649000" />
     </task>
     <task id="LOCAL-00046" summary="Fixed all builders">
       <created>1679178684583</created>
@@ -547,11 +542,28 @@
       <option name="project" value="LOCAL" />
       <updated>1682099860386</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Added SQLConnection.java class">
+      <created>1682099921297</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1682099921297</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Removed System.exit(0)">
+      <created>1682441567614</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1682441567614</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -578,8 +590,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed id reading from file(catching exception)" />
-    <MESSAGE value="Added javadoc documentation" />
     <MESSAGE value="Added ru and en localization for builders (input lines)" />
     <MESSAGE value="Code reformatting for whole project" />
     <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
@@ -603,7 +613,9 @@
     <MESSAGE value="Attempt to make decorator for logging functions" />
     <MESSAGE value="Removed decorator. Added some logging for Builder classes" />
     <MESSAGE value="Fixed README.md and added photo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed README.md and added photo" />
+    <MESSAGE value="Added SQLConnection.java class" />
+    <MESSAGE value="Removed System.exit(0)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed System.exit(0)" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
