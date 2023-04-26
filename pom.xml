@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20220924</version>
+            <version>20230227</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
@@ -67,5 +67,4 @@
             <version>42.5.4</version>
         </dependency>
     </dependencies>
-
 </project>

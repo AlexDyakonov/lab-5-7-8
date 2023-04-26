@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static client.ui.ConsoleColors.*;
-import static util.FileManager.downloadFile;
 import static util.FileManager.updateFile;
 
 /**

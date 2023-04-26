@@ -4,6 +4,9 @@ import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.WeaponType;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -123,6 +126,16 @@ public class Parser {
                 return WeaponType.SHOTGUN;
             }
         }
+    }
+
+    public static ZonedDateTime convertTimeStampToZoned(Timestamp timestamp) {
+        Instant instant = timestamp.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        return instant.atZone(zoneId);
+    }
+
+    public static Timestamp convertZonedDateTimeToTimeStamp(ZonedDateTime zonedDateTime) {
+        return Timestamp.valueOf(zonedDateTime.toLocalDateTime());
     }
 
 }

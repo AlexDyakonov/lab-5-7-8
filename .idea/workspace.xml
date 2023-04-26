@@ -10,12 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added class for Dao layer using db with postgresql">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +62,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/code/java/user_app",
+    "last_opened_file_path": "/home/alex/Документы/code/java/libs/postgresql-42.6.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.291954",
     "run.code.analysis.last.selected.profile": "pProject Default",
