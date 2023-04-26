@@ -15,6 +15,8 @@ import util.LANGUAGE;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -74,7 +76,39 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     @Override
-    public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id) {
+    public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO request, Long id) {
+        try {
+            String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
+                    "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
+                    "soundtrack = ?,mood = ?, weapon_type= ?, car_id = ? WHERE humanbeing_id = ? ;";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+
+            preparedStatement.setString(1, request.getName());
+            preparedStatement.setInt(2, addCoordinatesToDB(request.getCoordinates()));
+            preparedStatement.setBoolean(3, request.getRealHero());
+            preparedStatement.setBoolean(4, request.getHasToothpick());
+            preparedStatement.setFloat(5, request.getImpactSpeed());
+            preparedStatement.setString(6, request.getSoundtrackName());
+            preparedStatement.setString(7, request.getMood().toString());
+            preparedStatement.setString(8, request.getWeaponType().toString());
+            preparedStatement.setInt(9, addCarToDB(request.getCar()));
+            preparedStatement.setInt(10, id.intValue());
+
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new ApplicationException("Не удалось обновить юзера");
+            }
+
+            preparedStatement.close();
+
+            source.updateDataSet();
+            System.out.println(getSuccessMessage("done", language));
+            logger.info((getLog("update_finished")).replace("%id%", id.toString()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
@@ -130,17 +164,27 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
-        return null;
+        List<HumanBeingResponseDTO> list = new java.util.ArrayList<>(source.getDataSet().stream().sorted().toList());
+        Collections.reverse(list);
+        return list;
     }
 
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
-        return null;
+        if (isImpactSpeedMax(request)) {
+            return createHuman(request);
+        } else {
+            return -1L;
+        }
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
-        return null;
+        if (isImpactSpeedMin(request)) {
+            return createHuman(request);
+        } else {
+            return -1L;
+        }
     }
 
     @Override
@@ -150,11 +194,21 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
+        float max = source.getDataSet().stream().max(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
+                .orElse(null).getImpactSpeed();
+        if (dto.getImpactSpeed() > max) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
+        float min = source.getDataSet().stream().min(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
+                .orElse(null).getImpactSpeed();
+        if (dto.getImpactSpeed() < min) {
+            return true;
+        }
         return false;
     }
 
