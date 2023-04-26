@@ -13,24 +13,24 @@ public class Authentication {
         this.sqlDataBaseProvider = sqlDataBaseProvider;
     }
 
-//    public void registerUser(String username, String password) {
-//        if (sqlDataBaseProvider.getUserNameList().contains(username)) {
-//            System.out.println("Username already exists");
-//        } else {
-//            sqlDataBaseProvider.register(username, password);
-//            System.out.println("Registration successful");
-//        }
-//    }
-//
-//    public boolean login(String username, String password) {
-//        if (users.containsKey(username) && users.get(username).equals(password)) {
-//            System.out.println("Login successful");
-//            return true;
-//        } else {
-//            System.out.println("Invalid username or password");
-//            return false;
-//        }
-//    }
+    public void registerUser(String username, String password) {
+        if (sqlDataBaseProvider.getUserNameList().contains(username)) {
+            System.out.println("Username already exists");
+        } else {
+            sqlDataBaseProvider.userRegister(username, password);
+            System.out.println("Registration successful");
+        }
+    }
+
+    public boolean login(String username, String password) {
+        if (sqlDataBaseProvider.userLogin(username, password)) {
+            System.out.println("Login successful");
+            return true;
+        } else {
+            System.out.println("Invalid username or password");
+            return false;
+        }
+    }
 
     public SQLDataBaseProvider getSqlDataBaseProvider() {
         return sqlDataBaseProvider;
