@@ -1,7 +1,6 @@
 package server.services;
 
 import server.dao.HumanDao;
-import server.dao.HumanDaoImpl;
 import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
@@ -55,6 +54,7 @@ public class HumanServiceImpl implements HumanService {
         return humanDao.info();
     }
 
+    @Deprecated
     @Override
     public void clear() {
         humanDao.clear();

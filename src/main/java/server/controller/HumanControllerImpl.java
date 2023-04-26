@@ -82,6 +82,7 @@ public class HumanControllerImpl implements HumanController {
         service.clear();
     }
 
+    @Deprecated
     @Override
     public void save(String fileName, LANGUAGE language) {
         validateFileWrite(new File(fileName), language);

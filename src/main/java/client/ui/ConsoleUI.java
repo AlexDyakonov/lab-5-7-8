@@ -6,9 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
 
-import static server.validation.Validation.validateFile;
-import static util.Parser.tildaResolver;
-
 /**
  * The type Console ui.
  */

@@ -69,6 +69,7 @@ public interface HumanController {
      * @param fileName the file name
      * @param language the language
      */
+    @Deprecated
     void save(String fileName, LANGUAGE language);
 
     /**

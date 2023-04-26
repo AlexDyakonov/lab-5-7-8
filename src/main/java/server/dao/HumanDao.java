@@ -67,6 +67,7 @@ public interface HumanDao {
      *
      * @param fileName the file name
      */
+    @Deprecated
     void save(String fileName);
 
     /**

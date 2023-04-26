@@ -60,6 +60,7 @@ public interface HumanService {
     /**
      * Clear.
      */
+    @Deprecated
     void clear();
 
     /**

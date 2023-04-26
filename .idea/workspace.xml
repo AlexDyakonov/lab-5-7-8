@@ -9,13 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added class for Dao layer using db with postgresql">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed csv file data base logic, now app boots with postgresql">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,31 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/alex/Документы/code/java/libs/postgresql-42.6.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.291954",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/code/java/user_app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.291954&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
@@ -89,7 +92,7 @@
       <recent name="E:\code\lab-5-num-125595\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SQLDataBaseProvider">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -98,12 +101,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Message" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.Message" />
+    <configuration name="HumanDaoPostgresImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.dao.HumanDaoPostgresImpl" />
       <module name="lab-5-num-125595" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="util.*" />
+          <option name="PATTERN" value="server.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,19 +154,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.HumanDaoPostgresImpl" />
       <item itemvalue="Application.SQLDataBaseProvider" />
-      <item itemvalue="Application.Message" />
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Parser" />
       <item itemvalue="Application.ScriptExecuter" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.HumanDaoPostgresImpl" />
+        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.Parser" />
-        <item itemvalue="Application.Message" />
       </list>
     </recent_temporary>
   </component>
@@ -230,41 +233,6 @@
       <workItem from="1682372961553" duration="382000" />
       <workItem from="1682439308716" duration="4701000" />
       <workItem from="1682446529133" duration="9126000" />
-    </task>
-    <task id="LOCAL-00047" summary="Fixed load/save from file, added default">
-      <created>1679180745877</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1679180745877</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Attempt to fix args exceptions">
-      <created>1679181847531</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1679181847531</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Small fix of remove_by_id">
-      <created>1679181973481</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1679181973481</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Fixed addifmin/max">
-      <created>1679246557970</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1679246557971</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Fixed save bug">
-      <created>1679246698202</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1679246698202</updated>
     </task>
     <task id="LOCAL-00052" summary="Attempt to fix script executor #1">
       <created>1679247613907</created>
@@ -574,7 +542,42 @@
       <option name="project" value="LOCAL" />
       <updated>1682442074486</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Added logger">
+      <created>1682526746703</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1682526746704</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Added new messages and small refactoring">
+      <created>1682526783463</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1682526783463</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Depricated">
+      <created>1682528366889</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528366889</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Small fix for dev branch and added new Mapper">
+      <created>1682528399528</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528399528</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Removed csv file data base logic, now app boots with postgresql">
+      <created>1682528556465</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528556465</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,11 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Code reformatting for whole project" />
-    <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
-    <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
-    <MESSAGE value="Added en localization for add commands" />
-    <MESSAGE value="Added en localization for all command descriptions" />
     <MESSAGE value="Added logic in Message Class, added javadoc for its. Added more messages" />
     <MESSAGE value="Now logger saves in one file with normal name" />
     <MESSAGE value="Removed all lines with success/unsuccess" />
@@ -633,7 +631,12 @@
     <MESSAGE value="Added SQLConnection.java class" />
     <MESSAGE value="Removed System.exit(0)" />
     <MESSAGE value="Added class for Dao layer using db with postgresql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added class for Dao layer using db with postgresql" />
+    <MESSAGE value="Added logger" />
+    <MESSAGE value="Added new messages and small refactoring" />
+    <MESSAGE value="Depricated" />
+    <MESSAGE value="Small fix for dev branch and added new Mapper" />
+    <MESSAGE value="Removed csv file data base logic, now app boots with postgresql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed csv file data base logic, now app boots with postgresql" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
