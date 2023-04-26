@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="All commands executes data from postgresql">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added methods to work with users and made Register method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/AuthenticationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,13 +227,6 @@
       <workItem from="1682372961553" duration="382000" />
       <workItem from="1682439308716" duration="4701000" />
       <workItem from="1682446529133" duration="9126000" />
-    </task>
-    <task id="LOCAL-00056" summary="Fixed script executor&#10;TODO: recursion check">
-      <created>1679320498012</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1679320498012</updated>
     </task>
     <task id="LOCAL-00057" summary="Added recursion check">
       <created>1679322910077</created>
@@ -573,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682546829677</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Added methods to work with users and made Register method">
+      <created>1682549799175</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1682549799175</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
     <MESSAGE value="Added logging and fixed Invoker" />
     <MESSAGE value="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments" />
     <MESSAGE value="Added example of logs file" />
@@ -632,7 +629,8 @@
     <MESSAGE value="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands" />
     <MESSAGE value="Added more commands and messages" />
     <MESSAGE value="All commands executes data from postgresql" />
-    <option name="LAST_COMMIT_MESSAGE" value="All commands executes data from postgresql" />
+    <MESSAGE value="Added methods to work with users and made Register method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added methods to work with users and made Register method" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

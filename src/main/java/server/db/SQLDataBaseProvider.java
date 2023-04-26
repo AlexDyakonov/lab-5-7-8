@@ -44,35 +44,6 @@ public class SQLDataBaseProvider {
         this.creationDate = LocalDateTime.now();
     }
 
-    private static String saltBuilder() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            stringBuilder.append((char) new Random().nextInt(33, 126));
-        }
-        return stringBuilder.toString();
-    }
-
-    private static String sha256encoding(String pass) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] encodedHash = md.digest(pass.getBytes(StandardCharsets.UTF_8));
-            StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
-            for (byte b : encodedHash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new ApplicationException("Не удалось закодироваться...");
-        }
-    }
-
-    public static void main(String[] args) {
-        SQLDataBaseProvider sqlDataBaseProvider = new SQLDataBaseProvider(new SQLConnection());
-        System.out.println(sqlDataBaseProvider.userRegister("Bebrik", "qwerty"));
-    }
-
     private Set<HumanBeingResponseDTO> loadDataBase() {
         logger.info(getLog("load_starting"));
 
@@ -258,9 +229,9 @@ public class SQLDataBaseProvider {
             String query = "INSERT INTO users VALUES (DEFAULT, ?, ?, 'USER', ?)";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, username);
-            System.out.println(sha256encoding(sha256encoding(pepper + password)) + salt);
-            preparedStatement.setString(2, sha256encoding(sha256encoding(pepper + password)) + salt);
-            preparedStatement.setString(3, saltBuilder());
+            preparedStatement.setString(2, sha256encoding(pepper + password + salt));
+            preparedStatement.setString(3, salt);
+
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows == 0) {
@@ -270,6 +241,35 @@ public class SQLDataBaseProvider {
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean userLogin(String username, String password) {
+        String passwordHash = sha256encoding(pepper + password + getSalt(username));
+        return passwordHash.equals(getPassword(username));
+    }
+
+    private static String saltBuilder() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 20; i++) {
+            stringBuilder.append((char) new Random().nextInt(33, 126));
+        }
+        return stringBuilder.toString();
+    }
+
+    private static String sha256encoding(String pass) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = md.digest(pass.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new ApplicationException("Не удалось закодироваться...");
         }
     }
 
@@ -286,6 +286,24 @@ public class SQLDataBaseProvider {
             }
             preparedStatement.close();
             return salt;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String getPassword(String userName) {
+        String pass = "";
+        try {
+            String query = "SELECT password FROM users WHERE user_name = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, userName);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                pass = (resultSet.getString("password"));
+            }
+            preparedStatement.close();
+            return pass;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
