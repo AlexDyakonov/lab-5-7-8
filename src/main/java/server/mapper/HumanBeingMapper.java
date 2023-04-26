@@ -58,6 +58,20 @@ public class HumanBeingMapper {
         return model;
     }
 
+    public static HumanBeingResponseDTO fromRequestToResponse(HumanBeingRequestDTO dto) {
+        HumanBeingResponseDTO model = new HumanBeingResponseDTO();
+        model.setName(dto.getName());
+        model.setCoordinates(dto.getCoordinates());
+        model.setRealHero(dto.getRealHero());
+        model.setHasToothpick(dto.getHasToothpick());
+        model.setImpactSpeed(dto.getImpactSpeed());
+        model.setSoundtrackName(dto.getSoundtrackName());
+        model.setWeaponType(dto.getWeaponType());
+        model.setMood(dto.getMood());
+        model.setCar(dto.getCar());
+        return model;
+    }
+
     /**
      * From string to human being model human being model.
      *
