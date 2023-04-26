@@ -9,16 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed csv file data base logic, now app boots with postgresql">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Deprecated method save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/SaveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/MaxByImpactSpeedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/MaxByImpactSpeedCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,13 +230,6 @@
       <workItem from="1682372961553" duration="382000" />
       <workItem from="1682439308716" duration="4701000" />
       <workItem from="1682446529133" duration="9126000" />
-    </task>
-    <task id="LOCAL-00052" summary="Attempt to fix script executor #1">
-      <created>1679247613907</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1679247613907</updated>
     </task>
     <task id="LOCAL-00053" summary="Attempt to fix script executor #2 Added builderType for all builders">
       <created>1679249221274</created>
@@ -577,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682528556465</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Deprecated method save">
+      <created>1682531922970</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1682531922971</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +608,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added logic in Message Class, added javadoc for its. Added more messages" />
     <MESSAGE value="Now logger saves in one file with normal name" />
     <MESSAGE value="Removed all lines with success/unsuccess" />
     <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
@@ -636,7 +632,8 @@
     <MESSAGE value="Depricated" />
     <MESSAGE value="Small fix for dev branch and added new Mapper" />
     <MESSAGE value="Removed csv file data base logic, now app boots with postgresql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed csv file data base logic, now app boots with postgresql" />
+    <MESSAGE value="Deprecated method save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deprecated method save" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -31,7 +31,7 @@ public class MaxByImpactSpeedCommand implements Command {
         if (args.length != 1) {
             throw new ArgumentException(getError("no_args", language));
         }
-        controller.max_by_impact_speed();
+        System.out.println(controller.max_by_impact_speed());
     }
 
     @Override

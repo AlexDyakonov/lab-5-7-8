@@ -1,30 +1,76 @@
 package server.db;
 
-import server.exception.ApplicationException;
 import server.model.Car;
 import server.model.Coordinates;
 import server.model.Mood;
 import server.model.WeaponType;
-import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import server.sql.SQLConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Logger;
 
+import static server.services.LoggerManager.setupLogger;
+import static util.Message.getLog;
 import static util.Parser.convertTimeStampToZoned;
-import static util.Parser.convertZonedDateTimeToTimeStamp;
+
 
 public class SQLDataBaseProvider {
+    private static final Logger logger = Logger.getLogger(SQLDataBaseProvider.class.getName());
+
+    static {
+        setupLogger(logger);
+    }
+
     private final SQLConnection sqlConnection;
+    private final LocalDateTime creationDate;
+    private Set<HumanBeingResponseDTO> dataSet;
+
 
     public SQLDataBaseProvider(SQLConnection sqlConnection) {
         this.sqlConnection = sqlConnection;
+        this.dataSet = loadDataBase();
+        this.creationDate = LocalDateTime.now();
     }
 
-    public Long getUserName(String userName) {
+    public static void main(String[] args) {
+        SQLDataBaseProvider sqlDataBaseProvider = new SQLDataBaseProvider(new SQLConnection());
+        System.out.println(sqlDataBaseProvider.loadDataBase());
+    }
+
+    private Set<HumanBeingResponseDTO> loadDataBase() {
+        logger.info(getLog("load_starting"));
+
+        Set<HumanBeingResponseDTO> dbSet = new HashSet<>();
+
+        logger.info(getLog("set_ready"));
+
+        try {
+            String query = "SELECT humanbeing_id FROM humanbeing";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                dbSet.add(getHumanBeingById(resultSet.getLong("humanbeing_id")));
+            }
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return dbSet;
+    }
+
+    public Set<HumanBeingResponseDTO> updateDataSet() {
+        dataSet = loadDataBase();
+        return dataSet;
+    }
+
+    public Long getUserId(String userName) {
         long userId = 0;
         try {
             String query = "SELECT user_id FROM users WHERE user_name = ?";
@@ -37,6 +83,26 @@ public class SQLDataBaseProvider {
             }
             preparedStatement.close();
             return userId;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Coordinates getCoordinates(int id) {
+        Coordinates coordinates = new Coordinates();
+        try {
+            String query = "SELECT x, y FROM coordinates WHERE coordinates_id = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                coordinates.setX(resultSet.getInt("x"));
+                coordinates.setY(resultSet.getDouble("y"));
+            }
+            preparedStatement.close();
+            return coordinates;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -86,69 +152,29 @@ public class SQLDataBaseProvider {
         }
     }
 
-    public Coordinates getCoordinates(int id) {
-        Coordinates coordinates = new Coordinates();
+    public boolean findHumanById(Long id) {
+        Set<Long> idSet = new HashSet<>();
         try {
-            String query = "SELECT x, y FROM coordinates WHERE coordinates_id = ?";
+            String query = "SELECT humanbeing_id FROM humanbeing";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
-                coordinates.setX(resultSet.getInt("x"));
-                coordinates.setY(resultSet.getDouble("y"));
+                idSet.add(resultSet.getLong("humanbeing_id"));
+            }
+            if (idSet.contains(id)) {
+                return true;
             }
             preparedStatement.close();
-            return coordinates;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 
-    public int setCoordinates(Coordinates coordinates) {
-        int coordinatesId = 0;
+    public HumanBeingResponseDTO getHumanBeingById(Long id) {
         try {
-            String query = "INSERT INTO coordinates VALUES (DEFAULT, ?, ?) RETURNING coordinates_id";
-            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, coordinates.getX());
-            preparedStatement.setDouble(2, coordinates.getY());
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                coordinatesId = resultSet.getInt("coordinates_id");
-            }
-            preparedStatement.close();
-            return coordinatesId;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public int setCar(Car car) {
-        int carId = 0;
-        try {
-            String query = "INSERT INTO cars VALUES (DEFAULT, ?, ?) RETURNING car_id";
-            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, car.getName());
-            preparedStatement.setBoolean(2, car.isCool());
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                carId = resultSet.getInt("car_id");
-            }
-            preparedStatement.close();
-            return carId;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public HumanBeingResponseDTO getHumanBeing(Long id) {
-        HumanBeingResponseDTO response = new HumanBeingResponseDTO();
-        try {
+            HumanBeingResponseDTO response = new HumanBeingResponseDTO();
             String query = "SELECT * FROM humanbeing WHERE humanbeing_id = ?";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id.intValue());
@@ -174,37 +200,20 @@ public class SQLDataBaseProvider {
         }
     }
 
-    public Long setHumanBeing(HumanBeingRequestDTO request) {
-        long id = 0L;
-        try {
-            String query = "insert into humanbeing values (DEFAULT, ?, ?, TIMESTAMP ?, ?, ?, ?, ?, ?, ?, ?) RETURNING humanbeing_id";
-            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, request.getName());
-            preparedStatement.setInt(2, setCoordinates(request.getCoordinates()));
-            preparedStatement.setTimestamp(3, convertZonedDateTimeToTimeStamp(ZonedDateTime.now()));
-            preparedStatement.setBoolean(4, request.getRealHero());
-            preparedStatement.setBoolean(5, request.getHasToothpick());
-            preparedStatement.setFloat(6, request.getImpactSpeed());
-            preparedStatement.setString(7, request.getSoundtrackName());
-            preparedStatement.setString(8, request.getMood().toString());
-            preparedStatement.setString(9, request.getWeaponType().toString());
-            preparedStatement.setInt(10, setCar(request.getCar()));
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                id = resultSet.getInt("humanbeing_id");
-            }
-            preparedStatement.close();
-            return id;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public SQLConnection getSqlConnection() {
+        return sqlConnection;
     }
 
+    public Set<HumanBeingResponseDTO> getDataSet() {
+        updateDataSet();
+        return dataSet;
+    }
 
-    public static void main(String[] args) {
-        SQLDataBaseProvider sqlDataBaseProvider = new SQLDataBaseProvider(new SQLConnection());
-        System.out.println(sqlDataBaseProvider.getHumanBeing(1L));
+    public void setDataSet(Set<HumanBeingResponseDTO> dataSet) {
+        this.dataSet = dataSet;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 }

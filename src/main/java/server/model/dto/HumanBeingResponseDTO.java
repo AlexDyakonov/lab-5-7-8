@@ -173,6 +173,10 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
                 '}';
     }
 
+    public Float getImpactSpeed() {
+        return impactSpeed;
+    }
+
     @Override
     public int compareTo(HumanBeingResponseDTO o) {
         return (int) (impactSpeed - o.impactSpeed);

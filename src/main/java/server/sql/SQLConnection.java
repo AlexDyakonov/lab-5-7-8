@@ -11,11 +11,12 @@ import static util.Message.getLog;
 
 public class SQLConnection {
     private static final Logger logger = Logger.getLogger(SQLConnection.class.getName());
-    private final Connection connection;
 
     static {
         setupLogger(logger);
     }
+
+    private final Connection connection;
 
     public SQLConnection() {
         try {
