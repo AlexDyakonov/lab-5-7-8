@@ -177,6 +177,46 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
         return impactSpeed;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public Boolean getRealHero() {
+        return realHero;
+    }
+
+    public Boolean getHasToothpick() {
+        return hasToothpick;
+    }
+
+    public String getSoundtrackName() {
+        return soundtrackName;
+    }
+
+    public WeaponType getWeaponType() {
+        return weaponType;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
     @Override
     public int compareTo(HumanBeingResponseDTO o) {
         return (int) (impactSpeed - o.impactSpeed);

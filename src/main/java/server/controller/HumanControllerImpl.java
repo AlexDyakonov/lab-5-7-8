@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileWrite;
-import static util.Message.getError;
+import static util.Message.*;
 
 /**
  * The type Human controller.
@@ -60,6 +60,9 @@ public class HumanControllerImpl implements HumanController {
     public void deleteHumanById(Long id) {
         if (id <= 0) {
             throw new ValidationException(getError("id_more_than_zero", language));
+        }
+        if (getHumanById(id) == null) {
+            logger.warning(getWarning("user_not_found", LANGUAGE.EN));
         }
         service.deleteHumanById(id);
     }

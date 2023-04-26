@@ -13,7 +13,8 @@
       "input_weapon": "Choose weapon: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Insert ImpactSpeed (ex: 4.61): ",
       "input_language": "Type RU/EN to choose app language: ",
-      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;"
+      "info_about_dataset": "DataBase class: %class%; \n Created: %date%; \n Size: %size%;",
+      "count_by_mood": "With %mood% found %num% elements."
     },
     "error": {
       "same_id": "Found two HumanBeing with same %id%. First will be loaded.",
@@ -133,7 +134,8 @@
       "input_weapon": "Выберите оружие: 1 = AXE, 2 = SHOTGUN, 3 = BAT, 0 = null. (default = shotgun)",
       "input_impact_speed": "Введите ImpactSpeed (ex: 4.61): ",
       "input_language": "Введите RU/EN для выбора языка системы: ",
-      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;"
+      "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;",
+      "count_by_mood": "С %mood% найдено %num% элементов."
     },
     "error": {
       "same_id": "Найдено два пользователя с одинаковым id. Загружен первый из них.",

@@ -30,7 +30,6 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     public HumanDaoPostgresImpl() {
         setupLogger(logger);
-        language = LANGUAGE.RU;
     }
 
     @Override
@@ -146,7 +145,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public int countByMood(Mood mood) {
-        return 0;
+        return (int) source.getDataSet().stream().filter(p -> p.getMood().equals(mood)).count();
     }
 
     @Override
@@ -161,7 +160,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void setLanguage(LANGUAGE language) {
-
+        this.language = language;
     }
 
     public int addCoordinatesToDB(Coordinates coordinates) {
@@ -187,6 +186,9 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public int addCarToDB(Car car) {
         int carId = 0;
         try {
+            if (car == null) {
+                return 1;
+            }
             String query = "INSERT INTO cars VALUES (DEFAULT, ?, ?) RETURNING car_id";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, car.getName());

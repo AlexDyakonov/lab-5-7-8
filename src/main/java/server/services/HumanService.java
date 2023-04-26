@@ -60,7 +60,6 @@ public interface HumanService {
     /**
      * Clear.
      */
-    @Deprecated
     void clear();
 
     /**
@@ -68,6 +67,7 @@ public interface HumanService {
      *
      * @param fileName the file name
      */
+    @Deprecated
     void save(String fileName);
 
     /**

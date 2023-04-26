@@ -110,6 +110,9 @@ public class SQLDataBaseProvider {
 
     private String getCarName(int id) {
         String carName = null;
+        if (id == 0) {
+            return null;
+        }
         try {
             String query = "SELECT name FROM cars WHERE car_id = ?";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
@@ -145,11 +148,10 @@ public class SQLDataBaseProvider {
     }
 
     public Car getCar(int id) {
-        if (getCarName(id) == null) {
+        if (id == 1) {
             return null;
-        } else {
-            return new Car(getCarName(id), getCarCool(id));
         }
+        return new Car(getCarName(id), getCarCool(id));
     }
 
     public boolean findHumanById(Long id) {
@@ -173,6 +175,9 @@ public class SQLDataBaseProvider {
     }
 
     public HumanBeingResponseDTO getHumanBeingById(Long id) {
+        if (!findHumanById(id)) {
+            return null;
+        }
         try {
             HumanBeingResponseDTO response = new HumanBeingResponseDTO();
             String query = "SELECT * FROM humanbeing WHERE humanbeing_id = ?";
