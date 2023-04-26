@@ -1,5 +1,6 @@
 package server.db;
 
+import server.exception.ApplicationException;
 import server.model.Car;
 import server.model.Coordinates;
 import server.model.Mood;
@@ -7,11 +8,15 @@ import server.model.WeaponType;
 import server.model.dto.HumanBeingResponseDTO;
 import server.sql.SQLConnection;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -29,6 +34,7 @@ public class SQLDataBaseProvider {
 
     private final SQLConnection sqlConnection;
     private final LocalDateTime creationDate;
+    private final String pepper = "*63&^mVLC(#";
     private Set<HumanBeingResponseDTO> dataSet;
 
 
@@ -38,9 +44,33 @@ public class SQLDataBaseProvider {
         this.creationDate = LocalDateTime.now();
     }
 
+    private static String saltBuilder() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 20; i++) {
+            stringBuilder.append((char) new Random().nextInt(33, 126));
+        }
+        return stringBuilder.toString();
+    }
+
+    private static String sha256encoding(String pass) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = md.digest(pass.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new ApplicationException("Не удалось закодироваться...");
+        }
+    }
+
     public static void main(String[] args) {
         SQLDataBaseProvider sqlDataBaseProvider = new SQLDataBaseProvider(new SQLConnection());
-        System.out.println(sqlDataBaseProvider.loadDataBase());
+        System.out.println(sqlDataBaseProvider.userRegister("Bebrik", "qwerty"));
     }
 
     private Set<HumanBeingResponseDTO> loadDataBase() {
@@ -68,24 +98,6 @@ public class SQLDataBaseProvider {
     public Set<HumanBeingResponseDTO> updateDataSet() {
         dataSet = loadDataBase();
         return dataSet;
-    }
-
-    public Long getUserId(String userName) {
-        long userId = 0;
-        try {
-            String query = "SELECT user_id FROM users WHERE user_name = ?";
-            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, userName);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                userId = resultSet.getLong("user_id");
-            }
-            preparedStatement.close();
-            return userId;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public Coordinates getCoordinates(int id) {
@@ -200,6 +212,80 @@ public class SQLDataBaseProvider {
             }
             preparedStatement.close();
             return response;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Long getUserId(String userName) {
+        long userId = 0;
+        try {
+            String query = "SELECT user_id FROM users WHERE user_name = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, userName);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                userId = resultSet.getLong("user_id");
+            }
+            preparedStatement.close();
+            return userId;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Set<String> getUserNameList() {
+        Set<String> userList = new HashSet<>();
+        try {
+            String query = "SELECT user_name FROM users";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                userList.add(resultSet.getString("user_name"));
+            }
+            preparedStatement.close();
+            return userList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean userRegister(String username, String password) {
+        try {
+            String salt = saltBuilder();
+            String query = "INSERT INTO users VALUES (DEFAULT, ?, ?, 'USER', ?)";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, username);
+            System.out.println(sha256encoding(sha256encoding(pepper + password)) + salt);
+            preparedStatement.setString(2, sha256encoding(sha256encoding(pepper + password)) + salt);
+            preparedStatement.setString(3, saltBuilder());
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new ApplicationException("Не удалось очистить базу данных");
+            }
+            preparedStatement.close();
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String getSalt(String userName) {
+        Long id = getUserId(userName);
+        String salt = "";
+        try {
+            String query = "SELECT salt FROM users WHERE user_id = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, id.intValue());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                salt = (resultSet.getString("salt"));
+            }
+            preparedStatement.close();
+            return salt;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

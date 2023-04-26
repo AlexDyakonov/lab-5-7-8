@@ -5,11 +5,14 @@ import server.commands.Invoker;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * The type Console ui.
  */
 public class ConsoleUI {
+    private static final Logger logger = Logger.getLogger(ConsoleUI.class.getName());
+
     private final Invoker invoker;
 
     /**
@@ -38,6 +41,7 @@ public class ConsoleUI {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
     }
 

@@ -15,7 +15,8 @@ import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileWrite;
-import static util.Message.*;
+import static util.Message.getError;
+import static util.Message.getWarning;
 
 /**
  * The type Human controller.

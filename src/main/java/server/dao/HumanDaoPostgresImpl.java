@@ -2,10 +2,8 @@ package server.dao;
 
 import server.db.SQLDataBaseProvider;
 import server.exception.ApplicationException;
-import server.mapper.HumanBeingMapper;
 import server.model.Car;
 import server.model.Coordinates;
-import server.model.HumanBeingModel;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;

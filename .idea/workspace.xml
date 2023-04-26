@@ -9,10 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added more commands and messages">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="All commands executes data from postgresql">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +88,7 @@
       <recent name="E:\code\lab-5-num-125595\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.SQLDataBaseProvider">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -156,9 +158,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.HumanDaoPostgresImpl" />
-        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.ScriptExecuter" />
         <item itemvalue="Application.Parser" />
       </list>
@@ -227,13 +229,6 @@
       <workItem from="1682372961553" duration="382000" />
       <workItem from="1682439308716" duration="4701000" />
       <workItem from="1682446529133" duration="9126000" />
-    </task>
-    <task id="LOCAL-00055" summary="Fixed Update method">
-      <created>1679314974713</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1679314974714</updated>
     </task>
     <task id="LOCAL-00056" summary="Fixed script executor&#10;TODO: recursion check">
       <created>1679320498012</created>
@@ -571,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682545024719</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="All commands executes data from postgresql">
+      <created>1682546829677</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1682546829677</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
     <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
     <MESSAGE value="Added logging and fixed Invoker" />
     <MESSAGE value="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments" />
@@ -630,7 +631,8 @@
     <MESSAGE value="Deprecated method save" />
     <MESSAGE value="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands" />
     <MESSAGE value="Added more commands and messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more commands and messages" />
+    <MESSAGE value="All commands executes data from postgresql" />
+    <option name="LAST_COMMIT_MESSAGE" value="All commands executes data from postgresql" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
