@@ -109,7 +109,14 @@
       "dir_created": "Directory created successfully.",
       "dir_failed": "Failed to create directory.",
       "language_start": "Started language selecting.",
-      "language_finish": "Ended language selecting."
+      "language_finish": "Ended language selecting.",
+      "prop_provider_loading": "Properties Provider is loading file.",
+      "prop_provider_finish": "Properties Provider loaded file.",
+      "prop_url_got": "URL was successfuly got.",
+      "prop_username_got": "Username was successfuly got.",
+      "prop_pass_got": "Password was successfuly got.",
+      "connection_created": "Connection was successfully created",
+      "connection_not_created": "Connection was not created."
     }
   },
   "ru": {

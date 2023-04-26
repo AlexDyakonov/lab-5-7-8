@@ -12,12 +12,13 @@ import static util.Message.getLog;
  */
 public class HistoryManager {
     private static final Logger logger = Logger.getLogger(HistoryManager.class.getName());
-    private final List<String> historyListOfCommands;
-    private final int historySizeLimit;
 
     static {
         setupLogger(logger);
     }
+
+    private final List<String> historyListOfCommands;
+    private final int historySizeLimit;
 
     /**
      * Instantiates a new History manager.
