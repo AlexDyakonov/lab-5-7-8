@@ -27,11 +27,9 @@ public class HumanControllerImpl implements HumanController {
 
     /**
      * Instantiates a new Human controller.
-     *
-     * @param fileName the file name
      */
-    public HumanControllerImpl(String fileName) {
-        this.service = new HumanServiceImpl(fileName);
+    public HumanControllerImpl() {
+        this.service = new HumanServiceImpl();
         service.setLanguage(language);
         setupLogger(logger);
     }

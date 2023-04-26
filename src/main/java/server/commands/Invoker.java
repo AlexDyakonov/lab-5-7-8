@@ -34,7 +34,6 @@ public class Invoker {
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
-    private final String fileName;
     private final HumanController controller;
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
@@ -44,15 +43,13 @@ public class Invoker {
     /**
      * Instantiates a new Invoker.
      *
-     * @param fileName    the file name
      * @param builderType the builder type
      * @param language    the language
      */
-    public Invoker(String fileName, BuilderType builderType, LANGUAGE language) {
+    public Invoker(BuilderType builderType, LANGUAGE language) {
         setupLogger(logger);
         logger.info(getLog("invoker_init_start"));
-        this.fileName = fileName;
-        this.controller = new HumanControllerImpl(fileName);
+        this.controller = new HumanControllerImpl();
         this.history = new HistoryManager(15); // limit history size
         this.cmdReader = cmdReader == null ? new BufferedReader(new InputStreamReader(System.in)) : cmdReader;
         this.builderType = builderType;
@@ -83,7 +80,6 @@ public class Invoker {
         addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
         addCommand("clear", new ClearCommand(controller, language));
-        addCommand("save", new SaveCommand(controller, fileName, language));
         addCommand("execute_script", new ExecuteScriptCommand(this, scriptManager, language));
         addCommand("exit", new ExitCommand(language));
         addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));

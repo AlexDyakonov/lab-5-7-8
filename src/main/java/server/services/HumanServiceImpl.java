@@ -2,6 +2,7 @@ package server.services;
 
 import server.dao.HumanDao;
 import server.dao.HumanDaoImpl;
+import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
@@ -18,11 +19,9 @@ public class HumanServiceImpl implements HumanService {
 
     /**
      * Instantiates a new Human service.
-     *
-     * @param fileName the file name
      */
-    public HumanServiceImpl(String fileName) {
-        this.humanDao = new HumanDaoImpl(fileName);
+    public HumanServiceImpl() {
+        this.humanDao = new HumanDaoPostgresImpl();
         humanDao.setLanguage(language);
     }
 

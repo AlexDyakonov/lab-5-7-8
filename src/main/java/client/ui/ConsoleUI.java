@@ -18,12 +18,9 @@ public class ConsoleUI {
     /**
      * Instantiates a new Console ui.
      *
-     * @param fileName the file name
-     * @param invoker  the invoker
+     * @param invoker the invoker
      */
-    public ConsoleUI(String fileName, Invoker invoker) {
-        validateFile(fileName, invoker.getLanguage());
-        fileName = tildaResolver(fileName);
+    public ConsoleUI(Invoker invoker) {
         this.invoker = invoker;
     }
 
