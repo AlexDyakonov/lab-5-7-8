@@ -19,6 +19,7 @@ import static util.Message.*;
 /**
  * The type Data base provider.
  */
+@Deprecated
 public class DataBaseProvider {
     private static final Logger logger = Logger.getLogger(DataBaseProvider.class.getName());
 

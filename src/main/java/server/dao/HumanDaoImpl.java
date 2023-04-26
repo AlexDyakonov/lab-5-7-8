@@ -22,6 +22,7 @@ import static util.Message.*;
 /**
  * The type Human dao.
  */
+@Deprecated
 public class HumanDaoImpl implements HumanDao {
     private static final Logger logger = Logger.getLogger(HumanDaoImpl.class.getName());
     private final DataBaseProvider source;
