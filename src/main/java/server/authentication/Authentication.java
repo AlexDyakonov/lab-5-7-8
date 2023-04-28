@@ -14,7 +14,7 @@ import static util.Message.*;
 
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
-    private final UserManager userManager = new UserManager();
+    private final UserManager userManager = new UserManager(ROLES.GUEST);
     private final HumanController controller;
     private BufferedReader reader;
     private LANGUAGE language;
@@ -26,12 +26,14 @@ public class Authentication {
     }
 
     public void start() {
-        System.out.println(getMessage("menu", language));
+        System.out.println(getMessage("authentication", language));
         try {
             switch (reader.readLine()) {
                 case "1" -> login();
                 case "2" -> registerUser();
                 case "3" -> guest();
+                case "exit" -> System.exit(0);
+                default -> start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -67,6 +69,7 @@ public class Authentication {
                 System.out.println(getWarning("invalid_login", language));
                 login();
             }
+            userManager.setUserName(username).setUserRole(controller.getUserRole(username));
             return userManager;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -74,6 +77,11 @@ public class Authentication {
     }
 
     public UserManager guest() {
+        userManager.setUserRole(ROLES.GUEST).setUserName("guest");
+        return userManager;
+    }
+
+    public UserManager getUserManager() {
         return userManager;
     }
 }

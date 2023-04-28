@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.authentication.ROLES;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
@@ -157,5 +158,10 @@ public class HumanControllerImpl implements HumanController {
             throw new ValidationException(""); //TODO message
         }
         return service.checkUserPassword(username, password);
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return service.getUserRole(userName);
     }
 }

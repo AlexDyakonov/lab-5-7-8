@@ -1,5 +1,6 @@
 package server.db;
 
+import server.authentication.ROLES;
 import server.exception.ApplicationException;
 import server.model.Car;
 import server.model.Coordinates;
@@ -272,6 +273,25 @@ public class SQLDataBaseProvider {
                 throw new ApplicationException(getLog("user_not_registered").replace("name", username));
             }
             preparedStatement.close();
+        } catch (SQLException e) {
+            logger.severe(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ROLES getUserRole(String username) {
+        ROLES role = ROLES.GUEST;
+        try {
+            String query = "SELECT role FROM users WHERE user_name = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                role = ROLES.valueOf(resultSet.getString("role"));
+            }
+            preparedStatement.close();
+            return role;
         } catch (SQLException e) {
             logger.severe(e.getMessage());
             throw new RuntimeException(e);

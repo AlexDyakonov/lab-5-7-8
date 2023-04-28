@@ -1,5 +1,6 @@
 package server.dao;
 
+import server.authentication.ROLES;
 import server.db.SQLDataBaseProvider;
 import server.exception.ApplicationException;
 import server.model.Car;
@@ -301,5 +302,10 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public boolean checkUserPassword(String username, String password) {
         return source.checkUserPassword(username, password);
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return source.getUserRole(userName);
     }
 }

@@ -1,5 +1,6 @@
 package server.dao;
 
+import server.authentication.ROLES;
 import server.db.DataBaseProvider;
 import server.exception.FileException;
 import server.mapper.HumanBeingMapper;
@@ -208,5 +209,10 @@ public class HumanDaoImpl implements HumanDao {
     @Override
     public boolean checkUserPassword(String username, String password) {
         return false;
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return null;
     }
 }

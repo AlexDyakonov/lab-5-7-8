@@ -1,5 +1,7 @@
 package server.commands;
 
+import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.commands.list.*;
 import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
@@ -39,6 +41,8 @@ public class Invoker {
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
+    private UserManager userManager = new UserManager(ROLES.GUEST);
+    private final CommandsMapManager commandsMapManager = new CommandsMapManager(userManager.getUserRole());
 
     /**
      * Instantiates a new Invoker.
@@ -73,22 +77,7 @@ public class Invoker {
      */
     public void init() {
         logger.info(getLog("command_init_start"));
-        addCommand("help", new HelpCommand(language));
-        addCommand("info", new InfoCommand(controller, language));
-        addCommand("show", new ShowCommand(controller, language));
-        addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
-        addCommand("clear", new ClearCommand(controller, language));
-        addCommand("execute_script", new ExecuteScriptCommand(this, scriptManager, language));
-        addCommand("exit", new ExitCommand(language));
-        addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("history", new HistoryCommand(history, language));
-        addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller, language));
-        addCommand("count_by_mood", new CountByMoodCommand(controller, language));
-        addCommand("print_ascending", new PrintAscendingCommand(controller, language));
-        addCommand("language", new LanguageCommand(this));
+        commandsMapManager.getCommandsMap();
         logger.info(getLog("command_init_finish"));
     }
 
@@ -179,5 +168,29 @@ public class Invoker {
 
     public HumanController getController() {
         return controller;
+    }
+
+    public UserManager getUserManager() {
+        return userManager;
+    }
+
+    public void setUserManager(UserManager userManager) {
+        this.userManager = userManager;
+    }
+
+    public ScriptManager getScriptManager() {
+        return scriptManager;
+    }
+
+    public HistoryManager getHistory() {
+        return history;
+    }
+
+    public BufferedReader getFileReader() {
+        return fileReader;
+    }
+
+    public BuilderType getBuilderType() {
+        return builderType;
     }
 }

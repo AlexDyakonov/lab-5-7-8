@@ -22,7 +22,6 @@ public class ConsoleUI {
      */
     public ConsoleUI(Invoker invoker) {
         this.invoker = invoker;
-
     }
 
     /**
@@ -38,6 +37,8 @@ public class ConsoleUI {
 
         Authentication authentication = new Authentication(invoker.getController(), reader, invoker.getLanguage());
         authentication.start();
+
+        invoker.setUserManager(authentication.getUserManager());
 
         try (reader) {
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {

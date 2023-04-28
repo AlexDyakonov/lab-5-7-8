@@ -1,5 +1,6 @@
 package server.services;
 
+import server.authentication.ROLES;
 import server.dao.HumanDao;
 import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
@@ -120,5 +121,10 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public boolean checkUserPassword(String username, String password) {
         return humanDao.checkUserPassword(username, password);
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return humanDao.getUserRole(userName);
     }
 }

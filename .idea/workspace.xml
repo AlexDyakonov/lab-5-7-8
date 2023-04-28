@@ -9,13 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added basic Authentication (creates user/login to exist)">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added messages and some loggers">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,14 +242,7 @@
       <workItem from="1682602591636" duration="11000" />
       <workItem from="1682606781909" duration="667000" />
       <workItem from="1682611673312" duration="1067000" />
-      <workItem from="1682633264191" duration="7120000" />
-    </task>
-    <task id="LOCAL-00060" summary="Made tilda resolving in path">
-      <created>1679326874681</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1679326874681</updated>
+      <workItem from="1682633264191" duration="9521000" />
     </task>
     <task id="LOCAL-00061" summary="Added checkid from csv file.">
       <created>1679327290349</created>
@@ -579,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682642896006</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Added messages and some loggers">
+      <created>1682644236420</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1682644236420</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Code cleanup and reformat" />
     <MESSAGE value="Removed unused methods and classes. Collapsed some import." />
     <MESSAGE value="Added javadoc" />
     <MESSAGE value="Added javadoc files" />
@@ -638,7 +645,8 @@
     <MESSAGE value="Added method to login user and AuthenticationException" />
     <MESSAGE value="Uncommented and fixed methods" />
     <MESSAGE value="Added basic Authentication (creates user/login to exist)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic Authentication (creates user/login to exist)" />
+    <MESSAGE value="Added messages and some loggers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added messages and some loggers" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

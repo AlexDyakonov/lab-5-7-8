@@ -1,5 +1,6 @@
 package server.services;
 
+import server.authentication.ROLES;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
@@ -137,4 +138,6 @@ public interface HumanService {
     void userRegister(String username, String password);
 
     boolean checkUserPassword(String username, String password);
+
+    ROLES getUserRole(String userName);
 }
