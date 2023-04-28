@@ -41,8 +41,8 @@ public class Invoker {
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-    private UserManager userManager = new UserManager(ROLES.GUEST);
-    private final CommandsMapManager commandsMapManager = new CommandsMapManager(userManager.getUserRole());
+    private UserManager userManager = new UserManager();
+    private CommandsMapManager commandsMapManager;
 
     /**
      * Instantiates a new Invoker.
@@ -59,6 +59,7 @@ public class Invoker {
         this.builderType = builderType;
         this.language = language;
         controller.setLanguage(language);
+        commandsMapManager = new CommandsMapManager(this, history, controller, cmdReader, fileReader, builderType, language);
         init();
         logger.info(getLog("invoker_init_finish"));
     }
@@ -176,6 +177,8 @@ public class Invoker {
 
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
+        commandsMapManager.setRole(userManager.getUserRole());
+        init();
     }
 
     public ScriptManager getScriptManager() {

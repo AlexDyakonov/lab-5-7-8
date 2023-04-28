@@ -9,21 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added messages and some loggers">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to do Authentication with different commands">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +234,7 @@
       <workItem from="1682602591636" duration="11000" />
       <workItem from="1682606781909" duration="667000" />
       <workItem from="1682611673312" duration="1067000" />
-      <workItem from="1682633264191" duration="9521000" />
-    </task>
-    <task id="LOCAL-00061" summary="Added checkid from csv file.">
-      <created>1679327290349</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1679327290349</updated>
+      <workItem from="1682633264191" duration="10572000" />
     </task>
     <task id="LOCAL-00062" summary="Added UML and small fix of UI">
       <created>1679329415417</created>
@@ -587,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682644236420</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Attempt to do Authentication with different commands">
+      <created>1682647018603</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1682647018603</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Removed unused methods and classes. Collapsed some import." />
     <MESSAGE value="Added javadoc" />
     <MESSAGE value="Added javadoc files" />
     <MESSAGE value="Fixed pom.xml and App.java. Build .jar using maven" />
@@ -646,7 +637,8 @@
     <MESSAGE value="Uncommented and fixed methods" />
     <MESSAGE value="Added basic Authentication (creates user/login to exist)" />
     <MESSAGE value="Added messages and some loggers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added messages and some loggers" />
+    <MESSAGE value="Attempt to do Authentication with different commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt to do Authentication with different commands" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -14,7 +14,7 @@ import static util.Message.*;
 
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
-    private final UserManager userManager = new UserManager(ROLES.GUEST);
+    private final UserManager userManager = new UserManager();
     private final HumanController controller;
     private BufferedReader reader;
     private LANGUAGE language;

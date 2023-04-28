@@ -16,21 +16,30 @@ import java.util.Map;
 //TODO подчистить, можно сделать лучше
 public class CommandsMapManager {
     private static final Map<String, Command> commandsMap = new HashMap<>();
-    private final ROLES role;
-    private Invoker invoker;
+    private ROLES role;
     private final ScriptManager scriptManager = new ScriptManager(null);
-    private final HistoryManager history = invoker.getHistory();
-    private final HumanController controller = invoker.getController();
-    private BufferedReader cmdReader = invoker.getCmdReader();
-    private BufferedReader fileReader = invoker.getFileReader();
-    private BuilderType builderType = invoker.getBuilderType();
-    private LANGUAGE language = invoker.getLanguage();
+    private final Invoker invoker;
+    private final HistoryManager history;
+    private final HumanController controller;
+    private BufferedReader cmdReader;
+    private BufferedReader fileReader;
+    private BuilderType builderType;
+    private LANGUAGE language;
 
-    public CommandsMapManager(ROLES role) {
-        this.role = role;
+    public CommandsMapManager(Invoker invoker, HistoryManager history, HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
+        this.invoker = invoker;
+        this.history = history;
+        this.controller = controller;
+        this.cmdReader = cmdReader;
+        this.fileReader = fileReader;
+        this.builderType = builderType;
+        this.language = language;
     }
 
     public Map<String, Command> getCommandsMap() {
+        if (role == null) {
+            return new HashMap<>();
+        }
         switch (role) {
             case ADMIN -> {
                 return adminMap();
@@ -105,4 +114,7 @@ public class CommandsMapManager {
         commandsMap.put(commandName, command);
     }
 
+    public void setRole(ROLES role) {
+        this.role = role;
+    }
 }

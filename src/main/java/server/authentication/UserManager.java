@@ -9,8 +9,7 @@ public class UserManager {
         this.userRole = role;
     }
 
-    public UserManager(ROLES userRole) {
-        this.userRole = userRole;
+    public UserManager() {
     }
 
     public String getUserName() {

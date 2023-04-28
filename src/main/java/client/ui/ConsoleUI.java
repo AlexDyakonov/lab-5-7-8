@@ -29,7 +29,6 @@ public class ConsoleUI {
      */
     public void start() {
         String command;
-        System.out.println("Напишите help чтобы вывести все команды");
 
         invoker.setFileReader(null);
 
@@ -40,7 +39,9 @@ public class ConsoleUI {
 
         invoker.setUserManager(authentication.getUserManager());
 
+
         try (reader) {
+            System.out.println("Напишите help чтобы вывести все команды");
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
                 invoker.execute(command);
             }
