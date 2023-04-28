@@ -64,12 +64,12 @@ public class Authentication {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
             if (controller.checkUserPassword(username, password)) {
+                userManager.setUserName(username).setUserRole(controller.getUserRole(username));
                 System.out.println(getSuccessMessage("done", language));
             } else {
                 System.out.println(getWarning("invalid_login", language));
                 login();
             }
-            userManager.setUserName(username).setUserRole(controller.getUserRole(username));
             return userManager;
         } catch (IOException e) {
             throw new RuntimeException(e);

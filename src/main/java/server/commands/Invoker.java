@@ -33,7 +33,7 @@ public class Invoker {
      * The constant logger.
      */
     public static final Logger logger = Logger.getLogger(Invoker.class.getName());
-    private static final Map<String, Command> commandsMap = new HashMap<>();
+    private static Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
     private final HumanController controller;
@@ -78,7 +78,8 @@ public class Invoker {
      */
     public void init() {
         logger.info(getLog("command_init_start"));
-        commandsMapManager.getCommandsMap();
+        commandsMapManager.setBuilderType(builderType).setCmdReader(cmdReader).setFileReader(fileReader);
+        commandsMap = commandsMapManager.getCommandsMap();
         logger.info(getLog("command_init_finish"));
     }
 

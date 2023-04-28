@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to do Authentication with different commands">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Attempt to do Authentication with different commands #2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
     </list>
@@ -234,14 +232,9 @@
       <workItem from="1682602591636" duration="11000" />
       <workItem from="1682606781909" duration="667000" />
       <workItem from="1682611673312" duration="1067000" />
-      <workItem from="1682633264191" duration="10572000" />
-    </task>
-    <task id="LOCAL-00062" summary="Added UML and small fix of UI">
-      <created>1679329415417</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1679329415417</updated>
+      <workItem from="1682633264191" duration="10583000" />
+      <workItem from="1682658467548" duration="199000" />
+      <workItem from="1682658675262" duration="5112000" />
     </task>
     <task id="LOCAL-00063" summary="Fixed EOF (ctrl + D)">
       <created>1679337226895</created>
@@ -579,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682647018603</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Attempt to do Authentication with different commands #2">
+      <created>1682648053172</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1682648053172</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added javadoc" />
     <MESSAGE value="Added javadoc files" />
     <MESSAGE value="Fixed pom.xml and App.java. Build .jar using maven" />
     <MESSAGE value="Build .jar using maven (added plugin for libs inside jar)&#10;Added dir creating for logs." />
@@ -638,7 +637,8 @@
     <MESSAGE value="Added basic Authentication (creates user/login to exist)" />
     <MESSAGE value="Added messages and some loggers" />
     <MESSAGE value="Attempt to do Authentication with different commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to do Authentication with different commands" />
+    <MESSAGE value="Attempt to do Authentication with different commands #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt to do Authentication with different commands #2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

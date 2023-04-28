@@ -74,26 +74,19 @@ public class CommandsMapManager {
         addCommand("count_by_mood", new CountByMoodCommand(controller, language));
         addCommand("print_ascending", new PrintAscendingCommand(controller, language));
         addCommand("language", new LanguageCommand(invoker));
+        commandsMap.putAll(userMap());
         return commandsMap;
     }
 
     public Map<String, Command> userMap() {
-        addCommand("help", new HelpCommand(language));
-        addCommand("info", new InfoCommand(controller, language));
-        addCommand("show", new ShowCommand(controller, language));
         addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
         addCommand("clear", new ClearCommand(controller, language));
         addCommand("execute_script", new ExecuteScriptCommand(invoker, scriptManager, language));
-        addCommand("exit", new ExitCommand(language));
         addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("history", new HistoryCommand(history, language));
-        addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller, language));
-        addCommand("count_by_mood", new CountByMoodCommand(controller, language));
-        addCommand("print_ascending", new PrintAscendingCommand(controller, language));
-        addCommand("language", new LanguageCommand(invoker));
+        commandsMap.putAll(guestMap());
         return commandsMap;
     }
 
@@ -108,6 +101,21 @@ public class CommandsMapManager {
         addCommand("print_ascending", new PrintAscendingCommand(controller, language));
         addCommand("language", new LanguageCommand(invoker));
         return commandsMap;
+    }
+
+    public CommandsMapManager setCmdReader(BufferedReader cmdReader) {
+        this.cmdReader = cmdReader;
+        return this;
+    }
+
+    public CommandsMapManager setFileReader(BufferedReader fileReader) {
+        this.fileReader = fileReader;
+        return this;
+    }
+
+    public CommandsMapManager setBuilderType(BuilderType builderType) {
+        this.builderType = builderType;
+        return this;
     }
 
     private void addCommand(String commandName, Command command) {
