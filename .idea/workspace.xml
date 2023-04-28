@@ -9,9 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Added method to login user and AuthenticationException">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Uncommented and fixed methods">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/builders/UserBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/passwords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/HumanControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/dao/HumanDaoPostgresImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/services/HumanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +97,24 @@
       <recent name="E:\code\lab-5-num-125595\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SQLDataBaseProvider">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
       <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/src/main/resources/database.csv" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Authentication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.authentication.Authentication" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.authentication.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -100,19 +125,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="server.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.Parser" />
-      <module name="lab-5-num-125595" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,19 +159,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Authentication" />
       <item itemvalue="Application.HumanDaoPostgresImpl" />
       <item itemvalue="Application.SQLDataBaseProvider" />
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.Parser" />
       <item itemvalue="Application.ScriptExecuter" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Authentication" />
+        <item itemvalue="Application.SQLDataBaseProvider" />
         <item itemvalue="Application.HumanDaoPostgresImpl" />
         <item itemvalue="Application.ScriptExecuter" />
-        <item itemvalue="Application.Parser" />
       </list>
     </recent_temporary>
   </component>
@@ -226,13 +238,11 @@
       <workItem from="1682372961553" duration="382000" />
       <workItem from="1682439308716" duration="4701000" />
       <workItem from="1682446529133" duration="9126000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added file exceptions (checking exist, read, write)">
-      <created>1679324295857</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1679324295857</updated>
+      <workItem from="1682596547337" duration="2399000" />
+      <workItem from="1682602591636" duration="11000" />
+      <workItem from="1682606781909" duration="667000" />
+      <workItem from="1682611673312" duration="1067000" />
+      <workItem from="1682633264191" duration="5716000" />
     </task>
     <task id="LOCAL-00059" summary="Removed javadoc">
       <created>1679324337891</created>
@@ -570,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682551266653</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Uncommented and fixed methods">
+      <created>1682551428011</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1682551428011</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments" />
     <MESSAGE value="Added example of logs file" />
     <MESSAGE value="Code cleanup and reformat" />
     <MESSAGE value="Removed unused methods and classes. Collapsed some import." />
@@ -629,7 +645,8 @@
     <MESSAGE value="All commands executes data from postgresql" />
     <MESSAGE value="Added methods to work with users and made Register method" />
     <MESSAGE value="Added method to login user and AuthenticationException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added method to login user and AuthenticationException" />
+    <MESSAGE value="Uncommented and fixed methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Uncommented and fixed methods" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

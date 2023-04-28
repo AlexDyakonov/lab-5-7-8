@@ -247,7 +247,7 @@ public class SQLDataBaseProvider {
         }
     }
 
-    public boolean userRegister(String username, String password) {
+    public void userRegister(String username, String password) {
         try {
             String salt = saltBuilder();
             String query = "INSERT INTO users VALUES (DEFAULT, ?, ?, 'USER', ?)";
@@ -262,13 +262,12 @@ public class SQLDataBaseProvider {
                 throw new ApplicationException("Не удалось очистить базу данных");
             }
             preparedStatement.close();
-            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean userLogin(String username, String password) {
+    public boolean checkUserPassword(String username, String password) {
         String passwordHash = sha256encoding(pepper + password + getSalt(username));
         return passwordHash.equals(getPassword(username));
     }

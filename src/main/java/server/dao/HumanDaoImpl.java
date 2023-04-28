@@ -194,4 +194,19 @@ public class HumanDaoImpl implements HumanDao {
         this.language = language;
         source.setLanguage(language);
     }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return null;
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        return false;
+    }
 }

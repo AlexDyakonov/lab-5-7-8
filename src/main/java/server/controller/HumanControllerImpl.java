@@ -11,6 +11,7 @@ import util.LANGUAGE;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
@@ -135,5 +136,26 @@ public class HumanControllerImpl implements HumanController {
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         service.setLanguage(language);
+    }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return service.getUserNameList();
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+        if (username.trim().equals("")) {
+            throw new ValidationException(""); //TODO message
+        }
+        service.userRegister(username, password);
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        if (username.trim().equals("")) {
+            throw new ValidationException(""); //TODO message
+        }
+        return service.checkUserPassword(username, password);
     }
 }

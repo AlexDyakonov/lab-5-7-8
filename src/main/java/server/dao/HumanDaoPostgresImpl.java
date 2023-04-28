@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import static server.mapper.HumanBeingMapper.fromRequestToResponse;
@@ -283,5 +284,20 @@ public class HumanDaoPostgresImpl implements HumanDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return source.getUserNameList();
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+        source.userRegister(username, password);
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        return source.checkUserPassword(username, password);
     }
 }

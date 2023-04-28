@@ -177,4 +177,7 @@ public class Invoker {
         init();
     }
 
+    public HumanController getController() {
+        return controller;
+    }
 }

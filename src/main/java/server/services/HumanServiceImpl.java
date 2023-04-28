@@ -8,6 +8,7 @@ import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * The type Human service.
@@ -104,5 +105,20 @@ public class HumanServiceImpl implements HumanService {
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         humanDao.setLanguage(language);
+    }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return humanDao.getUserNameList();
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+        humanDao.userRegister(username, password);
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        return humanDao.checkUserPassword(username, password);
     }
 }

@@ -1,5 +1,6 @@
 package client.ui;
 
+import server.authentication.Authentication;
 import server.commands.Invoker;
 
 import java.io.BufferedReader;
@@ -12,7 +13,6 @@ import java.util.logging.Logger;
  */
 public class ConsoleUI {
     private static final Logger logger = Logger.getLogger(ConsoleUI.class.getName());
-
     private final Invoker invoker;
 
     /**
@@ -22,6 +22,7 @@ public class ConsoleUI {
      */
     public ConsoleUI(Invoker invoker) {
         this.invoker = invoker;
+
     }
 
     /**
@@ -34,6 +35,9 @@ public class ConsoleUI {
         invoker.setFileReader(null);
 
         BufferedReader reader = invoker.getCmdReader();
+
+        Authentication authentication = new Authentication(invoker.getController(), reader, invoker.getLanguage());
+        authentication.menu();
 
         try (reader) {
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {

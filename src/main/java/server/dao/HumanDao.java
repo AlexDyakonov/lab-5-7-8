@@ -6,6 +6,7 @@ import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * The interface Human dao.
@@ -130,4 +131,10 @@ public interface HumanDao {
      * @param language the language
      */
     void setLanguage(LANGUAGE language);
+
+    Set<String> getUserNameList();
+
+    void userRegister(String username, String password);
+
+    boolean checkUserPassword(String username, String password);
 }
