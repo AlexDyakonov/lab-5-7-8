@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import static server.services.builders.UserBuilder.getPasswordLogin;
 import static server.services.builders.UserBuilder.getUserName;
+import static util.Message.*;
 
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
@@ -24,11 +25,8 @@ public class Authentication {
         this.language = language;
     }
 
-    public void menu() {
-//        System.out.println(getMessage("menu", language));
-        System.out.println("Добро пожаловать! Войдите в аккаунт для того чтобы начать пользоваться " +
-                "приложением или пройдите регистрацию, чтобы получить доступ к нему.");
-        System.out.println("1. Вход \n2. Регистрация \n3. Войти как гость");
+    public void start() {
+        System.out.println(getMessage("menu", language));
         try {
             switch (reader.readLine()) {
                 case "1" -> login();
@@ -45,12 +43,12 @@ public class Authentication {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
             if (controller.getUserNameList().contains(username)) {
-                System.out.println("Username already exists");
+                System.out.println(getWarning("user_exist", language));
                 registerUser();
             } else {
                 controller.userRegister(username, password);
                 userManager.setUserRole(ROLES.USER).setUserName(username);
-                System.out.println("Registration successful");
+                System.out.println(getSuccessMessage("user_registered", language));
             }
             return userManager;
         } catch (IOException e) {
@@ -64,9 +62,10 @@ public class Authentication {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
             if (controller.checkUserPassword(username, password)) {
-                System.out.println("Login successful");
+                System.out.println(getSuccessMessage("done", language));
             } else {
-                System.out.println("Invalid username or password");
+                System.out.println(getWarning("invalid_login", language));
+                login();
             }
             return userManager;
         } catch (IOException e) {

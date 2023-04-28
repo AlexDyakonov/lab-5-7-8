@@ -37,7 +37,7 @@ public class ConsoleUI {
         BufferedReader reader = invoker.getCmdReader();
 
         Authentication authentication = new Authentication(invoker.getController(), reader, invoker.getLanguage());
-        authentication.menu();
+        authentication.start();
 
         try (reader) {
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {

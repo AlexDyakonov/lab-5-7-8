@@ -77,6 +77,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO request, Long id) {
         try {
+            logger.info(getLog("update_starting").replace("%id%", id.toString()));
             String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
                     "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
                     "soundtrack = ?,mood = ?, weapon_type= ?, car_id = ? WHERE humanbeing_id = ? ;";
@@ -95,12 +96,13 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
 
             int affectedRows = preparedStatement.executeUpdate();
+            preparedStatement.close();
 
             if (affectedRows == 0) {
-                throw new ApplicationException("Не удалось обновить юзера");
+                System.out.println(getError("not_done", language));
+                throw new ApplicationException(getLog("update_error").replace("%id%", id.toString()));
             }
 
-            preparedStatement.close();
 
             source.updateDataSet();
             System.out.println(getSuccessMessage("done", language));
@@ -129,10 +131,10 @@ public class HumanDaoPostgresImpl implements HumanDao {
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
 
             int affectedRows = preparedStatement.executeUpdate();
-            if (affectedRows == 0) {
-                throw new ApplicationException("Не удалось очистить базу данных");
-            }
             preparedStatement.close();
+            if (affectedRows == 0) {
+                throw new ApplicationException(getLog("not_cleared"));
+            }
 
             source.updateDataSet();
 

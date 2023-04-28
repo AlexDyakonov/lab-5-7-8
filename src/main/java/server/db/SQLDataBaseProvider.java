@@ -64,7 +64,9 @@ public class SQLDataBaseProvider {
             }
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new ApplicationException("Не удалось закодироваться...");
+            logger.severe(getLog("encoding_error"));
+            logger.severe(e.getMessage());
+            throw new ApplicationException(getLog("encoding_error"));
         }
     }
 
@@ -85,6 +87,7 @@ public class SQLDataBaseProvider {
             }
             preparedStatement.close();
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
         return dbSet;
@@ -111,6 +114,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return coordinates;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -132,6 +136,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return carName;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -150,6 +155,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return answer;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -176,6 +182,7 @@ public class SQLDataBaseProvider {
             }
             preparedStatement.close();
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
         return false;
@@ -208,6 +215,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return response;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -226,6 +234,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return userId;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -243,6 +252,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return userList;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -259,10 +269,11 @@ public class SQLDataBaseProvider {
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows == 0) {
-                throw new ApplicationException("Не удалось очистить базу данных");
+                throw new ApplicationException(getLog("user_not_registered").replace("name", username));
             }
             preparedStatement.close();
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -286,6 +297,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return salt;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -304,6 +316,7 @@ public class SQLDataBaseProvider {
             preparedStatement.close();
             return pass;
         } catch (SQLException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
