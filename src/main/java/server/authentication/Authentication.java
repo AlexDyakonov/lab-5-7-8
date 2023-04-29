@@ -16,8 +16,8 @@ public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
     private final UserManager userManager = new UserManager();
     private final HumanController controller;
-    private BufferedReader reader;
-    private LANGUAGE language;
+    private final BufferedReader reader;
+    private final LANGUAGE language;
 
     public Authentication(HumanController controller, BufferedReader reader, LANGUAGE language) {
         this.reader = reader;

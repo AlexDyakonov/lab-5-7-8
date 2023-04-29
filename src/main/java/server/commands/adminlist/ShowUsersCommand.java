@@ -3,7 +3,6 @@ package server.commands.adminlist;
 import server.commands.Command;
 import server.controller.HumanController;
 import server.exception.ArgumentException;
-import server.model.User;
 import util.LANGUAGE;
 
 import static util.Message.getCommandDescription;

@@ -14,7 +14,6 @@ import server.model.dto.HumanBeingResponseDTO;
 import server.sql.SQLConnection;
 import util.LANGUAGE;
 
-import javax.management.relation.Role;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,14 +27,15 @@ import static util.Parser.stringToRole;
 
 public class HumanDaoPostgresImpl implements HumanDao {
     private static final Logger logger = Logger.getLogger(HumanDaoPostgresImpl.class.getName());
-    private final SQLConnection sqlConnection = new SQLConnection();
-    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
-    private LANGUAGE language;
-    private UserManager userManager;
 
     static {
         setupLogger(logger);
     }
+
+    private final SQLConnection sqlConnection = new SQLConnection();
+    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
+    private LANGUAGE language;
+    private UserManager userManager;
 
     public HumanDaoPostgresImpl() {
     }
@@ -233,20 +233,14 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
         float max = source.getDataSet().stream().max(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
-        if (dto.getImpactSpeed() > max) {
-            return true;
-        }
-        return false;
+        return dto.getImpactSpeed() > max;
     }
 
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         float min = source.getDataSet().stream().min(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
-        if (dto.getImpactSpeed() < min) {
-            return true;
-        }
-        return false;
+        return dto.getImpactSpeed() < min;
     }
 
     @Override

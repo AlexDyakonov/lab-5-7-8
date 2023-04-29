@@ -1,7 +1,6 @@
 package server.commands;
 
 import server.authentication.ROLES;
-import server.authentication.UserManager;
 import server.commands.adminlist.ClearAllCommand;
 import server.commands.adminlist.SetRoleCommand;
 import server.commands.adminlist.ShowUsersCommand;
@@ -19,15 +18,15 @@ import java.util.Map;
 //TODO подчистить, можно сделать лучше
 public class CommandsMapManager {
     private static final Map<String, Command> commandsMap = new HashMap<>();
-    private ROLES role;
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final Invoker invoker;
     private final HistoryManager history;
     private final HumanController controller;
+    private ROLES role;
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
-    private LANGUAGE language;
+    private final LANGUAGE language;
 
     public CommandsMapManager(Invoker invoker, HistoryManager history, HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.invoker = invoker;

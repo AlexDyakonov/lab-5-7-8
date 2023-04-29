@@ -10,11 +10,12 @@ import static server.services.LoggerManager.setupLogger;
 
 public class UserBuilder {
     private static final Logger logger = Logger.getLogger(UserBuilder.class.getName());
-    private LANGUAGE language;
 
     static {
         setupLogger(logger);
     }
+
+    private LANGUAGE language;
 
     public static String getUserName(BufferedReader reader, LANGUAGE language) throws IOException {
         String login;

@@ -1,8 +1,6 @@
 package server.commands;
 
-import server.authentication.ROLES;
 import server.authentication.UserManager;
-import server.commands.list.*;
 import server.controller.HumanController;
 import server.controller.HumanControllerImpl;
 import server.exception.ApplicationException;
@@ -36,13 +34,13 @@ public class Invoker {
     private static Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
-    private UserManager userManager = new UserManager();
     private final HumanController controller;
+    private UserManager userManager = new UserManager();
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-    private CommandsMapManager commandsMapManager;
+    private final CommandsMapManager commandsMapManager;
 
     /**
      * Instantiates a new Invoker.
@@ -127,28 +125,6 @@ public class Invoker {
     }
 
     /**
-     * Sets file reader.
-     *
-     * @param fileReader the file reader
-     * @return the file reader
-     */
-    public Invoker setFileReader(BufferedReader fileReader) {
-        this.fileReader = fileReader;
-        return this;
-    }
-
-    /**
-     * Sets builder type.
-     *
-     * @param builderType the builder type
-     * @return the builder type
-     */
-    public Invoker setBuilderType(BuilderType builderType) {
-        this.builderType = builderType;
-        return this;
-    }
-
-    /**
      * Gets language.
      *
      * @return the language
@@ -194,7 +170,29 @@ public class Invoker {
         return fileReader;
     }
 
+    /**
+     * Sets file reader.
+     *
+     * @param fileReader the file reader
+     * @return the file reader
+     */
+    public Invoker setFileReader(BufferedReader fileReader) {
+        this.fileReader = fileReader;
+        return this;
+    }
+
     public BuilderType getBuilderType() {
         return builderType;
+    }
+
+    /**
+     * Sets builder type.
+     *
+     * @param builderType the builder type
+     * @return the builder type
+     */
+    public Invoker setBuilderType(BuilderType builderType) {
+        this.builderType = builderType;
+        return this;
     }
 }

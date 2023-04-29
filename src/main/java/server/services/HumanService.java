@@ -148,6 +148,7 @@ public interface HumanService {
     Long getUserId(String userName);
 
     void setUserManager(UserManager userManager);
+
     void clearAll();
 
     void setRole(String username, ROLES role);
