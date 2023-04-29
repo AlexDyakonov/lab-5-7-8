@@ -147,22 +147,26 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public void clear() {
         int elemsBefore = source.getDataSet().size();
         try {
-            String query = "TRUNCATE humanbeing CASCADE;";
+            String query = ("DELETE FROM humanbeing WHERE humanbeing_id IN (SELECT humanbeing_id FROM humantouser WHERE user_id = ?)");
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setLong(1, userManager.getUserId());
 
-            int affectedRows = preparedStatement.executeUpdate();
-            preparedStatement.close();
-            if (affectedRows == 0) {
-                throw new ApplicationException(getLog("not_cleared"));
-            }
-
-            source.updateDataSet();
-
+            checkAffectedRows(preparedStatement);
             System.out.println(getSuccessMessage("done", language));
             logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore)));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void checkAffectedRows(PreparedStatement preparedStatement) throws SQLException {
+        int affectedRows = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        if (affectedRows == 0) {
+            throw new ApplicationException(getLog("not_cleared"));
+        }
+
+        source.updateDataSet();
     }
 
     public void clearAll() {
@@ -171,16 +175,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
             String query = "TRUNCATE humanbeing CASCADE;";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
 
-            int affectedRows = preparedStatement.executeUpdate();
-            preparedStatement.close();
-            if (affectedRows == 0) {
-                throw new ApplicationException(getLog("not_cleared"));
-            }
-
-            source.updateDataSet();
-
-            System.out.println(getSuccessMessage("done", language));
-            logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore)));
+            checkAffectedRows(preparedStatement);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
