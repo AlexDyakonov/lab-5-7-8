@@ -9,18 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Clean up and refactor code">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ClearAllCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ClearAllCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/SetRoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/SetRoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ShowUsersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ShowUsersCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[ADDED] Java doc for new classes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,14 +235,7 @@
       <workItem from="1682633264191" duration="10583000" />
       <workItem from="1682658467548" duration="199000" />
       <workItem from="1682658675262" duration="5149000" />
-      <workItem from="1682688876425" duration="19691000" />
-    </task>
-    <task id="LOCAL-00073" summary="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output">
-      <created>1681449812793</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1681449812793</updated>
+      <workItem from="1682688876425" duration="20509000" />
     </task>
     <task id="LOCAL-00074" summary="Added all commands, need to fix ExecuteCommand and language changes">
       <created>1681506604559</created>
@@ -588,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682771786763</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="[ADDED] Java doc for new classes">
+      <created>1682772257268</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1682772257268</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added new messages and small refactoring" />
     <MESSAGE value="Depricated" />
     <MESSAGE value="Small fix for dev branch and added new Mapper" />
     <MESSAGE value="Removed csv file data base logic, now app boots with postgresql" />
@@ -647,7 +638,8 @@
     <MESSAGE value="[ADDED] ShowUsersCommand for admin" />
     <MESSAGE value="[FIXED] Now show command shows model with their creator (made extended class)" />
     <MESSAGE value="Clean up and refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up and refactor code" />
+    <MESSAGE value="[ADDED] Java doc for new classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADDED] Java doc for new classes" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

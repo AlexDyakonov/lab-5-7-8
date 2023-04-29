@@ -92,6 +92,6 @@ public class Message {
      * @return the command description
      */
     public static String getLog(String messageName) {
-        return jsonObject.getJSONObject("en").getJSONObject("log_info").getString(messageName);
+        return jsonObject.getJSONObject("log_info").getString(messageName);
     }
 }
