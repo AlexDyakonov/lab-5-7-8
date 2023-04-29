@@ -66,7 +66,7 @@ public class SQLDataBaseProvider {
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-            logger.info(getLog("String was encoded."));
+            logger.info(getLog("encoding_success"));
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             logger.severe(getLog("encoding_error"));

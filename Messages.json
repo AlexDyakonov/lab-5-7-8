@@ -225,6 +225,7 @@
     "user_map_init": "User command map was initialized",
     "guest_map_init": "Guest command map was initialized",
     "salt_built": "Salt for user was built",
-    "hs_filled": "Hash set was filled from data base."
+    "hs_filled": "Hash set was filled from data base.",
+    "encoding_success": "String was encoded."
   }
 }
