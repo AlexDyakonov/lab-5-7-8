@@ -41,6 +41,20 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>passwords.json</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
     <dependencies>
         <dependency>
