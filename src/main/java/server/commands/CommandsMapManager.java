@@ -3,6 +3,8 @@ package server.commands;
 import server.authentication.ROLES;
 import server.authentication.UserManager;
 import server.commands.adminlist.ClearAllCommand;
+import server.commands.adminlist.SetRoleCommand;
+import server.commands.adminlist.ShowUsersCommand;
 import server.commands.list.*;
 import server.controller.HumanController;
 import server.services.BuilderType;
@@ -60,6 +62,8 @@ public class CommandsMapManager {
 
     public Map<String, Command> adminMap() {
         addCommand("clear_all", new ClearAllCommand(controller, language));
+        addCommand("set_role", new SetRoleCommand(controller, language));
+        addCommand("show_users", new ShowUsersCommand(controller, language));
         commandsMap.putAll(userMap());
         return commandsMap;
     }

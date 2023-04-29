@@ -1,5 +1,7 @@
 package server.authentication;
 
+import server.model.User;
+
 public class UserManager {
     private String userName;
     private Long userId;

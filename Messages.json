@@ -75,7 +75,8 @@
       "print_ascending": "display the elements of the collection in ascending order.",
       "language": "choose language program.",
       "clear_all": "clears all elements.",
-      "set_role": "sets the specified user to the specified role. (set_role username role)"
+      "set_role": "sets the specified user to the specified role. (set_role username role)",
+      "show_users": "display all users with their roles."
     },
     "log_info": {
       "start_saving": "Saving data base is starting.",
@@ -206,7 +207,8 @@
       "print_ascending": "вывести элементы коллекции в порядке возрастания.",
       "language": "выбор языка.",
       "clear_all": "удаляет все элементы.",
-      "set_role": "устанавливает указанному пользователю указанную роль. (set_role username role)"
+      "set_role": "устанавливает указанному пользователю указанную роль. (set_role username role)",
+      "show_users": "вывести всех пользователей с их ролями."
     }
   }
 }

@@ -4,6 +4,7 @@ import server.authentication.ROLES;
 import server.authentication.UserManager;
 import server.exception.ValidationException;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import server.services.HumanService;
@@ -190,5 +191,10 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public void setRole(String username, ROLES role) {
         service.setRole(username, role);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return service.getAllUsers();
     }
 }

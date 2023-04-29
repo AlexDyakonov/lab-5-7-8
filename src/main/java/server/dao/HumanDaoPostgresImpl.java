@@ -8,23 +8,23 @@ import server.exception.ValidationException;
 import server.model.Car;
 import server.model.Coordinates;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import server.sql.SQLConnection;
 import util.LANGUAGE;
 
+import javax.management.relation.Role;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static server.mapper.HumanBeingMapper.fromRequestToResponse;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.*;
+import static util.Parser.stringToRole;
 
 public class HumanDaoPostgresImpl implements HumanDao {
     private static final Logger logger = Logger.getLogger(HumanDaoPostgresImpl.class.getName());
@@ -377,7 +377,8 @@ public class HumanDaoPostgresImpl implements HumanDao {
         try {
             String query = "UPDATE users SET role = ? WHERE user_name = ?;";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, role.toString());
+            preparedStatement.setString(2, username);
 
             int affectedRows = preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -389,5 +390,27 @@ public class HumanDaoPostgresImpl implements HumanDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> output = new ArrayList<>();
+        Long id;
+        String userName;
+        ROLES role;
+        try {
+            String query = "SELECT * FROM users";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getLong("user_id");
+                userName = resultSet.getString("user_name");
+                role = stringToRole(resultSet.getString("role"));
+                output.add(new User(userName, id, role));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return output;
     }
 }

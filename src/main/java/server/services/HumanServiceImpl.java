@@ -5,6 +5,7 @@ import server.authentication.UserManager;
 import server.dao.HumanDao;
 import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
@@ -152,5 +153,10 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public void setRole(String username, ROLES role) {
         humanDao.setRole(username, role);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return humanDao.getAllUsers();
     }
 }

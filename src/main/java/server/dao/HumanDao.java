@@ -3,6 +3,7 @@ package server.dao;
 import server.authentication.ROLES;
 import server.authentication.UserManager;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
@@ -151,4 +152,6 @@ public interface HumanDao {
     void clearAll();
 
     void setRole(String username, ROLES role);
+
+    List<User> getAllUsers();
 }
