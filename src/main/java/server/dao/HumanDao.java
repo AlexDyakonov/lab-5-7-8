@@ -149,4 +149,6 @@ public interface HumanDao {
     void setUserManager(UserManager userManager);
 
     void clearAll();
+
+    void setRole(String username, ROLES role);
 }

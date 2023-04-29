@@ -1,5 +1,6 @@
 package util;
 
+import server.authentication.ROLES;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.WeaponType;
@@ -124,6 +125,23 @@ public class Parser {
             default -> {
                 System.out.println(error("Значения WeaponType могут быть AXE, SHOTGUN, BAT, null. Будет установлено дефолтное значение(SHOTGUN)."));
                 return WeaponType.SHOTGUN;
+            }
+        }
+    }
+
+    public static ROLES stringToRole(String line) {
+        switch (line.trim().toLowerCase()) {
+            case "admin", "-1" -> {
+                return ROLES.ADMIN;
+            }
+            case "guest", "0" -> {
+                return ROLES.GUEST;
+            }
+            case "user", "1" -> {
+                return ROLES.USER;
+            }
+            default -> {
+                return ROLES.GUEST;
             }
         }
     }

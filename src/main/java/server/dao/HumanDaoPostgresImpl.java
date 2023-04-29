@@ -371,4 +371,23 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
     }
+
+    @Override
+    public void setRole(String username, ROLES role) {
+        try {
+            String query = "UPDATE users SET role = ? WHERE user_name = ?;";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+            if (affectedRows == 0) {
+                System.out.println(getError("not_done", language));
+                throw new ApplicationException(getLog("update_error"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

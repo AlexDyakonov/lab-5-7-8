@@ -148,4 +148,9 @@ public class HumanServiceImpl implements HumanService {
     public void setUserManager(UserManager userManager) {
         humanDao.setUserManager(userManager);
     }
+
+    @Override
+    public void setRole(String username, ROLES role) {
+        humanDao.setRole(username, role);
+    }
 }

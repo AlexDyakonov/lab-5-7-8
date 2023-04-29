@@ -137,4 +137,6 @@ public interface HumanController {
     void setUserManager(UserManager userManager);
 
     void clearAll();
+
+    void setRole(String username, ROLES role);
 }

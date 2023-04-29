@@ -186,4 +186,9 @@ public class HumanControllerImpl implements HumanController {
     public void setUserManager(UserManager userManager) {
         service.setUserManager(userManager);
     }
+
+    @Override
+    public void setRole(String username, ROLES role) {
+        service.setRole(username, role);
+    }
 }

@@ -74,7 +74,8 @@
       "count_by_mood": "display the number of elements whose mood field value is equal to the specified value.",
       "print_ascending": "display the elements of the collection in ascending order.",
       "language": "choose language program.",
-      "clear_all": "clears all elements."
+      "clear_all": "clears all elements.",
+      "set_role": "sets the specified user to the specified role. (set_role username role)"
     },
     "log_info": {
       "start_saving": "Saving data base is starting.",
@@ -204,7 +205,8 @@
       "count_by_mood": "вывести количество элементов, значение поля mood которых равно заданному.",
       "print_ascending": "вывести элементы коллекции в порядке возрастания.",
       "language": "выбор языка.",
-      "clear_all": "удаляет все элементы."
+      "clear_all": "удаляет все элементы.",
+      "set_role": "устанавливает указанному пользователю указанную роль. (set_role username role)"
     }
   }
 }
