@@ -1,12 +1,22 @@
 package server.authentication;
 
+import java.util.logging.Logger;
+
+import static server.services.LoggerManager.setupLogger;
+import static util.Message.getLog;
+
 /**
  * The type User manager. Class to hold info about current user
  */
 public class UserManager {
+    private static final Logger logger = Logger.getLogger(UserManager.class.getName());
     private String userName;
     private Long userId;
     private ROLES userRole;
+
+    static {
+        setupLogger(logger);
+    }
 
     /**
      * Instantiates a new User manager.
@@ -25,6 +35,7 @@ public class UserManager {
      * Instantiates a new User manager.
      */
     public UserManager() {
+        logger.info(getLog("um_inited"));
     }
 
     /**

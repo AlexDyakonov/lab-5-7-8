@@ -2,12 +2,14 @@ package server.authentication;
 
 
 import server.controller.HumanController;
+import server.exception.ValidationException;
 import util.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import static server.services.LoggerManager.setupLogger;
 import static server.services.builders.UserBuilder.getPasswordLogin;
 import static server.services.builders.UserBuilder.getUserName;
 import static util.Message.*;
@@ -22,6 +24,10 @@ public class Authentication {
     private final BufferedReader reader;
     private final LANGUAGE language;
 
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Instantiates a new Authentication.
      *
@@ -30,10 +36,12 @@ public class Authentication {
      * @param language   the language
      */
     public Authentication(HumanController controller, BufferedReader reader, LANGUAGE language) {
+        logger.info(getLog("auth_init_start"));
         this.reader = reader;
         this.controller = controller;
         this.language = language;
         controller.setUserName(userManager.getUserName());
+        logger.info(getLog("auth_init_finish"));
     }
 
     /**
@@ -42,9 +50,15 @@ public class Authentication {
      * @param username
      */
     private void configUserManager(String username) {
+        ROLES role = controller.getUserRole(username);
+        Long id = controller.getUserId(username);
         userManager.setUserName(username)
-                .setUserRole(controller.getUserRole(username))
-                .setUserId(controller.getUserId(username));
+                .setUserRole(role)
+                .setUserId(id);
+        logger.info(getLog("user_manager_cofigured").
+                replace("%id%", String.valueOf(id)).
+                replace("%name%", username).
+                replace("%role%", role.toString()));
     }
 
     /**
@@ -61,6 +75,7 @@ public class Authentication {
                 default -> start();
             }
         } catch (IOException e) {
+            logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -76,14 +91,20 @@ public class Authentication {
             String password = getPasswordLogin(reader, language);
             if (controller.getUserNameList().contains(username)) {
                 System.out.println(getWarning("user_exist", language));
+                logger.warning(getWarning("user_exist", LANGUAGE.EN));
                 registerUser();
             } else {
                 controller.userRegister(username, password);
                 configUserManager(username);
                 controller.setUserManager(userManager);
                 System.out.println(getSuccessMessage("user_registered", language));
+                logger.info(getLog("user_regisrered"));
             }
             return userManager;
+        } catch (ValidationException e) {
+            logger.warning(e.getMessage());
+            System.out.println(e.getMessage());
+            return login();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -102,11 +123,17 @@ public class Authentication {
                 configUserManager(username);
                 controller.setUserManager(userManager);
                 System.out.println(getSuccessMessage("done", language));
+                logger.info(getLog("user_logined"));
             } else {
                 System.out.println(getWarning("invalid_login", language));
+                logger.info(getWarning("invalid_login", LANGUAGE.EN));
                 login();
             }
             return userManager;
+        } catch (ValidationException e) {
+            logger.warning(e.getMessage());
+            System.out.println(e.getMessage());
+            return login();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -119,6 +146,7 @@ public class Authentication {
      */
     public UserManager guest() {
         userManager.setUserRole(ROLES.GUEST).setUserName("guest");
+        logger.info(getLog("guest_logined"));
         return userManager;
     }
 

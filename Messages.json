@@ -15,6 +15,8 @@
       "input_language": "Type RU/EN to choose app language: ",
       "info_about_dataset": "DataBase class: %class%; \nCreated: %date%;\n Size: %size%;",
       "count_by_mood": "With %mood% found %num% elements.",
+      "get_login": "Enter login:",
+      "get_pass": "Enter password :",
       "authentication": "Welcome! Sign in to start using the app or register to access it.\n1. Input \n2. Registration \n3. Login as a guest"
     },
     "error": {
@@ -95,6 +97,8 @@
       "input_language": "Введите RU/EN для выбора языка системы: ",
       "info_about_dataset": "Класс бд: %class%; \n Создано: %date%; \n Размер: %size%;",
       "count_by_mood": "С %mood% найдено %num% элементов.",
+      "get_login": "Введите логин:",
+      "get_pass": "Введите пароль:",
       "authentication": "Добро пожаловать! Войдите в аккаунт для того чтобы начать пользоваться приложением или пройдите регистрацию, чтобы получить доступ к нему.\n1. Вход \n2. Регистрация \n3. Войти как гость"
     },
     "error": {
@@ -209,6 +213,18 @@
     "connection_created": "Connection was successfully created",
     "connection_not_created": "Connection was not created.",
     "user_not_registered": "User *%name%* was not registered.",
-    "encoding_error": "Failed to encode..."
+    "encoding_error": "Failed to encode...",
+    "auth_init_start": "Authentication class start initializing.",
+    "auth_init_finish": "Authentication class initialized.",
+    "user_manager_cofigured": "UserManager configured: id - *%id%*, name - *%name%*, role - *%%*",
+    "user_registered": "User was successfuly registered.",
+    "user_logined": "User was successfuly logined.",
+    "guest_logined": "User uses guest mode.",
+    "um_inited": "User manager wat initialized.",
+    "admin_map_init": "Admin command map was initialized",
+    "user_map_init": "Admin command map was initialized",
+    "guest_map_init": "Admin command map was initialized",
+    "salt_built": "Salt for user was built",
+    "hs_filled": "Hash set was filled from data base."
   }
 }

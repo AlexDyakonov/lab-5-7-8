@@ -8,12 +8,18 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.logging.Logger;
 
+import static server.services.LoggerManager.setupLogger;
+
 /**
  * The type Console ui.
  */
 public class ConsoleUI {
     private static final Logger logger = Logger.getLogger(ConsoleUI.class.getName());
     private final Invoker invoker;
+
+    static {
+        setupLogger(logger);
+    }
 
     /**
      * Instantiates a new Console ui.

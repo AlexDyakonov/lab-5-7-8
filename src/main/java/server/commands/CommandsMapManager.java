@@ -14,11 +14,16 @@ import util.LANGUAGE;
 import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import static server.services.LoggerManager.setupLogger;
+import static util.Message.getLog;
 
 /**
  * The type Commands map manager. Class to choose commandsMap in case of user role
  */
 public class CommandsMapManager {
+    public static final Logger logger = Logger.getLogger(CommandsMapManager.class.getName());
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final Invoker invoker;
@@ -29,6 +34,10 @@ public class CommandsMapManager {
     private BufferedReader fileReader;
     private BuilderType builderType;
     private final LANGUAGE language;
+
+    static {
+        setupLogger(logger);
+    }
 
     /**
      * Instantiates a new Commands map manager.
@@ -87,6 +96,7 @@ public class CommandsMapManager {
         addCommand("set_role", new SetRoleCommand(controller, language));
         addCommand("show_users", new ShowUsersCommand(controller, language));
         commandsMap.putAll(userMap());
+        logger.info(getLog("admin_map_init"));
         return commandsMap;
     }
 
@@ -104,6 +114,7 @@ public class CommandsMapManager {
         addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
         commandsMap.putAll(guestMap());
+        logger.info(getLog("user_map_init"));
         return commandsMap;
     }
 
@@ -122,6 +133,7 @@ public class CommandsMapManager {
         addCommand("count_by_mood", new CountByMoodCommand(controller, language));
         addCommand("print_ascending", new PrintAscendingCommand(controller, language));
         addCommand("language", new LanguageCommand(invoker));
+        logger.info(getLog("guest_map_init"));
         return commandsMap;
     }
 

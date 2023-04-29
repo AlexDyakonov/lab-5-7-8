@@ -52,6 +52,7 @@ public class SQLDataBaseProvider {
         for (int i = 0; i < 20; i++) {
             stringBuilder.append((char) new Random().nextInt(33, 126));
         }
+        logger.info(getLog("salt_built"));
         return stringBuilder.toString();
     }
 
@@ -65,6 +66,7 @@ public class SQLDataBaseProvider {
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
+            logger.info(getLog("String was encoded."));
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             logger.severe(getLog("encoding_error"));
@@ -89,6 +91,7 @@ public class SQLDataBaseProvider {
                 dbSet.add(getHumanBeingById(resultSet.getLong("humanbeing_id")));
             }
             preparedStatement.close();
+            logger.info(getLog("hs_filled"));
         } catch (SQLException e) {
             logger.severe(e.getMessage());
             throw new RuntimeException(e);

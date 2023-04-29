@@ -42,6 +42,10 @@ public class Invoker {
     private LANGUAGE language;
     private final CommandsMapManager commandsMapManager;
 
+    static {
+        setupLogger(logger);
+    }
+
     /**
      * Instantiates a new Invoker.
      *
@@ -49,7 +53,6 @@ public class Invoker {
      * @param language    the language
      */
     public Invoker(BuilderType builderType, LANGUAGE language) {
-        setupLogger(logger);
         logger.info(getLog("invoker_init_start"));
         this.controller = new HumanControllerImpl();
         this.history = new HistoryManager(15); // limit history size
