@@ -8,21 +8,53 @@ import server.model.WeaponType;
 import java.time.ZonedDateTime;
 
 
+/**
+ * The type Human being response dt owith users. Class tgat extends HumanBeingResponseDTO to be shown in SHOW command
+ */
 public class HumanBeingResponseDTOwithUsers extends HumanBeingResponseDTO {
     private String username;
 
+    /**
+     * Instantiates a new Human being response dt owith users.
+     */
     public HumanBeingResponseDTOwithUsers() {
     }
 
+    /**
+     * Instantiates a new Human being response dt owith users.
+     *
+     * @param id             the id
+     * @param name           the name
+     * @param coordinates    the coordinates
+     * @param creationDate   the creation date
+     * @param realHero       the real hero
+     * @param hasToothpick   the has toothpick
+     * @param impactSpeed    the impact speed
+     * @param soundtrackName the soundtrack name
+     * @param weaponType     the weapon type
+     * @param mood           the mood
+     * @param car            the car
+     * @param username       the username
+     */
     public HumanBeingResponseDTOwithUsers(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, Boolean realHero, Boolean hasToothpick, Float impactSpeed, String soundtrackName, WeaponType weaponType, Mood mood, Car car, String username) {
         super(id, name, coordinates, creationDate, realHero, hasToothpick, impactSpeed, soundtrackName, weaponType, mood, car);
         this.username = username;
     }
 
+    /**
+     * Gets username.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets username.
+     *
+     * @param username the username
+     */
     public void setUsername(String username) {
         this.username = username;
     }

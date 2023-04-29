@@ -9,10 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[ADDED] ShowUsersCommand for admin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/SQLDataBaseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTOwithUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/dto/HumanBeingResponseDTOwithUsers.java" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Clean up and refactor code">
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/ROLES.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/authentication/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/CommandsMapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ClearAllCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ClearAllCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/SetRoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/SetRoleCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ShowUsersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/adminlist/ShowUsersCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/SQLConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,21 +243,7 @@
       <workItem from="1682633264191" duration="10583000" />
       <workItem from="1682658467548" duration="199000" />
       <workItem from="1682658675262" duration="5149000" />
-      <workItem from="1682688876425" duration="19195000" />
-    </task>
-    <task id="LOCAL-00071" summary="Added ru and en localization for builders (input lines)">
-      <created>1681366472314</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1681366472314</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Code reformatting for whole project">
-      <created>1681373520715</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1681373520715</updated>
+      <workItem from="1682688876425" duration="19691000" />
     </task>
     <task id="LOCAL-00073" summary="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output">
       <created>1681449812793</created>
@@ -580,7 +574,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682769040641</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="[FIXED] Now show command shows model with their creator (made extended class)">
+      <created>1682771709397</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1682771709397</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Clean up and refactor code">
+      <created>1682771786763</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1682771786763</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,8 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added class for Dao layer using db with postgresql" />
-    <MESSAGE value="Added logger" />
     <MESSAGE value="Added new messages and small refactoring" />
     <MESSAGE value="Depricated" />
     <MESSAGE value="Small fix for dev branch and added new Mapper" />
@@ -639,7 +645,9 @@
     <MESSAGE value="[FIXED] &quot;clear&quot; deletes only humanbeing that was created by user" />
     <MESSAGE value="[ADDED] SetRoleCommand for admin to set role to users" />
     <MESSAGE value="[ADDED] ShowUsersCommand for admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADDED] ShowUsersCommand for admin" />
+    <MESSAGE value="[FIXED] Now show command shows model with their creator (made extended class)" />
+    <MESSAGE value="Clean up and refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up and refactor code" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

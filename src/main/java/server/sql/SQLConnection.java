@@ -9,6 +9,9 @@ import static server.services.LoggerManager.setupLogger;
 import static util.Message.getLog;
 
 
+/**
+ * The type Sql connection.
+ */
 public class SQLConnection {
     private static final Logger logger = Logger.getLogger(SQLConnection.class.getName());
 
@@ -18,6 +21,9 @@ public class SQLConnection {
 
     private final Connection connection;
 
+    /**
+     * Instantiates a new Sql connection.
+     */
     public SQLConnection() {
         try {
             String url = PropertiesProvider.getAppProperties().getProperty("datasource.url");
@@ -35,6 +41,11 @@ public class SQLConnection {
         }
     }
 
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     */
     public Connection getConnection() {
         return connection;
     }

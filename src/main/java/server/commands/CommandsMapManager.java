@@ -15,7 +15,9 @@ import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO подчистить, можно сделать лучше
+/**
+ * The type Commands map manager. Class to choose commandsMap in case of user role
+ */
 public class CommandsMapManager {
     private static final Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
@@ -28,6 +30,17 @@ public class CommandsMapManager {
     private BuilderType builderType;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Commands map manager.
+     *
+     * @param invoker     the invoker
+     * @param history     the history
+     * @param controller  the controller
+     * @param cmdReader   the cmd reader
+     * @param fileReader  the file reader
+     * @param builderType the builder type
+     * @param language    the language
+     */
     public CommandsMapManager(Invoker invoker, HistoryManager history, HumanController controller, BufferedReader cmdReader, BufferedReader fileReader, BuilderType builderType, LANGUAGE language) {
         this.invoker = invoker;
         this.history = history;
@@ -38,6 +51,11 @@ public class CommandsMapManager {
         this.language = language;
     }
 
+    /**
+     * Gets commands map.
+     *
+     * @return the commands map
+     */
     public Map<String, Command> getCommandsMap() {
         if (role == null) {
             return new HashMap<>();
@@ -59,6 +77,11 @@ public class CommandsMapManager {
     }
 
 
+    /**
+     * Admin map map.
+     *
+     * @return the map
+     */
     public Map<String, Command> adminMap() {
         addCommand("clear_all", new ClearAllCommand(controller, language));
         addCommand("set_role", new SetRoleCommand(controller, language));
@@ -67,6 +90,11 @@ public class CommandsMapManager {
         return commandsMap;
     }
 
+    /**
+     * User map map.
+     *
+     * @return the map
+     */
     public Map<String, Command> userMap() {
         addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType, language));
         addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
@@ -79,6 +107,11 @@ public class CommandsMapManager {
         return commandsMap;
     }
 
+    /**
+     * Guest map map.
+     *
+     * @return the map
+     */
     public Map<String, Command> guestMap() {
         addCommand("help", new HelpCommand(language));
         addCommand("info", new InfoCommand(controller, language));
@@ -92,16 +125,34 @@ public class CommandsMapManager {
         return commandsMap;
     }
 
+    /**
+     * Sets cmd reader.
+     *
+     * @param cmdReader the cmd reader
+     * @return the cmd reader
+     */
     public CommandsMapManager setCmdReader(BufferedReader cmdReader) {
         this.cmdReader = cmdReader;
         return this;
     }
 
+    /**
+     * Sets file reader.
+     *
+     * @param fileReader the file reader
+     * @return the file reader
+     */
     public CommandsMapManager setFileReader(BufferedReader fileReader) {
         this.fileReader = fileReader;
         return this;
     }
 
+    /**
+     * Sets builder type.
+     *
+     * @param builderType the builder type
+     * @return the builder type
+     */
     public CommandsMapManager setBuilderType(BuilderType builderType) {
         this.builderType = builderType;
         return this;
@@ -111,6 +162,11 @@ public class CommandsMapManager {
         commandsMap.put(commandName, command);
     }
 
+    /**
+     * Sets role.
+     *
+     * @param role the role
+     */
     public void setRole(ROLES role) {
         this.role = role;
     }

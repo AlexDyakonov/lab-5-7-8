@@ -12,6 +12,9 @@ import static server.services.builders.UserBuilder.getPasswordLogin;
 import static server.services.builders.UserBuilder.getUserName;
 import static util.Message.*;
 
+/**
+ * The type Authentication.  Class that begins authentication for users
+ */
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
     private final UserManager userManager = new UserManager();
@@ -19,6 +22,13 @@ public class Authentication {
     private final BufferedReader reader;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Authentication.
+     *
+     * @param controller the controller
+     * @param reader     the reader
+     * @param language   the language
+     */
     public Authentication(HumanController controller, BufferedReader reader, LANGUAGE language) {
         this.reader = reader;
         this.controller = controller;
@@ -26,12 +36,20 @@ public class Authentication {
         controller.setUserName(userManager.getUserName());
     }
 
+    /**
+     * configs userManager for actual user
+     *
+     * @param username
+     */
     private void configUserManager(String username) {
         userManager.setUserName(username)
                 .setUserRole(controller.getUserRole(username))
                 .setUserId(controller.getUserId(username));
     }
 
+    /**
+     * Start. Print message and give choice for user
+     */
     public void start() {
         System.out.println(getMessage("authentication", language));
         try {
@@ -47,6 +65,11 @@ public class Authentication {
         }
     }
 
+    /**
+     * Register user user manager. Method to register user
+     *
+     * @return the user manager
+     */
     public UserManager registerUser() {
         try {
             String username = getUserName(reader, language);
@@ -66,6 +89,11 @@ public class Authentication {
         }
     }
 
+    /**
+     * Login user manager. Method to login user
+     *
+     * @return the user manager
+     */
     public UserManager login() {
         try {
             String username = getUserName(reader, language);
@@ -84,11 +112,21 @@ public class Authentication {
         }
     }
 
+    /**
+     * Guest user manager. Method to use guest account
+     *
+     * @return the user manager
+     */
     public UserManager guest() {
         userManager.setUserRole(ROLES.GUEST).setUserName("guest");
         return userManager;
     }
 
+    /**
+     * Gets user manager.
+     *
+     * @return the user manager
+     */
     public UserManager getUserManager() {
         return userManager;
     }

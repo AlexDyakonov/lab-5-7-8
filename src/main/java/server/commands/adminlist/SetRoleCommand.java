@@ -10,10 +10,19 @@ import static util.Message.getCommandDescription;
 import static util.Message.getError;
 import static util.Parser.stringToRole;
 
+/**
+ * The type Set role command. Set role to user, only admins
+ */
 public class SetRoleCommand implements Command {
     private final HumanController controller;
     private final LANGUAGE language;
 
+    /**
+     * Instantiates a new Set role command.
+     *
+     * @param controller the controller
+     * @param language   the language
+     */
     public SetRoleCommand(HumanController controller, LANGUAGE language) {
         this.controller = controller;
         this.language = language;

@@ -129,6 +129,12 @@ public class Parser {
         }
     }
 
+    /**
+     * String to role roles.
+     *
+     * @param line the line
+     * @return the roles
+     */
     public static ROLES stringToRole(String line) {
         switch (line.trim().toLowerCase()) {
             case "admin", "-1" -> {
@@ -146,12 +152,24 @@ public class Parser {
         }
     }
 
+    /**
+     * Convert time stamp to zoned zoned date time.
+     *
+     * @param timestamp the timestamp
+     * @return the zoned date time
+     */
     public static ZonedDateTime convertTimeStampToZoned(Timestamp timestamp) {
         Instant instant = timestamp.toInstant();
         ZoneId zoneId = ZoneId.systemDefault();
         return instant.atZone(zoneId);
     }
 
+    /**
+     * Convert zoned date time to time stamp timestamp.
+     *
+     * @param zonedDateTime the zoned date time
+     * @return the timestamp
+     */
     public static Timestamp convertZonedDateTimeToTimeStamp(ZonedDateTime zonedDateTime) {
         return Timestamp.valueOf(zonedDateTime.toLocalDateTime());
     }

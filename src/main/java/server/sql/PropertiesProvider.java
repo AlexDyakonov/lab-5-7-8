@@ -11,6 +11,9 @@ import static client.ui.ConsoleColors.error;
 import static server.services.LoggerManager.setupLogger;
 import static util.Message.getLog;
 
+/**
+ * The type Properties provider.
+ */
 public class PropertiesProvider {
     private static final Logger logger = Logger.getLogger(PropertiesProvider.class.getName());
     private static final Properties appProperties = new Properties();
@@ -27,6 +30,11 @@ public class PropertiesProvider {
         }
     }
 
+    /**
+     * Gets app properties.
+     *
+     * @return the app properties
+     */
     public static Properties getAppProperties() {
         return new Properties(appProperties); //Defence copy, изменяя ее, исходный файл не будет изменяться
     }
