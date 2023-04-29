@@ -9,8 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[FIXED] Small fix of Messages.json">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,14 +235,7 @@
       <workItem from="1682633264191" duration="10583000" />
       <workItem from="1682658467548" duration="199000" />
       <workItem from="1682658675262" duration="5149000" />
-      <workItem from="1682688876425" duration="22748000" />
-    </task>
-    <task id="LOCAL-00077" summary="Added logic in Message Class, added javadoc for its. Added more messages">
-      <created>1681584226282</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1681584226282</updated>
+      <workItem from="1682688876425" duration="23379000" />
     </task>
     <task id="LOCAL-00078" summary="Now logger saves in one file with normal name">
       <created>1681935368580</created>
@@ -578,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682780054882</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file">
+      <created>1682780430020</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1682780430020</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Deprecated method save" />
     <MESSAGE value="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands" />
     <MESSAGE value="Added more commands and messages" />
     <MESSAGE value="All commands executes data from postgresql" />
@@ -637,7 +638,8 @@
     <MESSAGE value="[MODIFY] Small modify of logic in getLog method" />
     <MESSAGE value="[MODIFY] Added logger messages" />
     <MESSAGE value="[FIXED] Small fix of Messages.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIXED] Small fix of Messages.json" />
+    <MESSAGE value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

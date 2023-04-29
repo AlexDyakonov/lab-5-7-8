@@ -4,6 +4,7 @@ import server.exception.FileException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -22,7 +23,8 @@ public class PropertiesProvider {
         setupLogger(logger);
         try {
             logger.info(getLog("prop_provider_loading"));
-            appProperties.load(new FileInputStream("src/main/resources/application.properties"));
+            InputStream inputStream = PropertiesProvider.class.getClassLoader().getResourceAsStream("application.properties");
+            appProperties.load(inputStream);
             logger.info(getLog("prop_provider_finish"));
         } catch (IOException e) {
             logger.severe(e.getMessage());
