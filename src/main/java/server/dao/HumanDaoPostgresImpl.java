@@ -165,6 +165,27 @@ public class HumanDaoPostgresImpl implements HumanDao {
         }
     }
 
+    public void clearAll() {
+        int elemsBefore = source.getDataSet().size();
+        try {
+            String query = "TRUNCATE humanbeing CASCADE;";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            if (affectedRows == 0) {
+                throw new ApplicationException(getLog("not_cleared"));
+            }
+
+            source.updateDataSet();
+
+            System.out.println(getSuccessMessage("done", language));
+            logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore)));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Deprecated
     @Override
     public void save(String fileName) {

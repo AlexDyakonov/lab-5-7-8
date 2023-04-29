@@ -135,4 +135,6 @@ public interface HumanController {
     Long getUserId(String userName);
 
     void setUserManager(UserManager userManager);
+
+    void clearAll();
 }

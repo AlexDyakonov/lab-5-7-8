@@ -43,7 +43,7 @@ public class AddIfMaxCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length > 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         HumanBeingRequestDTO dtoMax = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language);
         if (controller.isImpactSpeedMax(dtoMax)) {

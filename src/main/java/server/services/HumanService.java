@@ -148,4 +148,5 @@ public interface HumanService {
 
     void setUserManager(UserManager userManager);
 
+    void clearAll();
 }

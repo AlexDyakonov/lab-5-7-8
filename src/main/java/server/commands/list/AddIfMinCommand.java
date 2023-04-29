@@ -43,7 +43,7 @@ public class AddIfMinCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length > 1) {
-            throw new ArgumentException(getError("no_args", LANGUAGE.RU));
+            throw new ArgumentException(getError("no_args", language));
         }
         HumanBeingRequestDTO dtoMin = HumanBeingRequestDTOBuilder.build(cmdReader, fileReader, builderType, language);
         if (controller.isImpactSpeedMin(dtoMin)) {
@@ -53,6 +53,6 @@ public class AddIfMinCommand implements Command {
 
     @Override
     public String description() {
-        return getCommandDescription("add_if_min", LANGUAGE.RU);
+        return getCommandDescription("add_if_min", language);
     }
 }

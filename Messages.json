@@ -73,7 +73,8 @@
       "max_by_impact_speed": "display any object from the collection whose impactSpeed field value is the maximum.",
       "count_by_mood": "display the number of elements whose mood field value is equal to the specified value.",
       "print_ascending": "display the elements of the collection in ascending order.",
-      "language": "choose language program."
+      "language": "choose language program.",
+      "clear_all": "clears all elements."
     },
     "log_info": {
       "start_saving": "Saving data base is starting.",
@@ -202,7 +203,8 @@
       "max_by_impact_speed": "вывести любой объект из коллекции, значение поля impactSpeed которого является максимальным.",
       "count_by_mood": "вывести количество элементов, значение поля mood которых равно заданному.",
       "print_ascending": "вывести элементы коллекции в порядке возрастания.",
-      "language": "выбор языка."
+      "language": "выбор языка.",
+      "clear_all": "clears all elements."
     }
   }
 }

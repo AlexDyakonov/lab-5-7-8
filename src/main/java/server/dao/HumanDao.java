@@ -148,4 +148,5 @@ public interface HumanDao {
 
     void setUserManager(UserManager userManager);
 
+    void clearAll();
 }

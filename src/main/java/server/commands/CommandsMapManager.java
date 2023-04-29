@@ -2,6 +2,7 @@ package server.commands;
 
 import server.authentication.ROLES;
 import server.authentication.UserManager;
+import server.commands.adminlist.ClearAllCommand;
 import server.commands.list.*;
 import server.controller.HumanController;
 import server.services.BuilderType;
@@ -58,22 +59,7 @@ public class CommandsMapManager {
 
 
     public Map<String, Command> adminMap() {
-        addCommand("help", new HelpCommand(language));
-        addCommand("info", new InfoCommand(controller, language));
-        addCommand("show", new ShowCommand(controller, language));
-        addCommand("add", new AddCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("update", new UpdateCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("remove_by_id", new RemoveByIdCommand(controller, language));
-        addCommand("clear", new ClearCommand(controller, language));
-        addCommand("execute_script", new ExecuteScriptCommand(invoker, scriptManager, language));
-        addCommand("exit", new ExitCommand(language));
-        addCommand("add_if_max", new AddIfMaxCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("add_if_min", new AddIfMinCommand(controller, cmdReader, fileReader, builderType, language));
-        addCommand("history", new HistoryCommand(history, language));
-        addCommand("max_by_impact_speed", new MaxByImpactSpeedCommand(controller, language));
-        addCommand("count_by_mood", new CountByMoodCommand(controller, language));
-        addCommand("print_ascending", new PrintAscendingCommand(controller, language));
-        addCommand("language", new LanguageCommand(invoker));
+        addCommand("clear_all", new ClearAllCommand(controller, language));
         commandsMap.putAll(userMap());
         return commandsMap;
     }

@@ -57,12 +57,17 @@ public class HumanServiceImpl implements HumanService {
         return humanDao.info();
     }
 
-    @Deprecated
     @Override
     public void clear() {
         humanDao.clear();
     }
 
+    @Override
+    public void clearAll() {
+        humanDao.clearAll();
+    }
+
+    @Deprecated
     @Override
     public void save(String fileName) {
         humanDao.save(fileName);

@@ -90,6 +90,11 @@ public class HumanControllerImpl implements HumanController {
         service.clear();
     }
 
+    @Override
+    public void clearAll() {
+        service.clearAll();
+    }
+
     @Deprecated
     @Override
     public void save(String fileName, LANGUAGE language) {
