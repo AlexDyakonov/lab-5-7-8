@@ -7,6 +7,7 @@ import server.model.Coordinates;
 import server.model.Mood;
 import server.model.WeaponType;
 import server.model.dto.HumanBeingResponseDTO;
+import server.model.dto.HumanBeingResponseDTOwithUsers;
 import server.sql.SQLConnection;
 
 import java.nio.charset.StandardCharsets;
@@ -188,13 +189,17 @@ public class SQLDataBaseProvider {
         return false;
     }
 
-    public HumanBeingResponseDTO getHumanBeingById(Long id) {
+    public HumanBeingResponseDTOwithUsers getHumanBeingById(Long id) {
         if (!findHumanById(id)) {
             return null;
         }
         try {
-            HumanBeingResponseDTO response = new HumanBeingResponseDTO();
-            String query = "SELECT * FROM humanbeing WHERE humanbeing_id = ?";
+            HumanBeingResponseDTOwithUsers response = new HumanBeingResponseDTOwithUsers();
+            String query =
+                    "SELECT  h.humanbeing_id, h.name, h.coordinates_id, h.creation_time, h.real_hero, h.has_toothpick, " +
+                            "h.impact_speed, h.soundtrack, h.mood, h.weapon_type, h.car_id, u.user_name FROM humanbeing h " +
+                            "JOIN humantouser hu ON h.humanbeing_id = hu.humanbeing_id " +
+                            "JOIN users u ON hu.user_id = u.user_id WHERE h.humanbeing_id = ?";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id.intValue());
 
@@ -211,8 +216,11 @@ public class SQLDataBaseProvider {
                 response.setMood(Mood.valueOf(resultSet.getString("mood")));
                 response.setWeaponType(WeaponType.valueOf(resultSet.getString("weapon_type")));
                 response.setCar(getCar(resultSet.getInt("car_id")));
+                response.setUsername(resultSet.getString("user_name"));
             }
             preparedStatement.close();
+
+
             return response;
         } catch (SQLException e) {
             logger.severe(e.getMessage());

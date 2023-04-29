@@ -29,8 +29,18 @@ public class HumanBeingResponseDTOwithUsers extends HumanBeingResponseDTO {
 
     @Override
     public String toString() {
-        return "HumanBeingResponseDTOwithUsers{" +
-                "username='" + username + '\'' +
+        return " \033[0;33m HumanBeing \033[0m (id = " + super.getId() + "){\n " + "\033[0;32m" +
+                "   name \033[0m =  " + super.getName() + "\n \033[0;32m" +
+                "   coordinates \033[0m = " + super.getCoordinates() + "\n \033[0;32m" +
+                "   creationDate \033[0m = " + super.getCreationDate() + "\n \033[0;32m" +
+                "   realHero \033[0m = " + super.getRealHero() + "\n \033[0;32m" +
+                "   hasToothpick \033[0m = " + super.getHasToothpick() + "\n \033[0;32m" +
+                "   impactSpeed \033[0m = " + super.getImpactSpeed() + "\n \033[0;32m" +
+                "   soundtrackName \033[0m = " + super.getSoundtrackName() + "\n \033[0;32m" +
+                "   weaponType \033[0m = " + super.getWeaponType() + "\n \033[0;32m" +
+                "   mood \033[0m = " + super.getMood() + "\n \033[0;32m" +
+                "   car \033[0m = " + super.getCar() + "\n \033[0;32m" +
+                "   Creator \033[0m : " + username + "\n" +
                 '}';
     }
 }
