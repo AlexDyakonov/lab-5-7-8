@@ -16,9 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
@@ -36,6 +34,7 @@ public class SQLDataBaseProvider {
     private final SQLConnection sqlConnection;
     private final LocalDateTime creationDate;
     private final String pepper = "*63&^mVLC(#";
+    private String username;
     private Set<HumanBeingResponseDTO> dataSet;
 
 
@@ -341,6 +340,25 @@ public class SQLDataBaseProvider {
         }
     }
 
+    public boolean isHumanBeingBelongsToUser(Long humanBeingId, Long userId) {
+        try {
+            String query = "SELECT humanbeing_id FROM humantouser WHERE user_id = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setLong(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                if (humanBeingId.equals(resultSet.getLong("humanbeing_id"))) {
+                    return true;
+                }
+            }
+            preparedStatement.close();
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public SQLConnection getSqlConnection() {
         return sqlConnection;
     }
@@ -356,5 +374,13 @@ public class SQLDataBaseProvider {
 
     public LocalDateTime getCreationDate() {
         return creationDate;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

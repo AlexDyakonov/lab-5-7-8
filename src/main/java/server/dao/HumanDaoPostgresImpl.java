@@ -1,8 +1,10 @@
 package server.dao;
 
 import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.db.SQLDataBaseProvider;
 import server.exception.ApplicationException;
+import server.exception.ValidationException;
 import server.model.Car;
 import server.model.Coordinates;
 import server.model.Mood;
@@ -29,9 +31,13 @@ public class HumanDaoPostgresImpl implements HumanDao {
     private final SQLConnection sqlConnection = new SQLConnection();
     private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
     private LANGUAGE language;
+    private UserManager userManager;
+
+    static {
+        setupLogger(logger);
+    }
 
     public HumanDaoPostgresImpl() {
-        setupLogger(logger);
     }
 
     @Override
@@ -53,17 +59,26 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
-        if (source.findHumanById(id)) {
+        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
             try {
-                String query = "DELETE FROM humanbeing WHERE humanbeing_id = ?";
+                String query = "DELETE FROM humantouser WHERE humanbeing_id = ?";
                 PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-                preparedStatement.setInt(1, id.intValue());
-
+                preparedStatement.setLong(1, id);
                 int affectedRows = preparedStatement.executeUpdate();
                 if (affectedRows == 0) {
                     throw new ApplicationException("Не удалось добавить юзера");
                 }
                 preparedStatement.close();
+
+                String query1 = "DELETE FROM humanbeing WHERE humanbeing_id = ?";
+                PreparedStatement preparedStatement1 = sqlConnection.getConnection().prepareStatement(query1);
+                preparedStatement1.setInt(1, id.intValue());
+
+                int affectedRows1 = preparedStatement1.executeUpdate();
+                if (affectedRows1 == 0) {
+                    throw new ApplicationException("Не удалось добавить юзера");
+                }
+                preparedStatement1.close();
                 System.out.println(getSuccessMessage("done", language));
                 logger.info((getLog("user_deleted")).replace("%id%", id.toString()));
             } catch (SQLException e) {
@@ -78,40 +93,44 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO request, Long id) {
         try {
-            logger.info(getLog("update_starting").replace("%id%", id.toString()));
-            String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
-                    "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
-                    "soundtrack = ?,mood = ?, weapon_type= ?, car_id = ? WHERE humanbeing_id = ? ;";
-            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            if (source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
+                logger.info(getLog("update_starting").replace("%id%", id.toString()));
+                String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
+                        "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
+                        "soundtrack = ?,mood = ?, weapon_type= ?, car_id = ? WHERE humanbeing_id = ? ;";
+                PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
 
-            preparedStatement.setString(1, request.getName());
-            preparedStatement.setInt(2, addCoordinatesToDB(request.getCoordinates()));
-            preparedStatement.setBoolean(3, request.getRealHero());
-            preparedStatement.setBoolean(4, request.getHasToothpick());
-            preparedStatement.setFloat(5, request.getImpactSpeed());
-            preparedStatement.setString(6, request.getSoundtrackName());
-            preparedStatement.setString(7, request.getMood().toString());
-            preparedStatement.setString(8, request.getWeaponType().toString());
-            preparedStatement.setInt(9, addCarToDB(request.getCar()));
-            preparedStatement.setInt(10, id.intValue());
+                preparedStatement.setString(1, request.getName());
+                preparedStatement.setInt(2, addCoordinatesToDB(request.getCoordinates()));
+                preparedStatement.setBoolean(3, request.getRealHero());
+                preparedStatement.setBoolean(4, request.getHasToothpick());
+                preparedStatement.setFloat(5, request.getImpactSpeed());
+                preparedStatement.setString(6, request.getSoundtrackName());
+                preparedStatement.setString(7, request.getMood().toString());
+                preparedStatement.setString(8, request.getWeaponType().toString());
+                preparedStatement.setInt(9, addCarToDB(request.getCar()));
+                preparedStatement.setInt(10, id.intValue());
 
 
-            int affectedRows = preparedStatement.executeUpdate();
-            preparedStatement.close();
+                int affectedRows = preparedStatement.executeUpdate();
+                preparedStatement.close();
 
-            if (affectedRows == 0) {
-                System.out.println(getError("not_done", language));
-                throw new ApplicationException(getLog("update_error").replace("%id%", id.toString()));
+                if (affectedRows == 0) {
+                    System.out.println(getError("not_done", language));
+                    throw new ApplicationException(getLog("update_error").replace("%id%", id.toString()));
+                }
+
+
+                source.updateDataSet();
+                System.out.println(getSuccessMessage("done", language));
+                logger.info((getLog("update_finished")).replace("%id%", id.toString()));
+            } else {
+                throw new ValidationException("You cannot update not your user");
             }
-
-
-            source.updateDataSet();
-            System.out.println(getSuccessMessage("done", language));
-            logger.info((getLog("update_finished")).replace("%id%", id.toString()));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return getHumanById(id);
     }
 
     @Override
@@ -265,7 +284,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public Long addHumanBeingToDB(HumanBeingRequestDTO request) {
         long id = 0L;
         try {
-            String query = "INSERT INTO humanbeing values (DEFAULT, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?, ?, ?) RETURNING humanbeing_id";
+            String query = "INSERT INTO humanbeing  values (DEFAULT, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?, ?, ?) RETURNING humanbeing_id";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, request.getName());
             preparedStatement.setInt(2, addCoordinatesToDB(request.getCoordinates()));
@@ -283,6 +302,19 @@ public class HumanDaoPostgresImpl implements HumanDao {
                 id = resultSet.getInt("humanbeing_id");
             }
             preparedStatement.close();
+
+            String query1 = "INSERT INTO humantouser VALUES (?, ?)";
+            PreparedStatement preparedStatement1 = sqlConnection.getConnection().prepareStatement(query1);
+            preparedStatement1.setLong(1, id);
+            preparedStatement1.setLong(2, userManager.getUserId());
+
+
+            int affectedRows = preparedStatement1.executeUpdate();
+            if (affectedRows == 0) {
+                throw new ApplicationException(getLog("user_not_registered")); // TODO fix message
+            }
+            preparedStatement1.close();
+
             return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -307,5 +339,20 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public ROLES getUserRole(String userName) {
         return source.getUserRole(userName);
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        source.setUsername(userName);
+    }
+
+    @Override
+    public Long getUserId(String userName) {
+        return source.getUserId(userName);
+    }
+
+    @Override
+    public void setUserManager(UserManager userManager) {
+        this.userManager = userManager;
     }
 }

@@ -1,6 +1,7 @@
 package server.services;
 
 import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.dao.HumanDao;
 import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
@@ -126,5 +127,20 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public ROLES getUserRole(String userName) {
         return humanDao.getUserRole(userName);
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        humanDao.setUserName(userName);
+    }
+
+    @Override
+    public Long getUserId(String userName) {
+        return humanDao.getUserId(userName);
+    }
+
+    @Override
+    public void setUserManager(UserManager userManager) {
+        humanDao.setUserManager(userManager);
     }
 }

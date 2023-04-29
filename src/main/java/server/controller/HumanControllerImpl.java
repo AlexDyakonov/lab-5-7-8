@@ -1,6 +1,7 @@
 package server.controller;
 
 import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.dto.HumanBeingRequestDTO;
@@ -31,6 +32,7 @@ public class HumanControllerImpl implements HumanController {
     /**
      * Instantiates a new Human controller.
      */
+
     public HumanControllerImpl() {
         this.service = new HumanServiceImpl();
         service.setLanguage(language);
@@ -163,5 +165,20 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public ROLES getUserRole(String userName) {
         return service.getUserRole(userName);
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        service.setUserName(userName);
+    }
+
+    @Override
+    public Long getUserId(String userName) {
+        return service.getUserId(userName);
+    }
+
+    @Override
+    public void setUserManager(UserManager userManager) {
+        service.setUserManager(userManager);
     }
 }

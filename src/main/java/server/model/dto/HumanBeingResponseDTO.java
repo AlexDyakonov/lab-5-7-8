@@ -22,6 +22,7 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
     private WeaponType weaponType;
     private Mood mood;
     private Car car;
+    private String username;
 
 
     /**

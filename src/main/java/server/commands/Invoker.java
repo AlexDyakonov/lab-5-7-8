@@ -36,12 +36,12 @@ public class Invoker {
     private static Map<String, Command> commandsMap = new HashMap<>();
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
+    private UserManager userManager = new UserManager();
     private final HumanController controller;
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-    private UserManager userManager = new UserManager();
     private CommandsMapManager commandsMapManager;
 
     /**

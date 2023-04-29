@@ -1,6 +1,7 @@
 package server.controller;
 
 import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
@@ -128,4 +129,10 @@ public interface HumanController {
     boolean checkUserPassword(String username, String password);
 
     ROLES getUserRole(String userName);
+
+    void setUserName(String userName);
+
+    Long getUserId(String userName);
+
+    void setUserManager(UserManager userManager);
 }

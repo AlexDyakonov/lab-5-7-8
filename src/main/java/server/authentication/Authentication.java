@@ -23,6 +23,13 @@ public class Authentication {
         this.reader = reader;
         this.controller = controller;
         this.language = language;
+        controller.setUserName(userManager.getUserName());
+    }
+
+    private void configUserManager(String username) {
+        userManager.setUserName(username)
+                .setUserRole(controller.getUserRole(username))
+                .setUserId(controller.getUserId(username));
     }
 
     public void start() {
@@ -49,14 +56,14 @@ public class Authentication {
                 registerUser();
             } else {
                 controller.userRegister(username, password);
-                userManager.setUserRole(ROLES.USER).setUserName(username);
+                configUserManager(username);
+                controller.setUserManager(userManager);
                 System.out.println(getSuccessMessage("user_registered", language));
             }
             return userManager;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public UserManager login() {
@@ -64,7 +71,8 @@ public class Authentication {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
             if (controller.checkUserPassword(username, password)) {
-                userManager.setUserName(username).setUserRole(controller.getUserRole(username));
+                configUserManager(username);
+                controller.setUserManager(userManager);
                 System.out.println(getSuccessMessage("done", language));
             } else {
                 System.out.println(getWarning("invalid_login", language));

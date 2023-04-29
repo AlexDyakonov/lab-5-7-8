@@ -2,10 +2,12 @@ package server.authentication;
 
 public class UserManager {
     private String userName;
+    private Long userId;
     private ROLES userRole;
 
-    public UserManager(String userName, ROLES role) {
+    public UserManager(String userName, Long userId, ROLES role) {
         this.userName = userName;
+        this.userId = userId;
         this.userRole = role;
     }
 
@@ -28,5 +30,13 @@ public class UserManager {
     public UserManager setUserRole(ROLES userRole) {
         this.userRole = userRole;
         return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
