@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gui_design/adding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gui_design/animation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gui_design/auth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gui_design/main.png" afterDir="false" />
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[MODIFIED] README.md">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/GraphicUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +88,13 @@
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+      <command value="mvn clean javafx:run" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.lab-5-num-125595 [clean,javafx:run]">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="lab-5-num-125595" />
@@ -151,12 +155,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab-5-num-125595 [clean,javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.HumanBeingResponseDTOwithUsers" />
       <item itemvalue="Application.Authentication" />
       <item itemvalue="Application.HumanDaoPostgresImpl" />
       <item itemvalue="Application.SQLDataBaseProvider" />
       <item itemvalue="Application.App" />
+      <item itemvalue="Maven.lab-5-num-125595 [clean,javafx:run]" />
     </list>
     <recent_temporary>
       <list>
@@ -239,13 +270,6 @@
       <workItem from="1682658467548" duration="199000" />
       <workItem from="1682658675262" duration="5149000" />
       <workItem from="1682688876425" duration="23379000" />
-    </task>
-    <task id="LOCAL-00078" summary="Now logger saves in one file with normal name">
-      <created>1681935368580</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1681935368580</updated>
     </task>
     <task id="LOCAL-00079" summary="Removed all lines with success/unsuccess">
       <created>1681936327805</created>
@@ -583,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682780430020</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="[MODIFIED] README.md">
+      <created>1683241662531</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1683241662532</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands" />
     <MESSAGE value="Added more commands and messages" />
     <MESSAGE value="All commands executes data from postgresql" />
     <MESSAGE value="Added methods to work with users and made Register method" />
@@ -642,7 +672,8 @@
     <MESSAGE value="[MODIFY] Added logger messages" />
     <MESSAGE value="[FIXED] Small fix of Messages.json" />
     <MESSAGE value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
+    <MESSAGE value="[MODIFIED] README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MODIFIED] README.md" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
