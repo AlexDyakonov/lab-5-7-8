@@ -1,13 +1,17 @@
 package server.services;
 
+import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.dao.HumanDao;
-import server.dao.HumanDaoImpl;
+import server.dao.HumanDaoPostgresImpl;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * The type Human service.
@@ -18,11 +22,9 @@ public class HumanServiceImpl implements HumanService {
 
     /**
      * Instantiates a new Human service.
-     *
-     * @param fileName the file name
      */
-    public HumanServiceImpl(String fileName) {
-        this.humanDao = new HumanDaoImpl(fileName);
+    public HumanServiceImpl() {
+        this.humanDao = new HumanDaoPostgresImpl();
         humanDao.setLanguage(language);
     }
 
@@ -61,6 +63,12 @@ public class HumanServiceImpl implements HumanService {
         humanDao.clear();
     }
 
+    @Override
+    public void clearAll() {
+        humanDao.clearAll();
+    }
+
+    @Deprecated
     @Override
     public void save(String fileName) {
         humanDao.save(fileName);
@@ -105,5 +113,50 @@ public class HumanServiceImpl implements HumanService {
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         humanDao.setLanguage(language);
+    }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return humanDao.getUserNameList();
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+        humanDao.userRegister(username, password);
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        return humanDao.checkUserPassword(username, password);
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return humanDao.getUserRole(userName);
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        humanDao.setUserName(userName);
+    }
+
+    @Override
+    public Long getUserId(String userName) {
+        return humanDao.getUserId(userName);
+    }
+
+    @Override
+    public void setUserManager(UserManager userManager) {
+        humanDao.setUserManager(userManager);
+    }
+
+    @Override
+    public void setRole(String username, ROLES role) {
+        humanDao.setRole(username, role);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return humanDao.getAllUsers();
     }
 }

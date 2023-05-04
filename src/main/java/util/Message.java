@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static client.ui.ConsoleColors.*;
-import static util.FileManager.downloadFile;
 import static util.FileManager.updateFile;
 
 /**
@@ -20,7 +19,7 @@ public class Message {
 
     static {
         try {
-            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/master/Messages.json", "Messages.json");
+            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/dev/Messages.json", "Messages.json");
             Path json = Path.of("Messages.json");
             content = new String(Files.readAllBytes(json));
             jsonObject = new JSONObject(content);
@@ -93,6 +92,6 @@ public class Message {
      * @return the command description
      */
     public static String getLog(String messageName) {
-        return jsonObject.getJSONObject("en").getJSONObject("log_info").getString(messageName);
+        return jsonObject.getJSONObject("log_info").getString(messageName);
     }
 }

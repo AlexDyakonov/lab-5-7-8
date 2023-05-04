@@ -22,6 +22,7 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
     private WeaponType weaponType;
     private Mood mood;
     private Car car;
+    private String username;
 
 
     /**
@@ -58,105 +59,6 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
         this.car = car;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Sets coordinates.
-     *
-     * @param coordinates the coordinates
-     */
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    /**
-     * Sets creation date.
-     *
-     * @param creationDate the creation date
-     */
-    public void setCreationDate(ZonedDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    /**
-     * Sets real hero.
-     *
-     * @param realHero the real hero
-     */
-    public void setRealHero(Boolean realHero) {
-        this.realHero = realHero;
-    }
-
-    /**
-     * Sets has toothpick.
-     *
-     * @param hasToothpick the has toothpick
-     */
-    public void setHasToothpick(Boolean hasToothpick) {
-        this.hasToothpick = hasToothpick;
-    }
-
-    /**
-     * Sets impact speed.
-     *
-     * @param impactSpeed the impact speed
-     */
-    public void setImpactSpeed(Float impactSpeed) {
-        this.impactSpeed = impactSpeed;
-    }
-
-    /**
-     * Sets soundtrack name.
-     *
-     * @param soundtrackName the soundtrack name
-     */
-    public void setSoundtrackName(String soundtrackName) {
-        this.soundtrackName = soundtrackName;
-    }
-
-    /**
-     * Sets weapon type.
-     *
-     * @param weaponType the weapon type
-     */
-    public void setWeaponType(WeaponType weaponType) {
-        this.weaponType = weaponType;
-    }
-
-    /**
-     * Sets mood.
-     *
-     * @param mood the mood
-     */
-    public void setMood(Mood mood) {
-        this.mood = mood;
-    }
-
-    /**
-     * Sets car.
-     *
-     * @param car the car
-     */
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
     @Override
     public String toString() {
         return " \033[0;33m HumanBeing \033[0m (id = " + id + "){\n" + "\033[0;32m" +
@@ -171,6 +73,149 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
                 "   mood \033[0m = " + mood + "\n \033[0;32m" +
                 "   car \033[0m = " + car + "\n" +
                 '}';
+    }
+
+    public Float getImpactSpeed() {
+        return impactSpeed;
+    }
+
+    /**
+     * Sets impact speed.
+     *
+     * @param impactSpeed the impact speed
+     */
+    public void setImpactSpeed(Float impactSpeed) {
+        this.impactSpeed = impactSpeed;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    /**
+     * Sets coordinates.
+     *
+     * @param coordinates the coordinates
+     */
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    /**
+     * Sets creation date.
+     *
+     * @param creationDate the creation date
+     */
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Boolean getRealHero() {
+        return realHero;
+    }
+
+    /**
+     * Sets real hero.
+     *
+     * @param realHero the real hero
+     */
+    public void setRealHero(Boolean realHero) {
+        this.realHero = realHero;
+    }
+
+    public Boolean getHasToothpick() {
+        return hasToothpick;
+    }
+
+    /**
+     * Sets has toothpick.
+     *
+     * @param hasToothpick the has toothpick
+     */
+    public void setHasToothpick(Boolean hasToothpick) {
+        this.hasToothpick = hasToothpick;
+    }
+
+    public String getSoundtrackName() {
+        return soundtrackName;
+    }
+
+    /**
+     * Sets soundtrack name.
+     *
+     * @param soundtrackName the soundtrack name
+     */
+    public void setSoundtrackName(String soundtrackName) {
+        this.soundtrackName = soundtrackName;
+    }
+
+    public WeaponType getWeaponType() {
+        return weaponType;
+    }
+
+    /**
+     * Sets weapon type.
+     *
+     * @param weaponType the weapon type
+     */
+    public void setWeaponType(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    /**
+     * Sets mood.
+     *
+     * @param mood the mood
+     */
+    public void setMood(Mood mood) {
+        this.mood = mood;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    /**
+     * Sets car.
+     *
+     * @param car the car
+     */
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     @Override

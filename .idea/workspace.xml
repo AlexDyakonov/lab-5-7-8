@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="Removed decorator. Added some logging for Builder classes">
+    <list default="true" id="6ea2767c-74c4-4051-9819-b05d03d800e2" name="Changes" comment="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/commands/list/ExecuteScriptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/sql/PropertiesProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="5ace2945c075a7586db5054de526fc98d5e899d8" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,31 +52,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/code/java/itmo-math&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.291954&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/code/java/user_app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.291954",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
       <recent name="C:\code\java\lab-5-num-125595" />
       <recent name="C:\code\java\lab-5-num-125595\target" />
-      <recent name="C:\code\java\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src\main\resources" />
       <recent name="E:\code\lab-5-num-125595\src" />
     </key>
@@ -90,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Message" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.Message" />
+    <configuration name="Authentication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.authentication.Authentication" />
       <module name="lab-5-num-125595" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="util.*" />
+          <option name="PATTERN" value="server.authentication.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +109,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.Parser" />
+    <configuration name="HumanBeingResponseDTOwithUsers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.model.dto.HumanBeingResponseDTOwithUsers" />
       <module name="lab-5-num-125595" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="util.*" />
+          <option name="PATTERN" value="server.model.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,12 +122,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScriptExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.utility.ScriptExecuter" />
+    <configuration name="HumanDaoPostgresImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.dao.HumanDaoPostgresImpl" />
       <module name="lab-5-num-125595" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.services.fileLogic.*" />
+          <option name="PATTERN" value="server.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SQLDataBaseProvider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.db.SQLDataBaseProvider" />
+      <module name="lab-5-num-125595" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.db.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,18 +149,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Message" />
+      <item itemvalue="Application.HumanBeingResponseDTOwithUsers" />
+      <item itemvalue="Application.Authentication" />
+      <item itemvalue="Application.HumanDaoPostgresImpl" />
+      <item itemvalue="Application.SQLDataBaseProvider" />
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.Parser" />
-      <item itemvalue="Application.ScriptExecuter" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.ScriptExecuter" />
-        <item itemvalue="Application.Parser" />
-        <item itemvalue="Application.Message" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.HumanDaoPostgresImpl" />
+        <item itemvalue="Application.HumanBeingResponseDTOwithUsers" />
+        <item itemvalue="Application.SQLDataBaseProvider" />
+        <item itemvalue="Application.Authentication" />
       </list>
     </recent_temporary>
   </component>
@@ -202,251 +222,20 @@
       <workItem from="1681722286818" duration="8362000" />
       <workItem from="1681943248971" duration="13984000" />
       <workItem from="1681961005400" duration="378000" />
-    </task>
-    <task id="LOCAL-00043" summary="Added more Validations">
-      <created>1679154832044</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1679154832044</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Renamed repo -&gt; HumanDao">
-      <created>1679155386459</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1679155386459</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Fixed bug with saving null car">
-      <created>1679169362060</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1679169362060</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Fixed all builders">
-      <created>1679178684583</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1679178684583</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Fixed load/save from file, added default">
-      <created>1679180745877</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1679180745877</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Attempt to fix args exceptions">
-      <created>1679181847531</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1679181847531</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Small fix of remove_by_id">
-      <created>1679181973481</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1679181973481</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Fixed addifmin/max">
-      <created>1679246557970</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1679246557971</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Fixed save bug">
-      <created>1679246698202</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1679246698202</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Attempt to fix script executor #1">
-      <created>1679247613907</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1679247613907</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Attempt to fix script executor #2 Added builderType for all builders">
-      <created>1679249221274</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1679249221274</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Attempt to fix script executor #3">
-      <created>1679252391950</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1679252391950</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Fixed Update method">
-      <created>1679314974713</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1679314974714</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Fixed script executor&#10;TODO: recursion check">
-      <created>1679320498012</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1679320498012</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Added recursion check">
-      <created>1679322910077</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1679322910077</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Added file exceptions (checking exist, read, write)">
-      <created>1679324295857</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1679324295857</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Removed javadoc">
-      <created>1679324337891</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1679324337891</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Made tilda resolving in path">
-      <created>1679326874681</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1679326874681</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Added checkid from csv file.">
-      <created>1679327290349</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1679327290349</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Added UML and small fix of UI">
-      <created>1679329415417</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1679329415417</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Fixed EOF (ctrl + D)">
-      <created>1679337226895</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1679337226895</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Small fix with unexecutable pathname">
-      <created>1679450285791</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1679450285791</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Attempt to fix /// and \\\ with tilda">
-      <created>1679451657799</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1679451657799</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Added tildasolver for executeScript">
-      <created>1679451714996</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1679451714996</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Fixed tilda. Now, project wont load if file name is incorrect or file not exist">
-      <created>1679510119114</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1679510119115</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Added more file exception checks. Added warning.">
-      <created>1679511906057</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1679511906057</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Fixed id reading from file(catching exception)">
-      <created>1679560886264</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1679560886265</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Added javadoc documentation">
-      <created>1679569397298</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1679569397298</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Added ru and en localization for builders (input lines)">
-      <created>1681366472314</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1681366472314</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Code reformatting for whole project">
-      <created>1681373520715</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1681373520715</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output">
-      <created>1681449812793</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1681449812793</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Added all commands, need to fix ExecuteCommand and language changes">
-      <created>1681506604559</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1681506604560</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Added en localization for add commands">
-      <created>1681507208225</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1681507208225</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Added en localization for all command descriptions">
-      <created>1681563093280</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1681563093281</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Added logic in Message Class, added javadoc for its. Added more messages">
-      <created>1681584226282</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1681584226282</updated>
+      <workItem from="1682272119892" duration="1000" />
+      <workItem from="1682371612938" duration="95000" />
+      <workItem from="1682372575332" duration="3000" />
+      <workItem from="1682372961553" duration="382000" />
+      <workItem from="1682439308716" duration="4701000" />
+      <workItem from="1682446529133" duration="9126000" />
+      <workItem from="1682596547337" duration="2399000" />
+      <workItem from="1682602591636" duration="11000" />
+      <workItem from="1682606781909" duration="667000" />
+      <workItem from="1682611673312" duration="1067000" />
+      <workItem from="1682633264191" duration="10583000" />
+      <workItem from="1682658467548" duration="199000" />
+      <workItem from="1682658675262" duration="5149000" />
+      <workItem from="1682688876425" duration="23379000" />
     </task>
     <task id="LOCAL-00078" summary="Now logger saves in one file with normal name">
       <created>1681935368580</created>
@@ -546,11 +335,259 @@
       <option name="project" value="LOCAL" />
       <updated>1681960757776</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Fixed README.md and added photo">
+      <created>1682099860386</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1682099860386</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Added SQLConnection.java class">
+      <created>1682099921297</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1682099921297</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Removed System.exit(0)">
+      <created>1682441567614</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1682441567614</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Added class for Dao layer using db with postgresql">
+      <created>1682442074486</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1682442074486</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Added logger">
+      <created>1682526746703</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1682526746704</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Added new messages and small refactoring">
+      <created>1682526783463</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1682526783463</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Depricated">
+      <created>1682528366889</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528366889</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Small fix for dev branch and added new Mapper">
+      <created>1682528399528</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528399528</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Removed csv file data base logic, now app boots with postgresql">
+      <created>1682528556465</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1682528556465</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Deprecated method save">
+      <created>1682531922970</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1682531922971</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands">
+      <created>1682532653251</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1682532653251</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Added more commands and messages">
+      <created>1682545024719</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1682545024719</updated>
+    </task>
+    <task id="LOCAL-00104" summary="All commands executes data from postgresql">
+      <created>1682546829677</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1682546829677</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Added methods to work with users and made Register method">
+      <created>1682549799175</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1682549799175</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Added method to login user and AuthenticationException">
+      <created>1682551266652</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1682551266653</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Uncommented and fixed methods">
+      <created>1682551428011</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1682551428011</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Added basic Authentication (creates user/login to exist)">
+      <created>1682642896006</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1682642896006</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Added messages and some loggers">
+      <created>1682644236420</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1682644236420</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Attempt to do Authentication with different commands">
+      <created>1682647018603</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1682647018603</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Attempt to do Authentication with different commands #2">
+      <created>1682648053172</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1682648053172</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Now different accounts with different roles has access to different commands">
+      <created>1682677047367</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1682677047367</updated>
+    </task>
+    <task id="LOCAL-00113" summary="[REMOVED] Unused classes">
+      <created>1682705710135</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1682705710136</updated>
+    </task>
+    <task id="LOCAL-00114" summary="[FIXED] Now when user adds humanbeing it automaticly adds to table humantouser, so if humanbeing not belongs to user you can not delete/update it">
+      <created>1682749811111</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1682749811111</updated>
+    </task>
+    <task id="LOCAL-00115" summary="[FIXED] AddIf command language&#10;[ADDED] ClearAllCommand for ADMIN">
+      <created>1682763556460</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1682763556460</updated>
+    </task>
+    <task id="LOCAL-00116" summary="[FIXED] &quot;clear_all&quot; message">
+      <created>1682763652346</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1682763652346</updated>
+    </task>
+    <task id="LOCAL-00117" summary="[FIXED] &quot;clear&quot; deletes only humanbeing that was created by user">
+      <created>1682767363476</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1682767363476</updated>
+    </task>
+    <task id="LOCAL-00118" summary="[ADDED] SetRoleCommand for admin to set role to users">
+      <created>1682768042635</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1682768042635</updated>
+    </task>
+    <task id="LOCAL-00119" summary="[ADDED] ShowUsersCommand for admin">
+      <created>1682769040641</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1682769040641</updated>
+    </task>
+    <task id="LOCAL-00120" summary="[FIXED] Now show command shows model with their creator (made extended class)">
+      <created>1682771709397</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1682771709397</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Clean up and refactor code">
+      <created>1682771786763</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1682771786763</updated>
+    </task>
+    <task id="LOCAL-00122" summary="[ADDED] Java doc for new classes">
+      <created>1682772257268</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1682772257268</updated>
+    </task>
+    <task id="LOCAL-00123" summary="[MODIFY] Small modify of logic in getLog method">
+      <created>1682778441214</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1682778441214</updated>
+    </task>
+    <task id="LOCAL-00124" summary="[MODIFY] Added logger messages">
+      <created>1682779781603</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1682779781603</updated>
+    </task>
+    <task id="LOCAL-00125" summary="[FIXED] Small fix of Messages.json">
+      <created>1682780054882</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1682780054882</updated>
+    </task>
+    <task id="LOCAL-00126" summary="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file">
+      <created>1682780430020</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1682780430020</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -563,7 +600,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="issfix" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -577,32 +614,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added more file exception checks. Added warning." />
-    <MESSAGE value="Fixed id reading from file(catching exception)" />
-    <MESSAGE value="Added javadoc documentation" />
-    <MESSAGE value="Added ru and en localization for builders (input lines)" />
-    <MESSAGE value="Code reformatting for whole project" />
-    <MESSAGE value="Small fix, now ExecuteScriptCommand.java works. Need to fix recursion check and some exception output" />
-    <MESSAGE value="Added all commands, need to fix ExecuteCommand and language changes" />
-    <MESSAGE value="Added en localization for add commands" />
-    <MESSAGE value="Added en localization for all command descriptions" />
-    <MESSAGE value="Added logic in Message Class, added javadoc for its. Added more messages" />
-    <MESSAGE value="Now logger saves in one file with normal name" />
-    <MESSAGE value="Removed all lines with success/unsuccess" />
-    <MESSAGE value="Simplified Message class and fixed LoggerManager.java" />
-    <MESSAGE value="Added logs in DBProvider and removed Objects.requireNonNull" />
-    <MESSAGE value="Added logging and fixed Invoker" />
-    <MESSAGE value="Fixed ExecuteScriptCommand.java logging. &#10;TO DO: Remove unused methods and commments" />
-    <MESSAGE value="Added example of logs file" />
-    <MESSAGE value="Code cleanup and reformat" />
-    <MESSAGE value="Removed unused methods and classes. Collapsed some import." />
-    <MESSAGE value="Added javadoc" />
-    <MESSAGE value="Added javadoc files" />
-    <MESSAGE value="Fixed pom.xml and App.java. Build .jar using maven" />
-    <MESSAGE value="Build .jar using maven (added plugin for libs inside jar)&#10;Added dir creating for logs." />
-    <MESSAGE value="Attempt to make decorator for logging functions" />
-    <MESSAGE value="Removed decorator. Added some logging for Builder classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed decorator. Added some logging for Builder classes" />
+    <MESSAGE value="Added loading database, added max_by_impact_speed command&#10;added clear, info, deleteHumanById, createHuman, getAllHuman commands" />
+    <MESSAGE value="Added more commands and messages" />
+    <MESSAGE value="All commands executes data from postgresql" />
+    <MESSAGE value="Added methods to work with users and made Register method" />
+    <MESSAGE value="Added method to login user and AuthenticationException" />
+    <MESSAGE value="Uncommented and fixed methods" />
+    <MESSAGE value="Added basic Authentication (creates user/login to exist)" />
+    <MESSAGE value="Added messages and some loggers" />
+    <MESSAGE value="Attempt to do Authentication with different commands" />
+    <MESSAGE value="Attempt to do Authentication with different commands #2" />
+    <MESSAGE value="Now different accounts with different roles has access to different commands" />
+    <MESSAGE value="[REMOVED] Unused classes" />
+    <MESSAGE value="[FIXED] Now when user adds humanbeing it automaticly adds to table humantouser, so if humanbeing not belongs to user you can not delete/update it" />
+    <MESSAGE value="[FIXED] AddIf command language&#10;[ADDED] ClearAllCommand for ADMIN" />
+    <MESSAGE value="[FIXED] &quot;clear_all&quot; message" />
+    <MESSAGE value="[FIXED] &quot;clear&quot; deletes only humanbeing that was created by user" />
+    <MESSAGE value="[ADDED] SetRoleCommand for admin to set role to users" />
+    <MESSAGE value="[ADDED] ShowUsersCommand for admin" />
+    <MESSAGE value="[FIXED] Now show command shows model with their creator (made extended class)" />
+    <MESSAGE value="Clean up and refactor code" />
+    <MESSAGE value="[ADDED] Java doc for new classes" />
+    <MESSAGE value="[MODIFY] Small modify of logic in getLog method" />
+    <MESSAGE value="[MODIFY] Added logger messages" />
+    <MESSAGE value="[FIXED] Small fix of Messages.json" />
+    <MESSAGE value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIXED] Small fix of pom.xml to build project with propeties file and passwords file" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

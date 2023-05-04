@@ -1,10 +1,14 @@
 package server.controller;
 
+import server.authentication.ROLES;
+import server.authentication.UserManager;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import util.LANGUAGE;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * The interface Human controller.
@@ -69,6 +73,7 @@ public interface HumanController {
      * @param fileName the file name
      * @param language the language
      */
+    @Deprecated
     void save(String fileName, LANGUAGE language);
 
     /**
@@ -117,4 +122,24 @@ public interface HumanController {
      * @param language the language
      */
     void setLanguage(LANGUAGE language);
+
+    Set<String> getUserNameList();
+
+    void userRegister(String username, String password);
+
+    boolean checkUserPassword(String username, String password);
+
+    ROLES getUserRole(String userName);
+
+    void setUserName(String userName);
+
+    Long getUserId(String userName);
+
+    void setUserManager(UserManager userManager);
+
+    void clearAll();
+
+    void setRole(String username, ROLES role);
+
+    List<User> getAllUsers();
 }

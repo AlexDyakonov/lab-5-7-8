@@ -27,7 +27,6 @@ public class ExitCommand implements Command {
         if (args.length > 1) {
             throw new ArgumentException(getError("no_args", language));
         }
-        System.exit(0);
     }
 
     @Override

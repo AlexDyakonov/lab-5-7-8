@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="lab-5-num-125595" options="--add-modules java.logging" />
+      <module name="lab-5-num-125595" options="" />
     </option>
   </component>
 </project>

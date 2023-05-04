@@ -1,9 +1,13 @@
 package util;
 
+import server.authentication.ROLES;
 import server.exception.ValidationException;
 import server.model.Mood;
 import server.model.WeaponType;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -123,6 +127,51 @@ public class Parser {
                 return WeaponType.SHOTGUN;
             }
         }
+    }
+
+    /**
+     * String to role roles.
+     *
+     * @param line the line
+     * @return the roles
+     */
+    public static ROLES stringToRole(String line) {
+        switch (line.trim().toLowerCase()) {
+            case "admin", "-1" -> {
+                return ROLES.ADMIN;
+            }
+            case "guest", "0" -> {
+                return ROLES.GUEST;
+            }
+            case "user", "1" -> {
+                return ROLES.USER;
+            }
+            default -> {
+                return ROLES.GUEST;
+            }
+        }
+    }
+
+    /**
+     * Convert time stamp to zoned zoned date time.
+     *
+     * @param timestamp the timestamp
+     * @return the zoned date time
+     */
+    public static ZonedDateTime convertTimeStampToZoned(Timestamp timestamp) {
+        Instant instant = timestamp.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        return instant.atZone(zoneId);
+    }
+
+    /**
+     * Convert zoned date time to time stamp timestamp.
+     *
+     * @param zonedDateTime the zoned date time
+     * @return the timestamp
+     */
+    public static Timestamp convertZonedDateTimeToTimeStamp(ZonedDateTime zonedDateTime) {
+        return Timestamp.valueOf(zonedDateTime.toLocalDateTime());
     }
 
 }

@@ -5,8 +5,7 @@ import server.controller.HumanController;
 import server.exception.ArgumentException;
 import util.LANGUAGE;
 
-import static util.Message.getCommandDescription;
-import static util.Message.getError;
+import static util.Message.*;
 
 /**
  * The type Count by mood command. Counts number of HumanBeing with selected Mood.
@@ -31,7 +30,8 @@ public class CountByMoodCommand implements Command {
         if (args.length != 2) {
             throw new ArgumentException(getError("one_arg", language));
         }
-        controller.countByMood(args[1]);
+        System.out.println(getMessage("count_by_mood", language).replace("%mood%", args[1])
+                .replace("%num%", String.valueOf(controller.countByMood(args[1]))));
     }
 
     @Override

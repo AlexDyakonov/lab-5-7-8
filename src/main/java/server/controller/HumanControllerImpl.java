@@ -1,7 +1,10 @@
 package server.controller;
 
+import server.authentication.ROLES;
+import server.authentication.UserManager;
 import server.exception.ValidationException;
 import server.model.Mood;
+import server.model.User;
 import server.model.dto.HumanBeingRequestDTO;
 import server.model.dto.HumanBeingResponseDTO;
 import server.services.HumanService;
@@ -11,11 +14,13 @@ import util.LANGUAGE;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import static server.services.LoggerManager.setupLogger;
 import static server.validation.Validation.validateFileWrite;
 import static util.Message.getError;
+import static util.Message.getWarning;
 
 /**
  * The type Human controller.
@@ -27,11 +32,10 @@ public class HumanControllerImpl implements HumanController {
 
     /**
      * Instantiates a new Human controller.
-     *
-     * @param fileName the file name
      */
-    public HumanControllerImpl(String fileName) {
-        this.service = new HumanServiceImpl(fileName);
+
+    public HumanControllerImpl() {
+        this.service = new HumanServiceImpl();
         service.setLanguage(language);
         setupLogger(logger);
     }
@@ -63,6 +67,9 @@ public class HumanControllerImpl implements HumanController {
         if (id <= 0) {
             throw new ValidationException(getError("id_more_than_zero", language));
         }
+        if (getHumanById(id) == null) {
+            logger.warning(getWarning("user_not_found", LANGUAGE.EN));
+        }
         service.deleteHumanById(id);
     }
 
@@ -84,6 +91,12 @@ public class HumanControllerImpl implements HumanController {
         service.clear();
     }
 
+    @Override
+    public void clearAll() {
+        service.clearAll();
+    }
+
+    @Deprecated
     @Override
     public void save(String fileName, LANGUAGE language) {
         validateFileWrite(new File(fileName), language);
@@ -132,5 +145,56 @@ public class HumanControllerImpl implements HumanController {
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         service.setLanguage(language);
+    }
+
+    @Override
+    public Set<String> getUserNameList() {
+        return service.getUserNameList();
+    }
+
+    @Override
+    public void userRegister(String username, String password) {
+        if (username.trim().equals("")) {
+            throw new ValidationException(""); //TODO message
+        }
+        service.userRegister(username, password);
+    }
+
+    @Override
+    public boolean checkUserPassword(String username, String password) {
+        if (username.trim().equals("")) {
+            throw new ValidationException(""); //TODO message
+        }
+        return service.checkUserPassword(username, password);
+    }
+
+    @Override
+    public ROLES getUserRole(String userName) {
+        return service.getUserRole(userName);
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        service.setUserName(userName);
+    }
+
+    @Override
+    public Long getUserId(String userName) {
+        return service.getUserId(userName);
+    }
+
+    @Override
+    public void setUserManager(UserManager userManager) {
+        service.setUserManager(userManager);
+    }
+
+    @Override
+    public void setRole(String username, ROLES role) {
+        service.setRole(username, role);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return service.getAllUsers();
     }
 }

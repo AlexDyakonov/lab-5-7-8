@@ -1,15 +1,12 @@
 package util;
 
 import org.codehaus.plexus.util.FileUtils;
-import server.exception.ApplicationException;
 import server.exception.FileException;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Logger;
 

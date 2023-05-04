@@ -1,29 +1,32 @@
 package client.ui;
 
+import server.authentication.Authentication;
 import server.commands.Invoker;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Logger;
 
-import static server.validation.Validation.validateFile;
-import static util.Parser.tildaResolver;
+import static server.services.LoggerManager.setupLogger;
 
 /**
  * The type Console ui.
  */
 public class ConsoleUI {
+    private static final Logger logger = Logger.getLogger(ConsoleUI.class.getName());
     private final Invoker invoker;
+
+    static {
+        setupLogger(logger);
+    }
 
     /**
      * Instantiates a new Console ui.
      *
-     * @param fileName the file name
-     * @param invoker  the invoker
+     * @param invoker the invoker
      */
-    public ConsoleUI(String fileName, Invoker invoker) {
-        validateFile(fileName, invoker.getLanguage());
-        fileName = tildaResolver(fileName);
+    public ConsoleUI(Invoker invoker) {
         this.invoker = invoker;
     }
 
@@ -32,18 +35,25 @@ public class ConsoleUI {
      */
     public void start() {
         String command;
-        System.out.println("Напишите help чтобы вывести все команды");
 
         invoker.setFileReader(null);
 
         BufferedReader reader = invoker.getCmdReader();
 
+        Authentication authentication = new Authentication(invoker.getController(), reader, invoker.getLanguage());
+        authentication.start();
+
+        invoker.setUserManager(authentication.getUserManager());
+
+
         try (reader) {
+            System.out.println("Напишите help чтобы вывести все команды");
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
                 invoker.execute(command);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
     }
 

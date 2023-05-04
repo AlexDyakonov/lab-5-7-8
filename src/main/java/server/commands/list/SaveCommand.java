@@ -11,6 +11,7 @@ import static util.Message.getError;
 /**
  * The type Save command. Saves database to csv file.
  */
+@Deprecated
 public class SaveCommand implements Command {
     private final HumanController controller;
     private final String fileName;
