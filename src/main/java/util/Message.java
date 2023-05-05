@@ -19,7 +19,7 @@ public class Message {
 
     static {
         try {
-            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/dev/Messages.json", "Messages.json");
+//            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/dev/Messages.json", "Messages.json");
             Path json = Path.of("Messages.json");
             content = new String(Files.readAllBytes(json));
             jsonObject = new JSONObject(content);

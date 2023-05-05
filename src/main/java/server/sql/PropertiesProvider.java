@@ -23,8 +23,9 @@ public class PropertiesProvider {
         setupLogger(logger);
         try {
             logger.info(getLog("prop_provider_loading"));
-            InputStream inputStream = PropertiesProvider.class.getClassLoader().getResourceAsStream("application.properties");
-            appProperties.load(inputStream);
+//            InputStream inputStream = PropertiesProvider.class.getClassLoader().getResourceAsStream("application.properties");
+//            appProperties.load(inputStream);
+            appProperties.load(new FileInputStream("src/main/resources/application.properties"));
             logger.info(getLog("prop_provider_finish"));
         } catch (IOException e) {
             logger.severe(e.getMessage());
