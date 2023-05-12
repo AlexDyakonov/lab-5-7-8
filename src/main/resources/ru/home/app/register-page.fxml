@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0"
+      prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="562.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/login.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="484.0" layoutY="32.0" text="Register here">
+                    <font>
+                        <Font name="Roboto Bold" size="21.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="448.0" layoutY="74.0" text="Username" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="15.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="449.0" layoutY="144.0" text="Password" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="15.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tx_username" layoutX="456.0" layoutY="101.0" prefHeight="25.0" prefWidth="182.0"
+                           promptText="Username"/>
+                <TextField fx:id="tf_password" layoutX="456.0" layoutY="174.0" prefHeight="25.0" prefWidth="182.0"
+                           promptText="Password"/>
+                <Button fx:id="button_sign_up" layoutX="440.0" layoutY="370.0" mnemonicParsing="false" prefHeight="50.0"
+                        prefWidth="214.0" style="-fx-background-color: af517a;" text="Sign up" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Bold" size="15.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="421.0" layoutY="450.0" text="Already a member?" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="12.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="button_log_in" layoutX="562.0" layoutY="445.0" mnemonicParsing="false"
+                        style="-fx-cursor: hand; -fx-background-color: transparent;" text="Log in!" textFill="#0009ff"
+                        underline="true"/>
+                <Label layoutX="468.0" layoutY="205.0" text="Choose your avatar" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="15.0"/>
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_ava2" layoutX="524.0" layoutY="332.0" mnemonicParsing="false"/>
+                <RadioButton fx:id="rb_ava3" layoutX="654.0" layoutY="332.0" mnemonicParsing="false"/>
+                <RadioButton fx:id="rb_ava1" layoutX="399.0" layoutY="332.0" mnemonicParsing="false"/>
+                <Group layoutX="420.0" layoutY="292.0">
+                    <children>
+                        <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="-60.0" layoutY="-62.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@assets/avatars/ava1.jpg"/>
+                            </image>
+                        </ImageView>
+                        <Circle fill="#1f93ff00" layoutX="-14.0" layoutY="-16.0" radius="46.0" stroke="BLACK"
+                                strokeType="INSIDE"/>
+                    </children>
+                </Group>
+                <Group layoutX="476.0" layoutY="235.0">
+                    <children>
+                        <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="9.0" layoutY="-3.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@assets/avatars/ava2.jpg"/>
+                            </image>
+                        </ImageView>
+                        <Circle fill="#1f93ff00" layoutX="55.0" layoutY="43.0" radius="46.0" stroke="BLACK"
+                                strokeType="INSIDE"/>
+                    </children>
+                </Group>
+                <Group layoutX="608.0" layoutY="230.0">
+                    <children>
+                        <ImageView fitHeight="96.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@assets/avatars/ava3.jpg"/>
+                            </image>
+                        </ImageView>
+                        <Circle fill="#1f93ff00" layoutX="47.0" layoutY="47.0" radius="46.0" stroke="BLACK"
+                                strokeType="INSIDE"/>
+                    </children>
+                </Group>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>
