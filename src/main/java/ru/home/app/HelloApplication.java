@@ -22,8 +22,16 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        ConsoleUI session = new ConsoleUI(new Invoker(BuilderType.CMD, LANGUAGE.RU));
-//        session.start();
-        launch(args);
+        try {
+            if (args[0].equals("-g")) {
+                launch();
+            }
+            if (args[0].equals("-c")) {
+                ConsoleUI session = new ConsoleUI(new Invoker(BuilderType.CMD, LANGUAGE.RU));
+                session.start();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Use flag to launch launch: -g - GUI, -c - CMD");
+        }
     }
 }
