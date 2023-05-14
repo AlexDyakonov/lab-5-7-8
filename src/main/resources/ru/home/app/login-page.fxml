@@ -12,8 +12,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0"
       prefWidth="720.0" xmlns="http://javafx.com/javafx/19"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="ru.home.app.ui.controllers.LogInController">
+      xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -52,12 +51,12 @@
                   <Font name="Roboto Bold" size="15.0"/>
                </font>
             </Button>
-            <Label layoutX="440.0" layoutY="450.0" text="Dont have an account?" textFill="#5e5e5e">
+            <Label layoutX="430.0" layoutY="450.0" text="Dont have an account?" textFill="#5e5e5e">
                <font>
                   <Font name="Roboto" size="12.0"/>
                </font>
             </Label>
-            <Button fx:id="button_sign_up" layoutX="562.0" layoutY="445.0" mnemonicParsing="false"
+            <Button fx:id="button_sign_up" layoutX="570.0" layoutY="445.0" mnemonicParsing="false"
                     style="-fx-cursor: hand; -fx-background-color: transparent;" text="Join now!" textFill="#0009ff"
                     underline="true"/>
          </children>
