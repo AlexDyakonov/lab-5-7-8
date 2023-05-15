@@ -13,6 +13,7 @@ public class CurrentUserManager {
     private String userName;
     private Long userId;
     private ROLES userRole;
+    private int userAvatarId;
 
     static {
         setupLogger(logger);
@@ -31,6 +32,13 @@ public class CurrentUserManager {
         this.userRole = role;
     }
 
+    public CurrentUserManager(String userName, Long userId, ROLES userRole, int userAvatarId) {
+        this.userName = userName;
+        this.userId = userId;
+        this.userRole = userRole;
+        this.userAvatarId = userAvatarId;
+    }
+
     /**
      * Instantiates a new User manager.
      */
@@ -39,9 +47,9 @@ public class CurrentUserManager {
     }
 
     /**
-     * Gets user name.
+     * Gets username.
      *
-     * @return the user name
+     * @return the username
      */
     public String getUserName() {
         return userName;
@@ -94,5 +102,13 @@ public class CurrentUserManager {
      */
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public int getUserAvatarId() {
+        return userAvatarId;
+    }
+
+    public void setUserAvatarId(int userAvatarId) {
+        this.userAvatarId = userAvatarId;
     }
 }

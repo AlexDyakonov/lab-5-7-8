@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.commands.Invoker;
+import ru.home.app.server.controller.GuiHumanControllerImpl;
 import ru.home.app.server.services.BuilderType;
 import ru.home.app.ui.ConsoleUI;
 import ru.home.app.ui.controllers.LoginController;
@@ -20,7 +22,8 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
-        new LoginController(1080, 768).launchLoginScene(stage);
+        CurrentUserManager userManager = new CurrentUserManager();
+        new LoginController(1080, 768, userManager, new GuiHumanControllerImpl()).launchLoginScene(stage);
     }
 
     public static void main(String[] args) {

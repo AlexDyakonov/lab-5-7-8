@@ -1,22 +1,24 @@
 package ru.home.app.ui.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.GuiHumanControllerImpl;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController {
+    private final CurrentUserManager userManager;
+    private final GuiHumanController humanController;
     private double width;
     private double height;
     private Stage stage;
@@ -28,8 +30,16 @@ public class LoginController implements Initializable {
     private Button button_sign_up;
     @FXML
     private Button close_button;
+    @FXML
+    private Label label_error_msg;
+    @FXML
+    private TextField tf_username;
+    @FXML
+    private PasswordField pf_password;
 
-    public LoginController(double width, double height) {
+    public LoginController(double width, double height, CurrentUserManager userManager, GuiHumanController humanController) {
+        this.humanController = humanController;
+        this.userManager = userManager;
         this.width = width;
         this.height = height;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/login-page.fxml"));
@@ -52,8 +62,29 @@ public class LoginController implements Initializable {
 
     }
 
+    private boolean checkFields() {
+        if (!tf_username.getText().isBlank() && !pf_password.getText().isBlank()) {
+            label_error_msg.setText("Attempt to login.");
+            return true;
+        }
+        if (tf_username.getText().isBlank() || pf_password.getText().isBlank()) {
+            label_error_msg.setText("You should insert username and password.");
+        }
+        return false;
+    }
+
+    public void loginButtonOnAction(ActionEvent e) {
+        if (checkFields()) {
+            if (humanController.checkUserPassword(tf_username.getText(), pf_password.getText())) {
+                label_error_msg.setText("Success!");
+            } else {
+                label_error_msg.setText("Invalid username or password.");
+            }
+        }
+    }
+
     public void signUpButtonOnAction(ActionEvent e) {
-        new RegisterController(width, height).launchRegisterScene(stage);
+        new RegisterController(width, height, userManager, humanController).launchRegisterScene(stage);
     }
 
     public void closeButtonOnAction(ActionEvent e) {
@@ -61,15 +92,6 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        button_login.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-            }
-        });
-    }
     private void setCurrentWidthToStage(Number number2) {
         stage.setWidth((double) number2);
         width = (double) number2;
@@ -86,5 +108,13 @@ public class LoginController implements Initializable {
 
     public double getHeight() {
         return height;
+    }
+
+    public CurrentUserManager getUserManager() {
+        return userManager;
+    }
+
+    public GuiHumanController getHumanController() {
+        return humanController;
     }
 }

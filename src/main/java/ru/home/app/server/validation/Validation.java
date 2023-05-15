@@ -126,6 +126,7 @@ public class Validation {
         validateFileWrite(file, language);
     }
 
+// TODO сделать все методы для валидации.
 
     /**
      * Validate user name boolean.
@@ -135,6 +136,10 @@ public class Validation {
      */
     public static boolean validateUserName(String userName) {
         return (userName != null && !userName.trim().equals(""));
+    }
+
+    public static boolean validateId(Long id) {
+        return (id != null && !(id < 0));
     }
 
     /**
@@ -147,7 +152,7 @@ public class Validation {
      */
     public static <T> void validate(T object, Function<T, Boolean> validator, String errorMessage) {
         if (!validator.apply(object)) {
-            throw new ValidationException(ConsoleColors.RED_BRIGHT + errorMessage + ConsoleColors.RESET);
+            throw new ValidationException(errorMessage);
         }
     }
 }

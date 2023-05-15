@@ -174,4 +174,7 @@ public class Parser {
         return Timestamp.valueOf(zonedDateTime.toLocalDateTime());
     }
 
+    public static String userAvatarIdToPathString(int id) {
+        return "resources/ru/home/app/assets/avatars/ava" + id + ".jpg";
+    }
 }
