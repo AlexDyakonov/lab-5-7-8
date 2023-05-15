@@ -33,7 +33,7 @@ public class LoggedInController implements Initializable {
     public LoggedInController(double width, double height) {
         this.width = width;
         this.height = height;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/main-page.fxml"));
         fxmlLoader.setController(this);
         try {
             parent = (Parent) fxmlLoader.load();

@@ -24,6 +24,10 @@ public class LoginController implements Initializable {
     private Parent parent;
     @FXML
     private Button button_login;
+    @FXML
+    private Button button_sign_up;
+    @FXML
+    private Button close_button;
 
     public LoginController(double width, double height) {
         this.width = width;
@@ -38,6 +42,7 @@ public class LoginController implements Initializable {
             throw new RuntimeException(ex);
         }
     }
+
     public void launchLoginScene(Stage stage) {
         this.stage = stage;
         stage.setScene(scene);
@@ -45,6 +50,15 @@ public class LoginController implements Initializable {
         stage.hide();
         stage.show();
 
+    }
+
+    public void signUpButtonOnAction(ActionEvent e) {
+        new RegisterController(width, height).launchRegisterScene(stage);
+    }
+
+    public void closeButtonOnAction(ActionEvent e) {
+        Stage stage = (Stage) close_button.getScene().getWindow();
+        stage.close();
     }
 
     @Override

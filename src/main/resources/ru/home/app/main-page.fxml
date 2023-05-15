@@ -7,11 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0"
-            prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+            prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="512.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/back_with_avatar.png"/>
             </image>
@@ -28,26 +27,35 @@
                 <Font name="Roboto" size="16.0"/>
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="177.0" layoutY="105.0" prefHeight="21.0" prefWidth="39.0" text="All(56)"
+        <Label alignment="CENTER" layoutX="281.0" layoutY="203.0" prefHeight="21.0" prefWidth="39.0" text="All(56)"
                textFill="#343a40">
             <font>
                 <Font name="Roboto" size="12.0"/>
             </font>
         </Label>
-        <Button fx:id="button_add_new" layoutX="228.0" layoutY="104.0" mnemonicParsing="false" prefHeight="23.0"
+        <Button fx:id="button_add_new" layoutX="332.0" layoutY="202.0" mnemonicParsing="false" prefHeight="23.0"
                 prefWidth="78.0" style="-fx-background-color: F3CBC5;" text="ADD NEW">
             <font>
                 <Font name="Roboto Bold" size="12.0"/>
             </font>
         </Button>
-        <Button fx:id="button_logout" layoutY="463.0" mnemonicParsing="false" style="-fx-background-color: transparent;"
-                text="logout" textFill="#f3cbc5"/>
-        <Label alignment="CENTER" layoutX="248.0" layoutY="388.0" prefHeight="21.0" prefWidth="39.0" text="INFO">
+        <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false"
+                style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5"/>
+        <Label alignment="CENTER" layoutX="345.0" layoutY="520.0" prefHeight="21.0" prefWidth="39.0" text="INFO">
             <font>
                 <Font name="Roboto Bold" size="15.0"/>
             </font>
         </Label>
-        <Button fx:id="button_language" layoutX="80.0" layoutY="463.0" mnemonicParsing="false"
+        <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false"
                 style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
+        <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true" style="-fx-cursor: hand;">
+            <image>
+                <Image url="@assets/icons/x-button.png"/>
+            </image>
+        </ImageView>
+        <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false"
+                onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
+                style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
     </children>
 </AnchorPane>

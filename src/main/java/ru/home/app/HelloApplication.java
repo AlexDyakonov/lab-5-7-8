@@ -9,6 +9,7 @@ import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.services.BuilderType;
 import ru.home.app.ui.ConsoleUI;
 import ru.home.app.ui.controllers.LoginController;
+import ru.home.app.ui.controllers.RegisterController;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.IOException;
@@ -18,7 +19,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
-        new LoginController(720, 512).launchLoginScene(stage);
+        stage.initStyle(StageStyle.UNDECORATED);
+        new LoginController(1080, 768).launchLoginScene(stage);
     }
 
     public static void main(String[] args) {

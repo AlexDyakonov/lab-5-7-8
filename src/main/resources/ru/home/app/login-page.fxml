@@ -9,57 +9,64 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0"
-      prefWidth="720.0" xmlns="http://javafx.com/javafx/19"
-      xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <ImageView fitHeight="562.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/login.png"/>
-               </image>
-            </ImageView>
-            <Label layoutX="440.0" layoutY="79.0" text="Welcome back">
-               <font>
-                  <Font name="Roboto" size="15.0"/>
-               </font>
-            </Label>
-            <Label layoutX="440.0" layoutY="106.0" text="Login to your account">
-               <font>
-                  <Font name="Roboto Bold" size="21.0"/>
-               </font>
-            </Label>
-            <Label layoutX="448.0" layoutY="147.0" text="Username" textFill="#5e5e5e">
-               <font>
-                  <Font name="Roboto" size="15.0"/>
-               </font>
-            </Label>
-            <Label layoutX="449.0" layoutY="217.0" text="Password" textFill="#5e5e5e">
-               <font>
-                  <Font name="Roboto" size="15.0"/>
-               </font>
-            </Label>
-            <TextField fx:id="tx_username" layoutX="456.0" layoutY="174.0" prefHeight="25.0" prefWidth="182.0"
-                       promptText="Username"/>
-            <TextField fx:id="tf_password" layoutX="456.0" layoutY="247.0" prefHeight="25.0" prefWidth="182.0"
-                       promptText="Password"/>
-            <Button fx:id="button_login" layoutX="440.0" layoutY="314.0" mnemonicParsing="false" prefHeight="50.0"
-                    prefWidth="214.0" style="-fx-background-color: af517a;" text="Login now" textFill="WHITE">
-               <font>
-                  <Font name="Roboto Bold" size="15.0"/>
-               </font>
-            </Button>
-            <Label layoutX="430.0" layoutY="450.0" text="Dont have an account?" textFill="#5e5e5e">
-               <font>
-                  <Font name="Roboto" size="12.0"/>
-               </font>
-            </Label>
-            <Button fx:id="button_sign_up" layoutX="570.0" layoutY="445.0" mnemonicParsing="false"
-                    style="-fx-cursor: hand; -fx-background-color: transparent;" text="Join now!" textFill="#0009ff"
-                    underline="true"/>
-         </children>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+      prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="768.0" fitWidth="1149.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/login.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="656.0" layoutY="107.0" text="Welcome back">
+                    <font>
+                        <Font name="Roboto" size="20.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="656.0" layoutY="141.0" text="Login to your account">
+                    <font>
+                        <Font name="Roboto Bold" size="30.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="671.0" layoutY="235.0" text="Username" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="16.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="672.0" layoutY="315.0" text="Password" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tx_username" layoutX="675.0" layoutY="266.0" prefHeight="33.0" prefWidth="242.0"
+                           promptText="Username"/>
+                <TextField fx:id="tf_password" layoutX="675.0" layoutY="351.0" prefHeight="33.0" prefWidth="242.0"
+                           promptText="Password"/>
+                <Button fx:id="button_login" layoutX="667.0" layoutY="439.0" mnemonicParsing="false" prefHeight="47.0"
+                        prefWidth="271.0" style="-fx-background-color: af517a;" text="Login now" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Bold" size="15.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="674.0" layoutY="718.0" text="Dont have an account?" textFill="#5e5e5e">
+                    <font>
+                        <Font name="Roboto" size="12.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="button_sign_up" layoutX="846.0" layoutY="713.0" mnemonicParsing="false"
+                        onAction="#signUpButtonOnAction" style="-fx-cursor: hand; -fx-background-color: transparent;"
+                        text="Join now!" textFill="#0009ff" underline="true"/>
+                <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
+                           preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@assets/icons/x-button.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
+                        style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
+            </children>
       </AnchorPane>
    </children>
 </HBox>
