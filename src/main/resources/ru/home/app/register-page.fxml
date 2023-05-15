@@ -97,6 +97,12 @@
                         style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
                 <PasswordField fx:id="pf_password" layoutX="678.0" layoutY="250.0" prefHeight="35.0" prefWidth="242.0"
                                promptText="Password"/>
+                <Label fx:id="label_error_msg" alignment="CENTER" layoutX="632.0" layoutY="643.0" prefHeight="25.0"
+                       prefWidth="348.0" textFill="RED">
+                    <font>
+                        <Font name="Roboto" size="14.0"/>
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>
