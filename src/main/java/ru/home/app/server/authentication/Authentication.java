@@ -19,7 +19,7 @@ import static ru.home.app.util.Message.*;
  */
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
-    private final UserManager userManager = new UserManager();
+    private final CurrentUserManager currentUserManager = new CurrentUserManager();
     private final HumanController controller;
     private final BufferedReader reader;
     private final LANGUAGE language;
@@ -40,7 +40,7 @@ public class Authentication {
         this.reader = reader;
         this.controller = controller;
         this.language = language;
-        controller.setUserName(userManager.getUserName());
+        controller.setUserName(currentUserManager.getUserName());
         logger.info(getLog("auth_init_finish"));
     }
 
@@ -52,7 +52,7 @@ public class Authentication {
     private void configUserManager(String username) {
         ROLES role = controller.getUserRole(username);
         Long id = controller.getUserId(username);
-        userManager.setUserName(username)
+        currentUserManager.setUserName(username)
                 .setUserRole(role)
                 .setUserId(id);
         logger.info(getLog("user_manager_cofigured").
@@ -85,7 +85,7 @@ public class Authentication {
      *
      * @return the user manager
      */
-    public UserManager registerUser() {
+    public CurrentUserManager registerUser() {
         try {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
@@ -96,11 +96,11 @@ public class Authentication {
             } else {
                 controller.userRegister(username, password);
                 configUserManager(username);
-                controller.setUserManager(userManager);
+                controller.setUserManager(currentUserManager);
                 System.out.println(getSuccessMessage("user_registered", language));
                 logger.info(getLog("user_regisrered"));
             }
-            return userManager;
+            return currentUserManager;
         } catch (ValidationException e) {
             logger.warning(e.getMessage());
             System.out.println(e.getMessage());
@@ -115,13 +115,13 @@ public class Authentication {
      *
      * @return the user manager
      */
-    public UserManager login() {
+    public CurrentUserManager login() {
         try {
             String username = getUserName(reader, language);
             String password = getPasswordLogin(reader, language);
             if (controller.checkUserPassword(username, password)) {
                 configUserManager(username);
-                controller.setUserManager(userManager);
+                controller.setUserManager(currentUserManager);
                 System.out.println(getSuccessMessage("done", language));
                 logger.info(getLog("user_logined"));
             } else {
@@ -129,7 +129,7 @@ public class Authentication {
                 logger.info(getWarning("invalid_login", LANGUAGE.EN));
                 login();
             }
-            return userManager;
+            return currentUserManager;
         } catch (ValidationException e) {
             logger.warning(e.getMessage());
             System.out.println(e.getMessage());
@@ -144,10 +144,10 @@ public class Authentication {
      *
      * @return the user manager
      */
-    public UserManager guest() {
-        userManager.setUserRole(ROLES.GUEST).setUserName("guest");
+    public CurrentUserManager guest() {
+        currentUserManager.setUserRole(ROLES.GUEST).setUserName("guest");
         logger.info(getLog("guest_logined"));
-        return userManager;
+        return currentUserManager;
     }
 
     /**
@@ -155,7 +155,7 @@ public class Authentication {
      *
      * @return the user manager
      */
-    public UserManager getUserManager() {
-        return userManager;
+    public CurrentUserManager getUserManager() {
+        return currentUserManager;
     }
 }

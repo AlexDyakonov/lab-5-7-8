@@ -1,7 +1,7 @@
 package ru.home.app.server.dao;
 
 import ru.home.app.server.authentication.ROLES;
-import ru.home.app.server.authentication.UserManager;
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.db.SQLDataBaseProvider;
 import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ValidationException;
@@ -35,7 +35,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     private final SQLConnection sqlConnection = new SQLConnection();
     private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
     private LANGUAGE language;
-    private UserManager userManager;
+    private CurrentUserManager currentUserManager;
 
     public HumanDaoPostgresImpl() {
     }
@@ -59,7 +59,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
-        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
+        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, currentUserManager.getUserId())) {
             try {
                 String query = "DELETE FROM humantouser WHERE humanbeing_id = ?";
                 PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
@@ -93,7 +93,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO request, Long id) {
         try {
-            if (source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
+            if (source.isHumanBeingBelongsToUser(id, currentUserManager.getUserId())) {
                 logger.info(getLog("update_starting").replace("%id%", id.toString()));
                 String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
                         "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
@@ -149,7 +149,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
         try {
             String query = ("DELETE FROM humanbeing WHERE humanbeing_id IN (SELECT humanbeing_id FROM humantouser WHERE user_id = ?)");
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setLong(1, userManager.getUserId());
+            preparedStatement.setLong(1, currentUserManager.getUserId());
 
             checkAffectedRows(preparedStatement);
             System.out.println(getSuccessMessage("done", language));
@@ -316,7 +316,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
             String query1 = "INSERT INTO humantouser VALUES (?, ?)";
             PreparedStatement preparedStatement1 = sqlConnection.getConnection().prepareStatement(query1);
             preparedStatement1.setLong(1, id);
-            preparedStatement1.setLong(2, userManager.getUserId());
+            preparedStatement1.setLong(2, currentUserManager.getUserId());
 
 
             int affectedRows = preparedStatement1.executeUpdate();
@@ -362,8 +362,8 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     @Override
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
+    public void setUserManager(CurrentUserManager currentUserManager) {
+        this.currentUserManager = currentUserManager;
     }
 
     @Override

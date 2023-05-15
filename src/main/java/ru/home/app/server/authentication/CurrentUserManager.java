@@ -8,8 +8,8 @@ import static ru.home.app.util.Message.getLog;
 /**
  * The type User manager. Class to hold info about current user
  */
-public class UserManager {
-    private static final Logger logger = Logger.getLogger(UserManager.class.getName());
+public class CurrentUserManager {
+    private static final Logger logger = Logger.getLogger(CurrentUserManager.class.getName());
     private String userName;
     private Long userId;
     private ROLES userRole;
@@ -25,7 +25,7 @@ public class UserManager {
      * @param userId   the user id
      * @param role     the role
      */
-    public UserManager(String userName, Long userId, ROLES role) {
+    public CurrentUserManager(String userName, Long userId, ROLES role) {
         this.userName = userName;
         this.userId = userId;
         this.userRole = role;
@@ -34,7 +34,7 @@ public class UserManager {
     /**
      * Instantiates a new User manager.
      */
-    public UserManager() {
+    public CurrentUserManager() {
         logger.info(getLog("um_inited"));
     }
 
@@ -53,7 +53,7 @@ public class UserManager {
      * @param userName the user name
      * @return the user name
      */
-    public UserManager setUserName(String userName) {
+    public CurrentUserManager setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -73,7 +73,7 @@ public class UserManager {
      * @param userRole the user role
      * @return the user role
      */
-    public UserManager setUserRole(ROLES userRole) {
+    public CurrentUserManager setUserRole(ROLES userRole) {
         this.userRole = userRole;
         return this;
     }

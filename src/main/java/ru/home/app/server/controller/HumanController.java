@@ -1,7 +1,7 @@
 package ru.home.app.server.controller;
 
 import ru.home.app.server.authentication.ROLES;
-import ru.home.app.server.authentication.UserManager;
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
@@ -135,7 +135,7 @@ public interface HumanController {
 
     Long getUserId(String userName);
 
-    void setUserManager(UserManager userManager);
+    void setUserManager(CurrentUserManager currentUserManager);
 
     void clearAll();
 

@@ -1,6 +1,6 @@
 package ru.home.app.server.commands;
 
-import ru.home.app.server.authentication.UserManager;
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.controller.HumanControllerImpl;
 import ru.home.app.server.exception.ApplicationException;
@@ -35,7 +35,7 @@ public class Invoker {
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
     private final HumanController controller;
-    private UserManager userManager = new UserManager();
+    private CurrentUserManager currentUserManager = new CurrentUserManager();
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
@@ -151,13 +151,13 @@ public class Invoker {
         return controller;
     }
 
-    public UserManager getUserManager() {
-        return userManager;
+    public CurrentUserManager getUserManager() {
+        return currentUserManager;
     }
 
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
-        commandsMapManager.setRole(userManager.getUserRole());
+    public void setUserManager(CurrentUserManager currentUserManager) {
+        this.currentUserManager = currentUserManager;
+        commandsMapManager.setRole(currentUserManager.getUserRole());
         init();
     }
 

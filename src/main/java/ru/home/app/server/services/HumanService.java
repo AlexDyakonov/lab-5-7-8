@@ -1,7 +1,7 @@
 package ru.home.app.server.services;
 
 import ru.home.app.server.authentication.ROLES;
-import ru.home.app.server.authentication.UserManager;
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
@@ -147,7 +147,7 @@ public interface HumanService {
 
     Long getUserId(String userName);
 
-    void setUserManager(UserManager userManager);
+    void setUserManager(CurrentUserManager currentUserManager);
 
     void clearAll();
 
