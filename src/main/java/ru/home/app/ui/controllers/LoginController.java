@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
-import ru.home.app.server.model.User;
 
 import java.io.IOException;
 
@@ -22,8 +21,8 @@ public class LoginController {
     private double width;
     private double height;
     private Stage stage;
-    private Scene scene;
-    private Parent parent;
+    private final Scene scene;
+    private final Parent parent;
     @FXML
     private Button button_login;
     @FXML
@@ -45,7 +44,7 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/login-page.fxml"));
         fxmlLoader.setController(this);
         try {
-            parent = (Parent) fxmlLoader.load();
+            parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
         } catch (IOException ex) {
             System.out.println("Error displaying login window");

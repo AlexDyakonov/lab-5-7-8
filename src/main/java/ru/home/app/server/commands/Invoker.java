@@ -7,9 +7,9 @@ import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ArgumentException;
 import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
-import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.HistoryManager;
 import ru.home.app.server.services.ScriptManager;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.BufferedReader;
@@ -32,19 +32,20 @@ public class Invoker {
      */
     public static final Logger logger = Logger.getLogger(Invoker.class.getName());
     private static Map<String, Command> commandsMap = new HashMap<>();
+
+    static {
+        setupLogger(logger);
+    }
+
     private final ScriptManager scriptManager = new ScriptManager(null);
     private final HistoryManager history;
     private final HumanController controller;
+    private final CommandsMapManager commandsMapManager;
     private CurrentUserManager currentUserManager = new CurrentUserManager();
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
     private BuilderType builderType;
     private LANGUAGE language;
-    private final CommandsMapManager commandsMapManager;
-
-    static {
-        setupLogger(logger);
-    }
 
     /**
      * Instantiates a new Invoker.

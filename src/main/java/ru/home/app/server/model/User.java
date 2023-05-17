@@ -21,6 +21,13 @@ public class User {
         this.userRole = userRole;
     }
 
+    public User(Long userId, String userName, ROLES userRole, String userAvatar) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userRole = userRole;
+        this.userAvatar = userAvatar;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -50,13 +57,6 @@ public class User {
     }
 
     public void setUserAvatarId(String userAvatarId) {
-        this.userAvatar = userAvatar;
-    }
-
-    public User(Long userId, String userName, ROLES userRole, String userAvatar) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userRole = userRole;
         this.userAvatar = userAvatar;
     }
 }

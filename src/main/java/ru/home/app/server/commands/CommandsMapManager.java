@@ -6,9 +6,9 @@ import ru.home.app.server.commands.adminlist.SetRoleCommand;
 import ru.home.app.server.commands.adminlist.ShowUsersCommand;
 import ru.home.app.server.commands.list.*;
 import ru.home.app.server.controller.HumanController;
-import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.HistoryManager;
 import ru.home.app.server.services.ScriptManager;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.BufferedReader;
@@ -25,19 +25,20 @@ import static ru.home.app.util.Message.getLog;
 public class CommandsMapManager {
     public static final Logger logger = Logger.getLogger(CommandsMapManager.class.getName());
     private static final Map<String, Command> commandsMap = new HashMap<>();
-    private final ScriptManager scriptManager = new ScriptManager(null);
-    private final Invoker invoker;
-    private final HistoryManager history;
-    private final HumanController controller;
-    private ROLES role;
-    private BufferedReader cmdReader;
-    private BufferedReader fileReader;
-    private BuilderType builderType;
-    private final LANGUAGE language;
 
     static {
         setupLogger(logger);
     }
+
+    private final ScriptManager scriptManager = new ScriptManager(null);
+    private final Invoker invoker;
+    private final HistoryManager history;
+    private final HumanController controller;
+    private final LANGUAGE language;
+    private ROLES role;
+    private BufferedReader cmdReader;
+    private BufferedReader fileReader;
+    private BuilderType builderType;
 
     /**
      * Instantiates a new Commands map manager.

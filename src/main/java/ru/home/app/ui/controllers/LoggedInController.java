@@ -15,20 +15,16 @@ import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoggedInController implements Initializable {
     private final GuiHumanController humanController;
     private final CurrentUserManager userManager;
-    private double width;
-    private double height;
+    private final double width;
+    private final double height;
     private Parent parent;
     private Stage stage;
     private Scene scene;
@@ -42,6 +38,8 @@ public class LoggedInController implements Initializable {
     private Label label_role;
     @FXML
     private ImageView im_avatar;
+    @FXML
+    private Button close_button;
 
     public LoggedInController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
         this.userManager = userManager;
@@ -51,7 +49,7 @@ public class LoggedInController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/main-page.fxml"));
         fxmlLoader.setController(this);
         try {
-            parent = (Parent) fxmlLoader.load();
+            parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
             label_role.setText(userManager.getUserRole().toString());
             label_nickname.setText(userManager.getUserName());
@@ -63,9 +61,6 @@ public class LoggedInController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
-    @FXML
-    private Button close_button;
 
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();

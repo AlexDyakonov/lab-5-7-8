@@ -15,11 +15,12 @@ import static ru.home.app.server.services.LoggerManager.setupLogger;
  */
 public class ConsoleUI {
     private static final Logger logger = Logger.getLogger(ConsoleUI.class.getName());
-    private final Invoker invoker;
 
     static {
         setupLogger(logger);
     }
+
+    private final Invoker invoker;
 
     /**
      * Instantiates a new Console ui.

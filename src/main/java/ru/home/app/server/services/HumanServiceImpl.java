@@ -1,7 +1,7 @@
 package ru.home.app.server.services;
 
-import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.dao.HumanDao;
 import ru.home.app.server.dao.HumanDaoPostgresImpl;
 import ru.home.app.server.model.Mood;

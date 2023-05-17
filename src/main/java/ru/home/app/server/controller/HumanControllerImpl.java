@@ -1,7 +1,7 @@
 package ru.home.app.server.controller;
 
-import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.User;
