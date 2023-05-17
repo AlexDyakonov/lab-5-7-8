@@ -27,7 +27,7 @@ public interface GuiHumanDao {
 
     Set<String> getUserNameList();
 
-    void userRegister(String username, String password);
+    long userRegister(CurrentUserManager userManager, String password);
 
     boolean checkUserPassword(String username, String password);
 

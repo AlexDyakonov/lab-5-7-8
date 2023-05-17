@@ -5,17 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.controller.GuiHumanController;
-import ru.home.app.server.controller.GuiHumanControllerImpl;
 import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.ValidationException;
-import ru.home.app.server.validation.Validation;
 
 import java.io.IOException;
 
@@ -23,8 +19,8 @@ import java.io.IOException;
 public class RegisterController {
     private final GuiHumanController humanController;
     private final CurrentUserManager userManager;
-    private double width;
-    private double height;
+    private final double width;
+    private final double height;
     private Parent parent;
     private Stage stage;
     private Scene scene;
@@ -34,6 +30,20 @@ public class RegisterController {
     private PasswordField pf_password;
     @FXML
     private Label label_error_msg;
+    @FXML
+    private Label label_error_msg1;
+    @FXML
+    private RadioButton rb_ava1;
+    @FXML
+    private RadioButton rb_ava2;
+    @FXML
+    private RadioButton rb_ava3;
+    @FXML
+    private Button close_button;
+    @FXML
+    private Button button_log_in;
+    @FXML
+    private Button button_sign_up;
 
     public RegisterController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
         this.userManager = userManager;
@@ -43,7 +53,7 @@ public class RegisterController {
         this.width = width;
         this.height = height;
         try {
-            parent = (Parent) fxmlLoader.load();
+            parent = fxmlLoader.load();
             scene = new Scene(parent, width, height);
         } catch (IOException e) {
             //TODO обработать
@@ -58,27 +68,27 @@ public class RegisterController {
         stage.show();
     }
 
-    @FXML
-    private Button close_button;
+    public void setAvatarToUser(ActionEvent e) {
+        if (rb_ava1.isSelected()) {
+            userManager.setUserAvatar("ava1");
+        } else if (rb_ava2.isSelected()) {
+            userManager.setUserAvatar("ava2");
+        } else if (rb_ava3.isSelected()) {
+            userManager.setUserAvatar("ava3");
+        }
+    }
 
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();
         stage.close();
     }
 
-    @FXML
-    private Button button_log_in;
-
     public void loginButtonOnAction(ActionEvent e) {
         new LoginController(width, height, userManager, humanController).launchLoginScene(stage);
     }
 
-    @FXML
-    private Button button_sign_up;
-
     private boolean checkFields() {
         if (!tf_username.getText().isBlank() && !pf_password.getText().isBlank()) {
-            label_error_msg.setText("Attempt to register.");
             return true;
         }
         if (tf_username.getText().isBlank() || pf_password.getText().isBlank()) {
@@ -87,11 +97,25 @@ public class RegisterController {
         return false;
     }
 
+    private boolean checkAvatars() {
+        if (!rb_ava1.isSelected() && !rb_ava2.isSelected() && !rb_ava3.isSelected()) {
+            label_error_msg1.setText("You cannot select no buttons.");
+            return false;
+        }
+        return true;
+    }
+
     public void signUpButtonOnAction(ActionEvent e) {
         try {
-            humanController.userRegister(tf_username.getText(), pf_password.getText());
+            if (checkFields()) {
+                if (checkAvatars()) {
+                    userManager.setUserName(tf_username.getText()).setUserRole(ROLES.USER)
+                            .setUserId(humanController.userRegister(userManager, pf_password.getText()));
+                    new LoggedInController(width, height, userManager, humanController).launchMainScene(stage);
+                }
+            }
         } catch (ValidationException | AuthenticationException e1) {
-            label_error_msg.setText(e1.getMessage());
+            label_error_msg1.setText(e1.getMessage());
         }
     }
 

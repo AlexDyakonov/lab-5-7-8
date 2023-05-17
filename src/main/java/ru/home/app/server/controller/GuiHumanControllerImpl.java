@@ -17,10 +17,12 @@ import static ru.home.app.server.validation.Validation.validate;
 
 public class GuiHumanControllerImpl implements GuiHumanController {
     private final GuiHumanService service;
+    private final CurrentUserManager userManager;
     private LANGUAGE language;
 
-    public GuiHumanControllerImpl() {
-        this.service = new GuiHumanServiceImpl();
+    public GuiHumanControllerImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
+        this.service = new GuiHumanServiceImpl(userManager);
         service.setLanguage(language);
     }
 
@@ -66,12 +68,14 @@ public class GuiHumanControllerImpl implements GuiHumanController {
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        service.userRegister(username, password);
+    public long userRegister(CurrentUserManager userManager, String password) {
+        return service.userRegister(userManager, password);
     }
 
     @Override
     public boolean checkUserPassword(String username, String password) {
+        validate(username, Validation::validateUserName, "Message");
+        validate(password, Validation::validatePassword, "Message");
         return service.checkUserPassword(username, password);
     }
 

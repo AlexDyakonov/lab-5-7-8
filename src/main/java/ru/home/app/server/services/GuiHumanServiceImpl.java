@@ -14,10 +14,12 @@ import java.util.Set;
 
 public class GuiHumanServiceImpl implements GuiHumanService {
     private final GuiHumanDao humanDao;
+    private final CurrentUserManager userManager;
     private LANGUAGE language;
 
-    public GuiHumanServiceImpl() {
-        this.humanDao = new GuiHumanDaoImpl();
+    public GuiHumanServiceImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
+        this.humanDao = new GuiHumanDaoImpl(userManager);
         humanDao.setLanguage(language);
     }
 
@@ -62,8 +64,8 @@ public class GuiHumanServiceImpl implements GuiHumanService {
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        humanDao.userRegister(username, password);
+    public long userRegister(CurrentUserManager userManager, String password) {
+        return humanDao.userRegister(userManager, password);
     }
 
     @Override

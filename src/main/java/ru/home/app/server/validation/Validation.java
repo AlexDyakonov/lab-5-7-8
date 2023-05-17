@@ -4,7 +4,6 @@ import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
-import ru.home.app.ui.ConsoleColors;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.File;
@@ -136,6 +135,10 @@ public class Validation {
      */
     public static boolean validateUserName(String userName) {
         return (userName != null && !userName.trim().equals(""));
+    }
+
+    public static boolean validatePassword(String password) {
+        return (password != null && !password.trim().equals(""));
     }
 
     public static boolean validateId(Long id) {

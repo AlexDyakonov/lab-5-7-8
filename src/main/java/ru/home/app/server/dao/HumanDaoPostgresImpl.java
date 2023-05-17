@@ -1,7 +1,7 @@
 package ru.home.app.server.dao;
 
-import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.db.SQLDataBaseProvider;
 import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ValidationException;
@@ -33,7 +33,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     private final SQLConnection sqlConnection = new SQLConnection();
-    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
+    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection, new CurrentUserManager());
     private LANGUAGE language;
     private CurrentUserManager currentUserManager;
 
@@ -338,7 +338,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void userRegister(String username, String password) {
-        source.userRegister(username, password);
+        source.userRegister(currentUserManager, password); //сейчас не работает, надо пропускать через все слои тут. Делать влом.
     }
 
     @Override
@@ -353,7 +353,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void setUserName(String userName) {
-        source.setUsername(userName);
+        source.getUserManager().setUserName(userName);
     }
 
     @Override

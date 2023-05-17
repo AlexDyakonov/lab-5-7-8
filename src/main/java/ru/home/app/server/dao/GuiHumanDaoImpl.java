@@ -21,7 +21,12 @@ import static ru.home.app.util.Parser.stringToRole;
 
 public class GuiHumanDaoImpl implements GuiHumanDao {
     private final SQLConnection sqlConnection = new SQLConnection();
-    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection);
+    private CurrentUserManager userManager;
+    private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection, userManager);
+
+    public GuiHumanDaoImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
+    }
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
@@ -83,8 +88,8 @@ public class GuiHumanDaoImpl implements GuiHumanDao {
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        source.userRegister(username, password);
+    public long userRegister(CurrentUserManager userManager, String password) {
+        return source.userRegister(userManager, password);
     }
 
     @Override

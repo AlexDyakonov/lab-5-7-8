@@ -11,10 +11,7 @@ import ru.home.app.ui.ConsoleUI;
 import ru.home.app.ui.controllers.LoginController;
 import ru.home.app.util.LANGUAGE;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 
 public class HelloApplication extends Application {
@@ -24,7 +21,7 @@ public class HelloApplication extends Application {
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         CurrentUserManager userManager = new CurrentUserManager();
-        new LoginController(1080, 768, userManager, new GuiHumanControllerImpl()).launchLoginScene(stage);
+        new LoginController(1080, 768, userManager, new GuiHumanControllerImpl(userManager)).launchLoginScene(stage);
 
     }
 

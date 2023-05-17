@@ -1,5 +1,6 @@
 package ru.home.app.server.db;
 
+import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.model.Car;
@@ -37,14 +38,15 @@ public class SQLDataBaseProvider {
     private final SQLConnection sqlConnection;
     private final LocalDateTime creationDate;
     private final String pepper = "*63&^mVLC(#";
-    private String username;
+    private CurrentUserManager userManager;
     private Set<HumanBeingResponseDTO> dataSet;
 
 
-    public SQLDataBaseProvider(SQLConnection sqlConnection) {
+    public SQLDataBaseProvider(SQLConnection sqlConnection, CurrentUserManager userManager) {
         this.sqlConnection = sqlConnection;
         this.dataSet = loadDataBase();
         this.creationDate = LocalDateTime.now();
+        this.userManager = userManager;
     }
 
     private static String saltBuilder() {
@@ -270,25 +272,44 @@ public class SQLDataBaseProvider {
         }
     }
 
-    public void userRegister(String username, String password) {
+    public long userRegister(CurrentUserManager userManager, String password) {
+        long id = -1;
         try {
+            String username = userManager.getUserName();
             String salt = saltBuilder();
-            String query = "INSERT INTO users VALUES (DEFAULT, ?, ?, 'USER', ?)";
+            String query = "INSERT INTO users VALUES (DEFAULT, ?, ?, 'USER', ?) RETURNING user_id";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, sha256encoding(pepper + password + salt));
             preparedStatement.setString(3, salt);
 
 
-            int affectedRows = preparedStatement.executeUpdate();
-            if (affectedRows == 0) {
-                throw new ApplicationException(getLog("user_not_registered").replace("name", username));
+//            int affectedRows = preparedStatement.executeUpdate();
+//            if (affectedRows == 0) {
+//                throw new ApplicationException(getLog("user_not_registered").replace("name", username));
+//            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("user_id");
             }
             preparedStatement.close();
+            if (id != -1) {
+                String query2 = "INSERT INTO users_avatar VALUES (?, ?)";
+                PreparedStatement preparedStatement2 = sqlConnection.getConnection().prepareStatement(query2);
+                preparedStatement2.setLong(1, id);
+                preparedStatement2.setString(2, userManager.getUserAvatar());
+
+                int affectedRows2 = preparedStatement2.executeUpdate();
+                if (affectedRows2 == 0) {
+                    throw new ApplicationException(getLog("user_not_registered").replace("name", username));
+                }
+            }
+
         } catch (SQLException e) {
             logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
+        return id;
     }
 
     public ROLES getUserRole(String username) {
@@ -385,15 +406,15 @@ public class SQLDataBaseProvider {
         this.dataSet = dataSet;
     }
 
+    public CurrentUserManager getUserManager() {
+        return userManager;
+    }
+
+    public void setUserManager(CurrentUserManager userManager) {
+        this.userManager = userManager;
+    }
+
     public LocalDateTime getCreationDate() {
         return creationDate;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 }
