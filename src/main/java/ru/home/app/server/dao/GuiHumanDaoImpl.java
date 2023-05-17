@@ -6,6 +6,7 @@ import ru.home.app.server.db.SQLDataBaseProvider;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.sql.SQLConnection;
 import ru.home.app.util.LANGUAGE;
 
@@ -34,8 +35,8 @@ public class GuiHumanDaoImpl implements GuiHumanDao {
     }
 
     @Override
-    public List<HumanBeingResponseDTO> getAllHuman() {
-        return null;
+    public List<HumanBeingResponseDTOwithUsers> getAllHuman() {
+        return source.getAllHumanWithUser();
     }
 
     @Override

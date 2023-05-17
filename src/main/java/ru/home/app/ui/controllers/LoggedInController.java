@@ -1,23 +1,28 @@
 package ru.home.app.ui.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoggedInController implements Initializable {
@@ -41,6 +46,56 @@ public class LoggedInController implements Initializable {
     @FXML
     private Button close_button;
 
+    @FXML
+    private TableView<HumanBeingResponseDTOwithUsers> table;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Long> column_id;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_name;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_creator;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Integer> column_x;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Double> column_y;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_creation_time;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_hero;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_toothpick;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Float> column_speed;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_soundtrack;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_weapon;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_mood;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_name;
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_cool;
+
+    @FXML
+    private TextField sb_find_by_name;
+
+    ObservableList<HumanBeingResponseDTOwithUsers> humanBeingResponseDTOwithUsersObservableList = FXCollections.observableArrayList();
+
     public LoggedInController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
         this.userManager = userManager;
         this.humanController = controller;
@@ -55,11 +110,32 @@ public class LoggedInController implements Initializable {
             label_nickname.setText(userManager.getUserName());
             String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
             im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
+            updateTable(humanController.getAllHuman());
         } catch (IOException e) {
             //TODO обработать
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void updateTable(List<HumanBeingResponseDTOwithUsers> data) {
+        column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
+        column_x.setCellValueFactory(new PropertyValueFactory<>("x"));
+        column_y.setCellValueFactory(new PropertyValueFactory<>("y"));
+        column_creation_time.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
+        column_hero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
+        column_toothpick.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
+        column_speed.setCellValueFactory(new PropertyValueFactory<>("impactSpeed"));
+        column_soundtrack.setCellValueFactory(new PropertyValueFactory<>("soundtrackName"));
+        column_weapon.setCellValueFactory(new PropertyValueFactory<>("weaponType"));
+        column_weapon.setCellValueFactory(new PropertyValueFactory<>("mood"));
+        column_car_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        column_car_cool.setCellValueFactory(new PropertyValueFactory<>("cool"));
+
+
+        table.setItems(FXCollections.observableList(data));
     }
 
     public void closeButtonOnAction(ActionEvent e) {
@@ -69,12 +145,22 @@ public class LoggedInController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        FilteredList<HumanBeingResponseDTOwithUsers> filteredData = new FilteredList<>(humanBeingResponseDTOwithUsersObservableList, b -> true);
+        sb_find_by_name.textProperty().addListener((observable, oldvalue, newValue) -> {
+            filteredData.setPredicate(humanBeingResponseDTOwithUsers -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
 
-            }
+                return humanBeingResponseDTOwithUsers.getName().toLowerCase().contains(searchKeyword);
+            });
         });
+        SortedList<HumanBeingResponseDTOwithUsers> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+
+        table.setItems(sortedData);
     }
 
     public void setUserInfo(String username, String userRole) {

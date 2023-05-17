@@ -7,6 +7,7 @@ import ru.home.app.server.dao.GuiHumanDaoImpl;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.LANGUAGE;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class GuiHumanServiceImpl implements GuiHumanService {
     }
 
     @Override
-    public List<HumanBeingResponseDTO> getAllHuman() {
+    public List<HumanBeingResponseDTOwithUsers> getAllHuman() {
         return humanDao.getAllHuman();
     }
 

@@ -5,6 +5,7 @@ import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.LANGUAGE;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Set;
 public interface GuiHumanService {
     HumanBeingResponseDTO getHumanById(Long id);
 
-    List<HumanBeingResponseDTO> getAllHuman();
+    List<HumanBeingResponseDTOwithUsers> getAllHuman();
 
     Long createHuman(HumanBeingRequestDTO human);
 

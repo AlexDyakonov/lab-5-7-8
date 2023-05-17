@@ -1,0 +1,17 @@
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<TableView fx:id="responseHeadersTableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <columns>
+        <TableColumn text="Header">
+            <cellValueFactory>
+                <PropertyValueFactory property="header"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Value">
+            <cellValueFactory>
+                <PropertyValueFactory property="value"/>
+            </cellValueFactory>
+        </TableColumn>
+    </columns>
+</TableView>

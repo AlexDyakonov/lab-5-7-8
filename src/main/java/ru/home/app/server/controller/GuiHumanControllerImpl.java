@@ -5,6 +5,7 @@ import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.GuiHumanService;
 import ru.home.app.server.services.GuiHumanServiceImpl;
 import ru.home.app.server.validation.Validation;
@@ -33,7 +34,7 @@ public class GuiHumanControllerImpl implements GuiHumanController {
     }
 
     @Override
-    public List<HumanBeingResponseDTO> getAllHuman() {
+    public List<HumanBeingResponseDTOwithUsers> getAllHuman() {
         return service.getAllHuman();
     }
 

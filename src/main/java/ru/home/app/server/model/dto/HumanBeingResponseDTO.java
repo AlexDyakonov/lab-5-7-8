@@ -22,7 +22,6 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
     private WeaponType weaponType;
     private Mood mood;
     private Car car;
-    private String username;
 
 
     /**
@@ -216,6 +215,23 @@ public class HumanBeingResponseDTO implements Comparable<HumanBeingResponseDTO> 
      */
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public HumanBeingResponseDTOwithUsers addUser(String userName) {
+        HumanBeingResponseDTOwithUsers response = new HumanBeingResponseDTOwithUsers();
+        response.setId(id);
+        response.setName(name);
+        response.setCoordinates(coordinates);
+        response.setCreationDate(creationDate);
+        response.setRealHero(realHero);
+        response.setHasToothpick(hasToothpick);
+        response.setImpactSpeed(impactSpeed);
+        response.setSoundtrackName(soundtrackName);
+        response.setWeaponType(weaponType);
+        response.setMood(mood);
+        response.setCar(car);
+        response.setUsername(userName);
+        return response;
     }
 
     @Override

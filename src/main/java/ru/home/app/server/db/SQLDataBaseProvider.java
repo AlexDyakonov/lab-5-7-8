@@ -18,9 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static ru.home.app.server.services.LoggerManager.setupLogger;
@@ -105,6 +103,17 @@ public class SQLDataBaseProvider {
         dataSet = loadDataBase();
         return dataSet;
     }
+
+    public List<HumanBeingResponseDTOwithUsers> getAllHumanWithUser() {
+        List<HumanBeingResponseDTOwithUsers> resultList = new ArrayList<>();
+
+        for (HumanBeingResponseDTO humanBeingResponseDTO : loadDataBase()) {
+            resultList.add(getHumanBeingById(humanBeingResponseDTO.getId()));
+        }
+
+        return resultList;
+    }
+
 
     public Coordinates getCoordinates(int id) {
         Coordinates coordinates = new Coordinates();
@@ -283,11 +292,6 @@ public class SQLDataBaseProvider {
             preparedStatement.setString(2, sha256encoding(pepper + password + salt));
             preparedStatement.setString(3, salt);
 
-
-//            int affectedRows = preparedStatement.executeUpdate();
-//            if (affectedRows == 0) {
-//                throw new ApplicationException(getLog("user_not_registered").replace("name", username));
-//            }
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 id = resultSet.getInt("user_id");
