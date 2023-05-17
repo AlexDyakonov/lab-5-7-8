@@ -1,20 +1,21 @@
 package ru.home.app;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.controller.GuiHumanControllerImpl;
-import ru.home.app.server.services.BuilderType;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.ui.ConsoleUI;
 import ru.home.app.ui.controllers.LoginController;
-import ru.home.app.ui.controllers.RegisterController;
 import ru.home.app.util.LANGUAGE;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 
 public class HelloApplication extends Application {
     @Override
@@ -24,6 +25,7 @@ public class HelloApplication extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         CurrentUserManager userManager = new CurrentUserManager();
         new LoginController(1080, 768, userManager, new GuiHumanControllerImpl()).launchLoginScene(stage);
+
     }
 
     public static void main(String[] args) {

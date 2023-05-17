@@ -6,13 +6,13 @@ public class User {
     private Long userId;
     private String userName;
     private ROLES userRole;
-    private int userAvatarId;
+    private String userAvatar;
 
-    public User(String userName, Long userId, ROLES userRole, int userAvatarId) {
+    public User(String userName, Long userId, ROLES userRole, String userAvatar) {
         this.userName = userName;
         this.userId = userId;
         this.userRole = userRole;
-        this.userAvatarId = userAvatarId;
+        this.userAvatar = userAvatar;
     }
 
     public User(Long userId, String userName, ROLES userRole) {
@@ -45,18 +45,18 @@ public class User {
         this.userRole = userRole;
     }
 
-    public int getUserAvatarId() {
-        return userAvatarId;
+    public String getUserAvatar() {
+        return userAvatar;
     }
 
-    public void setUserAvatarId(int userAvatarId) {
-        this.userAvatarId = userAvatarId;
+    public void setUserAvatarId(String userAvatarId) {
+        this.userAvatar = userAvatar;
     }
 
-    public User(Long userId, String userName, ROLES userRole, int userAvatarId) {
+    public User(Long userId, String userName, ROLES userRole, String userAvatar) {
         this.userId = userId;
         this.userName = userName;
         this.userRole = userRole;
-        this.userAvatarId = userAvatarId;
+        this.userAvatar = userAvatar;
     }
 }

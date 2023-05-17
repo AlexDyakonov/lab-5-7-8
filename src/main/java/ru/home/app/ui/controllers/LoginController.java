@@ -12,13 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
-import ru.home.app.server.controller.GuiHumanControllerImpl;
+import ru.home.app.server.model.User;
 
 import java.io.IOException;
 
 public class LoginController {
     private final CurrentUserManager userManager;
-    private final GuiHumanController humanController;
+    private final GuiHumanController controller;
     private double width;
     private double height;
     private Stage stage;
@@ -37,8 +37,8 @@ public class LoginController {
     @FXML
     private PasswordField pf_password;
 
-    public LoginController(double width, double height, CurrentUserManager userManager, GuiHumanController humanController) {
-        this.humanController = humanController;
+    public LoginController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
+        this.controller = controller;
         this.userManager = userManager;
         this.width = width;
         this.height = height;
@@ -59,7 +59,6 @@ public class LoginController {
 
         stage.hide();
         stage.show();
-
     }
 
     private boolean checkFields() {
@@ -75,8 +74,11 @@ public class LoginController {
 
     public void loginButtonOnAction(ActionEvent e) {
         if (checkFields()) {
-            if (humanController.checkUserPassword(tf_username.getText(), pf_password.getText())) {
+            String username = tf_username.getText();
+            if (controller.checkUserPassword(username, pf_password.getText())) {
+                userManager.configUserManager(username, controller);
                 label_error_msg.setText("Success!");
+                new LoggedInController(width, height, userManager, controller).launchMainScene(stage);
             } else {
                 label_error_msg.setText("Invalid username or password.");
             }
@@ -84,7 +86,7 @@ public class LoginController {
     }
 
     public void signUpButtonOnAction(ActionEvent e) {
-        new RegisterController(width, height, userManager, humanController).launchRegisterScene(stage);
+        new RegisterController(width, height, userManager, controller).launchRegisterScene(stage);
     }
 
     public void closeButtonOnAction(ActionEvent e) {
@@ -114,7 +116,7 @@ public class LoginController {
         return userManager;
     }
 
-    public GuiHumanController getHumanController() {
-        return humanController;
+    public GuiHumanController getController() {
+        return controller;
     }
 }

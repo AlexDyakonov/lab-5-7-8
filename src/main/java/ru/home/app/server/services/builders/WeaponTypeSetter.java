@@ -2,7 +2,6 @@ package ru.home.app.server.services.builders;
 
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.WeaponType;
-import ru.home.app.server.services.BuilderType;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.BufferedReader;

@@ -35,9 +35,9 @@ public class RegisterController {
     @FXML
     private Label label_error_msg;
 
-    public RegisterController(double width, double height, CurrentUserManager userManager, GuiHumanController humanController) {
+    public RegisterController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
         this.userManager = userManager;
-        this.humanController = humanController;
+        this.humanController = controller;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/register-page.fxml"));
         fxmlLoader.setController(this);
         this.width = width;
@@ -88,7 +88,6 @@ public class RegisterController {
     }
 
     public void signUpButtonOnAction(ActionEvent e) {
-
         try {
             humanController.userRegister(tf_username.getText(), pf_password.getText());
         } catch (ValidationException | AuthenticationException e1) {

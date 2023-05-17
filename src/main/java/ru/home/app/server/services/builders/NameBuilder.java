@@ -1,7 +1,6 @@
 package ru.home.app.server.services.builders;
 
 import ru.home.app.server.exception.ValidationException;
-import ru.home.app.server.services.BuilderType;
 import ru.home.app.server.validation.Validation;
 import ru.home.app.util.LANGUAGE;
 

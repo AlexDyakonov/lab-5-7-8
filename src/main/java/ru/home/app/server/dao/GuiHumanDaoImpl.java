@@ -9,9 +9,15 @@ import ru.home.app.server.model.dto.HumanBeingResponseDTO;
 import ru.home.app.server.sql.SQLConnection;
 import ru.home.app.util.LANGUAGE;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static ru.home.app.util.Parser.stringToRole;
 
 public class GuiHumanDaoImpl implements GuiHumanDao {
     private final SQLConnection sqlConnection = new SQLConnection();
@@ -49,7 +55,25 @@ public class GuiHumanDaoImpl implements GuiHumanDao {
 
     @Override
     public List<User> getAllUsers() {
-        return SQLMethods.getAllUsers(sqlConnection);
+        List<User> output = new ArrayList<>();
+        long id;
+        String userName;
+        ROLES role;
+        try {
+            String query = "SELECT u.user_id, u.user_name, u.role, ua.user_avatar FROM users u JOIN users_avatar ua ON u.user_id = ua.user_id";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getLong("user_id");
+                userName = resultSet.getString("user_name");
+                role = stringToRole(resultSet.getString("role"));
+                String avatar = resultSet.getString("user_avatar");
+                output.add(new User(id, userName, role, avatar));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return output;
     }
 
 
@@ -85,6 +109,5 @@ public class GuiHumanDaoImpl implements GuiHumanDao {
 
     @Override
     public void setLanguage(LANGUAGE language) {
-
     }
 }

@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
@@ -62,30 +61,24 @@
                 <RadioButton fx:id="rb_ava2" layoutX="790.0" layoutY="510.0" mnemonicParsing="false"/>
                 <RadioButton fx:id="rb_ava3" layoutX="936.0" layoutY="510.0" mnemonicParsing="false"/>
                 <RadioButton fx:id="rb_ava1" layoutX="646.0" layoutY="510.0" mnemonicParsing="false"/>
-                <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="897.0" layoutY="405.0" pickOnBounds="true"
+                <ImageView fitHeight="105.0" fitWidth="103.0" layoutX="897.0" layoutY="393.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
                         <Image url="@assets/avatars/ava3.jpg"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="751.0" layoutY="405.0" pickOnBounds="true"
+                <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="608.0" layoutY="405.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
                         <Image url="@assets/avatars/ava2.jpg"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="607.0" layoutY="406.0" pickOnBounds="true"
+                <ImageView fitHeight="99.0" fitWidth="103.0" layoutX="750.0" layoutY="399.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
                         <Image url="@assets/avatars/ava1.jpg"/>
                     </image>
                 </ImageView>
-                <Circle fill="#1f93ff00" layoutX="943.0" layoutY="451.0" radius="46.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="#1f93ff00" layoutX="797.0" layoutY="451.0" radius="46.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="#1f93ff00" layoutX="653.0" layoutY="450.0" radius="46.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
                 <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
                            preserveRatio="true" style="-fx-cursor: hand;">
                     <image>

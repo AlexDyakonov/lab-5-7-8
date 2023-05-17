@@ -12,16 +12,22 @@
     <children>
         <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/back_with_avatar.png"/>
+                <Image url="@assets/background.png"/>
             </image>
         </ImageView>
-        <Label fx:id="label_nickname" alignment="CENTER" layoutX="32.0" layoutY="115.0" prefHeight="33.0"
-               prefWidth="96.0" text="NickName" textFill="#fb2cff">
+        <ImageView fx:id="im_avatar" fitHeight="130.0" fitWidth="130.0" layoutX="48.0" layoutY="28.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/avatars/ava4.jpg"/>
+            </image>
+        </ImageView>
+        <Label fx:id="label_nickname" alignment="CENTER" layoutX="21.0" layoutY="158.0" prefHeight="45.0"
+               prefWidth="184.0" text="NickName" textFill="#fb2cff">
             <font>
                 <Font name="Roboto Bold" size="19.0"/>
             </font>
         </Label>
-        <Label fx:id="label_role" alignment="CENTER" layoutX="61.0" layoutY="148.0" prefHeight="21.0" prefWidth="39.0"
+        <Label fx:id="label_role" alignment="CENTER" layoutX="65.0" layoutY="215.0" prefHeight="21.0" prefWidth="96.0"
                text="role" textFill="WHITE">
             <font>
                 <Font name="Roboto" size="16.0"/>

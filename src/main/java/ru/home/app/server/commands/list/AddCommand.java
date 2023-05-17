@@ -3,7 +3,7 @@ package ru.home.app.server.commands.list;
 import ru.home.app.server.commands.Command;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ArgumentException;
-import ru.home.app.server.services.BuilderType;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.builders.HumanBeingRequestDTOBuilder;
 import ru.home.app.util.LANGUAGE;
 

@@ -1,4 +1,4 @@
-package ru.home.app.server.services;
+package ru.home.app.server.services.builders;
 
 /**
  * The enum Builder type.

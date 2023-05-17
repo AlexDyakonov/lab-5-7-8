@@ -4,7 +4,7 @@ import ru.home.app.server.commands.Command;
 import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ArgumentException;
-import ru.home.app.server.services.BuilderType;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.ScriptManager;
 import ru.home.app.util.LANGUAGE;
 

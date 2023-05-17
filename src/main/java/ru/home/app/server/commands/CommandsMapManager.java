@@ -6,7 +6,7 @@ import ru.home.app.server.commands.adminlist.SetRoleCommand;
 import ru.home.app.server.commands.adminlist.ShowUsersCommand;
 import ru.home.app.server.commands.list.*;
 import ru.home.app.server.controller.HumanController;
-import ru.home.app.server.services.BuilderType;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.HistoryManager;
 import ru.home.app.server.services.ScriptManager;
 import ru.home.app.util.LANGUAGE;

@@ -1,5 +1,9 @@
 package ru.home.app.server.authentication;
 
+import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.model.User;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 import static ru.home.app.server.services.LoggerManager.setupLogger;
@@ -13,7 +17,7 @@ public class CurrentUserManager {
     private String userName;
     private Long userId;
     private ROLES userRole;
-    private int userAvatarId;
+    private String userAvatar;
 
     static {
         setupLogger(logger);
@@ -32,11 +36,11 @@ public class CurrentUserManager {
         this.userRole = role;
     }
 
-    public CurrentUserManager(String userName, Long userId, ROLES userRole, int userAvatarId) {
+    public CurrentUserManager(String userName, Long userId, ROLES userRole, String userAvatar) {
         this.userName = userName;
         this.userId = userId;
         this.userRole = userRole;
-        this.userAvatarId = userAvatarId;
+        this.userAvatar = userAvatar;
     }
 
     /**
@@ -100,15 +104,25 @@ public class CurrentUserManager {
      *
      * @param userId the user id
      */
-    public void setUserId(Long userId) {
+    public CurrentUserManager setUserId(Long userId) {
         this.userId = userId;
+        return this;
     }
 
-    public int getUserAvatarId() {
-        return userAvatarId;
+    public CurrentUserManager configUserManager(String username, GuiHumanController controller) {
+        List<User> allUsers = controller.getAllUsers();
+        this.setUserName(username)
+                .setUserRole(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserRole())
+                .setUserId(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserId())
+                .setUserAvatar(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserAvatar());
+        return this;
     }
 
-    public void setUserAvatarId(int userAvatarId) {
-        this.userAvatarId = userAvatarId;
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 }
