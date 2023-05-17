@@ -36,14 +36,19 @@
                 <Font name="Roboto Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5" />
-        <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5" />
-        <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+        <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false"
+                style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5"/>
+        <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false"
+                style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
+        <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true" style="-fx-cursor: hand;">
             <image>
-                <Image url="@assets/icons/x-button.png" />
+                <Image url="@assets/icons/x-button.png"/>
             </image>
         </ImageView>
-        <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;" />
+        <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false"
+                onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
+                style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
         <ScrollPane layoutX="267.0" layoutY="93.0" prefHeight="594.0" prefWidth="793.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="1009.0">
@@ -64,16 +69,23 @@
                                                      text="Y"/>
                                     </columns>
                                 </TableColumn>
-                        <TableColumn fx:id="column_creation_time" prefWidth="122.0" resizable="false" text="Creation time" />
-                        <TableColumn fx:id="column_hero" prefWidth="58.0" resizable="false" text="Hero" />
-                        <TableColumn fx:id="column_toothpick" prefWidth="82.4481201171875" resizable="false" text="Toothpick" />
-                        <TableColumn fx:id="column_speed" prefWidth="82.4481201171875" resizable="false" text="Speed" />
-                        <TableColumn fx:id="column_soundtrack" prefWidth="82.4481201171875" resizable="false" text="Song" />
-                        <TableColumn fx:id="column_weapon" prefWidth="82.4481201171875" resizable="false" text="Weapon" />
-                        <TableColumn fx:id="column_mood" prefWidth="82.4481201171875" resizable="false" text="Mood" />
-                        <TableColumn prefWidth="61.784942626953125" resizable="false" text="Car">
-                           <columns>
-                              <TableColumn fx:id="column_car_name" prefWidth="55.977294921875" resizable="false" text="Name" />
+                                <TableColumn fx:id="column_creation_time" prefWidth="122.0" resizable="false"
+                                             text="Creation time"/>
+                                <TableColumn fx:id="column_hero" prefWidth="58.0" resizable="false" text="Hero"/>
+                                <TableColumn fx:id="column_toothpick" prefWidth="82.4481201171875" resizable="false"
+                                             text="Toothpick"/>
+                                <TableColumn fx:id="column_speed" prefWidth="82.4481201171875" resizable="false"
+                                             text="Speed"/>
+                                <TableColumn fx:id="column_soundtrack" prefWidth="82.4481201171875" resizable="false"
+                                             text="Song"/>
+                                <TableColumn fx:id="column_weapon" prefWidth="82.4481201171875" resizable="false"
+                                             text="Weapon"/>
+                                <TableColumn fx:id="column_mood" prefWidth="82.4481201171875" resizable="false"
+                                             text="Mood"/>
+                                <TableColumn prefWidth="61.784942626953125" resizable="false" text="Car">
+                                    <columns>
+                                        <TableColumn fx:id="column_car_name" prefWidth="55.977294921875"
+                                                     resizable="false" text="Name"/>
                               <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375" resizable="false" text="Cool" />
                            </columns>
                         </TableColumn>

@@ -1,5 +1,8 @@
 package ru.home.app.ui.controllers;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -17,6 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.model.Car;
+import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 
 import java.io.IOException;
@@ -122,17 +127,41 @@ public class LoggedInController implements Initializable {
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
-        column_x.setCellValueFactory(new PropertyValueFactory<>("x"));
-        column_y.setCellValueFactory(new PropertyValueFactory<>("y"));
+        column_x.setCellValueFactory(cellData -> {
+            Coordinates coordinates = cellData.getValue().getCoordinates();
+            Integer value = coordinates.getX();
+            return new SimpleIntegerProperty(value).asObject();
+        });
+        column_y.setCellValueFactory(cellData -> {
+            Coordinates coordinates = cellData.getValue().getCoordinates();
+            Double value = coordinates.getY();
+            return new SimpleDoubleProperty(value).asObject();
+        });
         column_creation_time.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         column_hero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
         column_toothpick.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
         column_speed.setCellValueFactory(new PropertyValueFactory<>("impactSpeed"));
-        column_soundtrack.setCellValueFactory(new PropertyValueFactory<>("soundtrackName"));
+        column_soundtrack.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSoundtrackName()));
         column_weapon.setCellValueFactory(new PropertyValueFactory<>("weaponType"));
-        column_weapon.setCellValueFactory(new PropertyValueFactory<>("mood"));
-        column_car_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        column_car_cool.setCellValueFactory(new PropertyValueFactory<>("cool"));
+        column_mood.setCellValueFactory(new PropertyValueFactory<>("mood"));
+        column_car_name.setCellValueFactory(cellData -> {
+            try {
+                Car car = cellData.getValue().getCar();
+                String value = car.getName();
+                return new SimpleStringProperty(value);
+            } catch (NullPointerException e) {
+                return new SimpleStringProperty("null");
+            }
+        });
+        column_car_cool.setCellValueFactory(cellData -> {
+            try {
+                Car car = cellData.getValue().getCar();
+                boolean cool = car.isCool();
+                return new SimpleStringProperty(String.valueOf(cool));
+            } catch (NullPointerException e) {
+                return new SimpleStringProperty("null");
+            }
+        });
 
 
         table.setItems(FXCollections.observableList(data));
