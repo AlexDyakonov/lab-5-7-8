@@ -117,6 +117,9 @@ public class CurrentUserManager {
                 .setUserAvatar(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserAvatar());
         return this;
     }
+    public CurrentUserManager clear(){
+        return new CurrentUserManager();
+    }
 
     public String getUserAvatar() {
         return userAvatar;

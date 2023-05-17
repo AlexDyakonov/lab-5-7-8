@@ -2,66 +2,87 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
-            prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/background.png"/>
+                <Image url="@assets/background.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="im_avatar" fitHeight="130.0" fitWidth="130.0" layoutX="48.0" layoutY="28.0"
-                   pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="im_avatar" fitHeight="130.0" fitWidth="130.0" layoutX="48.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/avatars/ava4.jpg"/>
+                <Image url="@assets/avatars/ava4.jpg" />
             </image>
         </ImageView>
-        <Label fx:id="label_nickname" alignment="CENTER" layoutX="21.0" layoutY="158.0" prefHeight="45.0"
-               prefWidth="184.0" text="NickName" textFill="#fb2cff">
+        <Label fx:id="label_nickname" alignment="CENTER" layoutX="21.0" layoutY="158.0" prefHeight="45.0" prefWidth="184.0" text="NickName" textFill="#fb2cff">
             <font>
-                <Font name="Roboto Bold" size="19.0"/>
+                <Font name="Roboto Bold" size="19.0" />
             </font>
         </Label>
-        <Label fx:id="label_role" alignment="CENTER" layoutX="65.0" layoutY="215.0" prefHeight="21.0" prefWidth="96.0"
-               text="role" textFill="WHITE">
+        <Label fx:id="label_role" alignment="CENTER" layoutX="65.0" layoutY="215.0" prefHeight="21.0" prefWidth="96.0" text="role" textFill="WHITE">
             <font>
-                <Font name="Roboto" size="16.0"/>
+                <Font name="Roboto" size="16.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="281.0" layoutY="203.0" prefHeight="21.0" prefWidth="39.0" text="All(56)"
-               textFill="#343a40">
+        <Label alignment="CENTER" layoutX="258.0" layoutY="43.0" prefHeight="21.0" prefWidth="39.0" text="All(56)" textFill="#343a40">
             <font>
-                <Font name="Roboto" size="12.0"/>
+                <Font name="Roboto" size="12.0" />
             </font>
         </Label>
-        <Button fx:id="button_add_new" layoutX="332.0" layoutY="202.0" mnemonicParsing="false" prefHeight="23.0"
-                prefWidth="78.0" style="-fx-background-color: F3CBC5;" text="ADD NEW">
+        <Button fx:id="button_add_new" layoutX="324.0" layoutY="42.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="78.0" style="-fx-background-color: F3CBC5;" text="ADD NEW">
             <font>
-                <Font name="Roboto Bold" size="12.0"/>
+                <Font name="Roboto Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false"
-                style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5"/>
-        <Label alignment="CENTER" layoutX="345.0" layoutY="520.0" prefHeight="21.0" prefWidth="39.0" text="INFO">
-            <font>
-                <Font name="Roboto Bold" size="15.0"/>
-            </font>
-        </Label>
-        <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false"
-                style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
-        <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
-                   preserveRatio="true" style="-fx-cursor: hand;">
+        <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5" />
+        <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5" />
+        <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
             <image>
-                <Image url="@assets/icons/x-button.png"/>
+                <Image url="@assets/icons/x-button.png" />
             </image>
         </ImageView>
-        <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false"
-                onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
-                style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
+        <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;" />
+      <ScrollPane layoutX="263.0" layoutY="75.0" prefHeight="601.0" prefWidth="775.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="601.0" prefWidth="768.0">
+               <children>
+                  <TableView fx:id="table" prefHeight="580.0" prefWidth="914.0">
+                     <columns>
+                        <TableColumn fx:id="column_id" editable="false" prefWidth="28.141464233398438" resizable="false" text="ID" />
+                        <TableColumn fx:id="column_name" editable="false" prefWidth="80.49756622314453" resizable="false" text="Name" />
+                        <TableColumn fx:id="column_creator" editable="false" prefWidth="80.49756622314453" resizable="false" text="Creator" />
+                        <TableColumn prefWidth="61.784942626953125" resizable="false" text="Coordinates">
+                           <columns>
+                              <TableColumn fx:id="column_x" prefWidth="55.977294921875" resizable="false" text="X" />
+                              <TableColumn fx:id="column_y" prefWidth="56.6468505859375" resizable="false" text="Y" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="column_creation_time" prefWidth="122.0" resizable="false" text="Creation time" />
+                        <TableColumn fx:id="column_hero" prefWidth="58.0" resizable="false" text="Hero" />
+                        <TableColumn fx:id="column_toothpick" prefWidth="82.4481201171875" resizable="false" text="Toothpick" />
+                        <TableColumn fx:id="column_speed" prefWidth="82.4481201171875" resizable="false" text="Speed" />
+                        <TableColumn fx:id="column_soundtrack" prefWidth="82.4481201171875" resizable="false" text="Song" />
+                        <TableColumn fx:id="column_weapon" prefWidth="82.4481201171875" resizable="false" text="Weapon" />
+                        <TableColumn fx:id="column_mood" prefWidth="82.4481201171875" resizable="false" text="Mood" />
+                        <TableColumn prefWidth="61.784942626953125" resizable="false" text="Car">
+                           <columns>
+                              <TableColumn fx:id="column_car_name" prefWidth="55.977294921875" resizable="false" text="Name" />
+                              <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375" resizable="false" text="Cool" />
+                           </columns>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
     </children>
 </AnchorPane>
