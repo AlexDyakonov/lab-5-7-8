@@ -27,7 +27,6 @@ import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoggedInController implements Initializable {
@@ -115,7 +114,6 @@ public class LoggedInController implements Initializable {
             label_nickname.setText(userManager.getUserName());
             String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
             im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
-            updateTable(humanController.getAllHuman());
         } catch (IOException e) {
             //TODO обработать
         } catch (URISyntaxException e) {
@@ -123,7 +121,14 @@ public class LoggedInController implements Initializable {
         }
     }
 
-    private void updateTable(List<HumanBeingResponseDTOwithUsers> data) {
+    public void closeButtonOnAction(ActionEvent e) {
+        Stage stage = (Stage) close_button.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        humanBeingResponseDTOwithUsersObservableList.addAll(humanController.getAllHuman());
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -170,17 +175,8 @@ public class LoggedInController implements Initializable {
             }
         });
 
+        table.setItems(humanBeingResponseDTOwithUsersObservableList);
 
-        table.setItems(FXCollections.observableList(data));
-    }
-
-    public void closeButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) close_button.getScene().getWindow();
-        stage.close();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
         FilteredList<HumanBeingResponseDTOwithUsers> filteredData = new FilteredList<>(humanBeingResponseDTOwithUsersObservableList, b -> true);
         sb_find_by_name.textProperty().addListener((observable, oldvalue, newValue) -> {
             filteredData.setPredicate(humanBeingResponseDTOwithUsers -> {
@@ -192,6 +188,7 @@ public class LoggedInController implements Initializable {
                 return humanBeingResponseDTOwithUsers.getName().toLowerCase().contains(searchKeyword);
             });
         });
+
         SortedList<HumanBeingResponseDTOwithUsers> sortedData = new SortedList<>(filteredData);
 
         sortedData.comparatorProperty().bind(table.comparatorProperty());
