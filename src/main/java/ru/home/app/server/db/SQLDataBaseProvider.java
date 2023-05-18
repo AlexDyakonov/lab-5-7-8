@@ -228,6 +228,7 @@ public class SQLDataBaseProvider {
                 response.setCreationDate(convertTimeStampToZoned(resultSet.getTimestamp("creation_time")));
                 response.setRealHero(resultSet.getBoolean("real_hero"));
                 response.setHasToothpick(resultSet.getBoolean("has_toothpick"));
+                response.setSoundtrackName(resultSet.getString("soundtrack"));
                 response.setImpactSpeed(resultSet.getFloat("impact_speed"));
                 response.setMood(Mood.valueOf(resultSet.getString("mood")));
                 response.setWeaponType(WeaponType.valueOf(resultSet.getString("weapon_type")));

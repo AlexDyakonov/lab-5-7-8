@@ -141,7 +141,14 @@ public class LoggedInController implements Initializable {
         column_hero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
         column_toothpick.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
         column_speed.setCellValueFactory(new PropertyValueFactory<>("impactSpeed"));
-        column_soundtrack.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSoundtrackName()));
+        column_soundtrack.setCellValueFactory(cellData -> {
+            try {
+                String song = cellData.getValue().getSoundtrackName();
+                return new SimpleStringProperty(song);
+            } catch (NullPointerException e) {
+                return new SimpleStringProperty("null");
+            }
+        });
         column_weapon.setCellValueFactory(new PropertyValueFactory<>("weaponType"));
         column_mood.setCellValueFactory(new PropertyValueFactory<>("mood"));
         column_car_name.setCellValueFactory(cellData -> {
