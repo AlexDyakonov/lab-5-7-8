@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
@@ -21,23 +22,28 @@
                 <Font name="Roboto Bold" size="19.0" />
             </font>
         </Label>
-        <Label fx:id="label_role" alignment="CENTER" layoutX="65.0" layoutY="215.0" prefHeight="21.0" prefWidth="96.0" text="role" textFill="WHITE">
+        <Label fx:id="label_role" alignment="CENTER" layoutX="65.0" layoutY="193.0" prefHeight="21.0" prefWidth="96.0"
+               text="role" textFill="WHITE">
             <font>
-                <Font name="Roboto" size="16.0" />
+                <Font name="Roboto" size="12.0"/>
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="258.0" layoutY="43.0" prefHeight="21.0" prefWidth="39.0" text="All(56)" textFill="#343a40">
+        <Label fx:id="label_all" alignment="CENTER" layoutX="267.0" layoutY="42.0" prefHeight="36.0" prefWidth="66.0"
+               text="All(0)" textFill="#343a40">
             <font>
-                <Font name="Roboto" size="12.0" />
+                <Font name="Roboto" size="15.0"/>
             </font>
         </Label>
-        <Button fx:id="button_add_new" layoutX="324.0" layoutY="42.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="78.0" style="-fx-background-color: F3CBC5;" text="ADD NEW">
+        <Button fx:id="button_add_new" layoutX="342.0" layoutY="46.0" mnemonicParsing="false"
+                onAction="#addNewButtonOnAction" prefHeight="28.0" prefWidth="130.0"
+                style="-fx-background-color: F3CBC5; -fx-background-radius: 10; -fx-cursor: hand;" text="ADD NEW">
             <font>
-                <Font name="Roboto Bold" size="12.0" />
+                <Font name="Roboto Bold" size="14.0"/>
             </font>
         </Button>
         <Button fx:id="button_logout" layoutX="14.0" layoutY="729.0" mnemonicParsing="false"
-                style="-fx-background-color: transparent;" text="logout" textFill="#f3cbc5"/>
+                onAction="#logoutButtonOnAction" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                text="logout" textFill="#f3cbc5"/>
         <Button fx:id="button_language" layoutX="156.0" layoutY="729.0" mnemonicParsing="false"
                 style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
         <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true"
@@ -86,16 +92,56 @@
                                     <columns>
                                         <TableColumn fx:id="column_car_name" prefWidth="55.977294921875"
                                                      resizable="false" text="Name"/>
-                              <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375" resizable="false" text="Cool" />
-                           </columns>
-                        </TableColumn>
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-        <TextField fx:id="sb_find_by_name" layoutX="529.0" layoutY="41.0" prefHeight="25.0" prefWidth="244.0"
+                                        <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375"
+                                                     resizable="false" text="Cool"/>
+                                    </columns>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <TextField fx:id="sb_find_by_name" layoutX="787.0" layoutY="48.0" prefHeight="25.0" prefWidth="244.0"
                    promptText="Search by name" style="-fx-background-radius: 15px;"/>
+        <MenuButton fx:id="mb_delete" layoutX="492.0" layoutY="46.0" mnemonicParsing="false" prefHeight="28.0"
+                    prefWidth="96.0" style="-fx-background-color: F3CBC5; -fx-background-radius: 10; -fx-cursor: hand;"
+                    text="DELETE">
+            <items>
+                <MenuItem mnemonicParsing="false" text="by ID"/>
+                <MenuItem mnemonicParsing="false" text="clear"/>
+            </items>
+            <font>
+                <Font name="Roboto Bold" size="14.0"/>
+            </font>
+        </MenuButton>
+        <Button fx:id="button_info" layoutX="84.0" layoutY="237.0" mnemonicParsing="false"
+                onAction="#infoButtonOnAction" style="-fx-background-color: transparent;" text="INFO" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Line endX="89.0" layoutX="110.0" layoutY="227.0" startX="-84.0" stroke="#fb2cff" strokeWidth="2.0"/>
+        <Line endX="89.0" layoutX="111.0" layoutY="390.0" startX="-84.0" stroke="#fb2cff" strokeWidth="2.0"/>
+        <Label layoutX="34.0" layoutY="278.0" text="USERS:" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="34.0" layoutY="330.0" text="HUMANBEING:" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="label_users" layoutX="174.0" layoutY="278.0" text="0" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="label_humanbeing" layoutX="174.0" layoutY="330.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="14.0"/>
+            </font>
+        </Label>
     </children>
 </AnchorPane>

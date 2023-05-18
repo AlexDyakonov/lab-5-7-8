@@ -5,10 +5,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.commands.Invoker;
-import ru.home.app.server.controller.GuiHumanControllerImpl;
 import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.ui.ConsoleUI;
-import ru.home.app.ui.controllers.LoginController;
+import ru.home.app.ui.controllers.AddUserController;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.IOException;
@@ -21,8 +20,9 @@ public class HelloApplication extends Application {
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         CurrentUserManager userManager = new CurrentUserManager();
-        new LoginController(1080, 768, userManager, new GuiHumanControllerImpl(userManager)).launchLoginScene(stage);
+        new AddUserController(null, userManager).launchAddScene(stage);
 
+//        new LoginController(1080, 768, userManager, new GuiHumanControllerImpl(userManager)).launchLoginScene(stage);
     }
 
     public static void main(String[] args) {

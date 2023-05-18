@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0"
+            prefWidth="424.0" style="-fx-background-radius: 40; -fx-background-color: F3CBC5;"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="33.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW HUMANBEING"
+            textAlignment="CENTER" wrappingWidth="358.0">
+         <font>
+            <Font name="Roboto Bold" size="30.0"/>
+         </font>
+      </Text>
+      <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="376.0" layoutY="17.0" pickOnBounds="true"
+                 preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@assets/icons/x-button.png"/>
+         </image>
+      </ImageView>
+      <Button fx:id="close_button" layoutX="376.0" layoutY="17.0" mnemonicParsing="false"
+              onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
+              style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
+      <RadioButton fx:id="rb_if_min" layoutX="73.0" layoutY="82.0" mnemonicParsing="false" prefHeight="28.0"
+                   prefWidth="98.0" style="-fx-cursor: pointer;" text="ADD IF MIN">
+         <toggleGroup>
+            <ToggleGroup fx:id="how_to_add"/>
+         </toggleGroup>
+         <font>
+            <Font name="Roboto Bold" size="12.0"/>
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="rb_if_max" layoutX="181.0" layoutY="82.0" mnemonicParsing="false" prefHeight="28.0"
+                   prefWidth="98.0" text="ADD IF MAX" toggleGroup="$how_to_add">
+         <font>
+            <Font name="Roboto Bold" size="12.0"/>
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="rb_none" layoutX="288.0" layoutY="82.0" mnemonicParsing="false" prefHeight="28.0"
+                   prefWidth="69.0" text="NONE" toggleGroup="$how_to_add">
+         <font>
+            <Font name="Roboto Bold" size="12.0"/>
+         </font>
+      </RadioButton>
+      <TextField fx:id="tf_hb_name" layoutX="71.0" layoutY="130.0" prefHeight="35.0" prefWidth="283.0"
+                 promptText="Input name" style="-fx-background-radius: 7;"/>
+      <MenuButton fx:id="mb_weapon" alignment="CENTER" layoutX="74.0" layoutY="374.0" mnemonicParsing="false"
+                  prefHeight="25.0" prefWidth="119.0" text="Weapon">
+         <items>
+            <MenuItem mnemonicParsing="false" text="AXE"/>
+            <MenuItem mnemonicParsing="false" text="SHOTGUN"/>
+            <MenuItem mnemonicParsing="false" text="BAT"/>
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="mb_mood" alignment="CENTER" layoutX="234.0" layoutY="374.0" mnemonicParsing="false"
+                  prefHeight="25.0" prefWidth="119.0" text="Mood" textAlignment="CENTER">
+         <items>
+            <MenuItem mnemonicParsing="false" text="SORROW"/>
+            <MenuItem mnemonicParsing="false" text="GLOOM"/>
+            <MenuItem mnemonicParsing="false" text="APATHY"/>
+            <MenuItem mnemonicParsing="false" text="CALM"/>
+            <MenuItem mnemonicParsing="false" text="RAGE"/>
+         </items>
+      </MenuButton>
+      <RadioButton fx:id="rb_car_cool" layoutX="96.0" layoutY="523.0" mnemonicParsing="false"/>
+      <RadioButton fx:id="rb_toothpick" layoutX="204.0" layoutY="523.0" mnemonicParsing="false"/>
+      <RadioButton fx:id="rb_hero" layoutX="313.0" layoutY="523.0" mnemonicParsing="false"/>
+      <Button fx:id="sumbit_button" layoutX="103.0" layoutY="573.0" mnemonicParsing="false" prefHeight="44.0"
+              prefWidth="219.0" style="-fx-background-color: #322453; -fx-background-radius: 30; -fx-cursor: hand;"
+              text="SUMBIT" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="23.0"/>
+         </font>
+      </Button>
+      <Label layoutX="71.0" layoutY="110.0" text="Name" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="16.0"/>
+         </font>
+      </Label>
+      <TextField fx:id="tf_coord_x" layoutX="72.0" layoutY="193.0" prefHeight="35.0" prefWidth="113.0"
+                 promptText="Input x" style="-fx-background-radius: 7;"/>
+      <Label layoutX="72.0" layoutY="173.0" text="Coordinates" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="16.0"/>
+         </font>
+      </Label>
+      <TextField fx:id="tf_speed" layoutX="72.0" layoutY="256.0" prefHeight="35.0" prefWidth="283.0"
+                 promptText="Input speed" style="-fx-background-radius: 7;"/>
+      <Label layoutX="72.0" layoutY="236.0" text="Impact speed" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="16.0"/>
+         </font>
+      </Label>
+      <TextField fx:id="tf_song" layoutX="72.0" layoutY="319.0" prefHeight="35.0" prefWidth="283.0"
+                 promptText="Input song" style="-fx-background-radius: 7;"/>
+      <Label layoutX="72.0" layoutY="299.0" text="Soundtrack" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="16.0"/>
+         </font>
+      </Label>
+      <TextField fx:id="tf_car_name" layoutX="72.0" layoutY="434.0" prefHeight="35.0" prefWidth="283.0"
+                 promptText="Input name" style="-fx-background-radius: 7;"/>
+      <Label layoutX="71.0" layoutY="414.0" text="Car name" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="16.0"/>
+         </font>
+      </Label>
+      <Label layoutX="65.0" layoutY="491.0" text="Is car cool?" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="491.0" text="Has toothpick?" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="293.0" layoutY="491.0" text="Real hero?" textFill="#333333">
+         <font>
+            <Font name="Roboto" size="15.0"/>
+         </font>
+      </Label>
+      <TextField fx:id="tf_coord_y" layoutX="237.0" layoutY="193.0" prefHeight="35.0" prefWidth="113.0"
+                 promptText="Input y" style="-fx-background-radius: 7;"/>
+   </children>
+</AnchorPane>
