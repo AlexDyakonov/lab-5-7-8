@@ -48,24 +48,6 @@
       </RadioButton>
       <TextField fx:id="tf_hb_name" layoutX="71.0" layoutY="130.0" prefHeight="35.0" prefWidth="283.0"
                  promptText="Input name" style="-fx-background-radius: 7;"/>
-      <MenuButton fx:id="mb_weapon" alignment="CENTER" layoutX="74.0" layoutY="374.0" mnemonicParsing="false"
-                  prefHeight="25.0" prefWidth="119.0" text="Weapon">
-         <items>
-            <MenuItem mnemonicParsing="false" text="AXE"/>
-            <MenuItem mnemonicParsing="false" text="SHOTGUN"/>
-            <MenuItem mnemonicParsing="false" text="BAT"/>
-         </items>
-      </MenuButton>
-      <MenuButton fx:id="mb_mood" alignment="CENTER" layoutX="234.0" layoutY="374.0" mnemonicParsing="false"
-                  prefHeight="25.0" prefWidth="119.0" text="Mood" textAlignment="CENTER">
-         <items>
-            <MenuItem mnemonicParsing="false" text="SORROW"/>
-            <MenuItem mnemonicParsing="false" text="GLOOM"/>
-            <MenuItem mnemonicParsing="false" text="APATHY"/>
-            <MenuItem mnemonicParsing="false" text="CALM"/>
-            <MenuItem mnemonicParsing="false" text="RAGE"/>
-         </items>
-      </MenuButton>
       <RadioButton fx:id="rb_car_cool" layoutX="96.0" layoutY="523.0" mnemonicParsing="false"/>
       <RadioButton fx:id="rb_toothpick" layoutX="204.0" layoutY="523.0" mnemonicParsing="false"/>
       <RadioButton fx:id="rb_hero" layoutX="313.0" layoutY="523.0" mnemonicParsing="false"/>
@@ -133,5 +115,9 @@
             <Font name="Roboto Bold" size="12.0"/>
          </font>
       </Label>
+      <ChoiceBox fx:id="cb_weapon" layoutX="72.0" layoutY="373.0" prefHeight="28.0" prefWidth="127.0"/>
+      <ChoiceBox fx:id="cb_mood" layoutX="229.0" layoutY="373.0" prefHeight="28.0" prefWidth="127.0"/>
+      <Label fx:id="label_weapon" layoutX="79.0" layoutY="379.0" prefHeight="17.0" prefWidth="69.0" text="Weapon"/>
+      <Label fx:id="label_mood" layoutX="234.0" layoutY="379.0" prefHeight="17.0" prefWidth="49.0" text="Mood"/>
    </children>
 </AnchorPane>

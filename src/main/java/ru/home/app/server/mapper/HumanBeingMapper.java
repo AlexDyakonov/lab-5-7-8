@@ -86,7 +86,7 @@ public class HumanBeingMapper {
         HumanBeingModel resultModel = new HumanBeingModel();
         resultModel.setId(stringToId(array[0]));
         resultModel.setName(csvToString(array[1]));
-        resultModel.setCoordinates(Coordinates.fromString(array[2]));
+        resultModel.setCoordinates(Coordinates.fromCSVString(array[2]));
         resultModel.setCreationDate(stringToDateTime(array[3]));
         resultModel.setRealHero(stringToBoolean(array[4]));
         resultModel.setHasToothpick(stringToBoolean(array[5]));

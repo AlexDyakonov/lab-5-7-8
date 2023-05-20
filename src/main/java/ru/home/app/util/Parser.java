@@ -18,6 +18,14 @@ import static ru.home.app.util.Message.getError;
  * The type Parser.
  */
 public class Parser {
+    public static String[] moodToStringArray(LANGUAGE language) {
+        return new String[]{"Sorrow", "Gloom", "Apathy", "Calm", "Rage"};
+    }
+
+    public static String[] weaponToStringArray(LANGUAGE language) {
+        return new String[]{"Axe", "Shotgun", "Bat"};
+    }
+
     /**
      * String to id long.
      *

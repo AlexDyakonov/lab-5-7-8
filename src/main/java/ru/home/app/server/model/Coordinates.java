@@ -1,5 +1,7 @@
 package ru.home.app.server.model;
 
+import ru.home.app.server.exception.ValidationException;
+
 import java.util.Objects;
 
 import static ru.home.app.ui.ConsoleColors.error;
@@ -28,13 +30,22 @@ public class Coordinates {
         this.y = Objects.requireNonNull(y);
     }
 
+    public Coordinates(String x, String y) {
+        try {
+            this.x = Integer.parseInt(x);
+            this.y = Double.parseDouble(y);
+        } catch (NumberFormatException e) {
+            throw new ValidationException("Should be numbers");
+        }
+    }
+
     /**
      * From string coordinates.
      *
      * @param coordinates the coordinates
      * @return the coordinates
      */
-    public static Coordinates fromString(String coordinates) {
+    public static Coordinates fromCSVString(String coordinates) {
         String[] array = coordinates.split("/");
         Coordinates crd = new Coordinates();
         try {

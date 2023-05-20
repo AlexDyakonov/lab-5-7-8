@@ -76,7 +76,7 @@ public class GuiHumanControllerImpl implements GuiHumanController {
 
     @Override
     public boolean checkUserPassword(String username, String password) {
-        validate(username, Validation::validateUserName, "Message");
+        validate(username, Validation::validateString, "Message");
         validate(password, Validation::validatePassword, "Message");
         return service.checkUserPassword(username, password);
     }

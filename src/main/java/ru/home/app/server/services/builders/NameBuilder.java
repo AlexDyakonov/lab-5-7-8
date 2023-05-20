@@ -32,7 +32,7 @@ public class NameBuilder {
     public static String getName(BufferedReader reader) {
         try {
             String name = reader.readLine();
-            validate(name, Validation::validateUserName, getError("invalid_name", LANGUAGE.EN));
+            validate(name, Validation::validateString, getError("invalid_name", LANGUAGE.EN));
             return name;
         } catch (IOException e) {
             logger.severe(e.getMessage());

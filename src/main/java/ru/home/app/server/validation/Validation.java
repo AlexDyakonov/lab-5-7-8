@@ -133,8 +133,12 @@ public class Validation {
      * @param userName the user name
      * @return the boolean
      */
-    public static boolean validateUserName(String userName) {
+    public static boolean validateString(String userName) {
         return (userName != null && !userName.trim().equals(""));
+    }
+
+    public static boolean validateCoordinates(Coordinates coordinates) {
+        return (coordinates != null && coordinates.getX() != null && coordinates.getY() != null);
     }
 
     public static boolean validatePassword(String password) {
