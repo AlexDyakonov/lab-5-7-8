@@ -45,6 +45,11 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
+        return source.getHumanBeingById(id); //NoHuman
+    }
+
+    @Override
+    public HumanBeingResponseDTOwithUsers getHumanWithUserById(Long id) {
         return source.getHumanBeingById(id);
     }
 
@@ -220,14 +225,23 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
         float max = source.getDataSet().stream().max(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
-        return dto.getImpactSpeed() > max;
+        try {
+            return dto.getImpactSpeed() > max;
+        } catch (NullPointerException e) {
+            return true;
+        }
+
     }
 
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         float min = source.getDataSet().stream().min(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
-        return dto.getImpactSpeed() < min;
+        try {
+            return dto.getImpactSpeed() < min;
+        } catch (NullPointerException e) {
+            return true;
+        }
     }
 
     @Override

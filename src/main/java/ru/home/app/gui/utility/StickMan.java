@@ -91,8 +91,6 @@ class StickMan {
                 double rectTop = hitbox.getY();
                 double rectRight = hitbox.getX() + hitbox.getWidth();
                 double rectBottom = hitbox.getY() + hitbox.getHeight();
-
-                // no collision
                 return rectLeft < 0 || rectRight > width || rectTop < 0 || rectBottom > height; // collision detected
             }
         }

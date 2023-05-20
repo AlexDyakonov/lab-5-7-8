@@ -15,6 +15,8 @@ import java.util.Set;
 public interface HumanService {
     HumanBeingResponseDTO getHumanById(Long id);
 
+    HumanBeingResponseDTOwithUsers getHumanWithUserById(Long id);
+
     List<HumanBeingResponseDTO> getAllHuman();
 
     List<HumanBeingResponseDTOwithUsers> getAllHumanWithUsers();

@@ -31,6 +31,11 @@ public class HumanServiceImpl implements HumanService {
     }
 
     @Override
+    public HumanBeingResponseDTOwithUsers getHumanWithUserById(Long id) {
+        return humanDao.getHumanWithUserById(id);
+    }
+
+    @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
         return humanDao.getAllHuman();
     }

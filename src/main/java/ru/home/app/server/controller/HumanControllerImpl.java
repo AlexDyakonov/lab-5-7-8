@@ -55,6 +55,11 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
+    public HumanBeingResponseDTOwithUsers getHumanWithUserById(Long id) {
+        return service.getHumanWithUserById(id);
+    }
+
+    @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
         return service.getAllHuman();
     }
@@ -149,13 +154,21 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
         validate(request, Validation::validateRequestDTO, "Error validation");
-        return service.addIfMax(request);
+        long id = service.addIfMax(request);
+        if (id < 0) {
+            throw new ValidationException("Not added. Element is not minimum.");
+        }
+        return id;
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
         validate(request, Validation::validateRequestDTO, "Error validation");
-        return service.addIfMin(request);
+        long id = service.addIfMin(request);
+        if (id < 0) {
+            throw new ValidationException("Not added. Element is not max.");
+        }
+        return id;
     }
 
     @Override

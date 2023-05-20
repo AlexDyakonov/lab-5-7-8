@@ -192,6 +192,10 @@ public class LoggedInController implements Initializable {
         table.setItems(sortedData);
     }
 
+    public void updateTable(HumanBeingResponseDTOwithUsers human) {
+        humanBeingResponseDTOwithUsersObservableList.add(human);
+    }
+
     public void setUserInfo(String username, String userRole) {
         label_nickname.setText(username);
         label_role.setText(userRole);

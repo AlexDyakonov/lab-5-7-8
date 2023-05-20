@@ -176,7 +176,7 @@ public class AddUserController implements Initializable {
         try {
             return stringToMood(Parser.moodToStringArray(LANGUAGE.EN)
                     [IntStream.range(0, moods.length).filter(i -> Objects.equals(moods[i], cb_mood.getValue())).findFirst().orElse(-1)]);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
             throw new ValidationException("Input fields mood");
         }
     }
@@ -184,7 +184,7 @@ public class AddUserController implements Initializable {
     private WeaponType getWeaponFromTF() {
         try {
             return stringToWeaponType(Parser.weaponToStringArray(LANGUAGE.EN)[IntStream.range(0, weapons.length).filter(i -> Objects.equals(weapons[i], cb_weapon.getValue())).findFirst().orElse(-1)]);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
             throw new ValidationException("Input fields weapon");
         }
     }
@@ -228,12 +228,24 @@ public class AddUserController implements Initializable {
 
     public void sumbitButtonOnAction(ActionEvent e) {
         try {
+            long id;
             HumanBeingRequestDTO human = getHumanFromFields();
-            switch (checkTypeOfAdd()){
-                case NONE -> controller.createHuman(human);
-                case ADD_IF_MAX -> controller.addIfMax(human);
-                case ADD_IF_MIN -> controller.addIfMin(human);
+            switch (checkTypeOfAdd()) {
+                case NONE -> {
+                    id = controller.createHuman(human);
+                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                }
+                case ADD_IF_MAX -> {
+                    id = controller.addIfMax(human); //TODO check -1L -> valid not max/min
+                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                }
+                case ADD_IF_MIN -> {
+                    id = controller.addIfMin(human);
+                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                }
             }
+            loggedInController.configAfterAdd();
+            stage.close();
         } catch (ValidationException ex) {
             label_error_msg.setText(ex.getMessage());
         }
