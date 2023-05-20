@@ -15,7 +15,7 @@ import ru.home.app.server.controller.HumanController;
 
 import java.io.IOException;
 
-import static ru.home.app.gui.controllers.SpecialWindows.showConfirmationDialog;
+import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 
 public class LoginController {
     private final CurrentUserManager userManager;
