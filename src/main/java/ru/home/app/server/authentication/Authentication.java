@@ -94,8 +94,8 @@ public class Authentication {
                 logger.warning(getWarning("user_exist", LANGUAGE.EN));
                 registerUser();
             } else {
-                controller.userRegister(username, password);
                 configUserManager(username);
+                controller.userRegister(currentUserManager, password);
                 controller.setUserManager(currentUserManager);
                 System.out.println(getSuccessMessage("user_registered", language));
                 logger.info(getLog("user_regisrered"));

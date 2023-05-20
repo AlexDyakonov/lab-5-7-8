@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
-import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.ValidationException;
 
@@ -17,7 +17,7 @@ import java.io.IOException;
 
 //TODO fix.
 public class RegisterController {
-    private final GuiHumanController humanController;
+    private final HumanController humanController;
     private final CurrentUserManager userManager;
     private final double width;
     private final double height;
@@ -45,7 +45,7 @@ public class RegisterController {
     @FXML
     private Button button_sign_up;
 
-    public RegisterController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
+    public RegisterController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
         this.humanController = controller;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/register-page.fxml"));
@@ -109,6 +109,8 @@ public class RegisterController {
         try {
             if (checkFields()) {
                 if (checkAvatars()) {
+                    System.out.println(userManager);
+                    System.out.println(tf_username.getText());
                     userManager.setUserName(tf_username.getText()).setUserRole(ROLES.USER)
                             .setUserId(humanController.userRegister(userManager, pf_password.getText()));
                     new LoggedInController(width, height, userManager, humanController).launchMainScene(stage);
@@ -119,7 +121,7 @@ public class RegisterController {
         }
     }
 
-    public GuiHumanController getHumanController() {
+    public HumanController getHumanController() {
         return humanController;
     }
 

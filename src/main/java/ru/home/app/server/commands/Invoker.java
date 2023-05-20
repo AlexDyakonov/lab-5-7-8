@@ -55,7 +55,7 @@ public class Invoker {
      */
     public Invoker(BuilderType builderType, LANGUAGE language) {
         logger.info(getLog("invoker_init_start"));
-        this.controller = new HumanControllerImpl();
+        this.controller = new HumanControllerImpl(currentUserManager);
         this.history = new HistoryManager(15); // limit history size
         this.cmdReader = cmdReader == null ? new BufferedReader(new InputStreamReader(System.in)) : cmdReader;
         this.builderType = builderType;

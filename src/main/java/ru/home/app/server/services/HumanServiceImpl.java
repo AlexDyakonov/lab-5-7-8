@@ -8,23 +8,20 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.LANGUAGE;
 
 import java.util.List;
 import java.util.Set;
 
-/**
- * The type Human service.
- */
 public class HumanServiceImpl implements HumanService {
     private final HumanDao humanDao;
+    private final CurrentUserManager userManager;
     private LANGUAGE language;
 
-    /**
-     * Instantiates a new Human service.
-     */
-    public HumanServiceImpl() {
-        this.humanDao = new HumanDaoPostgresImpl();
+    public HumanServiceImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
+        this.humanDao = new HumanDaoPostgresImpl(userManager);
         humanDao.setLanguage(language);
     }
 
@@ -36,6 +33,11 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
         return humanDao.getAllHuman();
+    }
+
+    @Override
+    public List<HumanBeingResponseDTOwithUsers> getAllHumanWithUsers() {
+        return humanDao.getAllHumanWithUsers();
     }
 
     @Override
@@ -121,8 +123,8 @@ public class HumanServiceImpl implements HumanService {
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        humanDao.userRegister(username, password);
+    public long userRegister(CurrentUserManager userManager, String password) {
+        return humanDao.userRegister(userManager, password);
     }
 
     @Override

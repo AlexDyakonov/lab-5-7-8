@@ -11,6 +11,7 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.sql.SQLConnection;
 import ru.home.app.util.LANGUAGE;
 
@@ -19,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static ru.home.app.server.mapper.HumanBeingMapper.fromRequestToResponse;
 import static ru.home.app.server.services.LoggerManager.setupLogger;
@@ -34,10 +36,11 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     private final SQLConnection sqlConnection = new SQLConnection();
     private final SQLDataBaseProvider source = new SQLDataBaseProvider(sqlConnection, new CurrentUserManager());
+    private CurrentUserManager userManager;
     private LANGUAGE language;
-    private CurrentUserManager currentUserManager;
 
-    public HumanDaoPostgresImpl() {
+    public HumanDaoPostgresImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
     }
 
     @Override
@@ -51,6 +54,11 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     @Override
+    public List<HumanBeingResponseDTOwithUsers> getAllHumanWithUsers() {
+        return source.getAllHumanWithUser();
+    }
+
+    @Override
     public Long createHuman(HumanBeingRequestDTO human) {
         Long id = addHumanBeingToDB(human);
         source.getDataSet().add(fromRequestToResponse(human));
@@ -59,7 +67,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
-        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, currentUserManager.getUserId())) {
+        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
             source.removeHumanById(id);
             System.out.println(getSuccessMessage("done", language));
             logger.info((getLog("user_deleted")).replace("%id%", id.toString()));
@@ -72,7 +80,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO request, Long id) {
         try {
-            if (source.isHumanBeingBelongsToUser(id, currentUserManager.getUserId())) {
+            if (source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
                 logger.info(getLog("update_starting").replace("%id%", id.toString()));
                 String query = "UPDATE humanbeing SET name = ?, coordinates_id = ?, " +
                         "real_hero = ?, has_toothpick = ?, impact_speed = ?, " +
@@ -128,7 +136,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
         try {
             String query = ("DELETE FROM humanbeing WHERE humanbeing_id IN (SELECT humanbeing_id FROM humantouser WHERE user_id = ?)");
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
-            preparedStatement.setLong(1, currentUserManager.getUserId());
+            preparedStatement.setLong(1, userManager.getUserId());
 
             checkAffectedRows(preparedStatement);
             System.out.println(getSuccessMessage("done", language));
@@ -295,7 +303,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
             String query1 = "INSERT INTO humantouser VALUES (?, ?)";
             PreparedStatement preparedStatement1 = sqlConnection.getConnection().prepareStatement(query1);
             preparedStatement1.setLong(1, id);
-            preparedStatement1.setLong(2, currentUserManager.getUserId());
+            preparedStatement1.setLong(2, userManager.getUserId());
 
 
             int affectedRows = preparedStatement1.executeUpdate();
@@ -312,12 +320,12 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public Set<String> getUserNameList() {
-        return source.getUserNameList();
+        return getAllUsers().stream().map(User::getUserName).collect(Collectors.toSet());
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        source.userRegister(currentUserManager, password); //сейчас не работает, надо пропускать через все слои тут. Делать влом.
+    public long userRegister(CurrentUserManager userManager, String password) {
+        return source.userRegister(userManager, password);
     }
 
     @Override
@@ -342,7 +350,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void setUserManager(CurrentUserManager currentUserManager) {
-        this.currentUserManager = currentUserManager;
+        this.userManager = currentUserManager;
     }
 
     @Override
@@ -372,14 +380,15 @@ public class HumanDaoPostgresImpl implements HumanDao {
         String userName;
         ROLES role;
         try {
-            String query = "SELECT * FROM users";
+            String query = "SELECT u.user_id, u.user_name, u.role, ua.user_avatar FROM users u JOIN users_avatar ua ON u.user_id = ua.user_id";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 id = resultSet.getLong("user_id");
                 userName = resultSet.getString("user_name");
                 role = stringToRole(resultSet.getString("role"));
-                output.add(new User(id, userName, role));
+                String avatar = resultSet.getString("user_avatar");
+                output.add(new User(id, userName, role, avatar));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

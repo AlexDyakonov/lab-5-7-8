@@ -7,6 +7,7 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.User;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.HumanService;
 import ru.home.app.server.services.HumanServiceImpl;
 import ru.home.app.server.validation.Validation;
@@ -18,6 +19,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import static ru.home.app.server.services.LoggerManager.setupLogger;
+import static ru.home.app.server.validation.Validation.validate;
 import static ru.home.app.server.validation.Validation.validateFileWrite;
 import static ru.home.app.util.Message.getError;
 import static ru.home.app.util.Message.getWarning;
@@ -28,23 +30,27 @@ import static ru.home.app.util.Message.getWarning;
 public class HumanControllerImpl implements HumanController {
     private static final Logger logger = Logger.getLogger(HumanControllerImpl.class.getName());
     private final HumanService service;
+    private final CurrentUserManager userManager;
     private LANGUAGE language;
 
     /**
      * Instantiates a new Human controller.
      */
 
-    public HumanControllerImpl() {
-        this.service = new HumanServiceImpl();
+    public HumanControllerImpl(CurrentUserManager userManager) {
+        this.userManager = userManager;
+        this.service = new HumanServiceImpl(userManager);
         service.setLanguage(language);
         setupLogger(logger);
     }
+
 
     @Override
     public HumanBeingResponseDTO getHumanById(Long id) {
         if (id <= 0) {
             throw new ValidationException(getError("id_more_than_zero", language));
         }
+        validate(id, Validation::validateId, "Message"); // TODO сделать тут полноценную валидацию на все методы
         return service.getHumanById(id);
     }
 
@@ -54,8 +60,13 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
+    public List<HumanBeingResponseDTOwithUsers> getAllHumanWithUsers() {
+        return service.getAllHumanWithUsers();
+    }
+
+    @Override
     public Long createHuman(HumanBeingRequestDTO human) {
-        System.out.println(human);
+        validate(human, Validation::validateRequestDTO, "Error validation");
         if (!Validation.validateRequestDTO(human)) {
             throw new ValidationException(getError("request_not_validated", language));
         }
@@ -115,20 +126,14 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public int countByMood(String mood) {
-        switch (mood) {
-            case "SORROW":
-                return service.countByMood(Mood.SORROW);
-            case "GLOOM":
-                return service.countByMood(Mood.GLOOM);
-            case "APATHY":
-                return service.countByMood(Mood.APATHY);
-            case "CALM":
-                return service.countByMood(Mood.CALM);
-            case "RAGE":
-                return service.countByMood(Mood.RAGE);
-            default:
-                throw new ValidationException(getError("mood_not_exist", language));
-        }
+        return switch (mood) {
+            case "SORROW" -> service.countByMood(Mood.SORROW);
+            case "GLOOM" -> service.countByMood(Mood.GLOOM);
+            case "APATHY" -> service.countByMood(Mood.APATHY);
+            case "CALM" -> service.countByMood(Mood.CALM);
+            case "RAGE" -> service.countByMood(Mood.RAGE);
+            default -> throw new ValidationException(getError("mood_not_exist", language));
+        };
     }
 
     @Override
@@ -139,6 +144,16 @@ public class HumanControllerImpl implements HumanController {
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
         return service.isImpactSpeedMin(dto);
+    }
+
+    @Override
+    public Long addIfMax(HumanBeingRequestDTO request) {
+        return service.addIfMax(request);
+    }
+
+    @Override
+    public Long addIfMin(HumanBeingRequestDTO request) {
+        return service.addIfMin(request);
     }
 
     @Override
@@ -153,18 +168,15 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
-    public void userRegister(String username, String password) {
-        if (username.trim().equals("")) {
-            throw new ValidationException(""); //TODO message
-        }
-        service.userRegister(username, password);
+    public long userRegister(CurrentUserManager userManager, String password) {
+        validate(userManager.getUserName(), Validation::validateString, "message");
+        return service.userRegister(userManager, password);
     }
 
     @Override
     public boolean checkUserPassword(String username, String password) {
-        if (username.trim().equals("")) {
-            throw new ValidationException(""); //TODO message
-        }
+        validate(username, Validation::validateString, "Message");
+        validate(password, Validation::validatePassword, "Message");
         return service.checkUserPassword(username, password);
     }
 

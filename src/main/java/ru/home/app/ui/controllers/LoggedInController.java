@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
-import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoggedInController implements Initializable {
-    private final GuiHumanController controller;
+    private final HumanController controller;
     private final CurrentUserManager userManager;
     private final double width;
     private final double height;
@@ -112,7 +112,7 @@ public class LoggedInController implements Initializable {
     @FXML
     private Label label_all;
 
-    public LoggedInController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
+    public LoggedInController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
         this.controller = controller;
         this.width = width;
@@ -139,7 +139,7 @@ public class LoggedInController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<HumanBeingResponseDTOwithUsers> allHuman = controller.getAllHuman();
+        List<HumanBeingResponseDTOwithUsers> allHuman = controller.getAllHumanWithUsers();
 
         label_all.setText("All(" + allHuman.size() + ")");
 
@@ -232,6 +232,7 @@ public class LoggedInController implements Initializable {
         label_nickname.setText(userManager.getUserName());
         String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
         try {
+            System.out.println(userManager.getUserAvatar());
             im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

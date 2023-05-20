@@ -11,15 +11,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
-import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.HumanController;
 
 import java.io.IOException;
 
+import static ru.home.app.ui.controllers.SpecialWindows.showConfirmationDialog;
+
 public class LoginController {
     private final CurrentUserManager userManager;
-    private final GuiHumanController controller;
-    private double width;
-    private double height;
+    private final HumanController controller;
+    private final double width;
+    private final double height;
     private Stage stage;
     private final Scene scene;
     private final Parent parent;
@@ -36,7 +38,7 @@ public class LoginController {
     @FXML
     private PasswordField pf_password;
 
-    public LoginController(double width, double height, CurrentUserManager userManager, GuiHumanController controller) {
+    public LoginController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.controller = controller;
         this.userManager = userManager;
         this.width = width;
@@ -89,18 +91,12 @@ public class LoginController {
     }
 
     public void closeButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) close_button.getScene().getWindow();
-        stage.close();
-    }
-
-    private void setCurrentWidthToStage(Number number2) {
-        stage.setWidth((double) number2);
-        width = (double) number2;
-    }
-
-    private void setCurrentHeightToStage(Number number2) {
-        stage.setHeight((double) number2);
-        height = (double) number2;
+        if (showConfirmationDialog("Are you sure you want to leave?", stage)) {
+            Stage stage = (Stage) close_button.getScene().getWindow();
+            stage.close();
+        } else {
+            stage.setAlwaysOnTop(true);
+        }
     }
 
     public double getWidth() {
@@ -115,7 +111,7 @@ public class LoginController {
         return userManager;
     }
 
-    public GuiHumanController getController() {
+    public HumanController getController() {
         return controller;
     }
 }

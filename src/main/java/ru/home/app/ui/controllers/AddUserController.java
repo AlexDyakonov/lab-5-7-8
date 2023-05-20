@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.home.app.server.authentication.CurrentUserManager;
-import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
@@ -34,7 +34,7 @@ import static ru.home.app.util.Parser.stringToMood;
 import static ru.home.app.util.Parser.stringToWeaponType;
 
 public class AddUserController implements Initializable {
-    private final GuiHumanController controller;
+    private final HumanController controller;
     private final CurrentUserManager userManager;
     private LoggedInController loggedInController;
     private final double width = 424;
@@ -93,7 +93,7 @@ public class AddUserController implements Initializable {
     private Label label_error_msg;
 
 
-    public AddUserController(GuiHumanController controller, CurrentUserManager userManager, double width, double height) {
+    public AddUserController(HumanController controller, CurrentUserManager userManager, double width, double height) {
         this.controller = controller;
         this.userManager = userManager;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/add-window.fxml"));

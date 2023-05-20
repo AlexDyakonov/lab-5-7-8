@@ -222,7 +222,7 @@ public class SQLDataBaseProvider {
 
             int affectedRows1 = preparedStatement1.executeUpdate();
             if (affectedRows1 == 0) {
-                throw new ApplicationException("Не удалось добавить юзера");
+                throw new ApplicationException("Не удалось удалить юзера");
             }
             preparedStatement1.close();
         } catch (SQLException e) {

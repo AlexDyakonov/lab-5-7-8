@@ -1,6 +1,6 @@
 package ru.home.app.server.authentication;
 
-import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.model.User;
 
 import java.util.List;
@@ -109,7 +109,7 @@ public class CurrentUserManager {
         return this;
     }
 
-    public CurrentUserManager configUserManager(String username, GuiHumanController controller) {
+    public CurrentUserManager configUserManager(String username, HumanController controller) {
         List<User> allUsers = controller.getAllUsers();
         this.setUserName(username)
                 .setUserRole(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserRole())
@@ -117,7 +117,8 @@ public class CurrentUserManager {
                 .setUserAvatar(allUsers.stream().filter(p -> p.getUserName().equals(username)).toList().get(0).getUserAvatar());
         return this;
     }
-    public CurrentUserManager clear(){
+
+    public CurrentUserManager clear() {
         return new CurrentUserManager();
     }
 
@@ -127,5 +128,15 @@ public class CurrentUserManager {
 
     public void setUserAvatar(String userAvatar) {
         this.userAvatar = userAvatar;
+    }
+
+    @Override
+    public String toString() {
+        return "CurrentUserManager{" +
+                "userName='" + userName + '\'' +
+                ", userId=" + userId +
+                ", userRole=" + userRole +
+                ", userAvatar='" + userAvatar + '\'' +
+                '}';
     }
 }
