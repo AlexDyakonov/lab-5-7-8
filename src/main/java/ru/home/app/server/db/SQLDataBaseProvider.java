@@ -205,6 +205,31 @@ public class SQLDataBaseProvider {
         return false;
     }
 
+    public void removeHumanById(Long id) {
+        try {
+            String query = "DELETE FROM humantouser WHERE humanbeing_id = ?";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+            preparedStatement.setLong(1, id);
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new ApplicationException("Не удалось добавить юзера");
+            }
+            preparedStatement.close();
+
+            String query1 = "DELETE FROM humanbeing WHERE humanbeing_id = ?";
+            PreparedStatement preparedStatement1 = sqlConnection.getConnection().prepareStatement(query1);
+            preparedStatement1.setInt(1, id.intValue());
+
+            int affectedRows1 = preparedStatement1.executeUpdate();
+            if (affectedRows1 == 0) {
+                throw new ApplicationException("Не удалось добавить юзера");
+            }
+            preparedStatement1.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public HumanBeingResponseDTOwithUsers getHumanBeingById(Long id) {
         if (!findHumanById(id)) {
             return null;

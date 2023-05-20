@@ -46,7 +46,11 @@ public class GuiHumanDaoImpl implements GuiHumanDao {
 
     @Override
     public void deleteHumanById(Long id) {
-
+        if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
+            source.removeHumanById(id);
+        } else {
+            System.out.println("test");
+        }
     }
 
     @Override

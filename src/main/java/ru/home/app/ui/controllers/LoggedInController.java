@@ -228,11 +228,8 @@ public class LoggedInController implements Initializable {
     }
 
     public void addNewButtonOnAction() {
-        GaussianBlur blur = new GaussianBlur();
-        blur.setRadius(10);
-        scene.getRoot().setEffect(blur);
-        stage.setAlwaysOnTop(false);
-        new AddUserController(controller, userManager).launchAddScene(new Stage());
+        configBeforeAdd();
+        new AddUserController(controller, userManager, 600, 600).launchAddScene(new Stage(), this);
     }
 
     public void launchMainScene(Stage stage) {
@@ -241,5 +238,17 @@ public class LoggedInController implements Initializable {
 
         stage.hide();
         stage.show();
+    }
+
+    public void configBeforeAdd() {
+        GaussianBlur blur = new GaussianBlur();
+        blur.setRadius(10);
+        scene.getRoot().setEffect(blur);
+        stage.setAlwaysOnTop(false);
+    }
+
+    public void configAfterAdd() {
+        scene.getRoot().setEffect(null);
+        stage.setAlwaysOnTop(true);
     }
 }
