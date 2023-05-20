@@ -5,18 +5,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.GuiHumanController;
+import ru.home.app.server.exception.ValidationException;
+import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AddUserController {
-    private final GuiHumanController humanController;
+    private final GuiHumanController controller;
     private final CurrentUserManager userManager;
     private LoggedInController loggedInController;
     private final double width = 424;
@@ -25,9 +27,50 @@ public class AddUserController {
     private Stage stage;
     private Scene scene;
 
+    @FXML
+    private RadioButton rb_if_min;
+    @FXML
+    private RadioButton rb_if_max;
+    @FXML
+    private RadioButton rb_none;
 
-    public AddUserController(GuiHumanController humanController, CurrentUserManager userManager, double width, double height) {
-        this.humanController = humanController;
+    @FXML
+    private TextField tf_hb_name;
+
+    @FXML
+    private TextField tf_coord_x;
+    @FXML
+    private TextField tf_coord_y;
+
+    @FXML
+    private TextField tf_speed;
+
+    @FXML
+    private TextField tf_song;
+
+    @FXML
+    private MenuButton mb_weapon;
+    @FXML
+    private MenuButton mb_mood;
+
+    @FXML
+    private TextField tf_car_name;
+
+    @FXML
+    private RadioButton rb_car_cool;
+    @FXML
+    private RadioButton rb_toothpick;
+    @FXML
+    private RadioButton rb_hero;
+
+    @FXML
+    private Button sumbit_button;
+
+    @FXML
+    private Label label_error_msg;
+
+    public AddUserController(GuiHumanController controller, CurrentUserManager userManager, double width, double height) {
+        this.controller = controller;
         this.userManager = userManager;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/add-window.fxml"));
         fxmlLoader.setController(this);
@@ -59,5 +102,14 @@ public class AddUserController {
         Stage stage = (Stage) close_button.getScene().getWindow();
         stage.close();
         loggedInController.configAfterAdd();
+    }
+
+    public void sumbitButtonOnAction(ActionEvent e) {
+        try {
+            HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO();
+            controller.createHuman(humanBeingRequestDTO);
+        } catch (ValidationException ex) {
+            label_error_msg.setText(ex.getMessage());
+        }
     }
 }

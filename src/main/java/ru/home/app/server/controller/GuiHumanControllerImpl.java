@@ -40,6 +40,7 @@ public class GuiHumanControllerImpl implements GuiHumanController {
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
+        validate(human, Validation::validateRequestDTO, "Error validation");
         return service.createHuman(human);
     }
 

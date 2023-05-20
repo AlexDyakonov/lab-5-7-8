@@ -68,9 +68,10 @@
       <RadioButton fx:id="rb_car_cool" layoutX="96.0" layoutY="523.0" mnemonicParsing="false"/>
       <RadioButton fx:id="rb_toothpick" layoutX="204.0" layoutY="523.0" mnemonicParsing="false"/>
       <RadioButton fx:id="rb_hero" layoutX="313.0" layoutY="523.0" mnemonicParsing="false"/>
-      <Button fx:id="sumbit_button" layoutX="103.0" layoutY="573.0" mnemonicParsing="false" prefHeight="44.0"
-              prefWidth="219.0" style="-fx-background-color: #322453; -fx-background-radius: 30; -fx-cursor: hand;"
-              text="SUMBIT" textFill="WHITE">
+      <Button fx:id="sumbit_button" layoutX="103.0" layoutY="573.0" mnemonicParsing="false"
+              onAction="#sumbitButtonOnAction" prefHeight="44.0" prefWidth="219.0"
+              style="-fx-background-color: #322453; -fx-background-radius: 30; -fx-cursor: hand;" text="SUMBIT"
+              textFill="WHITE">
          <font>
             <Font name="Roboto Bold" size="23.0"/>
          </font>
@@ -125,5 +126,11 @@
       </Label>
       <TextField fx:id="tf_coord_y" layoutX="237.0" layoutY="193.0" prefHeight="35.0" prefWidth="113.0"
                  promptText="Input y" style="-fx-background-radius: 7;"/>
+      <Label fx:id="label_error_msg" alignment="CENTER" layoutX="106.0" layoutY="550.0" prefHeight="17.0"
+             prefWidth="211.0" textFill="RED">
+         <font>
+            <Font name="Roboto Bold" size="12.0"/>
+         </font>
+      </Label>
    </children>
 </AnchorPane>
