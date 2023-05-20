@@ -1,4 +1,4 @@
-package ru.home.app.ui;
+package ru.home.app.gui;
 
 public class GraphicUI {
 }

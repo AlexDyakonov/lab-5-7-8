@@ -14,14 +14,15 @@ import static ru.home.app.util.Message.getLog;
  */
 public class CurrentUserManager {
     private static final Logger logger = Logger.getLogger(CurrentUserManager.class.getName());
-    private String userName;
-    private Long userId;
-    private ROLES userRole;
-    private String userAvatar;
 
     static {
         setupLogger(logger);
     }
+
+    private String userName;
+    private Long userId;
+    private ROLES userRole;
+    private String userAvatar;
 
     /**
      * Instantiates a new User manager.

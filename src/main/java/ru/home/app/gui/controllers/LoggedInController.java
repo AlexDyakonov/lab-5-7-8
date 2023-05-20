@@ -1,4 +1,4 @@
-package ru.home.app.ui.controllers;
+package ru.home.app.gui.controllers;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -36,6 +36,7 @@ public class LoggedInController implements Initializable {
     private final CurrentUserManager userManager;
     private final double width;
     private final double height;
+    ObservableList<HumanBeingResponseDTOwithUsers> humanBeingResponseDTOwithUsersObservableList = FXCollections.observableArrayList();
     private Parent parent;
     private Stage stage;
     private Scene scene;
@@ -51,58 +52,38 @@ public class LoggedInController implements Initializable {
     private ImageView im_avatar;
     @FXML
     private Button close_button;
-
     @FXML
     private TableView<HumanBeingResponseDTOwithUsers> table;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, Long> column_id;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_name;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_creator;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, Integer> column_x;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, Double> column_y;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_creation_time;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_hero;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_toothpick;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, Float> column_speed;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_soundtrack;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_weapon;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_mood;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_name;
-
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_cool;
-
-
     @FXML
     private TextField sb_find_by_name;
-
-    ObservableList<HumanBeingResponseDTOwithUsers> humanBeingResponseDTOwithUsersObservableList = FXCollections.observableArrayList();
-
     @FXML
     private Button button_info;
     @FXML

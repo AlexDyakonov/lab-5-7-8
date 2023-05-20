@@ -1,4 +1,4 @@
-package ru.home.app.ui.controllers;
+package ru.home.app.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,46 +36,38 @@ import static ru.home.app.util.Parser.stringToWeaponType;
 public class AddUserController implements Initializable {
     private final HumanController controller;
     private final CurrentUserManager userManager;
-    private LoggedInController loggedInController;
     private final double width = 424;
     private final double height = 652;
+    private final String[] weapons = Parser.weaponToStringArray(LANGUAGE.EN);
+    private final String[] moods = Parser.moodToStringArray(LANGUAGE.EN);
+    private LoggedInController loggedInController;
     private Parent parent;
     private Stage stage;
     private Scene scene;
-
     @FXML
     private RadioButton rb_if_min;
     @FXML
     private RadioButton rb_if_max;
     @FXML
     private RadioButton rb_none;
-
     @FXML
     private TextField tf_hb_name;
-
     @FXML
     private TextField tf_coord_x;
     @FXML
     private TextField tf_coord_y;
-
     @FXML
     private TextField tf_speed;
-
     @FXML
     private TextField tf_song;
-
     @FXML
     private ChoiceBox<String> cb_weapon;
     @FXML
     private Label label_weapon;
-    private final String[] weapons = Parser.weaponToStringArray(LANGUAGE.EN);
-
     @FXML
     private ChoiceBox<String> cb_mood;
     @FXML
     private Label label_mood;
-    private final String[] moods = Parser.moodToStringArray(LANGUAGE.EN);
-
     @FXML
     private TextField tf_car_name;
 
@@ -91,7 +83,8 @@ public class AddUserController implements Initializable {
 
     @FXML
     private Label label_error_msg;
-
+    @FXML
+    private Button close_button;
 
     public AddUserController(HumanController controller, CurrentUserManager userManager, double width, double height) {
         this.controller = controller;
@@ -118,9 +111,6 @@ public class AddUserController implements Initializable {
         stage.hide();
         stage.show();
     }
-
-    @FXML
-    private Button close_button;
 
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();

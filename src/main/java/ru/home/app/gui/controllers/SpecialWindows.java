@@ -1,4 +1,4 @@
-package ru.home.app.ui.controllers;
+package ru.home.app.gui.controllers;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

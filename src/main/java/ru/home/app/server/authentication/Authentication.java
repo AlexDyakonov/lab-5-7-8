@@ -19,14 +19,15 @@ import static ru.home.app.util.Message.*;
  */
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
-    private final CurrentUserManager currentUserManager = new CurrentUserManager();
-    private final HumanController controller;
-    private final BufferedReader reader;
-    private final LANGUAGE language;
 
     static {
         setupLogger(logger);
     }
+
+    private final CurrentUserManager currentUserManager = new CurrentUserManager();
+    private final HumanController controller;
+    private final BufferedReader reader;
+    private final LANGUAGE language;
 
     /**
      * Instantiates a new Authentication.

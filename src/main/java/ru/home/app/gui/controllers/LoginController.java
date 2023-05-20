@@ -1,4 +1,4 @@
-package ru.home.app.ui.controllers;
+package ru.home.app.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,16 +15,16 @@ import ru.home.app.server.controller.HumanController;
 
 import java.io.IOException;
 
-import static ru.home.app.ui.controllers.SpecialWindows.showConfirmationDialog;
+import static ru.home.app.gui.controllers.SpecialWindows.showConfirmationDialog;
 
 public class LoginController {
     private final CurrentUserManager userManager;
     private final HumanController controller;
     private final double width;
     private final double height;
-    private Stage stage;
     private final Scene scene;
     private final Parent parent;
+    private Stage stage;
     @FXML
     private Button button_login;
     @FXML

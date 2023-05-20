@@ -3,28 +3,18 @@ package ru.home.app;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.home.app.gui.controllers.LoginController;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.controller.HumanControllerImpl;
 import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.ui.ConsoleUI;
-import ru.home.app.ui.controllers.LoginController;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.IOException;
 
 
-public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        stage.setResizable(false);
-        stage.setAlwaysOnTop(true);
-        stage.initStyle(StageStyle.UNDECORATED);
-        CurrentUserManager userManager = new CurrentUserManager();
-
-        new LoginController(1080, 768, userManager, new HumanControllerImpl(userManager)).launchLoginScene(stage);
-    }
-
+public class App extends Application {
     public static void main(String[] args) {
         try {
             if (args[0].equals("-g")) {
@@ -37,5 +27,15 @@ public class HelloApplication extends Application {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Use flag to launch launch: -g - GUI, -c - CMD");
         }
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.UNDECORATED);
+        CurrentUserManager userManager = new CurrentUserManager();
+
+        new LoginController(1080, 768, userManager, new HumanControllerImpl(userManager)).launchLoginScene(stage);
     }
 }
