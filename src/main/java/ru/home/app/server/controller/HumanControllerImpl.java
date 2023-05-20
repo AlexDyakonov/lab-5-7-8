@@ -148,11 +148,13 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
+        validate(request, Validation::validateRequestDTO, "Error validation");
         return service.addIfMax(request);
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
+        validate(request, Validation::validateRequestDTO, "Error validation");
         return service.addIfMin(request);
     }
 

@@ -228,8 +228,11 @@ public class AddUserController implements Initializable {
 
     public void sumbitButtonOnAction(ActionEvent e) {
         try {
-            if (checkTypeOfAdd() == AddType.NONE) {
-                controller.createHuman(getHumanFromFields());
+            HumanBeingRequestDTO human = getHumanFromFields();
+            switch (checkTypeOfAdd()){
+                case NONE -> controller.createHuman(human);
+                case ADD_IF_MAX -> controller.addIfMax(human);
+                case ADD_IF_MIN -> controller.addIfMin(human);
             }
         } catch (ValidationException ex) {
             label_error_msg.setText(ex.getMessage());
