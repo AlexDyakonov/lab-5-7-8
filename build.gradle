@@ -76,4 +76,7 @@ jar {
             it.isDirectory() ? it : zipTree(it)
         }
     }
+    from('src/main/java') {
+        include '**/*.css'
+    }
 }

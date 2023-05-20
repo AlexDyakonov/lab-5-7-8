@@ -122,14 +122,8 @@ public class LoggedInController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-            label_role.setText(userManager.getUserRole().toString());
-            label_nickname.setText(userManager.getUserName());
-            String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
-            im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -234,6 +228,14 @@ public class LoggedInController implements Initializable {
 
     public void launchMainScene(Stage stage) {
         this.stage = stage;
+        label_role.setText(userManager.getUserRole().toString());
+        label_nickname.setText(userManager.getUserName());
+        String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
+        try {
+            im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         stage.setScene(scene);
 
         stage.hide();

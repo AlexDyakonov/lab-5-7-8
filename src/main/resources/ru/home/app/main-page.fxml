@@ -5,16 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" stylesheets="@css/table-view.css">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/background.png" />
+                <Image url="@assets/background.png"/>
             </image>
         </ImageView>
-        <ImageView fx:id="im_avatar" fitHeight="130.0" fitWidth="130.0" layoutX="48.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="im_avatar" fitHeight="130.0" fitWidth="130.0" layoutX="48.0" layoutY="28.0"
+                   pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/avatars/ava4.jpg" />
+                <Image url="@assets/avatars/ava4.jpg"/>
             </image>
         </ImageView>
         <Label fx:id="label_nickname" alignment="CENTER" layoutX="21.0" layoutY="158.0" prefHeight="45.0" prefWidth="184.0" text="NickName" textFill="#fb2cff">

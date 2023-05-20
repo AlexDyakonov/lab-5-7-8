@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0"
-            prefWidth="424.0" style="-fx-background-radius: 40; -fx-background-color: F3CBC5;"
+            prefWidth="424.0"
+            style="-fx-background-radius: 40; -fx-background-color: F3CBC5; -fx-border-radius: 40; -fx-border-color: TRANSPARENT;"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="33.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW HUMANBEING"
