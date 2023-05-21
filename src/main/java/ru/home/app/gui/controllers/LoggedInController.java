@@ -109,6 +109,9 @@ public class LoggedInController implements Initializable {
     @FXML
     private Label label_error_msg;
 
+    @FXML
+    private Button button_map;
+
     public LoggedInController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
         this.controller = controller;
@@ -277,6 +280,10 @@ public class LoggedInController implements Initializable {
         GaussianBlur blur = new GaussianBlur();
         blur.setRadius(10);
         scene.getRoot().setEffect(blur);
+    }
+
+    public void mapButtonOnAction(ActionEvent e) {
+        new MapController(width, height, userManager, controller).launchMainScene(stage);
     }
 
     public void configAfterAdd() {

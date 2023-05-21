@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class StickMan {
+public class StickMan {
     private double x;
     private double y;
     private double size;
