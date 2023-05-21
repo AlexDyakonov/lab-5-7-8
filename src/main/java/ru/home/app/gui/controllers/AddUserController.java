@@ -233,15 +233,15 @@ public class AddUserController implements Initializable {
             switch (checkTypeOfAdd()) {
                 case NONE -> {
                     id = controller.createHuman(human);
-                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
                 case ADD_IF_MAX -> {
                     id = controller.addIfMax(human); //TODO check -1L -> valid not max/min
-                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
                 case ADD_IF_MIN -> {
                     id = controller.addIfMin(human);
-                    loggedInController.updateTable(controller.getHumanWithUserById(id));
+                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
             }
             loggedInController.configAfterAdd();

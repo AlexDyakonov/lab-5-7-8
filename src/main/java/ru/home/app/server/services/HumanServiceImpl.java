@@ -51,8 +51,8 @@ public class HumanServiceImpl implements HumanService {
     }
 
     @Override
-    public void deleteHumanById(Long id) {
-        humanDao.deleteHumanById(id);
+    public boolean deleteHumanById(Long id) {
+        return humanDao.deleteHumanById(id);
     }
 
     @Override

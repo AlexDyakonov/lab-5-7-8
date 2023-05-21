@@ -205,7 +205,7 @@ public class SQLDataBaseProvider {
         return false;
     }
 
-    public void removeHumanById(Long id) {
+    public boolean removeHumanById(Long id) {
         try {
             String query = "DELETE FROM humantouser WHERE humanbeing_id = ?";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
@@ -222,9 +222,10 @@ public class SQLDataBaseProvider {
 
             int affectedRows1 = preparedStatement1.executeUpdate();
             if (affectedRows1 == 0) {
-                throw new ApplicationException("Не удалось удалить юзера");
+                return false;
             }
             preparedStatement1.close();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

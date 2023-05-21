@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
+import ru.home.app.util.LANGUAGE;
 
 import java.io.IOException;
 
@@ -39,8 +40,9 @@ public class LoginController {
     private PasswordField pf_password;
 
     public LoginController(double width, double height, CurrentUserManager userManager, HumanController controller) {
-        this.controller = controller;
+        controller.setLanguage(LANGUAGE.EN);
         this.userManager = userManager;
+        this.controller = controller;
         this.width = width;
         this.height = height;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/login-page.fxml"));
@@ -91,7 +93,7 @@ public class LoginController {
     }
 
     public void closeButtonOnAction(ActionEvent e) {
-        if (showConfirmationDialog("Are you sure you want to leave?", stage)) {
+        if (showConfirmationDialog("Are you sure you want to leave?")) {
             Stage stage = (Stage) close_button.getScene().getWindow();
             stage.close();
         } else {

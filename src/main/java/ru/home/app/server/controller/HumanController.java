@@ -22,7 +22,7 @@ public interface HumanController {
 
     Long createHuman(HumanBeingRequestDTO human);
 
-    void deleteHumanById(Long id);
+    boolean deleteHumanById(Long id);
 
     HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 

@@ -71,14 +71,15 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     @Override
-    public void deleteHumanById(Long id) {
+    public boolean deleteHumanById(Long id) {
         if (source.findHumanById(id) && source.isHumanBeingBelongsToUser(id, userManager.getUserId())) {
-            source.removeHumanById(id);
             System.out.println(getSuccessMessage("done", language));
             logger.info((getLog("user_deleted")).replace("%id%", id.toString()));
+            return source.removeHumanById(id);
         } else {
             System.out.println((getWarning("user_not_found", language)).replace("%id%", id.toString()));
             logger.warning((getWarning("user_not_found", LANGUAGE.EN)).replace("%id%", id.toString()));
+            return false;
         }
     }
 
@@ -137,15 +138,16 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public void clear() {
-        int elemsBefore = source.getDataSet().size();
         try {
+            int elemsBefore = source.getDataSet().size();
             String query = ("DELETE FROM humanbeing WHERE humanbeing_id IN (SELECT humanbeing_id FROM humantouser WHERE user_id = ?)");
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setLong(1, userManager.getUserId());
 
+            int after = source.getDataSet().size();
             checkAffectedRows(preparedStatement);
             System.out.println(getSuccessMessage("done", language));
-            logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore)));
+            logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore - after)));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -19,11 +19,15 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.controller.HumanController;
+import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
+import ru.home.app.util.LANGUAGE;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -92,6 +96,18 @@ public class LoggedInController implements Initializable {
     private Label label_humanbeing;
     @FXML
     private Label label_all;
+
+    @FXML
+    private MenuButton mb_delete;
+    @FXML
+    private MenuItem mi_delete_by_id;
+    @FXML
+    private MenuItem mi_clear;
+    @FXML
+    private MenuItem mi_clear_all;
+
+    @FXML
+    private Label label_error_msg;
 
     public LoggedInController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
@@ -190,10 +206,39 @@ public class LoggedInController implements Initializable {
         sortedData.comparatorProperty().bind(table.comparatorProperty());
 
         table.setItems(sortedData);
+
+        mi_delete_by_id.setOnAction(e -> SpecialWindows.deleteWindow(controller, LANGUAGE.EN, this));
+        mi_clear.setOnAction(event -> {
+            if (SpecialWindows.showConfirmationDialog("Are confirm deleting all your humanbeings?")) {
+                try {
+                    controller.clear();
+                    label_error_msg.setText("");
+                } catch (ApplicationException e) {
+                    label_error_msg.setText("Elements was not deleted.");
+                }
+            }
+        });
+        mi_clear_all.setOnAction(event -> {
+            if (userManager.getUserRole().equals(ROLES.ADMIN)) {
+                try {
+                    controller.clearAll();
+                    label_error_msg.setText("");
+                } catch (ApplicationException e) {
+                    label_error_msg.setText("Elements was not deleted.");
+                }
+            }
+            if (!userManager.getUserRole().equals(ROLES.ADMIN)) {
+                SpecialWindows.showInfoMessage("Must be admin to clear all.");
+            }
+        });
     }
 
-    public void updateTable(HumanBeingResponseDTOwithUsers human) {
+    public void addHumanToTable(HumanBeingResponseDTOwithUsers human) {
         humanBeingResponseDTOwithUsersObservableList.add(human);
+    }
+
+    public void removeHumanFromTable(long id) {
+        humanBeingResponseDTOwithUsersObservableList.removeIf(p -> p.getId().equals(id));
     }
 
     public void setUserInfo(String username, String userRole) {
@@ -232,11 +277,9 @@ public class LoggedInController implements Initializable {
         GaussianBlur blur = new GaussianBlur();
         blur.setRadius(10);
         scene.getRoot().setEffect(blur);
-        stage.setAlwaysOnTop(false);
     }
 
     public void configAfterAdd() {
         scene.getRoot().setEffect(null);
-        stage.setAlwaysOnTop(true);
     }
 }

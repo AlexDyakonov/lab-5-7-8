@@ -32,7 +32,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setResizable(false);
-        stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         CurrentUserManager userManager = new CurrentUserManager();
 

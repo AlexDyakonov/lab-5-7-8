@@ -79,14 +79,14 @@ public class HumanControllerImpl implements HumanController {
     }
 
     @Override
-    public void deleteHumanById(Long id) {
+    public boolean deleteHumanById(Long id) {
         if (id <= 0) {
             throw new ValidationException(getError("id_more_than_zero", language));
         }
         if (getHumanById(id) == null) {
             logger.warning(getWarning("user_not_found", LANGUAGE.EN));
         }
-        service.deleteHumanById(id);
+        return service.deleteHumanById(id);
     }
 
     @Override

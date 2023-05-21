@@ -23,7 +23,7 @@ public interface HumanService {
 
     Long createHuman(HumanBeingRequestDTO human);
 
-    void deleteHumanById(Long id);
+    boolean deleteHumanById(Long id);
 
     HumanBeingResponseDTO updateHuman(HumanBeingRequestDTO newHuman, Long id);
 
