@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.home.app.gui.utility.StickMan;
@@ -33,6 +31,8 @@ public class MapController implements Initializable {
     private Parent parent;
     private Stage stage;
     private Scene scene;
+    private final double MAP_WIDTH = 760;
+    private final double MAP_HEIGHT = 560;
 
     @FXML
     private Button button_logout;
@@ -49,9 +49,6 @@ public class MapController implements Initializable {
 
     @FXML
     private Pane pane_map;
-    @FXML
-    private AnchorPane ap_main;
-
 
     public MapController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
@@ -79,47 +76,26 @@ public class MapController implements Initializable {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
         stage.setScene(scene);
 
         stage.hide();
         stage.show();
     }
 
-    private List<StickMan> createListOfStickMans() {
-        double MAP_WIDTH = pane_map.getWidth();
-        final double MAP_HEIGHT = pane_map.getHeight();
-
-        List<StickMan> stickManList = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            StickMan stickMan = new StickMan();
-            double x = 20 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 20);
-            double y = 20 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 20);
-            stickMan.generate(x, y, 0.5);
-
-            stickManList.add(stickMan);
-        }
-        return stickManList;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        double MAP_WIDTH = pane_map.getWidth();
-        final double MAP_HEIGHT = pane_map.getHeight();
 
         List<StickMan> stickManList = new ArrayList<>();
-        Group map = new Group();
 
         for (int i = 0; i < 10; i++) {
             StickMan stickMan = new StickMan();
             double x = 50 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 50);
             double y = 50 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 50);
             stickMan.generate(x, y, 0.5);
-            map.getChildren().addAll(stickMan.getShapes());
+            stickMan.generate(x, y, 0.5).addToPane(pane_map);
             stickManList.add(stickMan);
         }
-
-        pane_map.getChildren().addAll(map);
 
         pane_map.setOnMouseMoved(event -> {
             double mouseX = event.getX();

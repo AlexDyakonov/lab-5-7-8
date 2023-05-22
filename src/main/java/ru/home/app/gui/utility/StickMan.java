@@ -1,6 +1,7 @@
 package ru.home.app.gui.utility;
 
 import javafx.geometry.Rectangle2D;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -22,7 +23,7 @@ public class StickMan {
         this.shapes = new ArrayList<>();
     }
 
-    public void generate(double x, double y, double size) {
+    public StickMan generate(double x, double y, double size) {
         this.x = x;
         this.y = y;
         this.size = size;
@@ -53,6 +54,11 @@ public class StickMan {
         this.shapes.add(leftLeg);
         this.shapes.add(rightLeg);
         this.shapes.add(hitbox);
+        return this;
+    }
+
+    public void addToPane(Pane pane) {
+        pane.getChildren().addAll(this.shapes);
     }
 
     public void move(double x, double y, double width, double height) {

@@ -52,7 +52,7 @@
       <Button fx:id="close_button" layoutX="1038.0" layoutY="20.0" mnemonicParsing="false"
               onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
               style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
-      <Pane fx:id="pane_map" layoutX="283.0" layoutY="87.0" prefHeight="585.0" prefWidth="751.0"
+      <Pane fx:id="pane_map" layoutX="278.0" layoutY="89.0" prefHeight="562.0" prefWidth="760.0"
             style="-fx-background-color: white; -fx-border-color: black;"/>
    </children>
 </AnchorPane>
