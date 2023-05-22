@@ -81,7 +81,7 @@ public class LoginController {
             if (controller.checkUserPassword(username, pf_password.getText())) {
                 userManager.configUserManager(username, controller);
                 label_error_msg.setText("Success!");
-                new LoggedInController(width, height, userManager, controller).launchMainScene(stage);
+                new MainPageController(width, height, userManager, controller).launchMainScene(stage);
             } else {
                 label_error_msg.setText("Invalid username or password.");
             }

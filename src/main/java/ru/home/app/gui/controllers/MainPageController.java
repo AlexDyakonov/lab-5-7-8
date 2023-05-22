@@ -35,17 +35,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LoggedInController implements Initializable {
+public class MainPageController implements Initializable {
     private final HumanController controller;
     private final CurrentUserManager userManager;
     private final double width;
     private final double height;
     ObservableList<HumanBeingResponseDTOwithUsers> humanBeingResponseDTOwithUsersObservableList = FXCollections.observableArrayList();
+    private List<HumanBeingResponseDTOwithUsers> dataList;
     private Parent parent;
     private Stage stage;
     private Scene scene;
-    @FXML
-    private Button button_logout;
+
     @FXML
     private Button button_language;
     @FXML
@@ -54,8 +54,7 @@ public class LoggedInController implements Initializable {
     private Label label_role;
     @FXML
     private ImageView im_avatar;
-    @FXML
-    private Button close_button;
+
     @FXML
     private TableView<HumanBeingResponseDTOwithUsers> table;
     @FXML
@@ -89,12 +88,6 @@ public class LoggedInController implements Initializable {
     @FXML
     private TextField sb_find_by_name;
     @FXML
-    private Button button_info;
-    @FXML
-    private Label label_users;
-    @FXML
-    private Label label_humanbeing;
-    @FXML
     private Label label_all;
 
     @FXML
@@ -112,7 +105,7 @@ public class LoggedInController implements Initializable {
     @FXML
     private Button button_map;
 
-    public LoggedInController(double width, double height, CurrentUserManager userManager, HumanController controller) {
+    public MainPageController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
         this.controller = controller;
         this.width = width;
@@ -127,23 +120,30 @@ public class LoggedInController implements Initializable {
         }
     }
 
-    public void closeButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) close_button.getScene().getWindow();
-        stage.close();
-    }
+    public void launchMainScene(Stage stage) {
+        this.stage = stage;
+        label_role.setText(userManager.getUserRole().toString());
+        label_nickname.setText(userManager.getUserName());
+        String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
+        try {
+            System.out.println(userManager.getUserAvatar());
+            im_avatar.setImage(new Image(MainPageController.class.getResource(avatarPath).toURI().toString()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
 
-    public void infoButtonOnAction(ActionEvent e) {
-        label_users.setText(String.valueOf(controller.getUserNameList().size()));
-        label_humanbeing.setText(String.valueOf(controller.getAllHuman().size()));
+        stage.hide();
+        stage.show();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<HumanBeingResponseDTOwithUsers> allHuman = controller.getAllHumanWithUsers();
+        dataList = controller.getAllHumanWithUsers();
 
-        label_all.setText("All(" + allHuman.size() + ")");
+        label_all.setText("All(" + dataList.size() + ")");
 
-        humanBeingResponseDTOwithUsersObservableList.addAll(allHuman);
+        humanBeingResponseDTOwithUsersObservableList.addAll(dataList);
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -249,9 +249,32 @@ public class LoggedInController implements Initializable {
         label_role.setText(userRole);
     }
 
+    @FXML
+    private Button button_logout;
+
     public void logoutButtonOnAction() {
         userManager.clear();
         new LoginController(width, height, userManager, controller).launchLoginScene(stage);
+    }
+
+    @FXML
+    private Button close_button;
+
+    public void closeButtonOnAction(ActionEvent e) {
+        Stage stage = (Stage) close_button.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private Button button_info;
+    @FXML
+    private Label label_users;
+    @FXML
+    private Label label_humanbeing;
+
+    public void infoButtonOnAction(ActionEvent e) {
+        label_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_humanbeing.setText(String.valueOf(controller.getAllHuman().size()));
     }
 
     public void addNewButtonOnAction() {
@@ -259,22 +282,6 @@ public class LoggedInController implements Initializable {
         new AddUserController(controller, userManager, 600, 600).launchAddScene(new Stage(), this);
     }
 
-    public void launchMainScene(Stage stage) {
-        this.stage = stage;
-        label_role.setText(userManager.getUserRole().toString());
-        label_nickname.setText(userManager.getUserName());
-        String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
-        try {
-            System.out.println(userManager.getUserAvatar());
-            im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-
-        stage.hide();
-        stage.show();
-    }
 
     public void configBeforeAdd() {
         GaussianBlur blur = new GaussianBlur();
@@ -283,7 +290,8 @@ public class LoggedInController implements Initializable {
     }
 
     public void mapButtonOnAction(ActionEvent e) {
-        new MapController(width, height, userManager, controller).launchMainScene(stage);
+        dataList = controller.getAllHumanWithUsers();
+        new MapController(width, height, userManager, controller, dataList).launchMainScene(stage);
     }
 
     public void configAfterAdd() {

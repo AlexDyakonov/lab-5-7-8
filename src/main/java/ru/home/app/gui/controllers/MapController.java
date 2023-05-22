@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import ru.home.app.gui.utility.StickMan;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -26,6 +27,7 @@ import java.util.ResourceBundle;
 public class MapController implements Initializable {
     private final HumanController controller;
     private final CurrentUserManager userManager;
+    private final List<HumanBeingResponseDTOwithUsers> humans;
     private final double width;
     private final double height;
     private Parent parent;
@@ -34,8 +36,7 @@ public class MapController implements Initializable {
     private final double MAP_WIDTH = 760;
     private final double MAP_HEIGHT = 560;
 
-    @FXML
-    private Button button_logout;
+
     @FXML
     private Button button_language;
     @FXML
@@ -50,7 +51,8 @@ public class MapController implements Initializable {
     @FXML
     private Pane pane_map;
 
-    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller) {
+    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller, List<HumanBeingResponseDTOwithUsers> humans) {
+        this.humans = humans;
         this.userManager = userManager;
         this.controller = controller;
         this.width = width;
@@ -72,7 +74,7 @@ public class MapController implements Initializable {
         String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
         try {
             System.out.println(userManager.getUserAvatar());
-            im_avatar.setImage(new Image(LoggedInController.class.getResource(avatarPath).toURI().toString()));
+            im_avatar.setImage(new Image(MainPageController.class.getResource(avatarPath).toURI().toString()));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -83,17 +85,20 @@ public class MapController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    private Label label_all;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        label_all.setText("All(" + humans.size() + ")");
 
         List<StickMan> stickManList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (HumanBeingResponseDTOwithUsers human : humans) {
             StickMan stickMan = new StickMan();
-            double x = 50 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 50);
-            double y = 50 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 50);
-            stickMan.generate(x, y, 0.5);
-            stickMan.generate(x, y, 0.5).addToPane(pane_map);
+            double x = 40 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 100);
+            double y = 40 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 100);
+            stickMan.generate(x, y, 0.5, human.getUsername()).addToPane(pane_map);
             stickManList.add(stickMan);
         }
 
@@ -116,8 +121,33 @@ public class MapController implements Initializable {
         });
     }
 
+    @FXML
+    private Button button_info;
+    @FXML
+    private Label label_users;
+    @FXML
+    private Label label_humanbeing;
+
+    public void infoButtonOnAction(ActionEvent e) {
+        label_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_humanbeing.setText(String.valueOf(controller.getAllHuman().size()));
+    }
+
+
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();
         stage.close();
+    }
+
+    public void tableButtonOnAction(ActionEvent e) {
+        new MainPageController(width, height, userManager, controller).launchMainScene(stage);
+    }
+
+    @FXML
+    private Button button_logout;
+
+    public void logoutButtonOnAction() {
+        userManager.clear();
+        new LoginController(width, height, userManager, controller).launchLoginScene(stage);
     }
 }

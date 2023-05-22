@@ -4,7 +4,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
 <AnchorPane fx:id="ap_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1">
@@ -36,9 +37,10 @@
               style="-fx-background-color: transparent; -fx-cursor: hand;" text="logout" textFill="#f3cbc5"/>
       <Button fx:id="button_language" layoutX="156.0" layoutY="735.0" mnemonicParsing="false"
               style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
-      <Button fx:id="button_table" layoutX="49.0" layoutY="507.0" mnemonicParsing="false" prefHeight="28.0"
-              prefWidth="130.0" style="-fx-background-color: #fb2cff; -fx-background-radius: 10; -fx-cursor: hand;"
-              text="GO TO TABLE" textFill="WHITE">
+      <Button fx:id="button_table" layoutX="49.0" layoutY="507.0" mnemonicParsing="false"
+              onAction="#tableButtonOnAction" prefHeight="28.0" prefWidth="130.0"
+              style="-fx-background-color: #fb2cff; -fx-background-radius: 10; -fx-cursor: hand;" text="GO TO TABLE"
+              textFill="WHITE">
          <font>
             <Font name="Roboto Bold" size="14.0"/>
          </font>
@@ -54,5 +56,39 @@
               style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
       <Pane fx:id="pane_map" layoutX="278.0" layoutY="89.0" prefHeight="562.0" prefWidth="760.0"
             style="-fx-background-color: white; -fx-border-color: black;"/>
+      <Button fx:id="button_info" layoutX="94.0" layoutY="247.0" mnemonicParsing="false" onAction="#infoButtonOnAction"
+              style="-fx-background-color: transparent;" text="INFO" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="16.0"/>
+         </font>
+      </Button>
+      <Line endX="89.0" layoutX="120.0" layoutY="237.0" startX="-84.0" stroke="#fb2cff" strokeWidth="2.0"/>
+      <Line endX="89.0" layoutX="121.0" layoutY="400.0" startX="-84.0" stroke="#fb2cff" strokeWidth="2.0"/>
+      <Label layoutX="44.0" layoutY="288.0" text="USERS:" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="340.0" text="HUMANBEING:" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="label_users" layoutX="184.0" layoutY="288.0" text="0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="label_humanbeing" layoutX="184.0" layoutY="340.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="label_all" alignment="CENTER" layoutX="277.0" layoutY="52.0" prefHeight="36.0" prefWidth="66.0"
+             text="All(0)" textFill="#343a40">
+         <font>
+            <Font name="Roboto" size="15.0"/>
+         </font>
+      </Label>
    </children>
 </AnchorPane>

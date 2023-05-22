@@ -113,7 +113,7 @@ public class RegisterController {
                     System.out.println(tf_username.getText());
                     userManager.setUserName(tf_username.getText()).setUserRole(ROLES.USER)
                             .setUserId(humanController.userRegister(userManager, pf_password.getText()));
-                    new LoggedInController(width, height, userManager, humanController).launchMainScene(stage);
+                    new MainPageController(width, height, userManager, humanController).launchMainScene(stage);
                 }
             }
         } catch (ValidationException | AuthenticationException e1) {

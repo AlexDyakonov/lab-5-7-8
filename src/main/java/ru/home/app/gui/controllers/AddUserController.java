@@ -40,7 +40,7 @@ public class AddUserController implements Initializable {
     private final double height = 652;
     private final String[] weapons = Parser.weaponToStringArray(LANGUAGE.EN);
     private final String[] moods = Parser.moodToStringArray(LANGUAGE.EN);
-    private LoggedInController loggedInController;
+    private MainPageController mainPageController;
     private Parent parent;
     private Stage stage;
     private Scene scene;
@@ -100,8 +100,8 @@ public class AddUserController implements Initializable {
         }
     }
 
-    public void launchAddScene(Stage stage, LoggedInController loggedInController) {
-        this.loggedInController = loggedInController;
+    public void launchAddScene(Stage stage, MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
         this.stage = stage;
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
@@ -115,7 +115,7 @@ public class AddUserController implements Initializable {
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();
         stage.close();
-        loggedInController.configAfterAdd();
+        mainPageController.configAfterAdd();
     }
 
     private String getHumanNameFromTF() {
@@ -233,18 +233,18 @@ public class AddUserController implements Initializable {
             switch (checkTypeOfAdd()) {
                 case NONE -> {
                     id = controller.createHuman(human);
-                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
+                    mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
                 case ADD_IF_MAX -> {
                     id = controller.addIfMax(human); //TODO check -1L -> valid not max/min
-                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
+                    mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
                 case ADD_IF_MIN -> {
                     id = controller.addIfMin(human);
-                    loggedInController.addHumanToTable(controller.getHumanWithUserById(id));
+                    mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
             }
-            loggedInController.configAfterAdd();
+            mainPageController.configAfterAdd();
             stage.close();
         } catch (ValidationException ex) {
             label_error_msg.setText(ex.getMessage());

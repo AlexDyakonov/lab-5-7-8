@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ru.home.app.gui.controllers.LoggedInController;
+import ru.home.app.gui.controllers.MainPageController;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.util.LANGUAGE;
 
@@ -31,7 +31,7 @@ public class SpecialWindows {
         return result.isPresent() && result.get() == yesButton;
     }
 
-    public static void deleteWindow(HumanController controller, LANGUAGE language, LoggedInController logged) {
+    public static void deleteWindow(HumanController controller, LANGUAGE language, MainPageController logged) {
         Stage window = new Stage();
         window.setAlwaysOnTop(true);
         window.setResizable(false);

@@ -10,7 +10,6 @@ import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class StickMan {
     private double x;
@@ -23,13 +22,20 @@ public class StickMan {
         this.shapes = new ArrayList<>();
     }
 
-    public StickMan generate(double x, double y, double size) {
+    private static Color generateColor(String input) {
+        int hashCode = input.hashCode();
+        int red = (hashCode & 0xFF0000) >> 16;
+        int green = (hashCode & 0x00FF00) >> 8;
+        int blue = hashCode & 0x0000FF;
+        return Color.rgb(red, green, blue);
+    }
+
+    public StickMan generate(double x, double y, double size, String username) {
         this.x = x;
         this.y = y;
         this.size = size;
 
-        Random rand = new Random();
-        Color color = Color.rgb(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+        Color color = generateColor(username);
 
         Circle head = new Circle(x, y - 50 * size, 20 * size);
         Line body = new Line(x, y - 30 * size, x, y + 30 * size);
@@ -39,7 +45,6 @@ public class StickMan {
         Line rightLeg = new Line(x, y + 30 * size, x + 10 * size, y + 60 * size);
         Rectangle hitbox = new Rectangle(x - 30 * size, y - 70 * size, 60 * size, 130 * size);
         hitbox.setFill(null);
-        hitbox.setStroke(Color.BLACK);
         head.setFill(color);
         body.setStroke(color);
         leftArm.setStroke(color);
@@ -65,7 +70,7 @@ public class StickMan {
         double dx = x - this.x;
         double dy = y - this.y;
 
-        if (checkCollision(x, y, width, height)) {
+        if (checkCollision(width, height)) {
         } else {
             changePosition(dx, dy);
             this.x = x;
@@ -90,7 +95,7 @@ public class StickMan {
         }
     }
 
-    private boolean checkCollision(double x, double y, double width, double height) {
+    private boolean checkCollision(double width, double height) {
         for (Shape shape : this.shapes) {
             if (shape instanceof Rectangle hitbox) {
                 double rectLeft = hitbox.getX();
