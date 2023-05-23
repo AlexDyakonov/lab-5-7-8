@@ -55,19 +55,17 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
-        return source.getUpdatedDataSet().stream().toList();
+        return new ArrayList<HumanBeingResponseDTO>(source.getUpdatedDataSet().stream().toList());
     }
 
     @Override
     public List<HumanBeingResponseDTOwithUsers> getAllHumanWithUsers() {
-        return source.getAllHumanWithUser();
+        return source.getAllHumansWithUsers();
     }
 
     @Override
     public Long createHuman(HumanBeingRequestDTO human) {
-        Long id = addHumanBeingToDB(human);
-        source.getDataSet().add(fromRequestToResponse(human));
-        return id;
+        return addHumanBeingToDB(human);
     }
 
     @Override

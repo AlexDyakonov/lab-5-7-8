@@ -37,7 +37,7 @@ public class SQLDataBaseProvider {
     private final LocalDateTime creationDate;
     private final String pepper = "*63&^mVLC(#";
     private CurrentUserManager userManager;
-    private Set<HumanBeingResponseDTO> dataSet;
+    private Set<HumanBeingResponseDTOwithUsers> dataSet;
 
 
     public SQLDataBaseProvider(SQLConnection sqlConnection, CurrentUserManager userManager) {
@@ -99,8 +99,30 @@ public class SQLDataBaseProvider {
         return dbSet;
     }
 
-    public Set<HumanBeingResponseDTO> updateDataSet() {
-        dataSet = loadDataBase();
+    public List<HumanBeingResponseDTOwithUsers> getAllHumansWithUsers(){
+        List<HumanBeingResponseDTOwithUsers> dbSet = new ArrayList<>();
+
+        try {
+            String query = "SELECT  h.humanbeing_id, h.name, h.coordinates_id, h.creation_time, h.real_hero, h.has_toothpick,\n" +
+                    "        h.impact_speed, h.soundtrack, h.mood, h.weapon_type, h.car_id, u.user_name\n" +
+                    "FROM humanbeing h JOIN humantouser hu ON h.humanbeing_id = hu.humanbeing_id JOIN users u ON hu.user_id = u.user_id";
+            PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                dbSet.add(fillUserFromResultSet(new HumanBeingResponseDTOwithUsers(), resultSet));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            logger.severe(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return dbSet;
+    }
+
+    public Set<HumanBeingResponseDTOwithUsers> updateDataSet() {
+        dataSet = (Set<HumanBeingResponseDTOwithUsers>) getAllHumansWithUsers();
         return dataSet;
     }
 
@@ -248,18 +270,7 @@ public class SQLDataBaseProvider {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                response.setId(id);
-                response.setName(resultSet.getString("name"));
-                response.setCoordinates(getCoordinates(resultSet.getInt("coordinates_id")));
-                response.setCreationDate(convertTimeStampToZoned(resultSet.getTimestamp("creation_time")));
-                response.setRealHero(resultSet.getBoolean("real_hero"));
-                response.setHasToothpick(resultSet.getBoolean("has_toothpick"));
-                response.setSoundtrackName(resultSet.getString("soundtrack"));
-                response.setImpactSpeed(resultSet.getFloat("impact_speed"));
-                response.setMood(Mood.valueOf(resultSet.getString("mood")));
-                response.setWeaponType(WeaponType.valueOf(resultSet.getString("weapon_type")));
-                response.setCar(getCar(resultSet.getInt("car_id")));
-                response.setUsername(resultSet.getString("user_name"));
+                fillUserFromResultSet(response, resultSet);
             }
             preparedStatement.close();
 
@@ -269,6 +280,22 @@ public class SQLDataBaseProvider {
             logger.severe(e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+      public HumanBeingResponseDTOwithUsers fillUserFromResultSet(HumanBeingResponseDTOwithUsers response, ResultSet resultSet) throws SQLException {
+        response.setId(resultSet.getLong("humanbeing_id"));
+        response.setName(resultSet.getString("name"));
+        response.setCoordinates(getCoordinates(resultSet.getInt("coordinates_id")));
+        response.setCreationDate(convertTimeStampToZoned(resultSet.getTimestamp("creation_time")));
+        response.setRealHero(resultSet.getBoolean("real_hero"));
+        response.setHasToothpick(resultSet.getBoolean("has_toothpick"));
+        response.setSoundtrackName(resultSet.getString("soundtrack"));
+        response.setImpactSpeed(resultSet.getFloat("impact_speed"));
+        response.setMood(Mood.valueOf(resultSet.getString("mood")));
+        response.setWeaponType(WeaponType.valueOf(resultSet.getString("weapon_type")));
+        response.setCar(getCar(resultSet.getInt("car_id")));
+        response.setUsername(resultSet.getString("user_name"));
+        return response;
     }
 
     public Long getUserId(String userName) {
@@ -428,16 +455,16 @@ public class SQLDataBaseProvider {
         return sqlConnection;
     }
 
-    public Set<HumanBeingResponseDTO> getUpdatedDataSet() {
+    public Set<HumanBeingResponseDTOwithUsers> getUpdatedDataSet() {
         updateDataSet();
         return dataSet;
     }
 
-    public Set<HumanBeingResponseDTO> getDataSet() {
+    public Set<HumanBeingResponseDTOwithUsers> getDataSet() {
         return dataSet;
     }
 
-    public void setDataSet(Set<HumanBeingResponseDTO> dataSet) {
+    public void setDataSet(Set<HumanBeingResponseDTOwithUsers> dataSet) {
         this.dataSet = dataSet;
     }
 
