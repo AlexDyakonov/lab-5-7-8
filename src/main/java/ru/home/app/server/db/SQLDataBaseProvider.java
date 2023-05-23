@@ -99,7 +99,7 @@ public class SQLDataBaseProvider {
         return dbSet;
     }
 
-    public List<HumanBeingResponseDTOwithUsers> getAllHumansWithUsers(){
+    public List<HumanBeingResponseDTOwithUsers> getAllHumansWithUsers() {
         List<HumanBeingResponseDTOwithUsers> dbSet = new ArrayList<>();
 
         try {
@@ -110,7 +110,7 @@ public class SQLDataBaseProvider {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 dbSet.add(fillUserFromResultSet(new HumanBeingResponseDTOwithUsers(), resultSet));
             }
             resultSet.close();
@@ -282,7 +282,7 @@ public class SQLDataBaseProvider {
         }
     }
 
-      public HumanBeingResponseDTOwithUsers fillUserFromResultSet(HumanBeingResponseDTOwithUsers response, ResultSet resultSet) throws SQLException {
+    public HumanBeingResponseDTOwithUsers fillUserFromResultSet(HumanBeingResponseDTOwithUsers response, ResultSet resultSet) throws SQLException {
         response.setId(resultSet.getLong("humanbeing_id"));
         response.setName(resultSet.getString("name"));
         response.setCoordinates(getCoordinates(resultSet.getInt("coordinates_id")));

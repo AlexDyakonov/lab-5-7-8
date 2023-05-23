@@ -22,7 +22,6 @@ import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static ru.home.app.server.mapper.HumanBeingMapper.fromRequestToResponse;
 import static ru.home.app.server.services.LoggerManager.setupLogger;
 import static ru.home.app.util.Message.*;
 import static ru.home.app.util.Parser.stringToRole;
