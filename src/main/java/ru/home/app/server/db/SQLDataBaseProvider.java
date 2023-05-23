@@ -42,7 +42,7 @@ public class SQLDataBaseProvider {
 
     public SQLDataBaseProvider(SQLConnection sqlConnection, CurrentUserManager userManager) {
         this.sqlConnection = sqlConnection;
-        this.dataSet = loadDataBase();
+        this.dataSet = new HashSet<>(); //changed to save resources
         this.creationDate = LocalDateTime.now();
         this.userManager = userManager;
     }
@@ -428,8 +428,12 @@ public class SQLDataBaseProvider {
         return sqlConnection;
     }
 
-    public Set<HumanBeingResponseDTO> getDataSet() {
+    public Set<HumanBeingResponseDTO> getUpdatedDataSet() {
         updateDataSet();
+        return dataSet;
+    }
+
+    public Set<HumanBeingResponseDTO> getDataSet() {
         return dataSet;
     }
 

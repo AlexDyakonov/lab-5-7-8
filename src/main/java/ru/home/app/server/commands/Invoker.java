@@ -3,10 +3,7 @@ package ru.home.app.server.commands;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.controller.HumanControllerImpl;
-import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ArgumentException;
-import ru.home.app.server.exception.FileException;
-import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.services.HistoryManager;
 import ru.home.app.server.services.ScriptManager;
 import ru.home.app.server.services.builders.BuilderType;
@@ -66,6 +63,19 @@ public class Invoker {
         logger.info(getLog("invoker_init_finish"));
     }
 
+    public Invoker(BuilderType builderType, LANGUAGE language, HumanController controller) {
+        logger.info(getLog("invoker_init_start"));
+        this.controller = controller;
+        this.history = new HistoryManager(15);
+        this.cmdReader = cmdReader == null ? new BufferedReader(new InputStreamReader(System.in)) : cmdReader;
+        this.builderType = builderType;
+        this.language = language;
+        controller.setLanguage(language);
+        commandsMapManager = new CommandsMapManager(this, history, controller, cmdReader, fileReader, builderType, language);
+        init();
+        logger.info(getLog("invoker_init_finish"));
+    }
+
     /**
      * Gets commands map.
      *
@@ -106,9 +116,6 @@ public class Invoker {
                 System.out.println(getWarning("command_not_found", language));
                 logger.warning(getLog("command_not_found"));
             }
-        } catch (ApplicationException | FileException | ValidationException e) {
-            System.out.println(e.getMessage());
-            logger.severe(e.getMessage());
         } catch (ArgumentException e) {
             System.out.println(e.getMessage());
             logger.warning(getLog("no_args"));
@@ -198,5 +205,9 @@ public class Invoker {
     public Invoker setBuilderType(BuilderType builderType) {
         this.builderType = builderType;
         return this;
+    }
+
+    public CommandsMapManager getCommandsMapManager() {
+        return commandsMapManager;
     }
 }

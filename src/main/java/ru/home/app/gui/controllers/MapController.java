@@ -50,13 +50,15 @@ public class MapController implements Initializable {
 
     @FXML
     private Pane pane_map;
+    private final MainPageController mainPageController;
 
-    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller, List<HumanBeingResponseDTOwithUsers> humans) {
+    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller, List<HumanBeingResponseDTOwithUsers> humans, MainPageController mainPageController) {
         this.humans = humans;
         this.userManager = userManager;
         this.controller = controller;
         this.width = width;
         this.height = height;
+        this.mainPageController = mainPageController;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/map.fxml"));
         fxmlLoader.setController(this);
         try {
@@ -90,11 +92,15 @@ public class MapController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        label_all.setText("All(" + humans.size() + ")");
+        label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
 
         List<StickMan> stickManList = new ArrayList<>();
 
+        int counter = 0;
         for (HumanBeingResponseDTOwithUsers human : humans) {
+            if (counter++ > 100) {
+                break;
+            }
             StickMan stickMan = new StickMan();
             double x = 40 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 100);
             double y = 40 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 100);
@@ -119,6 +125,13 @@ public class MapController implements Initializable {
                 }
             }
         });
+        setInfo();
+    }
+
+    private void setInfo() {
+        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
+        label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
+        label_users.setText(String.valueOf(controller.getUserNameList().size()));
     }
 
     @FXML
@@ -130,7 +143,7 @@ public class MapController implements Initializable {
 
     public void infoButtonOnAction(ActionEvent e) {
         label_users.setText(String.valueOf(controller.getUserNameList().size()));
-        label_humanbeing.setText(String.valueOf(controller.getAllHuman().size()));
+        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
     }
 
 
@@ -140,7 +153,7 @@ public class MapController implements Initializable {
     }
 
     public void tableButtonOnAction(ActionEvent e) {
-        new MainPageController(width, height, userManager, controller).launchMainScene(stage);
+        mainPageController.launchMainScene(stage);
     }
 
     @FXML

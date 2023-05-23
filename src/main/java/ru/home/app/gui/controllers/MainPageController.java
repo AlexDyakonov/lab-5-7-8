@@ -18,16 +18,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
+import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ApplicationException;
+import ru.home.app.server.exception.FileException;
+import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
+import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.ScriptCreator;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -38,6 +44,7 @@ import java.util.ResourceBundle;
 public class MainPageController implements Initializable {
     private final HumanController controller;
     private final CurrentUserManager userManager;
+    private final Invoker invoker;
     private final double width;
     private final double height;
     ObservableList<HumanBeingResponseDTOwithUsers> humanBeingResponseDTOwithUsersObservableList = FXCollections.observableArrayList();
@@ -108,6 +115,8 @@ public class MainPageController implements Initializable {
     public MainPageController(double width, double height, CurrentUserManager userManager, HumanController controller) {
         this.userManager = userManager;
         this.controller = controller;
+        this.invoker = new Invoker(BuilderType.FILE, LANGUAGE.EN, controller);
+        invoker.setUserManager(userManager);
         this.width = width;
         this.height = height;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/main-page.fxml"));
@@ -137,13 +146,18 @@ public class MainPageController implements Initializable {
         stage.show();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void updateTable() {
+        humanBeingResponseDTOwithUsersObservableList.clear();
+
         dataList = controller.getAllHumanWithUsers();
 
-        label_all.setText("All(" + dataList.size() + ")");
-
         humanBeingResponseDTOwithUsersObservableList.addAll(dataList);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        updateTable();
+
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -210,12 +224,15 @@ public class MainPageController implements Initializable {
 
         table.setItems(sortedData);
 
-        mi_delete_by_id.setOnAction(e -> SpecialWindows.deleteWindow(controller, LANGUAGE.EN, this));
+        mi_delete_by_id.setOnAction(e -> {
+            SpecialWindows.deleteWindow(controller, LANGUAGE.EN, this);
+        });
         mi_clear.setOnAction(event -> {
             if (SpecialWindows.showConfirmationDialog("Are confirm deleting all your humanbeings?")) {
                 try {
                     controller.clear();
                     label_error_msg.setText("");
+                    updateTable();
                 } catch (ApplicationException e) {
                     label_error_msg.setText("Elements was not deleted.");
                 }
@@ -226,6 +243,7 @@ public class MainPageController implements Initializable {
                 try {
                     controller.clearAll();
                     label_error_msg.setText("");
+                    updateTable();
                 } catch (ApplicationException e) {
                     label_error_msg.setText("Elements was not deleted.");
                 }
@@ -234,6 +252,14 @@ public class MainPageController implements Initializable {
                 SpecialWindows.showInfoMessage("Must be admin to clear all.");
             }
         });
+
+        setInfo();
+    }
+
+    private void setInfo() {
+        label_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
+        label_all.setText("All(" + humanBeingResponseDTOwithUsersObservableList.size() + ")");
+        label_users.setText(String.valueOf(controller.getUserNameList().size()));
     }
 
     public void addHumanToTable(HumanBeingResponseDTOwithUsers human) {
@@ -247,6 +273,21 @@ public class MainPageController implements Initializable {
     public void setUserInfo(String username, String userRole) {
         label_nickname.setText(username);
         label_role.setText(userRole);
+    }
+
+    public void executeButtonOnAction(ActionEvent event) {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose a script file");
+            try {
+                invoker.getCommandsMapManager().getCommandsMap().get("execute_script")
+                        .execute(new String[]{"execute", fileChooser.showOpenDialog(null).getAbsolutePath()});
+            } catch (ApplicationException | FileException | ValidationException e) {
+                label_error_msg.setText(e.getMessage());
+            }
+        } catch (Exception ignored) {
+        }
+        updateTable();
     }
 
     @FXML
@@ -274,7 +315,14 @@ public class MainPageController implements Initializable {
 
     public void infoButtonOnAction(ActionEvent e) {
         label_users.setText(String.valueOf(controller.getUserNameList().size()));
-        label_humanbeing.setText(String.valueOf(controller.getAllHuman().size()));
+        label_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
+    }
+
+    @FXML
+    private Button button_create;
+
+    public void createButtonOnAction(ActionEvent e) {
+        ScriptCreator.createAddScript();
     }
 
     public void addNewButtonOnAction() {
@@ -290,8 +338,7 @@ public class MainPageController implements Initializable {
     }
 
     public void mapButtonOnAction(ActionEvent e) {
-        dataList = controller.getAllHumanWithUsers();
-        new MapController(width, height, userManager, controller, dataList).launchMainScene(stage);
+        new MapController(width, height, userManager, controller, dataList, this).launchMainScene(stage);
     }
 
     public void configAfterAdd() {

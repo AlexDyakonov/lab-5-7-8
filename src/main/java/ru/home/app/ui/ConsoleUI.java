@@ -2,6 +2,9 @@ package ru.home.app.ui;
 
 import ru.home.app.server.authentication.Authentication;
 import ru.home.app.server.commands.Invoker;
+import ru.home.app.server.exception.ApplicationException;
+import ru.home.app.server.exception.FileException;
+import ru.home.app.server.exception.ValidationException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,7 +53,12 @@ public class ConsoleUI {
         try (reader) {
             System.out.println("Напишите help чтобы вывести все команды");
             while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
-                invoker.execute(command);
+                try {
+                    invoker.execute(command);
+                } catch (ApplicationException | FileException | ValidationException e) {
+                    System.out.println(e.getMessage());
+                    logger.severe(e.getMessage());
+                }
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

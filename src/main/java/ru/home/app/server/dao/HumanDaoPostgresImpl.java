@@ -55,7 +55,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public List<HumanBeingResponseDTO> getAllHuman() {
-        return source.getDataSet().stream().toList();
+        return source.getUpdatedDataSet().stream().toList();
     }
 
     @Override
@@ -129,9 +129,9 @@ public class HumanDaoPostgresImpl implements HumanDao {
     @Override
     public String info() {
         String answer = (getMessage("info_about_dataset", language));
-        answer = answer.replace("%class%", source.getDataSet().getClass().getTypeName().split("\\.")[2]);
+        answer = answer.replace("%class%", source.getUpdatedDataSet().getClass().getTypeName().split("\\.")[2]);
         answer = answer.replace("%date%", source.getCreationDate().toString());
-        answer = answer.replace("%size%", String.valueOf(source.getDataSet().size()));
+        answer = answer.replace("%size%", String.valueOf(source.getUpdatedDataSet().size()));
         logger.info(getLog("info_got"));
         return answer;
     }
@@ -143,9 +143,9 @@ public class HumanDaoPostgresImpl implements HumanDao {
             String query = ("DELETE FROM humanbeing WHERE humanbeing_id IN (SELECT humanbeing_id FROM humantouser WHERE user_id = ?)");
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
             preparedStatement.setLong(1, userManager.getUserId());
-
-            int after = source.getDataSet().size();
             checkAffectedRows(preparedStatement);
+            source.updateDataSet();
+            int after = source.getUpdatedDataSet().size();
             System.out.println(getSuccessMessage("done", language));
             logger.info(getLog("cleared").replace("%num%", String.valueOf(elemsBefore - after)));
         } catch (SQLException e) {
@@ -164,7 +164,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     public void clearAll() {
-        int elemsBefore = source.getDataSet().size();
+        int elemsBefore = source.getUpdatedDataSet().size();
         try {
             String query = "TRUNCATE humanbeing CASCADE;";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
@@ -184,7 +184,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
     public HumanBeingResponseDTO max_by_impact_speed() {
         HumanBeingResponseDTO model = new HumanBeingResponseDTO();
         float max = 0;
-        for (HumanBeingResponseDTO m : source.getDataSet()) {
+        for (HumanBeingResponseDTO m : source.getUpdatedDataSet()) {
             if (m.getImpactSpeed() > max) {
                 max = m.getImpactSpeed();
                 model = m;
@@ -195,7 +195,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public List<HumanBeingResponseDTO> print_ascending() {
-        List<HumanBeingResponseDTO> list = new ArrayList<>(source.getDataSet().stream().sorted().toList());
+        List<HumanBeingResponseDTO> list = new ArrayList<>(source.getUpdatedDataSet().stream().sorted().toList());
         Collections.reverse(list);
         return list;
     }
@@ -220,12 +220,12 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public int countByMood(Mood mood) {
-        return (int) source.getDataSet().stream().filter(p -> p.getMood().equals(mood)).count();
+        return (int) source.getUpdatedDataSet().stream().filter(p -> p.getMood().equals(mood)).count();
     }
 
     @Override
     public boolean isImpactSpeedMax(HumanBeingRequestDTO dto) {
-        float max = source.getDataSet().stream().max(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
+        float max = source.getUpdatedDataSet().stream().max(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
         try {
             return dto.getImpactSpeed() > max;
@@ -237,7 +237,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
     @Override
     public boolean isImpactSpeedMin(HumanBeingRequestDTO dto) {
-        float min = source.getDataSet().stream().min(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
+        float min = source.getUpdatedDataSet().stream().min(Comparator.comparing(HumanBeingResponseDTO::getImpactSpeed))
                 .orElse(null).getImpactSpeed();
         try {
             return dto.getImpactSpeed() < min;
