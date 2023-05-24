@@ -6,6 +6,7 @@ import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.HumanBeingModel;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.LANGUAGE;
 
 import static ru.home.app.util.Message.getWarning;
@@ -60,6 +61,20 @@ public class HumanBeingMapper {
 
     public static HumanBeingResponseDTO fromRequestToResponse(HumanBeingRequestDTO dto) {
         HumanBeingResponseDTO model = new HumanBeingResponseDTO();
+        model.setName(dto.getName());
+        model.setCoordinates(dto.getCoordinates());
+        model.setRealHero(dto.getRealHero());
+        model.setHasToothpick(dto.getHasToothpick());
+        model.setImpactSpeed(dto.getImpactSpeed());
+        model.setSoundtrackName(dto.getSoundtrackName());
+        model.setWeaponType(dto.getWeaponType());
+        model.setMood(dto.getMood());
+        model.setCar(dto.getCar());
+        return model;
+    }
+
+    public static HumanBeingRequestDTO fromResponseWithUserToRequest(HumanBeingResponseDTOwithUsers dto) {
+        HumanBeingRequestDTO model = new HumanBeingRequestDTO();
         model.setName(dto.getName());
         model.setCoordinates(dto.getCoordinates());
         model.setRealHero(dto.getRealHero());

@@ -15,23 +15,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
+import org.controlsfx.control.PropertySheet;
 import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ApplicationException;
+import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
+import ru.home.app.server.mapper.HumanBeingMapper;
 import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
+import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.builders.BuilderType;
+import ru.home.app.server.validation.Validation;
 import ru.home.app.util.LANGUAGE;
 import ru.home.app.util.ScriptCreator;
 
@@ -77,9 +85,9 @@ public class MainPageController implements Initializable {
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_creation_time;
     @FXML
-    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_hero;
+    private TableColumn<HumanBeingResponseDTOwithUsers, Boolean> column_hero;
     @FXML
-    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_toothpick;
+    private TableColumn<HumanBeingResponseDTOwithUsers, Boolean> column_toothpick;
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, Float> column_speed;
     @FXML
@@ -157,24 +165,62 @@ public class MainPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTable();
+        table.setEditable(true);
 
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        column_name.setCellFactory(TextFieldTableCell.forTableColumn());
+        column_name.setOnEditCommit(event -> {
+            try {
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+            } catch (AuthenticationException | ValidationException e){
+                label_error_msg.setText(e.getMessage());
+                table.refresh();
+            }
+        });
+
         column_creator.setCellValueFactory(new PropertyValueFactory<>("username"));
+
         column_x.setCellValueFactory(cellData -> {
             Coordinates coordinates = cellData.getValue().getCoordinates();
             Integer value = coordinates.getX();
             return new SimpleIntegerProperty(value).asObject();
         });
+        column_x.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        column_x.setOnEditCommit(event -> {
+            try {
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+            } catch (AuthenticationException | ValidationException e){
+                label_error_msg.setText(e.getMessage());
+                table.refresh();
+            }
+        });
+
         column_y.setCellValueFactory(cellData -> {
             Coordinates coordinates = cellData.getValue().getCoordinates();
             Double value = coordinates.getY();
             return new SimpleDoubleProperty(value).asObject();
         });
+        column_y.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        column_y.setOnEditCommit(event -> {
+            try {
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+            } catch (AuthenticationException | ValidationException e){
+                label_error_msg.setText(e.getMessage());
+                table.refresh();
+            }
+        });
+
         column_creation_time.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
+
         column_hero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
+//        column_hero.setCellFactory(TextFieldTableCell.forTableColumn(new ));
+
         column_toothpick.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
+
         column_speed.setCellValueFactory(new PropertyValueFactory<>("impactSpeed"));
+
         column_soundtrack.setCellValueFactory(cellData -> {
             try {
                 String song = cellData.getValue().getSoundtrackName();
@@ -288,6 +334,14 @@ public class MainPageController implements Initializable {
         } catch (Exception ignored) {
         }
         updateTable();
+    }
+    private boolean checkUser(){
+        return false;
+    }
+    public void updateName(TableColumn.CellEditEvent editedCell){
+        HumanBeingResponseDTOwithUsers selectedHuman = table.getSelectionModel().getSelectedItem();
+        selectedHuman.setName(editedCell.getNewValue().toString());
+        controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(selectedHuman), selectedHuman.getId());
     }
 
     @FXML

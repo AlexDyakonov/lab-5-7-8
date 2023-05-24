@@ -1,9 +1,13 @@
 package ru.home.app.server.validation;
 
+import javafx.scene.control.TableView;
+import ru.home.app.server.authentication.CurrentUserManager;
+import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
+import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.LANGUAGE;
 
 import java.io.File;
@@ -43,6 +47,13 @@ public class Validation {
 
     private static boolean validateCoordinate(Coordinates coordinates) {
         return !(coordinates.getX() != null && coordinates.getY() != null && coordinates.getY() > -897);
+    }
+
+    public static boolean validateCreator(TableView table, CurrentUserManager userManager, String message){
+        if (!((HumanBeingResponseDTOwithUsers) table.getSelectionModel().getSelectedItem()).getUsername().equals(userManager.getUserName())){
+            throw new AuthenticationException(message);
+        }
+        return true;
     }
 
     /**
