@@ -32,3 +32,19 @@
 .table-row-cell:even {
     -fx-background-color: #FCDDD8;
 }
+
+.table-cell {
+    -fx-alignment: center;
+}
+
+.table-cell.column_toothpick {
+    -fx-alignment: center;
+}
+
+.table-cell.column_hero {
+    -fx-alignment: center;
+}
+
+.table-cell.column_car_cool {
+    -fx-alignment: center;
+}

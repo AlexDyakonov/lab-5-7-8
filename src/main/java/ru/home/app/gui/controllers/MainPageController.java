@@ -1,5 +1,6 @@
 package ru.home.app.gui.controllers;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,8 +24,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import org.controlsfx.control.PropertySheet;
 import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
@@ -34,12 +36,11 @@ import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.mapper.HumanBeingMapper;
-import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
-import ru.home.app.server.model.dto.HumanBeingRequestDTO;
+import ru.home.app.server.model.Mood;
+import ru.home.app.server.model.WeaponType;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.builders.BuilderType;
-import ru.home.app.server.validation.Validation;
 import ru.home.app.util.LANGUAGE;
 import ru.home.app.util.ScriptCreator;
 
@@ -93,13 +94,13 @@ public class MainPageController implements Initializable {
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_soundtrack;
     @FXML
-    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_weapon;
+    private TableColumn<HumanBeingResponseDTOwithUsers, WeaponType> column_weapon;
     @FXML
-    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_mood;
+    private TableColumn<HumanBeingResponseDTOwithUsers, Mood> column_mood;
     @FXML
     private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_name;
     @FXML
-    private TableColumn<HumanBeingResponseDTOwithUsers, String> column_car_cool;
+    private TableColumn<HumanBeingResponseDTOwithUsers, Boolean> column_car_cool;
     @FXML
     private TextField sb_find_by_name;
     @FXML
@@ -173,10 +174,15 @@ public class MainPageController implements Initializable {
         column_name.setCellFactory(TextFieldTableCell.forTableColumn());
         column_name.setOnEditCommit(event -> {
             try {
-                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+                HumanBeingResponseDTOwithUsers newHuman = event.getRowValue();
+                newHuman.setName(event.getNewValue());
+
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(newHuman), newHuman.getId());
+                humanBeingResponseDTOwithUsersObservableList.stream().filter(p -> p.getId()
+                        .equals(event.getRowValue().getId())).toList().get(0).setName(event.getNewValue());
             } catch (AuthenticationException | ValidationException e){
                 label_error_msg.setText(e.getMessage());
-                table.refresh();
+                updateTable();
             }
         });
 
@@ -191,6 +197,7 @@ public class MainPageController implements Initializable {
         column_x.setOnEditCommit(event -> {
             try {
                 controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+                updateTable();
             } catch (AuthenticationException | ValidationException e){
                 label_error_msg.setText(e.getMessage());
                 table.refresh();
@@ -206,7 +213,8 @@ public class MainPageController implements Initializable {
         column_y.setOnEditCommit(event -> {
             try {
                 controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
-            } catch (AuthenticationException | ValidationException e){
+                updateTable();
+            } catch (AuthenticationException | ValidationException e) {
                 label_error_msg.setText(e.getMessage());
                 table.refresh();
             }
@@ -214,12 +222,92 @@ public class MainPageController implements Initializable {
 
         column_creation_time.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
 
-        column_hero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
-//        column_hero.setCellFactory(TextFieldTableCell.forTableColumn(new ));
+        column_hero.setCellValueFactory(cellData -> {
+            try {
+                return new SimpleBooleanProperty(cellData.getValue().getRealHero());
+            } catch (NullPointerException e) {
+                return new SimpleBooleanProperty(false);
+            }
+        });
+        column_hero.setCellFactory(tc -> new TableCell<>() {
+            private final CheckBox checkBox = new CheckBox();
 
-        column_toothpick.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
+            {
+                checkBox.setAlignment(Pos.CENTER);
+                checkBox.setOnAction(event -> {
+                    HumanBeingResponseDTOwithUsers myObject = getTableView().getItems().get(getIndex());
+                    myObject.setRealHero(checkBox.isSelected());
+                    try {
+                        controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(myObject), myObject.getId());
+                        updateTable();
+                    } catch (AuthenticationException | ValidationException e) {
+                        label_error_msg.setText(e.getMessage());
+                        table.refresh();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    checkBox.setSelected(item);
+                    setGraphic(checkBox);
+                }
+            }
+        });
+
+
+        column_toothpick.setCellValueFactory(cellData -> {
+            try {
+                return new SimpleBooleanProperty(cellData.getValue().getHasToothpick());
+            } catch (NullPointerException e) {
+                return new SimpleBooleanProperty(false);
+            }
+        });
+        column_toothpick.setCellFactory(tc -> new TableCell<>() {
+            private final CheckBox checkBox = new CheckBox();
+
+            {
+                checkBox.setAlignment(Pos.CENTER);
+                checkBox.setOnAction(event -> {
+                    HumanBeingResponseDTOwithUsers myObject = getTableView().getItems().get(getIndex());
+                    myObject.setHasToothpick(checkBox.isSelected());
+                    try {
+                        controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(myObject), myObject.getId());
+                        updateTable();
+                    } catch (AuthenticationException | ValidationException e) {
+                        label_error_msg.setText(e.getMessage());
+                        table.refresh();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    checkBox.setSelected(item);
+                    setGraphic(checkBox);
+                }
+            }
+        });
 
         column_speed.setCellValueFactory(new PropertyValueFactory<>("impactSpeed"));
+        column_speed.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+        column_speed.setOnEditCommit(event -> {
+            try {
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
+                updateTable();
+            } catch (AuthenticationException | ValidationException e) {
+                label_error_msg.setText(e.getMessage());
+                table.refresh();
+            }
+        });
 
         column_soundtrack.setCellValueFactory(cellData -> {
             try {
@@ -229,24 +317,154 @@ public class MainPageController implements Initializable {
                 return new SimpleStringProperty("null");
             }
         });
+        column_soundtrack.setCellFactory(TextFieldTableCell.forTableColumn());
+        column_soundtrack.setOnEditCommit(event -> {
+            try {
+                HumanBeingResponseDTOwithUsers newHuman = event.getRowValue();
+                newHuman.setSoundtrackName(event.getNewValue());
+
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(newHuman), newHuman.getId());
+                humanBeingResponseDTOwithUsersObservableList.stream().filter(p -> p.getId()
+                        .equals(event.getRowValue().getId())).toList().get(0).setSoundtrackName(event.getNewValue());
+            } catch (AuthenticationException | ValidationException e) {
+                label_error_msg.setText(e.getMessage());
+                updateTable();
+            }
+        });
+
+
         column_weapon.setCellValueFactory(new PropertyValueFactory<>("weaponType"));
+        column_weapon.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(WeaponType weaponType, boolean empty) {
+                super.updateItem(weaponType, empty);
+                if (empty || weaponType == null) {
+                    setGraphic(null);
+                } else {
+                    MenuItem menuItem1 = new MenuItem(WeaponType.AXE.toString());
+                    menuItem1.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem1.getText()));
+
+                    MenuItem menuItem2 = new MenuItem(WeaponType.BAT.toString());
+                    menuItem2.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem2.getText()));
+
+                    MenuItem menuItem3 = new MenuItem(WeaponType.SHOTGUN.toString());
+                    menuItem3.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem3.getText()));
+
+                    MenuButton menuButton = new MenuButton(weaponType.toString(), null, menuItem1, menuItem2, menuItem3);
+                    menuButton.setOnAction(event -> {
+                        HumanBeingResponseDTOwithUsers myObject = getTableView().getItems().get(getIndex());
+                        myObject.setWeaponType(WeaponType.valueOf(((MenuButton) event.getSource()).getText()));
+                        try {
+                            controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(myObject), myObject.getId());
+                            updateTable();
+                        } catch (AuthenticationException | ValidationException e) {
+                            label_error_msg.setText(e.getMessage());
+                            updateTable();
+                        }
+                    });
+                    setGraphic(menuButton);
+                }
+            }
+        });
         column_mood.setCellValueFactory(new PropertyValueFactory<>("mood"));
+        column_mood.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Mood mood, boolean empty) {
+                super.updateItem(mood, empty);
+                if (empty || mood == null) {
+                    setGraphic(null);
+                } else {
+                    MenuItem menuItem1 = new MenuItem(Mood.RAGE.toString());
+                    menuItem1.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem1.getText()));
+
+                    MenuItem menuItem2 = new MenuItem(Mood.CALM.toString());
+                    menuItem2.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem2.getText()));
+
+                    MenuItem menuItem3 = new MenuItem(Mood.APATHY.toString());
+                    menuItem3.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem3.getText()));
+
+                    MenuItem menuItem4 = new MenuItem(Mood.GLOOM.toString());
+                    menuItem4.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem4.getText()));
+
+                    MenuItem menuItem5 = new MenuItem(Mood.SORROW.toString());
+                    menuItem5.setOnAction(event -> ((MenuButton) getGraphic()).setText(menuItem5.getText()));
+
+                    MenuButton menuButton = new MenuButton(mood.toString(), null, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5);
+                    menuButton.setOnAction(event -> {
+
+                        HumanBeingResponseDTOwithUsers human = getTableView().getItems().get(getIndex());
+                        human.setMood(Mood.valueOf(((MenuButton) event.getSource()).getText()));
+                        try {
+                            controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(human), human.getId());
+                            updateTable();
+                        } catch (AuthenticationException | ValidationException e) {
+                            label_error_msg.setText(e.getMessage());
+                            updateTable();
+                        }
+                    });
+                    setGraphic(menuButton);
+                }
+            }
+        });
+
         column_car_name.setCellValueFactory(cellData -> {
             try {
-                Car car = cellData.getValue().getCar();
-                String value = car.getName();
-                return new SimpleStringProperty(value);
+                return new SimpleStringProperty(cellData.getValue().getCar().getName());
             } catch (NullPointerException e) {
                 return new SimpleStringProperty("null");
             }
         });
+        column_car_name.setCellFactory(TextFieldTableCell.forTableColumn());
+        column_car_name.setOnEditCommit(event -> {
+            try {
+                HumanBeingResponseDTOwithUsers newHuman = event.getRowValue();
+                newHuman.getCar().setName(event.getNewValue());
+
+                controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(newHuman), newHuman.getId());
+                humanBeingResponseDTOwithUsersObservableList.stream().filter(p -> p.getId()
+                        .equals(event.getRowValue().getId())).toList().get(0).getCar().setName(event.getNewValue());
+            } catch (AuthenticationException | ValidationException e) {
+                label_error_msg.setText(e.getMessage());
+                updateTable();
+            }
+        });
+
+
         column_car_cool.setCellValueFactory(cellData -> {
             try {
-                Car car = cellData.getValue().getCar();
-                boolean cool = car.isCool();
-                return new SimpleStringProperty(String.valueOf(cool));
+                return new SimpleBooleanProperty(cellData.getValue().getCar().isCool());
             } catch (NullPointerException e) {
-                return new SimpleStringProperty("null");
+                return new SimpleBooleanProperty(false);
+            }
+        });
+
+        column_car_cool.setCellFactory(tc -> new TableCell<>() {
+            private final CheckBox checkBox = new CheckBox();
+
+            {
+                checkBox.setAlignment(Pos.CENTER);
+                checkBox.setOnAction(event -> {
+                    HumanBeingResponseDTOwithUsers myObject = getTableView().getItems().get(getIndex());
+                    myObject.setHasToothpick(checkBox.isSelected());
+                    try {
+                        controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(myObject), myObject.getId());
+                        updateTable();
+                    } catch (AuthenticationException | ValidationException e) {
+                        label_error_msg.setText(e.getMessage());
+                        table.refresh();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    checkBox.setSelected(item);
+                    setGraphic(checkBox);
+                }
             }
         });
 
@@ -269,6 +487,7 @@ public class MainPageController implements Initializable {
         sortedData.comparatorProperty().bind(table.comparatorProperty());
 
         table.setItems(sortedData);
+
 
         mi_delete_by_id.setOnAction(e -> {
             SpecialWindows.deleteWindow(controller, LANGUAGE.EN, this);

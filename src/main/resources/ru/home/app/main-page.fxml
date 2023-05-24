@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" stylesheets="@css/table-view.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
@@ -56,30 +47,38 @@
         <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;" />
         <ScrollPane layoutX="267.0" layoutY="93.0" prefHeight="594.0" prefWidth="793.0">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="1009.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="1072.0">
                     <children>
-                        <TableView fx:id="table" prefHeight="611.0" prefWidth="1009.0">
+                        <TableView fx:id="table" prefHeight="611.0" prefWidth="1074.0">
                             <columns>
-                                <TableColumn fx:id="column_id" prefWidth="36.0" resizable="false" text="ID" />
-                                <TableColumn fx:id="column_name"  prefWidth="74.0" resizable="false" text="Name" />
-                                <TableColumn fx:id="column_creator"  prefWidth="80.49756622314453" resizable="false" text="Creator" />
+                                <TableColumn fx:id="column_id" prefWidth="45.0" resizable="false" text="ID"/>
+                                <TableColumn fx:id="column_name" prefWidth="65.0" resizable="false" text="Name"/>
+                                <TableColumn fx:id="column_creator" prefWidth="80.49756622314453" resizable="false"
+                                             text="Creator"/>
                                 <TableColumn prefWidth="61.784942626953125" resizable="false" text="Coordinates">
                                     <columns>
-                                        <TableColumn fx:id="column_x" prefWidth="55.977294921875" resizable="false" text="X" />
-                                        <TableColumn fx:id="column_y" prefWidth="56.6468505859375" resizable="false" text="Y" />
+                                        <TableColumn fx:id="column_x" prefWidth="55.977294921875" resizable="false"
+                                                     text="X"/>
+                                        <TableColumn fx:id="column_y" prefWidth="56.6468505859375" resizable="false"
+                                                     text="Y"/>
                                     </columns>
                                 </TableColumn>
-                                <TableColumn fx:id="column_creation_time" prefWidth="122.0" resizable="false" text="Creation time" />
-                                <TableColumn fx:id="column_hero" prefWidth="58.0" resizable="false" text="Hero" />
-                                <TableColumn fx:id="column_toothpick" prefWidth="82.4481201171875" resizable="false" text="Toothpick" />
-                                <TableColumn fx:id="column_speed" prefWidth="82.4481201171875" resizable="false" text="Speed" />
-                                <TableColumn fx:id="column_soundtrack" prefWidth="82.4481201171875" resizable="false" text="Song" />
-                                <TableColumn fx:id="column_weapon" prefWidth="82.4481201171875" resizable="false" text="Weapon" />
-                                <TableColumn fx:id="column_mood" prefWidth="82.4481201171875" resizable="false" text="Mood" />
-                                <TableColumn prefWidth="61.784942626953125" resizable="false" text="Car">
+                                <TableColumn fx:id="column_creation_time" prefWidth="122.0" resizable="false"
+                                             text="Creation time"/>
+                                <TableColumn fx:id="column_hero" prefWidth="45.0" resizable="false" text="Hero"/>
+                                <TableColumn fx:id="column_toothpick" prefWidth="79.0" resizable="false"
+                                             text="Toothpick"/>
+                                <TableColumn fx:id="column_speed" prefWidth="100.0" resizable="false" text="Speed"/>
+                                <TableColumn fx:id="column_soundtrack" prefWidth="85.0" resizable="false" text="Song"/>
+                                <TableColumn fx:id="column_weapon" prefWidth="116.0" resizable="false" text="Weapon"/>
+                                <TableColumn fx:id="column_mood" prefWidth="91.333251953125" resizable="false"
+                                             text="Mood"/>
+                                <TableColumn prefWidth="91.666748046875" resizable="false" text="Car">
                                     <columns>
-                                        <TableColumn fx:id="column_car_name" prefWidth="55.977294921875" resizable="false" text="Name" />
-                                        <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375" resizable="false" text="Cool" />
+                                        <TableColumn fx:id="column_car_name" prefWidth="55.977294921875"
+                                                     resizable="false" text="Name"/>
+                                        <TableColumn fx:id="column_car_cool" prefWidth="56.6468505859375"
+                                                     resizable="false" text="Cool"/>
                                     </columns>
                                 </TableColumn>
                             </columns>
