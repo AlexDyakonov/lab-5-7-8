@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static ru.home.app.ui.ConsoleColors.*;
-import static ru.home.app.util.FileManager.updateFile;
 
 /**
  * The type Message.
@@ -16,11 +15,9 @@ public class Message {
     private static final String content;
     private static final JSONObject jsonObject;
 
-
     static {
         try {
-            updateFile("https://raw.githubusercontent.com/AlexDyakonov/lab-5-num-125595/devgui/Messages.json", "Messages.json");
-            Path json = Path.of("Messages.json");
+            Path json = Path.of("src/main/resources/localizations/Messages.json");
             content = new String(Files.readAllBytes(json));
             jsonObject = new JSONObject(content);
         } catch (IOException e) {
