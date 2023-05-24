@@ -161,9 +161,8 @@ public class HumanDaoPostgresImpl implements HumanDao {
     }
 
     public void clearAll() {
-        int elemsBefore = source.getUpdatedDataSet().size();
         try {
-            String query = "TRUNCATE humanbeing CASCADE;";
+            String query = "TRUNCATE humanbeing RESTART IDENTITY CASCADE;";
             PreparedStatement preparedStatement = sqlConnection.getConnection().prepareStatement(query);
 
             checkAffectedRows(preparedStatement);

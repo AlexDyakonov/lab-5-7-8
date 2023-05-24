@@ -122,7 +122,7 @@ public class SQLDataBaseProvider {
     }
 
     public Set<HumanBeingResponseDTOwithUsers> updateDataSet() {
-        dataSet = (Set<HumanBeingResponseDTOwithUsers>) getAllHumansWithUsers();
+        dataSet = new HashSet<>(getAllHumansWithUsers());
         return dataSet;
     }
 
