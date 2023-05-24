@@ -152,6 +152,7 @@ public class Invoker {
     public void setLanguage(LANGUAGE language) {
         this.language = language;
         controller.setLanguage(language);
+        commandsMapManager.setLanguage(language);
         init();
     }
 

@@ -34,7 +34,7 @@ public class CommandsMapManager {
     private final Invoker invoker;
     private final HistoryManager history;
     private final HumanController controller;
-    private final LANGUAGE language;
+    private LANGUAGE language;
     private ROLES role;
     private BufferedReader cmdReader;
     private BufferedReader fileReader;
@@ -182,5 +182,9 @@ public class CommandsMapManager {
      */
     public void setRole(ROLES role) {
         this.role = role;
+    }
+
+    public void setLanguage(LANGUAGE language) {
+        this.language = language;
     }
 }
