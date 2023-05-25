@@ -37,6 +37,12 @@ public class LanguageBuilder {
                 case "en":
                     logger.info(getLog("language_finish"));
                     return LANGUAGE.EN;
+                case "be":
+                    logger.info(getLog("language_finish"));
+                    return LANGUAGE.BE;
+                case "es":
+                    logger.info(getLog("language_finish"));
+                    return LANGUAGE.ES;
                 default:
                     logger.info(getLog("language_finish"));
                     System.out.println(getWarning("default_language", language));

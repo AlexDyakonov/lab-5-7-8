@@ -11,7 +11,9 @@ public enum LANGUAGE {
     /**
      * En language.
      */
-    EN("en");
+    EN("en"),
+    BE("be"),
+    ES("es");
     private final String lan;
 
     LANGUAGE(String lan) {
