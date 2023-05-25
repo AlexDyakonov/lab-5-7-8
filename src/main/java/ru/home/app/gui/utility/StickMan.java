@@ -67,15 +67,23 @@ public class StickMan {
     }
 
     public void move(double x, double y, double width, double height) {
-        double dx = x - this.x;
-        double dy = y - this.y;
-
+        double dx = 0;
+        double dy = 0;
         if (checkCollision(width, height)) {
+//            if (x <= 0 || y <= 0){
+//                dx = x + 20;
+//                dy = y + 20;
+//            } else if (x >= width || y >= height){
+//                dx = x - 20;
+//                dy = y - 20;
+//            }
         } else {
-            changePosition(dx, dy);
-            this.x = x;
-            this.y = y;
+            dx = x - this.x;
+            dy = y - this.y;
         }
+        changePosition(dx, dy);
+        this.x = x;
+        this.y = y;
     }
 
     private void changePosition(double dx, double dy) {

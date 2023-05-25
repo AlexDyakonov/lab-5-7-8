@@ -115,7 +115,7 @@ public class MapController implements Initializable {
                 double stickManX = stickMan.getX();
                 double stickManY = stickMan.getY();
                 double distance = Math.sqrt(Math.pow(mouseX - stickManX, 2) + Math.pow(mouseY - stickManY, 2));
-                if (distance < 50 && mouseX >= 0 && mouseY >= 0 && mouseX <= MAP_WIDTH && mouseY <= MAP_HEIGHT) {
+                if (distance < 75 && mouseX >= 0 && mouseY >= 0 && mouseX <= MAP_WIDTH && mouseY <= MAP_HEIGHT) {
                     double dx = stickManX - mouseX;
                     double dy = stickManY - mouseY;
                     double angle = Math.atan2(dy, dx);
