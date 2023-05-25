@@ -78,5 +78,6 @@ jar {
     }
     from('src/main/java') {
         include '**/*.css'
+        include '**/*.json'
     }
 }

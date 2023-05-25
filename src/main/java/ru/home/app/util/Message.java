@@ -12,14 +12,26 @@ import static ru.home.app.ui.ConsoleColors.*;
  * The type Message.
  */
 public class Message {
-    private static final String content;
-    private static final JSONObject jsonObject;
+    private static final String messages;
+    private static final JSONObject jsonMessages;
+    private static final String messagesGUI;
+    private static final JSONObject jsonMessagesGUI;
+    private static final String messagesLog;
+    private static final JSONObject jsonMessagesLog;
 
     static {
         try {
             Path json = Path.of("src/main/resources/localizations/Messages.json");
-            content = new String(Files.readAllBytes(json));
-            jsonObject = new JSONObject(content);
+            messages = new String(Files.readAllBytes(json));
+            jsonMessages = new JSONObject(messages);
+
+            Path json2 = Path.of("src/main/resources/localizations/MessagesGUI.json");
+            messagesGUI = new String(Files.readAllBytes(json2));
+            jsonMessagesGUI = new JSONObject(messagesGUI);
+
+            Path json3 = Path.of("src/main/resources/localizations/MessagesLog.json");
+            messagesLog = new String(Files.readAllBytes(json3));
+            jsonMessagesLog = new JSONObject(messagesLog);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +46,7 @@ public class Message {
      * @return the message
      */
     public static String getMessage(String messageName, LANGUAGE language) {
-        return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("message").getString(messageName));
+        return whiteStr(jsonMessages.getJSONObject(language.toString()).getJSONObject("message").getString(messageName));
     }
 
     /**
@@ -45,7 +57,7 @@ public class Message {
      * @return the error
      */
     public static String getError(String messageName, LANGUAGE language) {
-        return error(jsonObject.getJSONObject(language.toString()).getJSONObject("error").getString(messageName));
+        return error(jsonMessages.getJSONObject(language.toString()).getJSONObject("error").getString(messageName));
     }
 
     /**
@@ -57,7 +69,7 @@ public class Message {
      * @return the warning
      */
     public static String getWarning(String messageName, LANGUAGE language) {
-        return warning(jsonObject.getJSONObject(language.toString()).getJSONObject("warning").getString(messageName));
+        return warning(jsonMessages.getJSONObject(language.toString()).getJSONObject("warning").getString(messageName));
     }
 
     /**
@@ -68,7 +80,7 @@ public class Message {
      * @return the success message
      */
     public static String getSuccessMessage(String messageName, LANGUAGE language) {
-        return success(jsonObject.getJSONObject(language.toString()).getJSONObject("success").getString(messageName));
+        return success(jsonMessages.getJSONObject(language.toString()).getJSONObject("success").getString(messageName));
     }
 
     /**
@@ -79,7 +91,7 @@ public class Message {
      * @return the command description
      */
     public static String getCommandDescription(String messageName, LANGUAGE language) {
-        return whiteStr(jsonObject.getJSONObject(language.toString()).getJSONObject("command_description").getString(messageName));
+        return whiteStr(jsonMessages.getJSONObject(language.toString()).getJSONObject("command_description").getString(messageName));
     }
 
     /**
@@ -89,6 +101,9 @@ public class Message {
      * @return the command description
      */
     public static String getLog(String messageName) {
-        return jsonObject.getJSONObject("log_info").getString(messageName);
+        return jsonMessagesLog.getJSONObject("log_info").getString(messageName);
+    }
+    public static String getMessagesGUI(String messagesName, LANGUAGE language){
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("?").getString(messagesName);
     }
 }
