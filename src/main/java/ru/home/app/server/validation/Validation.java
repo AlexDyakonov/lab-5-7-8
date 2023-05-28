@@ -8,7 +8,7 @@ import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.File;
 import java.nio.file.Files;

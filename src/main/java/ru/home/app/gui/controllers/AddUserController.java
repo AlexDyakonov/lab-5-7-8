@@ -18,7 +18,7 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.validation.Validation;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.Parser;
 
 import java.io.IOException;

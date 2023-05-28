@@ -7,7 +7,7 @@ import ru.home.app.server.model.HumanBeingModel;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTO;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import static ru.home.app.util.Message.getWarning;
 import static ru.home.app.util.Parser.*;

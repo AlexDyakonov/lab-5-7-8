@@ -2,7 +2,7 @@ package ru.home.app.server.services.builders;
 
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Coordinates;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -4,6 +4,7 @@ import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.sql.Timestamp;
 import java.time.Instant;

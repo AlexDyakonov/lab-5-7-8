@@ -2,7 +2,7 @@ package ru.home.app.server.commands.list;
 
 import ru.home.app.server.commands.Command;
 import ru.home.app.server.controller.HumanController;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import static ru.home.app.util.Message.getCommandDescription;
 import static ru.home.app.util.Message.getSuccessMessage;

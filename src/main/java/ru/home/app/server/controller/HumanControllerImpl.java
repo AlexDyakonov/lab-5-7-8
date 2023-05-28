@@ -11,7 +11,7 @@ import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.HumanService;
 import ru.home.app.server.services.HumanServiceImpl;
 import ru.home.app.server.validation.Validation;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.File;
 import java.util.List;

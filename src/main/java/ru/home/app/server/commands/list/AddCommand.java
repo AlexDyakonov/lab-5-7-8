@@ -5,7 +5,7 @@ import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ArgumentException;
 import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.server.services.builders.HumanBeingRequestDTOBuilder;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.BufferedReader;
 

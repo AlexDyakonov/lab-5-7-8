@@ -6,7 +6,7 @@ import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ArgumentException;
 import ru.home.app.server.services.ScriptManager;
 import ru.home.app.server.services.builders.BuilderType;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

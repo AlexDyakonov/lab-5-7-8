@@ -3,6 +3,8 @@ package ru.home.app.gui.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,13 +14,18 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 
-public class LoginController {
+public class LoginController implements Initializable {
     private final CurrentUserManager userManager;
     private final HumanController controller;
     private final double width;
@@ -26,6 +33,7 @@ public class LoginController {
     private final Scene scene;
     private final Parent parent;
     private Stage stage;
+
     @FXML
     private Button button_login;
     @FXML
@@ -64,6 +72,7 @@ public class LoginController {
         stage.show();
     }
 
+
     private boolean checkFields() {
         if (!tf_username.getText().isBlank() && !pf_password.getText().isBlank()) {
             label_error_msg.setText("Attempt to login.");
@@ -89,6 +98,9 @@ public class LoginController {
     }
 
     public void signUpButtonOnAction(ActionEvent e) {
+        Map<String, String> allLabels = new HashMap<>();
+        LocalizationManager.collectLabels(scene.getRoot(), allLabels);
+
         new RegisterController(width, height, userManager, controller).launchRegisterScene(stage);
     }
 
@@ -115,5 +127,9 @@ public class LoginController {
 
     public HumanController getController() {
         return controller;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
     }
 }

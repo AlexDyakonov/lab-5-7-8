@@ -1,4 +1,4 @@
-package ru.home.app.util;
+package ru.home.app.util.language;
 
 /**
  * The enum Language.

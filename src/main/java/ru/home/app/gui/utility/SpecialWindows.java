@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.home.app.gui.controllers.MainPageController;
 import ru.home.app.server.controller.HumanController;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.util.Optional;
 

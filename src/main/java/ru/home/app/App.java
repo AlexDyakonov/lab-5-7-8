@@ -9,7 +9,7 @@ import ru.home.app.server.commands.Invoker;
 import ru.home.app.server.controller.HumanControllerImpl;
 import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.ui.ConsoleUI;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.io.IOException;
 

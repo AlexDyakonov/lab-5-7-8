@@ -41,7 +41,7 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.builders.BuilderType;
-import ru.home.app.util.LANGUAGE;
+import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.ScriptCreator;
 
 import java.io.IOException;
