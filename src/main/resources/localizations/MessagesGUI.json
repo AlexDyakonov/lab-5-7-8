@@ -12,6 +12,14 @@
       "button_login": "Login now",
       "button_sign_up": "Join now!",
       "mb_language": "Language"
+    },
+    "register_page": {
+    },
+    "main_page": {
+    },
+    "add_page": {
+    },
+    "map_page": {
     }
   },
   "ru": {
@@ -27,6 +35,14 @@
       "button_login": "Войдите сейчас",
       "button_sign_up": "Присоединяйтесь!",
       "mb_language": "Язык"
+    },
+    "register_page": {
+    },
+    "main_page": {
+    },
+    "add_page": {
+    },
+    "map_page": {
     }
   },
   "be": {
@@ -42,6 +58,14 @@
       "button_login": "увайдзіце зараз",
       "button_sign_up": "Далучайцеся зараз!",
       "mb_language": "Мова"
+    },
+    "register_page": {
+    },
+    "main_page": {
+    },
+    "add_page": {
+    },
+    "map_page": {
     }
   },
   "es": {
@@ -57,6 +81,14 @@
       "button_login": "Iniciar sesión ahora",
       "button_sign_up": "Únete ahora!",
       "mb_language": "Idioma"
+    },
+    "register_page": {
+    },
+    "main_page": {
+    },
+    "add_page": {
+    },
+    "map_page": {
     }
   }
 }

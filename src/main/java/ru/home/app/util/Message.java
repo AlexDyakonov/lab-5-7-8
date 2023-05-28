@@ -109,4 +109,19 @@ public class Message {
         return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("login_page").getString(messagesName);
     }
 
+    public static String getRegisterMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("register_page").getString(messagesName);
+    }
+
+    public static String getMainMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("main_page").getString(messagesName);
+    }
+
+    public static String getAddMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("add_page").getString(messagesName);
+    }
+
+    public static String getMapMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("map_page").getString(messagesName);
+    }
 }
