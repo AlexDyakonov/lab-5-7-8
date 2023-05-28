@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.*?>
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -19,9 +15,10 @@
                         <Image url="@assets/login.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="label_welcome" layoutX="656.0" layoutY="107.0" text="Welcome back">
+                <Label fx:id="label_welcome" layoutX="656.0" layoutY="107.0" prefHeight="24.0" prefWidth="242.0"
+                       text="Welcome back">
                     <font>
-                        <Font name="Roboto" size="20.0" />
+                        <Font name="Roboto" size="20.0"/>
                     </font>
                 </Label>
                 <Label fx:id="label_login" layoutX="656.0" layoutY="141.0" text="Login to your account">
@@ -29,14 +26,16 @@
                         <Font name="Roboto Bold" size="30.0" />
                     </font>
                 </Label>
-                <Label fx:id="label_username" layoutX="671.0" layoutY="235.0" text="Username" textFill="#5e5e5e">
+                <Label fx:id="label_username" layoutX="671.0" layoutY="235.0" prefHeight="20.0" prefWidth="192.0"
+                       text="Username" textFill="#5e5e5e">
                     <font>
-                        <Font name="Roboto" size="16.0" />
+                        <Font name="Roboto" size="16.0"/>
                     </font>
                 </Label>
-                <Label fx:id="label_password" layoutX="672.0" layoutY="315.0" text="Password" textFill="#5e5e5e">
+                <Label fx:id="label_password" layoutX="672.0" layoutY="315.0" prefHeight="20.0" prefWidth="167.0"
+                       text="Password" textFill="#5e5e5e">
                     <font>
-                        <Font name="Roboto" size="16.0" />
+                        <Font name="Roboto" size="16.0"/>
                     </font>
                 </Label>
                 <TextField fx:id="tf_username" layoutX="675.0" layoutY="266.0" prefHeight="33.0" prefWidth="242.0" promptText="Username" />
@@ -45,24 +44,41 @@
                         <Font name="Roboto Bold" size="15.0" />
                     </font>
                 </Button>
-                <Label fx:id="label_register" layoutX="674.0" layoutY="718.0" text="Dont have an account?" textFill="#5e5e5e">
+                <Label fx:id="label_register" layoutX="677.0" layoutY="521.0" prefHeight="15.0" prefWidth="159.0"
+                       text="Dont have an account?" textFill="#5e5e5e">
                     <font>
-                        <Font name="Roboto" size="12.0" />
+                        <Font name="Roboto" size="12.0"/>
                     </font>
                 </Label>
-                <Button fx:id="button_sign_up" layoutX="846.0" layoutY="713.0" mnemonicParsing="false" onAction="#signUpButtonOnAction" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Join now!" textFill="#0009ff" underline="true" />
+                <Button fx:id="button_sign_up" layoutX="834.0" layoutY="516.0" mnemonicParsing="false"
+                        onAction="#signUpButtonOnAction" prefHeight="25.0" prefWidth="131.0"
+                        style="-fx-cursor: hand; -fx-background-color: transparent;" text="Join now!" textFill="#0009ff"
+                        underline="true"/>
                 <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="1038.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                     <image>
-                        <Image url="@assets/icons/x-button.png" />
+                        <Image url="@assets/icons/x-button.png"/>
                     </image>
                 </ImageView>
-                <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;" />
-                <Label fx:id="label_error_msg" alignment="CENTER" layoutX="629.0" layoutY="503.0" prefHeight="25.0" prefWidth="348.0" textFill="RED">
+                <Button fx:id="close_button" layoutX="1038.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#closeButtonOnAction" prefHeight="28.0" prefWidth="28.0"
+                        style="-fx-background-color: TRANSPERENT; -fx-cursor: hand;"/>
+                <Label fx:id="label_error_msg" alignment="CENTER" layoutX="629.0" layoutY="496.0" prefHeight="25.0"
+                       prefWidth="348.0" textFill="RED">
                     <font>
-                        <Font name="Roboto" size="14.0" />
+                        <Font name="Roboto" size="14.0"/>
                     </font>
                 </Label>
-                <PasswordField fx:id="pf_password" layoutX="675.0" layoutY="351.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" />
+                <PasswordField fx:id="pf_password" layoutX="675.0" layoutY="351.0" prefHeight="33.0" prefWidth="242.0"
+                               promptText="Password"/>
+                <MenuButton fx:id="mb_language" layoutX="754.0" layoutY="613.0" mnemonicParsing="false"
+                            style="-fx-background-color: transperent;" text="Language">
+                    <items>
+                        <MenuItem fx:id="mi_english" mnemonicParsing="false" text="English"/>
+                        <MenuItem fx:id="mi_russian" mnemonicParsing="false" text="Русский"/>
+                        <MenuItem fx:id="mi_belorussian" mnemonicParsing="false" text="Беларускі"/>
+                        <MenuItem fx:id="mi_spanish" mnemonicParsing="false" text="Español"/>
+                    </items>
+                </MenuButton>
             </children>
       </AnchorPane>
    </children>

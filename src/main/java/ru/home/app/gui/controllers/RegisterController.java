@@ -12,6 +12,7 @@ import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.ValidationException;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class RegisterController {
     private final HumanController humanController;
     private final CurrentUserManager userManager;
+    private final LocalizationManager localizationManager;
     private final double width;
     private final double height;
     private Parent parent;
@@ -45,7 +47,8 @@ public class RegisterController {
     @FXML
     private Button button_sign_up;
 
-    public RegisterController(double width, double height, CurrentUserManager userManager, HumanController controller) {
+    public RegisterController(double width, double height, CurrentUserManager userManager, HumanController controller, LocalizationManager localizationManager) {
+        this.localizationManager = localizationManager;
         this.userManager = userManager;
         this.humanController = controller;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/register-page.fxml"));
@@ -84,7 +87,7 @@ public class RegisterController {
     }
 
     public void loginButtonOnAction(ActionEvent e) {
-        new LoginController(width, height, userManager, humanController).launchLoginScene(stage);
+        new LoginController(width, height, userManager, humanController, localizationManager).launchLoginScene(stage);
     }
 
     private boolean checkFields() {
@@ -113,7 +116,7 @@ public class RegisterController {
                     System.out.println(tf_username.getText());
                     userManager.setUserName(tf_username.getText()).setUserRole(ROLES.USER)
                             .setUserId(humanController.userRegister(userManager, pf_password.getText()));
-                    new MainPageController(width, height, userManager, humanController).launchMainScene(stage);
+                    new MainPageController(width, height, userManager, humanController, localizationManager).launchMainScene(stage);
                 }
             }
         } catch (ValidationException | AuthenticationException e1) {

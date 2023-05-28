@@ -4,13 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
@@ -24,10 +20,13 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
+import static ru.home.app.util.Message.getLoginMessagesGUI;
+import static ru.home.app.util.Parser.fromStringToLanguage;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable, Controller {
     private final CurrentUserManager userManager;
     private final HumanController controller;
+    private final LocalizationManager localizationManager;
     private final double width;
     private final double height;
     private final Scene scene;
@@ -47,7 +46,8 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField pf_password;
 
-    public LoginController(double width, double height, CurrentUserManager userManager, HumanController controller) {
+    public LoginController(double width, double height, CurrentUserManager userManager, HumanController controller, LocalizationManager localizationManager) {
+        this.localizationManager = localizationManager;
         controller.setLanguage(LANGUAGE.EN);
         this.userManager = userManager;
         this.controller = controller;
@@ -90,7 +90,7 @@ public class LoginController implements Initializable {
             if (controller.checkUserPassword(username, pf_password.getText())) {
                 userManager.configUserManager(username, controller);
                 label_error_msg.setText("Success!");
-                new MainPageController(width, height, userManager, controller).launchMainScene(stage);
+                new MainPageController(width, height, userManager, controller, localizationManager).launchMainScene(stage);
             } else {
                 label_error_msg.setText("Invalid username or password.");
             }
@@ -98,10 +98,7 @@ public class LoginController implements Initializable {
     }
 
     public void signUpButtonOnAction(ActionEvent e) {
-        Map<String, String> allLabels = new HashMap<>();
-        LocalizationManager.collectLabels(scene.getRoot(), allLabels);
-
-        new RegisterController(width, height, userManager, controller).launchRegisterScene(stage);
+        new RegisterController(width, height, userManager, controller, localizationManager).launchRegisterScene(stage);
     }
 
     public void closeButtonOnAction(ActionEvent e) {
@@ -112,6 +109,17 @@ public class LoginController implements Initializable {
             stage.setAlwaysOnTop(true);
         }
     }
+
+    @FXML
+    private MenuButton mb_language;
+    @FXML
+    private MenuItem mi_english;
+    @FXML
+    private MenuItem mi_russian;
+    @FXML
+    private MenuItem mi_belorussian;
+    @FXML
+    private MenuItem mi_spanish;
 
     public double getWidth() {
         return width;
@@ -131,5 +139,50 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mi_english.setOnAction(e -> {
+            String text = mi_english.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_russian.setOnAction(e -> {
+            String text = mi_russian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_belorussian.setOnAction(e -> {
+            String text = mi_belorussian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_spanish.setOnAction(e -> {
+            String text = mi_spanish.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+
+    }
+
+    private void setLanguageInGui(LANGUAGE language) {
+        Map<String, Label> labels = new HashMap<>();
+        LocalizationManager.collectLabels(parent, labels);
+        labels.entrySet().forEach(System.out::println);
+        for (Map.Entry<String, Label> entry : labels.entrySet()) {
+            if (entry.getKey() == null) {
+                System.out.println();
+            }
+            entry.getValue().setText(getLoginMessagesGUI(entry.getKey(), language));
+        }
+        tf_username.setPromptText(getLoginMessagesGUI(tf_username.getId(), language));
+        pf_password.setPromptText(getLoginMessagesGUI(pf_password.getId(), language));
+        button_login.setText(getLoginMessagesGUI(button_login.getId(), language));
+        button_sign_up.setText(getLoginMessagesGUI(button_sign_up.getId(), language));
     }
 }

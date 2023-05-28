@@ -35,8 +35,6 @@
       </Label>
       <Button fx:id="button_logout" layoutX="14.0" layoutY="735.0" mnemonicParsing="false"
               style="-fx-background-color: transparent; -fx-cursor: hand;" text="logout" textFill="#f3cbc5"/>
-      <Button fx:id="button_language" layoutX="156.0" layoutY="735.0" mnemonicParsing="false"
-              style="-fx-background-color: transparent;" text="language" textFill="#f3cbc5"/>
       <Button fx:id="button_table" layoutX="49.0" layoutY="507.0" mnemonicParsing="false"
               onAction="#tableButtonOnAction" prefHeight="28.0" prefWidth="130.0"
               style="-fx-background-color: #fb2cff; -fx-background-radius: 10; -fx-cursor: hand;" text="GO TO TABLE"
@@ -90,5 +88,14 @@
             <Font name="Roboto" size="15.0"/>
          </font>
       </Label>
+      <MenuButton fx:id="mb_language" layoutX="142.0" layoutY="735.0" mnemonicParsing="false"
+                  style="-fx-background-color: transperent; -fx-cursor: hand;" text="Language" textFill="#f3cbc5">
+         <items>
+            <MenuItem fx:id="mi_english" mnemonicParsing="false" text="English"/>
+            <MenuItem fx:id="mi_russian" mnemonicParsing="false" text="Русский"/>
+            <MenuItem fx:id="mi_belorussian" mnemonicParsing="false" text="Беларускі"/>
+            <MenuItem fx:id="mi_spanish" mnemonicParsing="false" text="Español"/>
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>

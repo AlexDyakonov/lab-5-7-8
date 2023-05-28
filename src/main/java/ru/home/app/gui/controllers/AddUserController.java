@@ -18,8 +18,9 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
 import ru.home.app.server.model.dto.HumanBeingRequestDTO;
 import ru.home.app.server.validation.Validation;
-import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.Parser;
+import ru.home.app.util.language.LANGUAGE;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -85,8 +86,10 @@ public class AddUserController implements Initializable {
     private Label label_error_msg;
     @FXML
     private Button close_button;
+    private final LocalizationManager localizationManager;
 
-    public AddUserController(HumanController controller, CurrentUserManager userManager, double width, double height) {
+    public AddUserController(HumanController controller, CurrentUserManager userManager, LocalizationManager localizationManager) {
+        this.localizationManager = localizationManager;
         this.controller = controller;
         this.userManager = userManager;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/add-window.fxml"));

@@ -10,6 +10,7 @@ import ru.home.app.server.controller.HumanControllerImpl;
 import ru.home.app.server.services.builders.BuilderType;
 import ru.home.app.ui.ConsoleUI;
 import ru.home.app.util.language.LANGUAGE;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 
@@ -34,7 +35,8 @@ public class App extends Application {
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
         CurrentUserManager userManager = new CurrentUserManager();
+        LocalizationManager localizationManager = new LocalizationManager(LANGUAGE.EN);
 
-        new LoginController(1080, 768, userManager, new HumanControllerImpl(userManager)).launchLoginScene(stage);
+        new LoginController(1080, 768, userManager, new HumanControllerImpl(userManager), localizationManager).launchLoginScene(stage);
     }
 }

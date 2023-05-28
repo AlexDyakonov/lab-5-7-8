@@ -16,6 +16,7 @@ import ru.home.app.gui.utility.StickMan;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -51,8 +52,10 @@ public class MapController implements Initializable {
     @FXML
     private Pane pane_map;
     private final MainPageController mainPageController;
+    private final LocalizationManager localizationManager;
 
-    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller, List<HumanBeingResponseDTOwithUsers> humans, MainPageController mainPageController) {
+    public MapController(double width, double height, CurrentUserManager userManager, HumanController controller, List<HumanBeingResponseDTOwithUsers> humans, MainPageController mainPageController, LocalizationManager localizationManager) {
+        this.localizationManager = localizationManager;
         this.humans = humans;
         this.userManager = userManager;
         this.controller = controller;
@@ -161,6 +164,6 @@ public class MapController implements Initializable {
 
     public void logoutButtonOnAction() {
         userManager.clear();
-        new LoginController(width, height, userManager, controller).launchLoginScene(stage);
+        new LoginController(width, height, userManager, controller, localizationManager).launchLoginScene(stage);
     }
 }

@@ -104,7 +104,9 @@ public class Message {
     public static String getLog(String messageName) {
         return jsonMessagesLog.getJSONObject("log_info").getString(messageName);
     }
-    public static String getMessagesGUI(String messagesName, LANGUAGE language){
-        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("?").getString(messagesName);
+
+    public static String getLoginMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("login_page").getString(messagesName);
     }
+
 }

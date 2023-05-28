@@ -41,8 +41,9 @@ import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.server.services.builders.BuilderType;
-import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.ScriptCreator;
+import ru.home.app.util.language.LANGUAGE;
+import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -53,6 +54,7 @@ import java.util.ResourceBundle;
 public class MainPageController implements Initializable {
     private final HumanController controller;
     private final CurrentUserManager userManager;
+    private final LocalizationManager localizationManager;
     private final Invoker invoker;
     private final double width;
     private final double height;
@@ -121,7 +123,8 @@ public class MainPageController implements Initializable {
     @FXML
     private Button button_map;
 
-    public MainPageController(double width, double height, CurrentUserManager userManager, HumanController controller) {
+    public MainPageController(double width, double height, CurrentUserManager userManager, HumanController controller, LocalizationManager localizationManager) {
+        this.localizationManager = localizationManager;
         this.userManager = userManager;
         this.controller = controller;
         this.invoker = new Invoker(BuilderType.FILE, LANGUAGE.EN, controller);
@@ -568,7 +571,7 @@ public class MainPageController implements Initializable {
 
     public void logoutButtonOnAction() {
         userManager.clear();
-        new LoginController(width, height, userManager, controller).launchLoginScene(stage);
+        new LoginController(width, height, userManager, controller, localizationManager).launchLoginScene(stage);
     }
 
     @FXML
@@ -600,7 +603,7 @@ public class MainPageController implements Initializable {
 
     public void addNewButtonOnAction() {
         configBeforeAdd();
-        new AddUserController(controller, userManager, 600, 600).launchAddScene(new Stage(), this);
+        new AddUserController(controller, userManager, localizationManager).launchAddScene(new Stage(), this);
     }
 
 
@@ -611,7 +614,7 @@ public class MainPageController implements Initializable {
     }
 
     public void mapButtonOnAction(ActionEvent e) {
-        new MapController(width, height, userManager, controller, dataList, this).launchMainScene(stage);
+        new MapController(width, height, userManager, controller, dataList, this, localizationManager).launchMainScene(stage);
     }
 
     public void configAfterAdd() {

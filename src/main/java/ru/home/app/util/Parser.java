@@ -1,6 +1,7 @@
 package ru.home.app.util;
 
 import ru.home.app.server.authentication.ROLES;
+import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
@@ -39,6 +40,16 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new ValidationException(getError("id_not_correct", LANGUAGE.EN));
         }
+    }
+
+    public static LANGUAGE fromStringToLanguage(String line) {
+        return switch (line.toLowerCase()) {
+            case "english" -> LANGUAGE.EN;
+            case "русский" -> LANGUAGE.RU;
+            case "беларускі" -> LANGUAGE.BE;
+            case "español" -> LANGUAGE.ES;
+            default -> throw new ApplicationException("Language not choosen");
+        };
     }
 
     /**

@@ -1,14 +1,62 @@
 {
   "en": {
-
+    "login_page": {
+      "label_welcome": "Welcome back",
+      "label_login": "Login to your account",
+      "label_username": "Username",
+      "label_password": "Password",
+      "label_register": "Dont have an account?",
+      "label_error_msg": "",
+      "tf_username": "Username",
+      "pf_password": "Password",
+      "button_login": "Login now",
+      "button_sign_up": "Join now!",
+      "mb_language": "Language"
+    }
   },
   "ru": {
-
+    "login_page": {
+      "label_welcome": "Добро пожаловать!",
+      "label_login": "Вход",
+      "label_username": "Имя пользователя",
+      "label_password": "Пароль",
+      "label_register": "У вас нет учетной записи?",
+      "label_error_msg": "",
+      "tf_username": "Имя пользователя",
+      "pf_password": "Пароль",
+      "button_login": "Войдите сейчас",
+      "button_sign_up": "Присоединяйтесь!",
+      "mb_language": "Язык"
+    }
   },
   "be": {
-
+    "login_page": {
+      "label_welcome": "Сардэчна запрашаем",
+      "label_login": "Уваход",
+      "label_username": "імя карыстальніка",
+      "label_password": "Пароль",
+      "label_register": "Няма акаўнта?",
+      "label_error_msg": "",
+      "tf_username": "імя карыстальніка",
+      "pf_password": "Пароль",
+      "button_login": "увайдзіце зараз",
+      "button_sign_up": "Далучайцеся зараз!",
+      "mb_language": "Мова"
+    }
   },
   "es": {
-
+    "login_page": {
+      "label_welcome": "Bienvenido de nuevo",
+      "label_login": "Inicie sesión en su cuenta",
+      "label_username": "Nombre de usuario",
+      "label_password": "Contraseña",
+      "label_register": "¿No tienes una cuenta?",
+      "label_error_msg": "",
+      "tf_username": "Nombre de usuario",
+      "pf_password": "Contraseña",
+      "button_login": "Iniciar sesión ahora",
+      "button_sign_up": "Únete ahora!",
+      "mb_language": "Idioma"
+    }
   }
 }
