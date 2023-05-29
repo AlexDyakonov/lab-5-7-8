@@ -68,7 +68,7 @@
       "label_login": "Вход",
       "label_username": "Имя пользователя",
       "label_password": "Пароль",
-      "label_register": "У вас нет учетной записи?",
+      "label_register": "Нет учетной записи?",
       "label_error_msg": "",
       "tf_username": "Имя пользователя",
       "pf_password": "Пароль",

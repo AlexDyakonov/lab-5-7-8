@@ -16,11 +16,13 @@ import ru.home.app.util.language.LocalizationManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 import static ru.home.app.util.Message.getLoginMessagesGUI;
+import static ru.home.app.util.Parser.fromLocaleToLanguage;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class LoginController implements Initializable, Controller {
@@ -48,13 +50,15 @@ public class LoginController implements Initializable, Controller {
 
     public LoginController(double width, double height, CurrentUserManager userManager, HumanController controller, LocalizationManager localizationManager) {
         this.localizationManager = localizationManager;
-        controller.setLanguage(LANGUAGE.EN);
         this.userManager = userManager;
         this.controller = controller;
         this.width = width;
         this.height = height;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/login-page.fxml"));
         fxmlLoader.setController(this);
+        LANGUAGE sysLang = (fromStringToLanguage(Locale.getDefault().getLanguage()));
+        controller.setLanguage(sysLang);
+        localizationManager.setLanguage(sysLang);
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
@@ -67,6 +71,7 @@ public class LoginController implements Initializable, Controller {
     public void launchLoginScene(Stage stage) {
         this.stage = stage;
         stage.setScene(scene);
+        setLanguageInGui(localizationManager.getLanguage());
 
         stage.hide();
         stage.show();

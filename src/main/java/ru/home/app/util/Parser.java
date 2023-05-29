@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 import static ru.home.app.ui.ConsoleColors.error;
 import static ru.home.app.util.Message.getError;
@@ -44,12 +45,19 @@ public class Parser {
 
     public static LANGUAGE fromStringToLanguage(String line) {
         return switch (line.toLowerCase()) {
-            case "english" -> LANGUAGE.EN;
-            case "русский" -> LANGUAGE.RU;
-            case "беларускі" -> LANGUAGE.BE;
-            case "español" -> LANGUAGE.ES;
-            default -> throw new ApplicationException("Language not choosen");
+            case "english", "en" -> LANGUAGE.EN;
+            case "русский", "ru" -> LANGUAGE.RU;
+            case "беларускі", "be" -> LANGUAGE.BE;
+            case "español", "es" -> LANGUAGE.ES;
+            default -> LANGUAGE.EN;
         };
+    }
+    public static LANGUAGE fromLocaleToLanguage(Locale locale){
+        try {
+            return LANGUAGE.valueOf(locale.getLanguage());
+        } catch (Exception e){
+            return LANGUAGE.EN;
+        }
     }
 
     /**
