@@ -16,10 +16,50 @@
     "register_page": {
     },
     "main_page": {
+      "label_nickname": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_role": "",
+      "label_users": "USERS:",
+      "label_humanbeing": "HUMANBEINGS",
+      "label_all": "All(%num%)",
+      "label_error_msg": "",
+      "mb_language": "Language",
+      "button_info": "INFO",
+      "button_logout": "Logout",
+      "button_map": "GO TO MAP",
+      "button_add_new": "ADD NEW",
+      "button_execute_script": "EXECUTE",
+      "column_name": "Name",
+      "column_creator": "Creator",
+      "column_coordinates": "Coordinates",
+      "column_creation_time": "Creation time",
+      "column_hero": "Hero",
+      "column_toothpick": "Toothpick",
+      "column_speed": "Speed",
+      "column_soundtrack": "Song",
+      "column_weapon": "Weapon",
+      "column_mood": "Mood",
+      "column_car": "Car",
+      "column_car_name": "Name",
+      "column_car_cool": "Cool",
+      "sb_find_by_name": "Search by name",
+      "mi_delete_by_id": "Remove by id",
+      "mi_clear": "Clear",
+      "mi_clear_all": "Clear all",
+      "mb_delete": "DELETE"
     },
     "add_page": {
     },
     "map_page": {
+    },
+    "special": {
+      "confirm": "CONFIRM",
+      "exit": "EXIT",
+      "enter_id": "Enter id",
+      "enter_id_warning": "Please enter ID",
+      "delete_error": "Not found or not yours.",
+      "id_error": "It should be number"
     }
   },
   "ru": {
@@ -39,10 +79,50 @@
     "register_page": {
     },
     "main_page": {
+      "label_nickname": "",
+      "label_role": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_users": "ПОЛЬЗОВАТЕЛИ:",
+      "label_humanbeing": "HUMANBEINGS:",
+      "label_all": "Все(%num%)",
+      "label_error_msg": "",
+      "mb_language": "Язык",
+      "button_info": "ИНФОРМАЦИЯ",
+      "button_logout": "Выход из системы",
+      "button_map": "К КАРТЕ",
+      "button_add_new": "ДОБАВИТЬ",
+      "button_execute_script": "ВЫПОЛНИТЬ",
+      "column_name": "Имя",
+      "column_creator": "Создатель",
+      "column_coordinates": "Координаты",
+      "column_creation_time": "Время создания",
+      "column_hero": "Герой",
+      "column_toothpick": "Зубочистка",
+      "column_speed": "Скорость",
+      "column_soundtrack": "Песня",
+      "column_weapon": "Оружие",
+      "column_mood": "Настроение",
+      "column_car": "Автомобиль",
+      "column_car_name": "Имя",
+      "column_car_cool": "Круто",
+      "sb_find_by_name": "Поиск по имени",
+      "mi_delete_by_id": "Удалить по id",
+      "mi_clear": "Очистить",
+      "mi_clear_all": "Очистить все",
+      "mb_delete": "УДАЛИТЬ"
     },
     "add_page": {
     },
     "map_page": {
+    },
+    "special": {
+      "confirm": "ПОДТВЕРЖДАЮ",
+      "exit": "ВЫХОД",
+      "enter_id": "Введите id",
+      "enter_id_warning": "Пожалуйста, введите id",
+      "delete_error": "Не найдено или не ваше.",
+      "id_error": "Id должно быть числом."
     }
   },
   "be": {
@@ -62,10 +142,50 @@
     "register_page": {
     },
     "main_page": {
+      "label_nickname": "",
+      "label_role": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_users": "карыстальнікі:",
+      "label_humanbeing": "HUMANBEINGS:",
+      "label_all": "усё(%num%)",
+      "label_error_msg": "",
+      "mb_language": "Мова",
+      "button_info": "інфармацыя",
+      "button_logout": "выхад з сістэмы",
+      "button_map": "да карце",
+      "button_add_new": "дадаць",
+      "button_execute_script": "выканаць",
+      "column_name": "імя",
+      "column_creator": "стваральнік",
+      "column_coordinates": "каардынаты",
+      "column_creation_time": "час стварэння",
+      "column_hero": "Герой",
+      "column_toothpick": "зубачыстка",
+      "column_speed": "хуткасць",
+      "column_soundtrack": "Песня",
+      "column_weapon": "зброя",
+      "column_mood": "настрой",
+      "column_car": "аўтамабіль",
+      "column_car_name": "імя",
+      "column_car_cool": "крута",
+      "sb_find_by_name": "Пошук па імені",
+      "mi_delete_by_id": "выдаліць па id",
+      "mi_clear": "ачысціць",
+      "mi_clear_all": "Ачысціць ўсё",
+      "mb_delete": "ВЫДАЛІЦЬ"
     },
     "add_page": {
     },
     "map_page": {
+    },
+    "special": {
+      "confirm": "пацвярджаю",
+      "exit": "выхад",
+      "enter_id": "увядзіце id",
+      "enter_id_warning": "калі ласка, увядзіце id",
+      "delete_error": "не знойдзена ці не ваша.",
+      "id_error": "гэта павінен быць нумар"
     }
   },
   "es": {
@@ -85,10 +205,50 @@
     "register_page": {
     },
     "main_page": {
+      "label_nickname": "",
+      "label_role": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_users": "USUARIOS:",
+      "label_humanbeing": "HUMANBEINGS:",
+      "label_all": "Todos(%num%)",
+      "label_error_msg": "",
+      "mb_language": "idioma",
+      "button_info": "INFORMACIÓN",
+      "button_logout": "Cerrar sesión",
+      "button_map": "IR AL MAPA",
+      "button_add_new": "AÑADIR",
+      "button_execute_script": "EJECUTAR",
+      "column_name": "Nombre",
+      "column_creator": "Creador",
+      "column_coordinates": "Coordenadas",
+      "column_creation_time": "Hora de creación",
+      "column_hero": "Héroe",
+      "column_toothpick": "Dientes",
+      "column_speed": "Velocidad",
+      "column_soundtrack": "Canción",
+      "column_weapon": "Arma",
+      "column_mood": "Estado de ánimo",
+      "column_car": "Coche",
+      "column_car_name": "Nombre",
+      "column_car_cool": "Genial",
+      "sb_find_by_name": "Buscar por nombre",
+      "mi_delete_by_id": "Eliminar por id",
+      "mi_clear": "Borrar",
+      "mi_clear_all": "Borrar todo",
+      "mb_delete": "ELIMINAR"
     },
     "add_page": {
     },
     "map_page": {
+    },
+    "special": {
+      "confirm": "CONFIRMAR",
+      "exit": "SALIR",
+      "enter_id": "Ingresar id",
+      "enter_id_warning": "Por favor, introduzca el ID",
+      "delete_error": "No encontrado o no es tuyo.",
+      "id_error": "Debería ser un número"
     }
   }
 }

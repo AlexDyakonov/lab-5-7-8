@@ -14,6 +14,8 @@ import ru.home.app.util.language.LANGUAGE;
 
 import java.util.Optional;
 
+import static ru.home.app.util.Message.getSpecialMessagesGUI;
+
 public class SpecialWindows {
     public static boolean showConfirmationDialog(String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -46,17 +48,17 @@ public class SpecialWindows {
 
         // Create text field
         TextField textField = new TextField();
-        textField.setPromptText("Enter text here");
+        textField.setPromptText(getSpecialMessagesGUI("enter_id", language));
 
         // Create buttons
-        Button confirmButton = new Button("CONFIRM");
-        Button exitButton = new Button("EXIT");
+        Button confirmButton = new Button(getSpecialMessagesGUI("confirm", language));
+        Button exitButton = new Button(getSpecialMessagesGUI("exit", language));
 
         // Add button functionality
         confirmButton.setOnAction(e -> {
             String input = textField.getText();
             if (input.isEmpty()) {
-                errorLabel.setText("Please enter ID");
+                errorLabel.setText(getSpecialMessagesGUI("enter_id_warning", language));
             } else {
                 try {
                     long id = Long.parseLong(textField.getText());
@@ -64,10 +66,10 @@ public class SpecialWindows {
                         window.close();
                         logged.removeHumanFromTable(id);
                     } else {
-                        errorLabel.setText("Not found or not yours.");
+                        errorLabel.setText(getSpecialMessagesGUI("delete_error", language));
                     }
                 } catch (NumberFormatException ex) {
-                    errorLabel.setText("It should be number");
+                    errorLabel.setText(getSpecialMessagesGUI("id_error", language));
                 }
             }
         });

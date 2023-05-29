@@ -124,4 +124,8 @@ public class Message {
     public static String getMapMessagesGUI(String messagesName, LANGUAGE language) {
         return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("map_page").getString(messagesName);
     }
+
+    public static String getSpecialMessagesGUI(String messagesName, LANGUAGE language) {
+        return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("special").getString(messagesName);
+    }
 }

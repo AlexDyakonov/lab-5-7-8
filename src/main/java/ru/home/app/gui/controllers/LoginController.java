@@ -110,16 +110,7 @@ public class LoginController implements Initializable, Controller {
         }
     }
 
-    @FXML
-    private MenuButton mb_language;
-    @FXML
-    private MenuItem mi_english;
-    @FXML
-    private MenuItem mi_russian;
-    @FXML
-    private MenuItem mi_belorussian;
-    @FXML
-    private MenuItem mi_spanish;
+
 
     public double getWidth() {
         return width;
@@ -136,6 +127,17 @@ public class LoginController implements Initializable, Controller {
     public HumanController getController() {
         return controller;
     }
+
+    @FXML
+    private MenuButton mb_language;
+    @FXML
+    private MenuItem mi_english;
+    @FXML
+    private MenuItem mi_russian;
+    @FXML
+    private MenuItem mi_belorussian;
+    @FXML
+    private MenuItem mi_spanish;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -167,17 +169,12 @@ public class LoginController implements Initializable, Controller {
             localizationManager.setLanguage(language);
             setLanguageInGui(language);
         });
-
     }
 
     private void setLanguageInGui(LANGUAGE language) {
         Map<String, Label> labels = new HashMap<>();
         LocalizationManager.collectLabels(parent, labels);
-        labels.entrySet().forEach(System.out::println);
         for (Map.Entry<String, Label> entry : labels.entrySet()) {
-            if (entry.getKey() == null) {
-                System.out.println();
-            }
             entry.getValue().setText(getLoginMessagesGUI(entry.getKey(), language));
         }
         tf_username.setPromptText(getLoginMessagesGUI(tf_username.getId(), language));

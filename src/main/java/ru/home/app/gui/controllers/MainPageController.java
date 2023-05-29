@@ -36,6 +36,7 @@ import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.FileException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.mapper.HumanBeingMapper;
+import ru.home.app.server.model.Car;
 import ru.home.app.server.model.Coordinates;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
@@ -48,8 +49,13 @@ import ru.home.app.util.language.LocalizationManager;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+
+import static ru.home.app.util.Message.getMainMessagesGUI;
+import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class MainPageController implements Initializable {
     private final HumanController controller;
@@ -64,8 +70,6 @@ public class MainPageController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    private Button button_language;
     @FXML
     private Label label_nickname;
     @FXML
@@ -143,8 +147,6 @@ public class MainPageController implements Initializable {
 
     public void launchMainScene(Stage stage) {
         this.stage = stage;
-        label_role.setText(userManager.getUserRole().toString());
-        label_nickname.setText(userManager.getUserName());
         String avatarPath = "/ru/home/app/assets/avatars/" + userManager.getUserAvatar() + ".jpg";
         try {
             System.out.println(userManager.getUserAvatar());
@@ -153,6 +155,11 @@ public class MainPageController implements Initializable {
             throw new RuntimeException(e);
         }
         stage.setScene(scene);
+
+        setLanguageInGui(localizationManager.getLanguage());
+
+        label_role.setText(userManager.getUserRole().toString());
+        label_nickname.setText(userManager.getUserName());
 
         stage.hide();
         stage.show();
@@ -165,6 +172,17 @@ public class MainPageController implements Initializable {
 
         humanBeingResponseDTOwithUsersObservableList.addAll(dataList);
     }
+
+    @FXML
+    private MenuButton mb_language;
+    @FXML
+    private MenuItem mi_english;
+    @FXML
+    private MenuItem mi_russian;
+    @FXML
+    private MenuItem mi_belorussian;
+    @FXML
+    private MenuItem mi_spanish;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -493,7 +511,7 @@ public class MainPageController implements Initializable {
 
 
         mi_delete_by_id.setOnAction(e -> {
-            SpecialWindows.deleteWindow(controller, LANGUAGE.EN, this);
+            SpecialWindows.deleteWindow(controller, localizationManager.getLanguage(), this);
         });
         mi_clear.setOnAction(event -> {
             if (SpecialWindows.showConfirmationDialog("Are confirm deleting all your humanbeings?")) {
@@ -522,12 +540,40 @@ public class MainPageController implements Initializable {
         });
 
         setInfo();
+        mi_english.setOnAction(e -> {
+            String text = mi_english.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_russian.setOnAction(e -> {
+            String text = mi_russian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_belorussian.setOnAction(e -> {
+            String text = mi_belorussian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_spanish.setOnAction(e -> {
+            String text = mi_spanish.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
     }
 
     private void setInfo() {
-        label_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
+        label_nuber_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
         label_all.setText("All(" + humanBeingResponseDTOwithUsersObservableList.size() + ")");
-        label_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
     }
 
     public void addHumanToTable(HumanBeingResponseDTOwithUsers human) {
@@ -585,13 +631,13 @@ public class MainPageController implements Initializable {
     @FXML
     private Button button_info;
     @FXML
-    private Label label_users;
+    private Label label_number_users;
     @FXML
-    private Label label_humanbeing;
+    private Label label_nuber_humanbeing;
 
     public void infoButtonOnAction(ActionEvent e) {
-        label_users.setText(String.valueOf(controller.getUserNameList().size()));
-        label_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
+        label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_nuber_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
     }
 
     @FXML
@@ -619,5 +665,48 @@ public class MainPageController implements Initializable {
 
     public void configAfterAdd() {
         scene.getRoot().setEffect(null);
+    }
+
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Coordinates> column_coordinates;
+    @FXML
+    private TableColumn<HumanBeingResponseDTOwithUsers, Car> column_car;
+    @FXML
+    private Button button_add_new;
+    @FXML
+    private Button button_execute_script;
+
+    private void setLanguageInGui(LANGUAGE language) { //todo оптимизировать, сделав один запрос в файл с возвратом HashMap (key -- id, value -- строчка нужног языка)
+        Map<String, Label> labels = new HashMap<>();
+        LocalizationManager.collectLabels(parent, labels);
+        for (Map.Entry<String, Label> entry : labels.entrySet()) {
+            entry.getValue().setText(getMainMessagesGUI(entry.getKey(), language));
+        }
+        mb_language.setText(getMainMessagesGUI(mb_language.getId(), language));
+        button_info.setText(getMainMessagesGUI(button_info.getId(), language));
+        button_logout.setText(getMainMessagesGUI(button_logout.getId(), language));
+        button_map.setText(getMainMessagesGUI(button_map.getId(), language));
+        button_add_new.setText(getMainMessagesGUI(button_add_new.getId(), language));
+        button_execute_script.setText(getMainMessagesGUI(button_execute_script.getId(), language));
+        column_name.setText(getMainMessagesGUI(column_name.getId(), language));
+        column_creator.setText(getMainMessagesGUI(column_creator.getId(), language));
+        column_coordinates.setText(getMainMessagesGUI(column_coordinates.getId(), language));
+        column_creation_time.setText(getMainMessagesGUI(column_creation_time.getId(), language));
+        column_hero.setText(getMainMessagesGUI(column_hero.getId(), language));
+        column_toothpick.setText(getMainMessagesGUI(column_toothpick.getId(), language));
+        column_speed.setText(getMainMessagesGUI(column_speed.getId(), language));
+        column_soundtrack.setText(getMainMessagesGUI(column_soundtrack.getId(), language));
+        column_weapon.setText(getMainMessagesGUI(column_weapon.getId(), language));
+        column_mood.setText(getMainMessagesGUI(column_hero.getId(), language));
+        column_car.setText(getMainMessagesGUI(column_car.getId(), language));
+        column_car_name.setText(getMainMessagesGUI(column_car_name.getId(), language));
+        column_car_cool.setText(getMainMessagesGUI(column_car_cool.getId(), language));
+
+        mb_delete.setText(getMainMessagesGUI(mb_delete.getId(), language));
+        mi_delete_by_id.setText(getMainMessagesGUI(mi_delete_by_id.getId(), language));
+        mi_clear.setText(getMainMessagesGUI(mi_clear.getId(), language));
+        mi_clear_all.setText(getMainMessagesGUI(mi_clear_all.getId(), language));
+
+        sb_find_by_name.setPromptText(getMainMessagesGUI(sb_find_by_name.getId(), language));
     }
 }
