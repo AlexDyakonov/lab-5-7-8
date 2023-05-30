@@ -49,8 +49,8 @@ public class Validation {
         return !(coordinates.getX() != null && coordinates.getY() != null && coordinates.getY() > -897);
     }
 
-    public static boolean validateCreator(TableView table, CurrentUserManager userManager, String message){
-        if (!((HumanBeingResponseDTOwithUsers) table.getSelectionModel().getSelectedItem()).getUsername().equals(userManager.getUserName())){
+    public static boolean validateCreator(TableView table, CurrentUserManager userManager, String message) {
+        if (!((HumanBeingResponseDTOwithUsers) table.getSelectionModel().getSelectedItem()).getUsername().equals(userManager.getUserName())) {
             throw new AuthenticationException(message);
         }
         return true;

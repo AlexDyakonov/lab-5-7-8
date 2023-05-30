@@ -1,7 +1,6 @@
 package ru.home.app.util;
 
 import ru.home.app.server.authentication.ROLES;
-import ru.home.app.server.exception.ApplicationException;
 import ru.home.app.server.exception.ValidationException;
 import ru.home.app.server.model.Mood;
 import ru.home.app.server.model.WeaponType;
@@ -52,10 +51,11 @@ public class Parser {
             default -> LANGUAGE.EN;
         };
     }
-    public static LANGUAGE fromLocaleToLanguage(Locale locale){
+
+    public static LANGUAGE fromLocaleToLanguage(Locale locale) {
         try {
             return LANGUAGE.valueOf(locale.getLanguage());
-        } catch (Exception e){
+        } catch (Exception e) {
             return LANGUAGE.EN;
         }
     }

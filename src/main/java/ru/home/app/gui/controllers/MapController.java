@@ -22,7 +22,6 @@ import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
@@ -75,7 +74,7 @@ public class MapController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch catch (Exception e) {
+        } catch catch(Exception e){
             SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
                     getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
         }

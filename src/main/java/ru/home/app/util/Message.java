@@ -104,6 +104,7 @@ public class Message {
     public static String getLog(String messageName) {
         return jsonMessagesLog.getJSONObject("log_info").getString(messageName);
     }
+
     //todo optimize using enum
     public static String getLoginMessagesGUI(String messagesName, LANGUAGE language) {
         return jsonMessagesGUI.getJSONObject(language.toString()).getJSONObject("login_page").getString(messagesName);

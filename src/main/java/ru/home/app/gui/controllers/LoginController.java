@@ -14,7 +14,6 @@ import ru.home.app.server.controller.HumanController;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
@@ -23,10 +22,9 @@ import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 import static ru.home.app.util.Message.*;
-import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
-public class LoginController implements Initializable, Controller {
+public class LoginController implements Initializable {
     private final CurrentUserManager userManager;
     private final HumanController controller;
     private final LocalizationManager localizationManager;
@@ -119,7 +117,6 @@ public class LoginController implements Initializable, Controller {
             stage.setAlwaysOnTop(false);
         }
     }
-
 
 
     public double getWidth() {

@@ -97,6 +97,7 @@ public class SpecialWindows {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     public static void showError(String errorMessage, String title) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR, errorMessage, ButtonType.OK);

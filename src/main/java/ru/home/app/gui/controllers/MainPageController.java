@@ -46,7 +46,6 @@ import ru.home.app.util.ScriptCreator;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
@@ -55,7 +54,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static ru.home.app.util.Message.*;
-import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class MainPageController implements Initializable {
@@ -205,7 +203,7 @@ public class MainPageController implements Initializable {
                 controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(newHuman), newHuman.getId());
                 humanBeingResponseDTOwithUsersObservableList.stream().filter(p -> p.getId()
                         .equals(event.getRowValue().getId())).toList().get(0).setName(event.getNewValue());
-            } catch (AuthenticationException | ValidationException e){
+            } catch (AuthenticationException | ValidationException e) {
                 label_error_msg.setText(e.getMessage());
                 updateTable();
             }
@@ -223,7 +221,7 @@ public class MainPageController implements Initializable {
             try {
                 controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(event.getRowValue()), event.getRowValue().getId());
                 updateTable();
-            } catch (AuthenticationException | ValidationException e){
+            } catch (AuthenticationException | ValidationException e) {
                 label_error_msg.setText(e.getMessage());
                 table.refresh();
             }
@@ -596,6 +594,7 @@ public class MainPageController implements Initializable {
         label_nickname.setText(username);
         label_role.setText(userRole);
     }
+
     public void executeButtonOnAction(ActionEvent event) {
         try {
             FileChooser fileChooser = new FileChooser();
@@ -610,10 +609,12 @@ public class MainPageController implements Initializable {
         }
         updateTable();
     }
-    private boolean checkUser(){
+
+    private boolean checkUser() {
         return false;
     }
-    public void updateName(TableColumn.CellEditEvent editedCell){
+
+    public void updateName(TableColumn.CellEditEvent editedCell) {
         HumanBeingResponseDTOwithUsers selectedHuman = table.getSelectionModel().getSelectedItem();
         selectedHuman.setName(editedCell.getNewValue().toString());
         controller.updateHuman(HumanBeingMapper.fromResponseWithUserToRequest(selectedHuman), selectedHuman.getId());
