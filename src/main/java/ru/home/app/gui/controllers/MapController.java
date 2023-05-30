@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -16,14 +18,16 @@ import ru.home.app.gui.utility.StickMan;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
+import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
+import static ru.home.app.util.Message.getMapMessagesGUI;
+import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class MapController implements Initializable {
     private final HumanController controller;
@@ -51,6 +55,8 @@ public class MapController implements Initializable {
 
     @FXML
     private Pane pane_map;
+    @FXML
+    private Button button_table;
     private final MainPageController mainPageController;
     private final LocalizationManager localizationManager;
 
@@ -86,12 +92,25 @@ public class MapController implements Initializable {
 
         stage.setScene(scene);
 
+        setLanguageInGui(localizationManager.getLanguage());
+        setInfo();
+
         stage.hide();
         stage.show();
     }
 
     @FXML
     private Label label_all;
+    @FXML
+    private MenuButton mb_language;
+    @FXML
+    private MenuItem mi_english;
+    @FXML
+    private MenuItem mi_russian;
+    @FXML
+    private MenuItem mi_belorussian;
+    @FXML
+    private MenuItem mi_spanish;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -129,26 +148,58 @@ public class MapController implements Initializable {
             }
         });
         setInfo();
-    }
-
-    private void setInfo() {
-        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
-        label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
-        label_users.setText(String.valueOf(controller.getUserNameList().size()));
+        mi_english.setOnAction(e -> {
+            String text = mi_english.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+            setInfo();
+        });
+        mi_russian.setOnAction(e -> {
+            String text = mi_russian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+            setInfo();
+        });
+        mi_belorussian.setOnAction(e -> {
+            String text = mi_belorussian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+            setInfo();
+        });
+        mi_spanish.setOnAction(e -> {
+            String text = mi_spanish.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+            setInfo();
+        });
     }
 
     @FXML
     private Button button_info;
     @FXML
-    private Label label_users;
+    private Label label_number_users;
     @FXML
     private Label label_humanbeing;
 
     public void infoButtonOnAction(ActionEvent e) {
-        label_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
         label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
+        label_all.setText(label_all.getText().replace("%num%", String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size())));
     }
 
+    private void setInfo() {
+        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
+        label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_all.setText(label_all.getText().replace("%num%", String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size())));
+    }
 
     public void closeButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) close_button.getScene().getWindow();
@@ -165,5 +216,17 @@ public class MapController implements Initializable {
     public void logoutButtonOnAction() {
         userManager.clear();
         new LoginController(width, height, userManager, controller, localizationManager).launchLoginScene(stage);
+    }
+
+    private void setLanguageInGui(LANGUAGE language) {
+        Map<String, Label> labels = new HashMap<>();
+        LocalizationManager.collectLabels(parent, labels);
+        for (Map.Entry<String, Label> entry : labels.entrySet()) {
+            entry.getValue().setText(getMapMessagesGUI(entry.getKey(), language));
+        }
+        button_info.setText(getMapMessagesGUI(button_info.getId(), language));
+        button_logout.setText(getMapMessagesGUI(button_logout.getId(), language));
+        button_table.setText(getMapMessagesGUI(button_table.getId(), language));
+        mb_language.setText(getMapMessagesGUI(mb_language.getId(), language));
     }
 }

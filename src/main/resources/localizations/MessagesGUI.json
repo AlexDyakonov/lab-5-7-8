@@ -63,11 +63,23 @@
       "mi_delete_by_id": "Remove by id",
       "mi_clear": "Clear",
       "mi_clear_all": "Clear all",
-      "mb_delete": "DELETE"
+      "mb_delete": "DELETE",
+      "execute": "Choose a script file"
     },
     "add_page": {
     },
     "map_page": {
+      "label_nickname": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_role": "",
+      "label_users": "USERS:",
+      "label_humanbeing": "HUMANBEINGS",
+      "label_all": "All(%num%)",
+      "button_info": "INFO",
+      "button_logout": "Logout",
+      "button_table": "GO TO TABLE",
+      "mb_language": "Language"
     },
     "special": {
       "confirm": "CONFIRM",
@@ -95,7 +107,11 @@
       "pf_password": "Пароль",
       "button_login": "Войдите сейчас",
       "button_sign_up": "Присоединяйтесь!",
-      "mb_language": "Язык"
+      "mb_language": "Язык",
+      "login_attempt": "Попытка входа.",
+      "login_empty": "Вам следует ввести имя пользователя и пароль.",
+      "success": "Успех!",
+      "login_invalid": "Неверное имя пользователя или пароль"
     },
     "register_page": {
       "label_error_msg": "",
@@ -144,14 +160,22 @@
       "mi_clear": "Очистить",
       "mi_clear_all": "Очистить все",
       "mb_delete": "УДАЛИТЬ",
-      "login_attempt": "Попытка входа.",
-      "login_empty": "Вам следует ввести имя пользователя и пароль.",
-      "success": "Успех!",
-      "login_invalid": "Неверное имя пользователя или пароль"
+      "execute": "Выбрать файл скрипта"
     },
     "add_page": {
     },
     "map_page": {
+      "label_nickname": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_role": "",
+      "label_users": "ПОЛЬЗОВАТЕЛИ:",
+      "label_humanbeing": "HUMANBEINGS",
+      "label_all": "Все(%num%)",
+      "button_info": "ИНФОРМАЦИЯ",
+      "button_logout": "Выход из системы",
+      "button_table": "К ТАБЛИЦЕ",
+      "mb_language": "Язык"
     },
     "special": {
       "confirm": "ПОДТВЕРЖДАЮ",
@@ -179,7 +203,11 @@
       "pf_password": "Пароль",
       "button_login": "увайдзіце зараз",
       "button_sign_up": "Далучайцеся зараз!",
-      "mb_language": "Мова"
+      "mb_language": "Мова",
+      "login_attempt": "спроба ўваходу.",
+      "login_empty": "Варта ўвесці імя карыстальніка і пароль.",
+      "success": "Поспех!",
+      "login_invalid": "Няправільнае імя карыстальніка або пароль"
     },
     "register_page": {
       "label_error_msg": "",
@@ -228,14 +256,22 @@
       "mi_clear": "ачысціць",
       "mi_clear_all": "Ачысціць ўсё",
       "mb_delete": "ВЫДАЛІЦЬ",
-      "login_attempt": "спроба ўваходу.",
-      "login_empty": "Варта ўвесці імя карыстальніка і пароль.",
-      "success": "Поспех!",
-      "login_invalid": "Няправільнае імя карыстальніка або пароль"
+      "execute": "Выбраць файл скрыпту"
     },
     "add_page": {
     },
     "map_page": {
+      "label_nickname": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_role": "",
+      "label_users": "карыстальнікі:",
+      "label_humanbeing": "HUMANBEINGS",
+      "label_all": "усё(%num%)",
+      "button_info": "інфармацыя",
+      "button_logout": "выхад з сістэмы",
+      "button_table": "перайсці да табліцы",
+      "mb_language": "Мова"
     },
     "special": {
       "confirm": "пацвярджаю",
@@ -263,7 +299,11 @@
       "pf_password": "Contraseña",
       "button_login": "Iniciar sesión ahora",
       "button_sign_up": "Únete ahora!",
-      "mb_language": "Idioma"
+      "mb_language": "Idioma",
+      "login_attempt": "Intento de inicio de sesión.",
+      "login_empty": "Debes insertar nombre de usuario y contraseña.",
+      "success": "¡Éxito!",
+      "login_invalid": "Nombre de usuario o contraseña no válidos."
     },
     "register_page": {
       "label_error_msg": "",
@@ -312,14 +352,22 @@
       "mi_clear": "Borrar",
       "mi_clear_all": "Borrar todo",
       "mb_delete": "ELIMINAR",
-      "login_attempt": "Intento de inicio de sesión.",
-      "login_empty": "Debes insertar nombre de usuario y contraseña.",
-      "success": "¡Éxito!",
-      "login_invalid": "Nombre de usuario o contraseña no válidos."
+      "execute": "Elegir un archivo de script"
     },
     "add_page": {
     },
     "map_page": {
+      "label_nickname": "",
+      "label_number_users": "0",
+      "label_nuber_humanbeing": "0",
+      "label_role": "",
+      "label_users": "USUARIOS:",
+      "label_humanbeing": "HUMANOS",
+      "label_all": "Todos(%num%)",
+      "button_info": "INFORMACIÓN",
+      "button_logout": "Cerrar sesión",
+      "button_table": "IR A LA TABLA",
+      "mb_language": "Idioma"
     },
     "special": {
       "confirm": "CONFIRMAR",
