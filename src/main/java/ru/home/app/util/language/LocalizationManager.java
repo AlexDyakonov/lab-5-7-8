@@ -3,6 +3,9 @@ package ru.home.app.util.language;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import ru.home.app.gui.controllers.Controller;
 
 import java.util.HashMap;
@@ -34,6 +37,32 @@ public class LocalizationManager {
             }
         }
         return labelMap;
+    }
+
+    public static Map<String, TableColumn<?, ?>> getTableColumns(TableView<?> tableView) {
+
+        Map<String, TableColumn<?, ?>> columnMap = new HashMap<>();
+        for (TableColumn<?, ?> column : tableView.getColumns()) {
+            String fxId = column.getId();
+            if (fxId != null) {
+                columnMap.put(fxId, column);
+            }
+        }
+
+        return columnMap;
+    }
+
+    public static void collectTextFields(Node node, Map<String, TextField> textFieldMap) {
+        if (node instanceof TextField textField) {
+            String fxId = textField.getId();
+            if (fxId != null) {
+                textFieldMap.put(fxId, textField);
+            }
+        } else if (node instanceof Parent parent) {
+            for (Node child : parent.getChildrenUnmodifiable()) {
+                collectTextFields(child, textFieldMap);
+            }
+        }
     }
 
     public LANGUAGE getLanguage() {

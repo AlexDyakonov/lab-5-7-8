@@ -24,6 +24,8 @@ import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -31,6 +33,7 @@ import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 import static ru.home.app.server.validation.Validation.validate;
+import static ru.home.app.util.Message.getAddMessagesGUI;
 import static ru.home.app.util.Parser.stringToMood;
 import static ru.home.app.util.Parser.stringToWeaponType;
 
@@ -110,6 +113,8 @@ public class AddUserController implements Initializable {
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
+
+        setLanguageInGui(localizationManager.getLanguage());
 
         stage.hide();
         stage.show();
@@ -240,11 +245,15 @@ public class AddUserController implements Initializable {
                 }
                 case ADD_IF_MAX -> {
                     id = controller.addIfMax(human); //TODO check -1L -> valid not max/min
-                    mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                    if (id != -1L) {
+                        mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                    }
                 }
                 case ADD_IF_MIN -> {
                     id = controller.addIfMin(human);
-                    mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                    if (id != -1L) {
+                        mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                    }
                 }
             }
             mainPageController.configAfterAdd();
@@ -269,5 +278,22 @@ public class AddUserController implements Initializable {
 
         cb_weapon.getItems().addAll(weapons);
         cb_weapon.setOnAction(this::getWeapon);
+    }
+
+    private void setLanguageInGui(LANGUAGE language) {
+        Map<String, TextField> tfields = new HashMap<>();
+        LocalizationManager.collectTextFields(parent, tfields);
+        Map<String, Label> labels = new HashMap<>();
+        LocalizationManager.collectLabels(parent, labels);
+        for (Map.Entry<String, Label> entry : labels.entrySet()) {
+            entry.getValue().setText(getAddMessagesGUI(entry.getKey(), language));
+        }
+        for (Map.Entry<String, TextField> entry : tfields.entrySet()) {
+            entry.getValue().setPromptText(getAddMessagesGUI(entry.getKey(), language));
+        }
+        rb_none.setText(getAddMessagesGUI(rb_none.getId(), language));
+        rb_if_max.setText(getAddMessagesGUI(rb_if_max.getId(), language));
+        rb_if_min.setText(getAddMessagesGUI(rb_if_min.getId(), language));
+        sumbit_button.setText(getAddMessagesGUI(sumbit_button.getId(), language));
     }
 }
