@@ -136,8 +136,6 @@ public class Validation {
         validateFileWrite(file, language);
     }
 
-// TODO сделать все методы для валидации.
-
     /**
      * Validate user name boolean.
      *

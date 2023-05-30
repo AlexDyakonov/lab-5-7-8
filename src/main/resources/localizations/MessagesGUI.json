@@ -132,7 +132,10 @@
       "adding_type_not_selected": "You should choose type of adding.",
       "coordinates_number": "Input coordinates as number.",
       "fxml_error": "FXML loading file error.",
-      "fxml_error_title": "FXML error"
+      "fxml_error_title": "FXML error",
+      "id_not_null":"Id should be more than 0.",
+      "request_validation_not_success": "Validation was unsuccessfully.",
+      "password_not_null": "Password can not be null or empty."
     }
   },
   "ru": {
@@ -268,7 +271,10 @@
       "adding_type_not_selected": "Вы должны выбрать тип добавления.",
       "coordinates_number": "Введите координаты в виде числа",
       "fxml_error": "Ошибка загрузки файла FXML.",
-      "fxml_error_title": "Ошибка FXML"
+      "fxml_error_title": "Ошибка FXML",
+      "id_not_null": "Идентификатор должен быть больше 0.",
+      "request_validation_not_success": "Проверка прошла неудачно.",
+      "password_not_null": "Пароль не может быть нулевым или пустым."
     }
   },
   "be": {
@@ -404,7 +410,10 @@
       "adding_type_not_selected": "вы павінны выбраць тып дадання.",
       "coordinates_number": "увядзіце каардынаты ў выглядзе ліку",
       "fxml_error": "Памылка загрузкі файла FXML.",
-      "fxml_error_title": "ПАМЫЛКА FXML"
+      "fxml_error_title": "ПАМЫЛКА FXML",
+      "id_not_null": "ідэнтыфікатар павінен быць больш 0.",
+      "request_validation_not_success": "праверка прайшла няўдала.",
+      "password_not_null": "Пароль не можа быць нулявым або пустым."
     }
   },
   "es": {
@@ -540,7 +549,10 @@
       "adding_type_not_selected": " Debes elegir el tipo de adición.",
       "coordinates_number": " Introducir coordenadas como número.",
       "fxml_error": "Error al cargar el archivo FXML.",
-      "fxml_error_title": "Error de FXML"
+      "fxml_error_title": "Error de FXML",
+      "id_not_null": "El Id debe ser mayor que 0.",
+      "request_validation_not_success": "La validación no tuvo éxito.",
+      "password_not_null": "La contraseña no puede ser nula o vacía."
     }
   }
 }

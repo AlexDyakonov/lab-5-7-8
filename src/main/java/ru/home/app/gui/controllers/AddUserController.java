@@ -104,7 +104,7 @@ public class AddUserController implements Initializable {
         } catch (Exception e) {
             SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
                     getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
-            Logger.getLogger(AddUserController.class.getName()).log(Level.SEVERE, null, e); //TODO setup
+            Logger.getLogger(AddUserController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

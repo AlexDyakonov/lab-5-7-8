@@ -21,8 +21,7 @@ import java.util.logging.Logger;
 import static ru.home.app.server.services.LoggerManager.setupLogger;
 import static ru.home.app.server.validation.Validation.validate;
 import static ru.home.app.server.validation.Validation.validateFileWrite;
-import static ru.home.app.util.Message.getError;
-import static ru.home.app.util.Message.getWarning;
+import static ru.home.app.util.Message.*;
 
 /**
  * The type Human controller.
@@ -50,7 +49,7 @@ public class HumanControllerImpl implements HumanController {
         if (id <= 0) {
             throw new ValidationException(getError("id_more_than_zero", language));
         }
-        validate(id, Validation::validateId, "Message"); // TODO сделать тут полноценную валидацию на все методы
+        validate(id, Validation::validateId, getErrorMessagesGUI("id_not_null", language));
         return service.getHumanById(id);
     }
 
@@ -153,20 +152,20 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public Long addIfMax(HumanBeingRequestDTO request) {
-        validate(request, Validation::validateRequestDTO, "Error validation");
+        validate(request, Validation::validateRequestDTO, getErrorMessagesGUI("request_validation_not_success", language));
         long id = service.addIfMax(request);
         if (id < 0) {
-            throw new ValidationException("Not added. Element is not minimum.");
+            throw new ValidationException(getErrorMessagesGUI("hb_not_added_min", language));
         }
         return id;
     }
 
     @Override
     public Long addIfMin(HumanBeingRequestDTO request) {
-        validate(request, Validation::validateRequestDTO, "Error validation");
+        validate(request, Validation::validateRequestDTO, getErrorMessagesGUI("request_validation_not_success", language));
         long id = service.addIfMin(request);
         if (id < 0) {
-            throw new ValidationException("Not added. Element is not max.");
+            throw new ValidationException(getErrorMessagesGUI("hb_not_added_max", language));
         }
         return id;
     }
@@ -184,14 +183,14 @@ public class HumanControllerImpl implements HumanController {
 
     @Override
     public long userRegister(CurrentUserManager userManager, String password) {
-        validate(userManager.getUserName(), Validation::validateString, "message");
+        validate(userManager.getUserName(), Validation::validateString, getErrorMessagesGUI("name_not_null", language));
         return service.userRegister(userManager, password);
     }
 
     @Override
     public boolean checkUserPassword(String username, String password) {
-        validate(username, Validation::validateString, "Message");
-        validate(password, Validation::validatePassword, "Message");
+        validate(username, Validation::validateString, getErrorMessagesGUI("name_not_null", language));
+        validate(password, Validation::validatePassword, getErrorMessagesGUI("password_not_null", language));
         return service.checkUserPassword(username, password);
     }
 

@@ -320,7 +320,7 @@ public class HumanDaoPostgresImpl implements HumanDao {
 
             int affectedRows = preparedStatement1.executeUpdate();
             if (affectedRows == 0) {
-                throw new ApplicationException(getLog("user_not_registered")); // TODO fix message
+                throw new ApplicationException(getLog("user_not_registered"));
             }
             preparedStatement1.close();
 
