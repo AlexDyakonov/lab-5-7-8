@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 import static ru.home.app.util.Message.getLoginMessagesGUI;
+import static ru.home.app.util.Message.getSpecialMessagesGUI;
 import static ru.home.app.util.Parser.fromLocaleToLanguage;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
@@ -79,25 +80,27 @@ public class LoginController implements Initializable, Controller {
 
 
     private boolean checkFields() {
+        LANGUAGE language = localizationManager.getLanguage();
         if (!tf_username.getText().isBlank() && !pf_password.getText().isBlank()) {
-            label_error_msg.setText("Attempt to login.");
+            label_error_msg.setText(getLoginMessagesGUI("login_attempt", language));
             return true;
         }
         if (tf_username.getText().isBlank() || pf_password.getText().isBlank()) {
-            label_error_msg.setText("You should insert username and password.");
+            label_error_msg.setText(getLoginMessagesGUI("login_empty", language));
         }
         return false;
     }
 
     public void loginButtonOnAction(ActionEvent e) {
+        LANGUAGE language = localizationManager.getLanguage();
         if (checkFields()) {
             String username = tf_username.getText();
             if (controller.checkUserPassword(username, pf_password.getText())) {
                 userManager.configUserManager(username, controller);
-                label_error_msg.setText("Success!");
+                label_error_msg.setText(getLoginMessagesGUI("success", language));
                 new MainPageController(width, height, userManager, controller, localizationManager).launchMainScene(stage);
             } else {
-                label_error_msg.setText("Invalid username or password.");
+                label_error_msg.setText(getLoginMessagesGUI("login_invalid", language));
             }
         }
     }
@@ -107,11 +110,12 @@ public class LoginController implements Initializable, Controller {
     }
 
     public void closeButtonOnAction(ActionEvent e) {
-        if (showConfirmationDialog("Are you sure you want to leave?")) {
+        LANGUAGE language = localizationManager.getLanguage();
+        if (showConfirmationDialog(getSpecialMessagesGUI("exit_message", language), language)) {
             Stage stage = (Stage) close_button.getScene().getWindow();
             stage.close();
         } else {
-            stage.setAlwaysOnTop(true);
+            stage.setAlwaysOnTop(false);
         }
     }
 

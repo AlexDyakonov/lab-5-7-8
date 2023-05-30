@@ -17,15 +17,15 @@ import java.util.Optional;
 import static ru.home.app.util.Message.getSpecialMessagesGUI;
 
 public class SpecialWindows {
-    public static boolean showConfirmationDialog(String message) {
+    public static boolean showConfirmationDialog(String message, LANGUAGE language) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setTitle("Confirmation");
+        alert.setTitle(getSpecialMessagesGUI("confirmation_title", language));
         alert.setHeaderText(null);
         alert.setContentText(message);
 
-        ButtonType yesButton = new ButtonType("Yes");
-        ButtonType noButton = new ButtonType("No");
+        ButtonType yesButton = new ButtonType(getSpecialMessagesGUI("button_yes", language));
+        ButtonType noButton = new ButtonType(getSpecialMessagesGUI("button_no", language));
 
         alert.getButtonTypes().setAll(yesButton, noButton);
 

@@ -55,6 +55,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static ru.home.app.util.Message.getMainMessagesGUI;
+import static ru.home.app.util.Message.getSpecialMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class MainPageController implements Initializable {
@@ -514,7 +515,8 @@ public class MainPageController implements Initializable {
             SpecialWindows.deleteWindow(controller, localizationManager.getLanguage(), this);
         });
         mi_clear.setOnAction(event -> {
-            if (SpecialWindows.showConfirmationDialog("Are confirm deleting all your humanbeings?")) {
+            LANGUAGE language = localizationManager.getLanguage();
+            if (SpecialWindows.showConfirmationDialog(getSpecialMessagesGUI("clear_message", language), language)) {
                 try {
                     controller.clear();
                     label_error_msg.setText("");
@@ -572,7 +574,7 @@ public class MainPageController implements Initializable {
 
     private void setInfo() {
         label_nuber_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
-        label_all.setText("All(" + humanBeingResponseDTOwithUsersObservableList.size() + ")");
+        label_all.setText(label_all.getText().replace("%num%", String.valueOf(humanBeingResponseDTOwithUsersObservableList.size())));
         label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
     }
 

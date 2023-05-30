@@ -11,7 +11,11 @@
       "pf_password": "Password",
       "button_login": "Login now",
       "button_sign_up": "Join now!",
-      "mb_language": "Language"
+      "mb_language": "Language",
+      "login_attempt": "Attempt to login.",
+      "login_empty": "You should insert username and password.",
+      "success": "Success!",
+      "login_invalid": "Invalid username or password."
     },
     "register_page": {
     },
@@ -59,7 +63,12 @@
       "enter_id": "Enter id",
       "enter_id_warning": "Please enter ID",
       "delete_error": "Not found or not yours.",
-      "id_error": "It should be number"
+      "id_error": "It should be number",
+      "confirmation_title": "Confirmation",
+      "button_yes": "Yes",
+      "button_no": "No",
+      "exit_message": "Are you sure you want to leave?",
+      "clear_message" : "Are confirm deleting all your humanbeings?"
     }
   },
   "ru": {
@@ -110,7 +119,11 @@
       "mi_delete_by_id": "Удалить по id",
       "mi_clear": "Очистить",
       "mi_clear_all": "Очистить все",
-      "mb_delete": "УДАЛИТЬ"
+      "mb_delete": "УДАЛИТЬ",
+      "login_attempt": "Попытка входа.",
+      "login_empty": "Вам следует ввести имя пользователя и пароль.",
+      "success": "Успех!",
+      "login_invalid": "Неверное имя пользователя или пароль"
     },
     "add_page": {
     },
@@ -122,7 +135,12 @@
       "enter_id": "Введите id",
       "enter_id_warning": "Пожалуйста, введите id",
       "delete_error": "Не найдено или не ваше.",
-      "id_error": "Id должно быть числом."
+      "id_error": "Id должно быть числом.",
+      "confirmation_title": "Подтверждение",
+      "button_yes": "Да",
+      "button_no": "Нет",
+      "exit_message": "Вы уверены, что хотите уйти?",
+      "clear_message": "Подтверждаете удаление всех ваших пользователей?"
     }
   },
   "be": {
@@ -173,7 +191,11 @@
       "mi_delete_by_id": "выдаліць па id",
       "mi_clear": "ачысціць",
       "mi_clear_all": "Ачысціць ўсё",
-      "mb_delete": "ВЫДАЛІЦЬ"
+      "mb_delete": "ВЫДАЛІЦЬ",
+      "login_attempt": "спроба ўваходу.",
+      "login_empty": "Варта ўвесці імя карыстальніка і пароль.",
+      "success": "Поспех!",
+      "login_invalid": "Няправільнае імя карыстальніка або пароль"
     },
     "add_page": {
     },
@@ -185,7 +207,12 @@
       "enter_id": "увядзіце id",
       "enter_id_warning": "калі ласка, увядзіце id",
       "delete_error": "не знойдзена ці не ваша.",
-      "id_error": "гэта павінен быць нумар"
+      "id_error": "гэта павінен быць нумар",
+      "confirmation_title":"пацверджанне",
+      "button_yes":"так",
+      "button_no":"не",
+      "exit_message": "вы ўпэўненыя, што хочаце сысці?",
+      "clear_message": "пацвярджаеце выдаленне ўсіх вашых карыстальнікаў?"
     }
   },
   "es": {
@@ -236,7 +263,11 @@
       "mi_delete_by_id": "Eliminar por id",
       "mi_clear": "Borrar",
       "mi_clear_all": "Borrar todo",
-      "mb_delete": "ELIMINAR"
+      "mb_delete": "ELIMINAR",
+      "login_attempt": "Intento de inicio de sesión.",
+      "login_empty": "Debes insertar nombre de usuario y contraseña.",
+      "success": "¡Éxito!",
+      "login_invalid": "Nombre de usuario o contraseña no válidos."
     },
     "add_page": {
     },
@@ -248,7 +279,12 @@
       "enter_id": "Ingresar id",
       "enter_id_warning": "Por favor, introduzca el ID",
       "delete_error": "No encontrado o no es tuyo.",
-      "id_error": "Debería ser un número"
+      "id_error": "Debería ser un número",
+      "confirmation_title": "Confirmación",
+      "button_yes":"Sí",
+      "button_no":"No",
+      "exit_message": "¿Está seguro de que quiere irse?",
+      "clear_message": "¿confirm está borrando todos sus seres humanos?"
     }
   }
 }
