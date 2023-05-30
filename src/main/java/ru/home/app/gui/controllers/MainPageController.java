@@ -158,9 +158,11 @@ public class MainPageController implements Initializable {
         stage.setScene(scene);
 
         setLanguageInGui(localizationManager.getLanguage());
+        setInfo();
 
         label_role.setText(userManager.getUserRole().toString());
         label_nickname.setText(userManager.getUserName());
+
 
         stage.hide();
         stage.show();
@@ -541,13 +543,13 @@ public class MainPageController implements Initializable {
             }
         });
 
-        setInfo();
         mi_english.setOnAction(e -> {
             String text = mi_english.getText();
             LANGUAGE language = fromStringToLanguage(text);
             mb_language.setText(text);
             localizationManager.setLanguage(language);
             setLanguageInGui(language);
+            setInfo();
         });
         mi_russian.setOnAction(e -> {
             String text = mi_russian.getText();
@@ -555,6 +557,7 @@ public class MainPageController implements Initializable {
             mb_language.setText(text);
             localizationManager.setLanguage(language);
             setLanguageInGui(language);
+            setInfo();
         });
         mi_belorussian.setOnAction(e -> {
             String text = mi_belorussian.getText();
@@ -562,6 +565,7 @@ public class MainPageController implements Initializable {
             mb_language.setText(text);
             localizationManager.setLanguage(language);
             setLanguageInGui(language);
+            setInfo();
         });
         mi_spanish.setOnAction(e -> {
             String text = mi_spanish.getText();
@@ -569,6 +573,7 @@ public class MainPageController implements Initializable {
             mb_language.setText(text);
             localizationManager.setLanguage(language);
             setLanguageInGui(language);
+            setInfo();
         });
     }
 
@@ -590,11 +595,10 @@ public class MainPageController implements Initializable {
         label_nickname.setText(username);
         label_role.setText(userRole);
     }
-
     public void executeButtonOnAction(ActionEvent event) {
         try {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choose a script file");
+            fileChooser.setTitle(getMainMessagesGUI("execute", localizationManager.getLanguage()));
             try {
                 invoker.getCommandsMapManager().getCommandsMap().get("execute_script")
                         .execute(new String[]{"execute", fileChooser.showOpenDialog(null).getAbsolutePath()});
@@ -639,6 +643,7 @@ public class MainPageController implements Initializable {
 
     public void infoButtonOnAction(ActionEvent e) {
         label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
+        label_all.setText(label_all.getText().replace("%num%", String.valueOf(humanBeingResponseDTOwithUsersObservableList.size())));
         label_nuber_humanbeing.setText(String.valueOf(humanBeingResponseDTOwithUsersObservableList.size()));
     }
 

@@ -92,8 +92,8 @@
             </content>
         </ScrollPane>
         <TextField fx:id="sb_find_by_name" layoutX="787.0" layoutY="48.0" prefHeight="25.0" prefWidth="244.0" promptText="Search by name" style="-fx-background-radius: 15px;" />
-        <MenuButton fx:id="mb_delete" layoutX="526.0" layoutY="46.0" mnemonicParsing="false" prefHeight="28.0"
-                    prefWidth="96.0" style="-fx-background-color: F3CBC5; -fx-background-radius: 10; -fx-cursor: hand;"
+        <MenuButton fx:id="mb_delete" layoutX="517.0" layoutY="46.0" mnemonicParsing="false" prefHeight="28.0"
+                    prefWidth="118.0" style="-fx-background-color: F3CBC5; -fx-background-radius: 10; -fx-cursor: hand;"
                     text="DELETE">
             <items>
                 <MenuItem fx:id="mi_delete_by_id" mnemonicParsing="false" text="by ID"/>
@@ -155,7 +155,7 @@
             </font>
         </Button>
         <Button fx:id="button_create" layoutX="697.0" layoutY="16.0" mnemonicParsing="false"
-                onAction="#createButtonOnAction" text="create"/>
+                onAction="#createButtonOnAction" style="-fx-background-color: transperent; -fx-cursor: hand;"/>
         <MenuButton fx:id="mb_language" layoutX="137.0" layoutY="729.0" mnemonicParsing="false"
                     style="-fx-background-color: transperent; -fx-cursor: hand;" text="Language" textFill="#f3cbc5">
             <items>
