@@ -74,7 +74,7 @@ public class MapController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch catch(Exception e){
+        } catch(Exception e){
             SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
                     getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
         }

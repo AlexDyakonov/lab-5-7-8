@@ -6,16 +6,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import ru.home.app.server.controller.HumanController;
+import ru.home.app.server.controller.HumanControllerImpl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LocalizationManager {
+    private final HumanController controller;
     private LANGUAGE language;
 
-    public LocalizationManager(LANGUAGE language) {
+    public LocalizationManager(HumanController controller, LANGUAGE language) {
         this.language = language;
-
+        this.controller = controller;
     }
 
     public static Map<String, Label> collectLabels(Node node, Map<String, Label> labelMap) {
@@ -64,5 +67,6 @@ public class LocalizationManager {
 
     public void setLanguage(LANGUAGE language) {
         this.language = language;
+        controller.setLanguage(language);
     }
 }

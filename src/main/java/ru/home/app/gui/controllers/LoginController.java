@@ -55,9 +55,7 @@ public class LoginController implements Initializable {
         this.height = height;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/home/app/login-page.fxml"));
         fxmlLoader.setController(this);
-        LANGUAGE sysLang = (fromStringToLanguage(Locale.getDefault().getLanguage()));
-        controller.setLanguage(sysLang);
-        localizationManager.setLanguage(sysLang);
+        controller.setLanguage(localizationManager.getLanguage());
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);

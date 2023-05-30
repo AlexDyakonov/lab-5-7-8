@@ -3,6 +3,7 @@ package ru.home.app;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.home.app.gui.GraphicUI;
 import ru.home.app.gui.controllers.LoginController;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.commands.Invoker;
@@ -13,6 +14,9 @@ import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
+import java.util.Locale;
+
+import static ru.home.app.util.Parser.fromStringToLanguage;
 
 
 public class App extends Application {
@@ -22,7 +26,7 @@ public class App extends Application {
                 launch();
             }
             if (args[0].equals("-c")) {
-                ConsoleUI session = new ConsoleUI(new Invoker(BuilderType.CMD, LANGUAGE.RU));
+                ConsoleUI session = new ConsoleUI(new Invoker(BuilderType.CMD, fromStringToLanguage(Locale.getDefault().getLanguage())));
                 session.start();
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -32,11 +36,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        stage.setResizable(false);
-        stage.initStyle(StageStyle.UNDECORATED);
-        CurrentUserManager userManager = new CurrentUserManager();
-        LocalizationManager localizationManager = new LocalizationManager(LANGUAGE.EN);
-
-        new LoginController(1080, 768, userManager, new HumanControllerImpl(userManager), localizationManager).launchLoginScene(stage);
+        GraphicUI session = new GraphicUI();
+        session.start(stage);
     }
 }
