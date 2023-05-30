@@ -114,7 +114,23 @@
       "button_yes": "Yes",
       "button_no": "No",
       "exit_message": "Are you sure you want to leave?",
-      "clear_message" : "Are confirm deleting all your humanbeings?"
+      "clear_message": "Are confirm deleting all your humanbeings?"
+    },
+    "error": {
+      "name_not_null": "Name can not be null or empty",
+      "field_name_empty": "Input field name",
+      "coordinates_not_null": "Coordinates can not be null or empty",
+      "field_coordinates_empty": "Input field coordinates",
+      "field_car_empty": "Input field car name",
+      "speed_number": "Input impact speed as number",
+      "field_mood_empty": "Choose any mood",
+      "field_weapon_empty": "Choose any weapon",
+      "song_not_null": "Song can not be null or empty",
+      "field_song_empty": "Input field soundtrack",
+      "hb_not_added_min": "Element was not added. Not minimum",
+      "hb_not_added_max": "Element was not added. Not maximum",
+      "adding_type_not_selected": "You should choose type of adding.",
+      "coordinates_number": "Input coordinates as number."
     }
   },
   "ru": {
@@ -233,6 +249,22 @@
       "button_no": "Нет",
       "exit_message": "Вы уверены, что хотите уйти?",
       "clear_message": "Подтверждаете удаление всех ваших пользователей?"
+    },
+    "error": {
+      "name_not_null": "Имя не может быть нулевым или пустым",
+      "field_name_empty": "Имя поля ввода",
+      "coordinates_not_null": "Координаты не могут быть нулевыми или пустыми",
+      "field_coordinates_empty": "Координаты поля ввода",
+      "field_car_empty": "Название поля ввода автомобиля",
+      "speed_number": "Введите скорость удара как число",
+      "field_mood_empty": "Выберите любое настроение",
+      "field_weapon_empty": "Выберите любое оружие",
+      "song_not_null": "Песня не может быть нулевой или пустой",
+      "field_song_empty": "Поле ввода саундтрека",
+      "hb_not_added_min": "Элемент не был добавлен. Не минимальный",
+      "hb_not_added_max": "Элемент не был добавлен. Не максимальный",
+      "adding_type_not_selected": "Вы должны выбрать тип добавления.",
+      "coordinates_number": "Введите координаты в виде числа"
     }
   },
   "be": {
@@ -346,11 +378,27 @@
       "enter_id_warning": "калі ласка, увядзіце id",
       "delete_error": "не знойдзена ці не ваша.",
       "id_error": "гэта павінен быць нумар",
-      "confirmation_title":"пацверджанне",
-      "button_yes":"так",
-      "button_no":"не",
+      "confirmation_title": "пацверджанне",
+      "button_yes": "так",
+      "button_no": "не",
       "exit_message": "вы ўпэўненыя, што хочаце сысці?",
       "clear_message": "пацвярджаеце выдаленне ўсіх вашых карыстальнікаў?"
+    },
+    "error": {
+      "name_not_null": "імя не можа быць нулявым або пустым",
+      "field_name_empty": "імя поля ўводу",
+      "coordinates_not_null": "каардынаты не могуць быць нулявымі або пустымі",
+      "Field_coordinates_empty": "каардынаты поля ўводу",
+      "field_car_empty": "назва поля ўводу аўтамабіля",
+      "speed_number": "увядзіце хуткасць ўдару як лік",
+      "field_mood_empty": "Абярыце любы настрой",
+      "field_weapon_empty": "абярыце любую зброю",
+      "song_not_null": "Песня не можа быць нулявы або пусты",
+      "field_song_empty": "поле ўводу саўндтрэку",
+      "hb_not_added_min": "Элемент не быў дададзены. Не мінімальны",
+      "hb_not_added_max": "Элемент не быў дададзены. Не максімальны",
+      "adding_type_not_selected": "вы павінны выбраць тып дадання.",
+      "coordinates_number": "увядзіце каардынаты ў выглядзе ліку"
     }
   },
   "es": {
@@ -465,10 +513,26 @@
       "delete_error": "No encontrado o no es tuyo.",
       "id_error": "Debería ser un número",
       "confirmation_title": "Confirmación",
-      "button_yes":"Sí",
-      "button_no":"No",
+      "button_yes": "Sí",
+      "button_no": "No",
       "exit_message": "¿Está seguro de que quiere irse?",
       "clear_message": "¿confirm está borrando todos sus seres humanos?"
+    },
+    "error": {
+      "name_not_null": "El nombre no puede ser nulo o vacío",
+      "field_name_empty": "Nombre del campo de entrada",
+      "coordinates_not_null": "Las coordenadas no pueden ser nulas o vacías",
+      "field_coordinates_empty": "Coordenadas de campo de entrada",
+      "field_car_empty": "Nombre del coche del campo de entrada",
+      "speed_number": "Velocidad de impacto de entrada como número",
+      "field_mood_empty": "Elige cualquier estado de ánimo",
+      "field_weapon_empty": "Elige cualquier arma",
+      "song_not_null": "La canción no puede ser nula o vacía",
+      "field_song_empty": "Banda sonora del campo de entrada",
+      "hb_not_added_min": "No se agregó el elemento. No mínimo",
+      "hb_not_added_max": "No se agregó el elemento. No máximo",
+      "adding_type_not_selected": " Debes elegir el tipo de adición.",
+      "coordinates_number": " Introducir coordenadas como número."
     }
   }
 }

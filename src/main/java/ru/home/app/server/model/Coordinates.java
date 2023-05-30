@@ -1,10 +1,12 @@
 package ru.home.app.server.model;
 
 import ru.home.app.server.exception.ValidationException;
+import ru.home.app.util.language.LANGUAGE;
 
 import java.util.Objects;
 
 import static ru.home.app.ui.ConsoleColors.error;
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 
 /**
  * The type Coordinates.
@@ -30,12 +32,12 @@ public class Coordinates {
         this.y = Objects.requireNonNull(y);
     }
 
-    public Coordinates(String x, String y) {
+    public Coordinates(String x, String y, LANGUAGE language) {
         try {
             this.x = Integer.parseInt(x);
             this.y = Double.parseDouble(y);
         } catch (NumberFormatException e) {
-            throw new ValidationException("Should be numbers");
+            throw new ValidationException(getErrorMessagesGUI("coordinates_number", language));
         }
     }
 

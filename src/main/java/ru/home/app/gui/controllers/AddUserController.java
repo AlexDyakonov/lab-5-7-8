@@ -34,6 +34,7 @@ import java.util.stream.IntStream;
 
 import static ru.home.app.server.validation.Validation.validate;
 import static ru.home.app.util.Message.getAddMessagesGUI;
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Parser.stringToMood;
 import static ru.home.app.util.Parser.stringToWeaponType;
 
@@ -126,23 +127,23 @@ public class AddUserController implements Initializable {
         mainPageController.configAfterAdd();
     }
 
-    private String getHumanNameFromTF() {
+    private String getHumanNameFromTF(LANGUAGE language) {
         try {
             String name = tf_hb_name.getText();
-            validate(name, Validation::validateString, "Name null error");
+            validate(name, Validation::validateString, getErrorMessagesGUI("name_not_null", language));
             return name;
         } catch (NullPointerException e) {
-            throw new ValidationException("Input fields name");
+            throw new ValidationException(getErrorMessagesGUI("field_name_empty", language));
         }
     }
 
-    private Coordinates getHumanCoordinatesFromTF() {
+    private Coordinates getHumanCoordinatesFromTF(LANGUAGE language) {
         try {
-            Coordinates coordinates = new Coordinates(tf_coord_x.getText(), tf_coord_y.getText());
-            validate(coordinates, Validation::validateCoordinates, "null error");
+            Coordinates coordinates = new Coordinates(tf_coord_x.getText(), tf_coord_y.getText(), language);
+            validate(coordinates, Validation::validateCoordinates, getErrorMessagesGUI("coordinates_not_null", language));
             return coordinates;
         } catch (NullPointerException e) {
-            throw new ValidationException("Input fields coordinates");
+            throw new ValidationException(getErrorMessagesGUI("field_coordinates_empty", language));
         }
     }
 
@@ -158,66 +159,67 @@ public class AddUserController implements Initializable {
         return rb_car_cool.isSelected();
     }
 
-    private String getCarNameFromTF() {
+    private String getCarNameFromTF(LANGUAGE language) {
         try {
             String name = tf_car_name.getText();
-            validate(name, Validation::validateString, "Name null error");
+            validate(name, Validation::validateString, getErrorMessagesGUI("name_not_null", language));
             return name;
         } catch (NullPointerException e) {
-            throw new ValidationException("Input fields car");
+            throw new ValidationException(getErrorMessagesGUI("field_car_empty", language));
         }
     }
 
-    private Car getCarFromTF() {
-        return new Car(getCarNameFromTF(), getCarCoolFromTF());
+    private Car getCarFromTF(LANGUAGE language) {
+        return new Car(getCarNameFromTF(language), getCarCoolFromTF());
     }
 
-    private Float getSpeedFromTF() {
+    private Float getSpeedFromTF(LANGUAGE language) {
         try {
             return Float.parseFloat(tf_speed.getText());
         } catch (NumberFormatException e) {
-            throw new ValidationException("Speed Should be numbers");
+            throw new ValidationException(getErrorMessagesGUI("speed_number", language));
         }
     }
 
-    private Mood getMoodFromTF() {
+    private Mood getMoodFromTF(LANGUAGE language) {
         try {
             return stringToMood(Parser.moodToStringArray(LANGUAGE.EN)
                     [IntStream.range(0, moods.length).filter(i -> Objects.equals(moods[i], cb_mood.getValue())).findFirst().orElse(-1)]);
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-            throw new ValidationException("Input fields mood");
+            throw new ValidationException(getErrorMessagesGUI("field_mood_empty", language));
         }
     }
 
-    private WeaponType getWeaponFromTF() {
+    private WeaponType getWeaponFromTF(LANGUAGE language) {
         try {
-            return stringToWeaponType(Parser.weaponToStringArray(LANGUAGE.EN)[IntStream.range(0, weapons.length).filter(i -> Objects.equals(weapons[i], cb_weapon.getValue())).findFirst().orElse(-1)]);
+            return stringToWeaponType(Parser.weaponToStringArray(LANGUAGE.EN)
+                    [IntStream.range(0, weapons.length).filter(i -> Objects.equals(weapons[i], cb_weapon.getValue())).findFirst().orElse(-1)]);
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-            throw new ValidationException("Input fields weapon");
+            throw new ValidationException(getErrorMessagesGUI("field_weapon_empty", language));
         }
     }
 
-    private String getSoundtrackFromTF() {
+    private String getSoundtrackFromTF(LANGUAGE language) {
         try {
             String name = tf_song.getText();
-            validate(name, Validation::validateString, "Name null error");
+            validate(name, Validation::validateString, getErrorMessagesGUI("song_not_null", language));
             return name;
         } catch (NullPointerException e) {
-            throw new ValidationException("Input fields soundtrack");
+            throw new ValidationException(getErrorMessagesGUI("field_song_empty", language));
         }
     }
 
-    private HumanBeingRequestDTO getHumanFromFields() {
+    private HumanBeingRequestDTO getHumanFromFields(LANGUAGE language) {
         HumanBeingRequestDTO humanBeingRequestDTO = new HumanBeingRequestDTO();
-        humanBeingRequestDTO.setName(getHumanNameFromTF());
-        humanBeingRequestDTO.setCoordinates(getHumanCoordinatesFromTF());
+        humanBeingRequestDTO.setName(getHumanNameFromTF(language));
+        humanBeingRequestDTO.setCoordinates(getHumanCoordinatesFromTF(language));
         humanBeingRequestDTO.setRealHero(getRealHeroFromTF());
         humanBeingRequestDTO.setHasToothpick(getHasToothpickFromTF());
-        humanBeingRequestDTO.setImpactSpeed(getSpeedFromTF());
-        humanBeingRequestDTO.setMood(getMoodFromTF());
-        humanBeingRequestDTO.setWeaponType(getWeaponFromTF());
-        humanBeingRequestDTO.setCar(getCarFromTF());
-        humanBeingRequestDTO.setSoundtrackName(getSoundtrackFromTF());
+        humanBeingRequestDTO.setImpactSpeed(getSpeedFromTF(language));
+        humanBeingRequestDTO.setMood(getMoodFromTF(language));
+        humanBeingRequestDTO.setWeaponType(getWeaponFromTF(language));
+        humanBeingRequestDTO.setCar(getCarFromTF(language));
+        humanBeingRequestDTO.setSoundtrackName(getSoundtrackFromTF(language));
         return humanBeingRequestDTO;
     }
 
@@ -231,33 +233,38 @@ public class AddUserController implements Initializable {
         if (rb_if_max.isSelected()) {
             return AddType.ADD_IF_MAX;
         }
-        throw new ValidationException("You should choose type of adding.");
+        throw new ValidationException(getErrorMessagesGUI("adding_type_not_selected", localizationManager.getLanguage()));
     }
 
     public void sumbitButtonOnAction(ActionEvent e) {
         try {
             long id;
-            HumanBeingRequestDTO human = getHumanFromFields();
+            LANGUAGE currLanguage = localizationManager.getLanguage();
+            HumanBeingRequestDTO human = getHumanFromFields(currLanguage);
             switch (checkTypeOfAdd()) {
                 case NONE -> {
                     id = controller.createHuman(human);
                     mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
                 }
                 case ADD_IF_MAX -> {
-                    id = controller.addIfMax(human); //TODO check -1L -> valid not max/min
+                    id = controller.addIfMax(human);
                     if (id != -1L) {
                         mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                        mainPageController.configAfterAdd();
+                        stage.close();
                     }
+                    label_error_msg.setText(getErrorMessagesGUI("hb_not_added_max", currLanguage));
                 }
                 case ADD_IF_MIN -> {
                     id = controller.addIfMin(human);
                     if (id != -1L) {
                         mainPageController.addHumanToTable(controller.getHumanWithUserById(id));
+                        mainPageController.configAfterAdd();
+                        stage.close();
                     }
+                    label_error_msg.setText(getErrorMessagesGUI("hb_not_added_min", currLanguage));
                 }
             }
-            mainPageController.configAfterAdd();
-            stage.close();
         } catch (ValidationException ex) {
             label_error_msg.setText(ex.getMessage());
         }

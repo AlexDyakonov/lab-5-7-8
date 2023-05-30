@@ -41,7 +41,7 @@
          </font>
       </RadioButton>
       <RadioButton fx:id="rb_none" layoutX="307.0" layoutY="82.0" mnemonicParsing="false" prefHeight="28.0"
-                   prefWidth="69.0" text="NONE" toggleGroup="$how_to_add">
+                   prefWidth="98.0" text="NONE" toggleGroup="$how_to_add">
          <font>
             <Font name="Roboto Bold" size="12.0"/>
          </font>
@@ -116,8 +116,8 @@
       </Label>
       <TextField fx:id="tf_coord_y" layoutX="223.0" layoutY="193.0" prefHeight="35.0" prefWidth="127.0"
                  promptText="Input y" style="-fx-background-radius: 7;"/>
-      <Label fx:id="label_error_msg" alignment="CENTER" layoutX="106.0" layoutY="550.0" prefHeight="17.0"
-             prefWidth="211.0" textFill="RED">
+      <Label fx:id="label_error_msg" alignment="CENTER" layoutX="40.0" layoutY="550.0" prefHeight="17.0"
+             prefWidth="349.0" textFill="RED">
          <font>
             <Font name="Roboto Bold" size="12.0"/>
          </font>
