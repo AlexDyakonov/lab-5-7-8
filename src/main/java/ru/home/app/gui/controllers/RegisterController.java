@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.controller.HumanController;
@@ -22,10 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Message.getRegisterMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
-//TODO fix.
 public class RegisterController implements Initializable {
     private final HumanController humanController;
     private final CurrentUserManager userManager;
@@ -67,8 +68,9 @@ public class RegisterController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, width, height);
-        } catch (IOException e) {
-            //TODO обработать
+        } catch (Exception e) {
+            SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
+                    getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
         }
     }
 

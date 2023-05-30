@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.ValidationException;
@@ -101,8 +102,9 @@ public class AddUserController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
+                    getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
             Logger.getLogger(AddUserController.class.getName()).log(Level.SEVERE, null, e); //TODO setup
         }
     }

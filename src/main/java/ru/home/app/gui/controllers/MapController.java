@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.gui.utility.StickMan;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
@@ -26,6 +27,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Message.getMapMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
@@ -73,8 +75,9 @@ public class MapController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch catch (Exception e) {
+            SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
+                    getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
         }
     }
 

@@ -97,5 +97,20 @@ public class SpecialWindows {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public static void showError(String errorMessage, String title) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR, errorMessage, ButtonType.OK);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
+
+        alert.showAndWait();
+
+        stage.close();
+        System.exit(1);
+    }
 }
 

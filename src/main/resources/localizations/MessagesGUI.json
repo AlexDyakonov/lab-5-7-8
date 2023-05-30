@@ -130,7 +130,9 @@
       "hb_not_added_min": "Element was not added. Not minimum",
       "hb_not_added_max": "Element was not added. Not maximum",
       "adding_type_not_selected": "You should choose type of adding.",
-      "coordinates_number": "Input coordinates as number."
+      "coordinates_number": "Input coordinates as number.",
+      "fxml_error": "FXML loading file error.",
+      "fxml_error_title": "FXML error"
     }
   },
   "ru": {
@@ -264,7 +266,9 @@
       "hb_not_added_min": "Элемент не был добавлен. Не минимальный",
       "hb_not_added_max": "Элемент не был добавлен. Не максимальный",
       "adding_type_not_selected": "Вы должны выбрать тип добавления.",
-      "coordinates_number": "Введите координаты в виде числа"
+      "coordinates_number": "Введите координаты в виде числа",
+      "fxml_error": "Ошибка загрузки файла FXML.",
+      "fxml_error_title": "Ошибка FXML"
     }
   },
   "be": {
@@ -398,7 +402,9 @@
       "hb_not_added_min": "Элемент не быў дададзены. Не мінімальны",
       "hb_not_added_max": "Элемент не быў дададзены. Не максімальны",
       "adding_type_not_selected": "вы павінны выбраць тып дадання.",
-      "coordinates_number": "увядзіце каардынаты ў выглядзе ліку"
+      "coordinates_number": "увядзіце каардынаты ў выглядзе ліку",
+      "fxml_error": "Памылка загрузкі файла FXML.",
+      "fxml_error_title": "ПАМЫЛКА FXML"
     }
   },
   "es": {
@@ -532,7 +538,9 @@
       "hb_not_added_min": "No se agregó el elemento. No mínimo",
       "hb_not_added_max": "No se agregó el elemento. No máximo",
       "adding_type_not_selected": " Debes elegir el tipo de adición.",
-      "coordinates_number": " Introducir coordenadas como número."
+      "coordinates_number": " Introducir coordenadas como número.",
+      "fxml_error": "Error al cargar el archivo FXML.",
+      "fxml_error_title": "Error de FXML"
     }
   }
 }

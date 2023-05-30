@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.util.language.LANGUAGE;
@@ -21,8 +22,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
-import static ru.home.app.util.Message.getLoginMessagesGUI;
-import static ru.home.app.util.Message.getSpecialMessagesGUI;
+import static ru.home.app.util.Message.*;
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class LoginController implements Initializable, Controller {
@@ -62,9 +63,10 @@ public class LoginController implements Initializable, Controller {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch (IOException ex) {
-            System.out.println("Error displaying login window");
-            throw new RuntimeException(ex);
+        } catch (Exception e) {
+            SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
+                    getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
+            throw new RuntimeException();
         }
     }
 

@@ -54,8 +54,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import static ru.home.app.util.Message.getMainMessagesGUI;
-import static ru.home.app.util.Message.getSpecialMessagesGUI;
+import static ru.home.app.util.Message.*;
+import static ru.home.app.util.Message.getErrorMessagesGUI;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class MainPageController implements Initializable {
@@ -141,8 +141,9 @@ public class MainPageController implements Initializable {
         try {
             parent = fxmlLoader.load();
             scene = new Scene(parent, this.width, this.height);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            SpecialWindows.showError(getErrorMessagesGUI("fxml_error", localizationManager.getLanguage()) + "\n" + e.getMessage(),
+                    getErrorMessagesGUI("fxml_error_title", localizationManager.getLanguage()));
         }
     }
 
@@ -683,7 +684,7 @@ public class MainPageController implements Initializable {
     @FXML
     private Button button_execute_script;
 
-    private void setLanguageInGui(LANGUAGE language) { //todo оптимизировать, сделав один запрос в файл с возвратом HashMap (key -- id, value -- строчка нужног языка)
+    private void setLanguageInGui(LANGUAGE language) {
         Map<String, Label> labels = new HashMap<>();
         LocalizationManager.collectLabels(parent, labels);
         for (Map.Entry<String, Label> entry : labels.entrySet()) {
