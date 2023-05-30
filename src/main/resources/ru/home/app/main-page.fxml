@@ -27,7 +27,7 @@
                 <Font name="Roboto" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="label_all" layoutX="267.0" layoutY="42.0" prefHeight="36.0" prefWidth="66.0" text="All(0)"
+        <Label fx:id="label_all" layoutX="267.0" layoutY="42.0" prefHeight="36.0" prefWidth="95.0" text="All(0)"
                textFill="#343a40">
             <font>
                 <Font name="Roboto" size="15.0"/>
