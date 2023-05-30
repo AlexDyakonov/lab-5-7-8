@@ -18,6 +18,17 @@
       "login_invalid": "Invalid username or password."
     },
     "register_page": {
+      "label_error_msg": "",
+      "label_error_msg1": "",
+      "label_register": "Register",
+      "label_username": "Username",
+      "label_password": "Password",
+      "label_choose": "Choose your avatar",
+      "label_member": "Already a member?",
+      "button_sign_up": "Sign up",
+      "button_log_in": "Log in!",
+      "tf_username": "Username",
+      "pf_password": "Password"
     },
     "main_page": {
       "label_nickname": "",
@@ -86,6 +97,17 @@
       "mb_language": "Язык"
     },
     "register_page": {
+      "label_error_msg": "",
+      "label_error_msg1": "",
+      "label_register": "Зарегистрироваться",
+      "label_username": "Имя пользователя",
+      "label_password": "Пароль",
+      "label_choose": "Выберите свой аватар",
+      "label_member": "Уже участник?",
+      "button_sign_up": "Зарегистрируйтесь",
+      "button_log_in": "Войдите в систему!",
+      "tf_username": "Имя пользователя",
+      "pf_password": "Пароль"
     },
     "main_page": {
       "label_nickname": "",
@@ -158,6 +180,17 @@
       "mb_language": "Мова"
     },
     "register_page": {
+      "label_error_msg": "",
+      "label_error_msg1": "",
+      "label_register": "Зарэгістравацца",
+      "label_username": "імя карыстальніка",
+      "label_password": "Пароль",
+      "label_choose": "Выберыце свой аватар",
+      "label_member": "Ужо ўдзельнікам?",
+      "button_sign_up": "Зарэгіструйцеся",
+      "button_log_in": "Увайдзіце ў сістэму!",
+      "tf_username": "імя карыстальніка",
+      "pf_password": "Пароль"
     },
     "main_page": {
       "label_nickname": "",
@@ -230,6 +263,17 @@
       "mb_language": "Idioma"
     },
     "register_page": {
+      "label_error_msg": "",
+      "label_error_msg1": "",
+      "label_register": "Registrar",
+      "label_username": "Nombre de usuario",
+      "label_password": "Contraseña",
+      "label_choose": "Elige tu avatar",
+      "label_member": "¿Ya eres miembro?",
+      "button_sign_up": "Registrarse",
+      "button_log_in": "Iniciar sesión!",
+      "tf_username": "Nombre de usuario",
+      "pf_password": "Contraseña"
     },
     "main_page": {
       "label_nickname": "",

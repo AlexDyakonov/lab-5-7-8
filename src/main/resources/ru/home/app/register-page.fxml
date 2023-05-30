@@ -15,17 +15,20 @@
                         <Image url="@assets/login.png"/>
                     </image>
                 </ImageView>
-                <Label layoutX="719.0" layoutY="64.0" text="Register here">
+                <Label fx:id="label_register" alignment="CENTER" layoutX="652.0" layoutY="64.0" prefHeight="35.0"
+                       prefWidth="285.0" text="Register here">
                     <font>
                         <Font name="Roboto Bold" size="29.0"/>
                     </font>
                 </Label>
-                <Label layoutX="726.0" layoutY="351.0" text="Choose your avatar" textFill="#5e5e5e">
+                <Label fx:id="label_choose" alignment="CENTER" layoutX="651.0" layoutY="351.0" prefHeight="19.0"
+                       prefWidth="297.0" text="Choose your avatar" textFill="#5e5e5e">
                     <font>
                         <Font name="Roboto" size="15.0"/>
                     </font>
                 </Label>
-                <Label layoutX="713.0" layoutY="722.0" text="Already a member?" textFill="#5e5e5e">
+                <Label fx:id="label_member" layoutX="649.0" layoutY="722.0" prefHeight="15.0" prefWidth="175.0"
+                       text="Already a member?" textFill="#5e5e5e">
                     <font>
                         <Font name="Roboto" size="12.0"/>
                     </font>
@@ -37,15 +40,16 @@
                         <Font name="Roboto Bold" size="15.0"/>
                     </font>
                 </Button>
-                <Button fx:id="button_log_in" layoutX="818.0" layoutY="717.0" mnemonicParsing="false"
-                        onAction="#loginButtonOnAction" style="-fx-cursor: hand; -fx-background-color: transparent;"
-                        text="Log in!" textFill="#0009ff" underline="true"/>
-                <Label layoutX="674.0" layoutY="138.0" text="Username" textFill="#5e5e5e">
+                <Button fx:id="button_log_in" layoutX="822.0" layoutY="717.0" mnemonicParsing="false"
+                        onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="143.0"
+                        style="-fx-cursor: hand; -fx-background-color: transparent;" text="Log in!" textFill="#0009ff"
+                        underline="true"/>
+                <Label fx:id="label_username" layoutX="674.0" layoutY="138.0" text="Username" textFill="#5e5e5e">
                     <font>
                         <Font name="Roboto" size="16.0"/>
                     </font>
                 </Label>
-                <Label layoutX="675.0" layoutY="218.0" text="Password" textFill="#5e5e5e">
+                <Label fx:id="label_password" layoutX="675.0" layoutY="218.0" text="Password" textFill="#5e5e5e">
                     <font>
                         <Font name="Roboto" size="16.0"/>
                     </font>
@@ -103,6 +107,15 @@
                         <Font name="Roboto" size="14.0"/>
                     </font>
                 </Label>
+                <MenuButton fx:id="mb_language" layoutX="980.0" layoutY="717.0" mnemonicParsing="false"
+                            style="-fx-background-color: transperent;" text="Language">
+                    <items>
+                        <MenuItem fx:id="mi_english" mnemonicParsing="false" text="English"/>
+                        <MenuItem fx:id="mi_russian" mnemonicParsing="false" text="Русский"/>
+                        <MenuItem fx:id="mi_belorussian" mnemonicParsing="false" text="Беларускі"/>
+                        <MenuItem fx:id="mi_spanish" mnemonicParsing="false" text="Español"/>
+                    </items>
+                </MenuButton>
             </children>
         </AnchorPane>
     </children>

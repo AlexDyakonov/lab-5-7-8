@@ -3,6 +3,7 @@ package ru.home.app.gui.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,12 +13,20 @@ import ru.home.app.server.authentication.ROLES;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.exception.AuthenticationException;
 import ru.home.app.server.exception.ValidationException;
+import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+
+import static ru.home.app.util.Message.getRegisterMessagesGUI;
+import static ru.home.app.util.Parser.fromStringToLanguage;
 
 //TODO fix.
-public class RegisterController {
+public class RegisterController implements Initializable {
     private final HumanController humanController;
     private final CurrentUserManager userManager;
     private final LocalizationManager localizationManager;
@@ -63,9 +72,54 @@ public class RegisterController {
         }
     }
 
+    @FXML
+    private MenuButton mb_language;
+    @FXML
+    private MenuItem mi_english;
+    @FXML
+    private MenuItem mi_russian;
+    @FXML
+    private MenuItem mi_belorussian;
+    @FXML
+    private MenuItem mi_spanish;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mi_english.setOnAction(e -> {
+            String text = mi_english.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_russian.setOnAction(e -> {
+            String text = mi_russian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_belorussian.setOnAction(e -> {
+            String text = mi_belorussian.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+        mi_spanish.setOnAction(e -> {
+            String text = mi_spanish.getText();
+            LANGUAGE language = fromStringToLanguage(text);
+            mb_language.setText(text);
+            localizationManager.setLanguage(language);
+            setLanguageInGui(language);
+        });
+    }
+
     public void launchRegisterScene(Stage stage) {
         this.stage = stage;
         stage.setScene(scene);
+
+        setLanguageInGui(localizationManager.getLanguage());
 
         stage.hide();
         stage.show();
@@ -130,5 +184,17 @@ public class RegisterController {
 
     public CurrentUserManager getUserManager() {
         return userManager;
+    }
+
+    private void setLanguageInGui(LANGUAGE language) {
+        Map<String, Label> labels = new HashMap<>();
+        LocalizationManager.collectLabels(parent, labels);
+        for (Map.Entry<String, Label> entry : labels.entrySet()) {
+            entry.getValue().setText(getRegisterMessagesGUI(entry.getKey(), language));
+        }
+        tf_username.setPromptText(getRegisterMessagesGUI(tf_username.getId(), language));
+        pf_password.setPromptText(getRegisterMessagesGUI(pf_password.getId(), language));
+        button_sign_up.setText(getRegisterMessagesGUI(button_sign_up.getId(), language));
+        button_log_in.setText(getRegisterMessagesGUI(button_log_in.getId(), language));
     }
 }
