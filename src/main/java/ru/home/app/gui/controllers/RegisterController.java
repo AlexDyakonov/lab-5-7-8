@@ -192,6 +192,7 @@ public class RegisterController implements Initializable {
         for (Map.Entry<String, Label> entry : labels.entrySet()) {
             entry.getValue().setText(getRegisterMessagesGUI(entry.getKey(), language));
         }
+        mb_language.setText(getRegisterMessagesGUI(mb_language.getId(), language));
         tf_username.setPromptText(getRegisterMessagesGUI(tf_username.getId(), language));
         pf_password.setPromptText(getRegisterMessagesGUI(pf_password.getId(), language));
         button_sign_up.setText(getRegisterMessagesGUI(button_sign_up.getId(), language));

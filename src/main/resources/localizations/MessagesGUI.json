@@ -28,7 +28,8 @@
       "button_sign_up": "Sign up",
       "button_log_in": "Log in!",
       "tf_username": "Username",
-      "pf_password": "Password"
+      "pf_password": "Password",
+      "mb_language": "Language"
     },
     "main_page": {
       "label_nickname": "",
@@ -107,7 +108,8 @@
       "button_sign_up": "Зарегистрируйтесь",
       "button_log_in": "Войдите в систему!",
       "tf_username": "Имя пользователя",
-      "pf_password": "Пароль"
+      "pf_password": "Пароль",
+      "mb_language": "Язык"
     },
     "main_page": {
       "label_nickname": "",
@@ -190,7 +192,8 @@
       "button_sign_up": "Зарэгіструйцеся",
       "button_log_in": "Увайдзіце ў сістэму!",
       "tf_username": "імя карыстальніка",
-      "pf_password": "Пароль"
+      "pf_password": "Пароль",
+      "mb_language": "Мова"
     },
     "main_page": {
       "label_nickname": "",
@@ -273,7 +276,8 @@
       "button_sign_up": "Registrarse",
       "button_log_in": "Iniciar sesión!",
       "tf_username": "Nombre de usuario",
-      "pf_password": "Contraseña"
+      "pf_password": "Contraseña",
+      "mb_language": "Idioma"
     },
     "main_page": {
       "label_nickname": "",

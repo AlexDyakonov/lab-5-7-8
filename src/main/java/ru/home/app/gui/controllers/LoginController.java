@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 import static ru.home.app.gui.utility.SpecialWindows.showConfirmationDialog;
 import static ru.home.app.util.Message.getLoginMessagesGUI;
 import static ru.home.app.util.Message.getSpecialMessagesGUI;
-import static ru.home.app.util.Parser.fromLocaleToLanguage;
 import static ru.home.app.util.Parser.fromStringToLanguage;
 
 public class LoginController implements Initializable, Controller {
@@ -186,6 +185,7 @@ public class LoginController implements Initializable, Controller {
         for (Map.Entry<String, Label> entry : labels.entrySet()) {
             entry.getValue().setText(getLoginMessagesGUI(entry.getKey(), language));
         }
+        mb_language.setText(getLoginMessagesGUI(mb_language.getId(), language));
         tf_username.setPromptText(getLoginMessagesGUI(tf_username.getId(), language));
         pf_password.setPromptText(getLoginMessagesGUI(pf_password.getId(), language));
         button_login.setText(getLoginMessagesGUI(button_login.getId(), language));
