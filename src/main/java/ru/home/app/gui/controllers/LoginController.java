@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.server.authentication.CurrentUserManager;
@@ -14,6 +16,7 @@ import ru.home.app.server.controller.HumanController;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
+import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
@@ -93,6 +96,9 @@ public class LoginController implements Initializable {
         if (checkFields()) {
             String username = tf_username.getText();
             if (controller.checkUserPassword(username, pf_password.getText())) {
+                Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/login.mp3").toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
                 userManager.configUserManager(username, controller);
                 label_error_msg.setText(getLoginMessagesGUI("success", language));
                 new MainPageController(width, height, userManager, controller, localizationManager).launchMainScene(stage);
@@ -108,6 +114,9 @@ public class LoginController implements Initializable {
 
     public void closeButtonOnAction(ActionEvent e) {
         LANGUAGE language = localizationManager.getLanguage();
+        Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/exit.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         if (showConfirmationDialog(getSpecialMessagesGUI("exit_message", language), language)) {
             Stage stage = (Stage) close_button.getScene().getWindow();
             stage.close();

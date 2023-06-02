@@ -531,11 +531,11 @@ public class MainPageController implements Initializable {
             }
         });
         mi_clear_all.setOnAction(event -> {
+            Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/clear_all.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
             if (userManager.getUserRole().equals(ROLES.ADMIN)) {
                 try {
-                    Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/clear_all.mp3").toURI().toString());
-                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
-                    mediaPlayer.play();
                     controller.clearAll();
                     label_error_msg.setText("");
                     updateTable();
