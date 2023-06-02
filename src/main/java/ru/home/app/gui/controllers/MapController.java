@@ -12,7 +12,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import ru.home.app.gui.utility.SpecialWindows;
 import ru.home.app.gui.utility.StickMan;
@@ -22,6 +25,7 @@ import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
+import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
@@ -113,7 +117,8 @@ public class MapController implements Initializable {
     private MenuItem mi_belorussian;
     @FXML
     private MenuItem mi_spanish;
-
+    @FXML
+    private AnchorPane ap_main;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
@@ -182,6 +187,11 @@ public class MapController implements Initializable {
             setLanguageInGui(language);
             setInfo();
         });
+        ap_main.setOnMouseClicked(e ->{
+            Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/on_click.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        });
     }
 
     @FXML
@@ -189,16 +199,16 @@ public class MapController implements Initializable {
     @FXML
     private Label label_number_users;
     @FXML
-    private Label label_humanbeing;
+    private Label label_nuber_humanbeing;
 
     public void infoButtonOnAction(ActionEvent e) {
         label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
-        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
+        label_nuber_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
         label_all.setText(label_all.getText().replace("%num%", String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size())));
     }
 
     private void setInfo() {
-        label_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
+        label_nuber_humanbeing.setText(String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size()));
         label_number_users.setText(String.valueOf(controller.getUserNameList().size()));
         label_all.setText(label_all.getText().replace("%num%", String.valueOf(mainPageController.humanBeingResponseDTOwithUsersObservableList.size())));
     }

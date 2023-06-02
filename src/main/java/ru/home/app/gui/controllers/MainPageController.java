@@ -21,6 +21,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
@@ -46,6 +48,7 @@ import ru.home.app.util.ScriptCreator;
 import ru.home.app.util.language.LANGUAGE;
 import ru.home.app.util.language.LocalizationManager;
 
+import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
@@ -530,6 +533,9 @@ public class MainPageController implements Initializable {
         mi_clear_all.setOnAction(event -> {
             if (userManager.getUserRole().equals(ROLES.ADMIN)) {
                 try {
+                    Media sound = new Media(new File("src/main/resources/ru/home/app/sounds/clear_all.mp3").toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                    mediaPlayer.play();
                     controller.clearAll();
                     label_error_msg.setText("");
                     updateTable();

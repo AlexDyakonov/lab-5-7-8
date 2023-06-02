@@ -7,6 +7,7 @@ module ru.home.app {
     requires org.json;
     requires java.sql;
     requires plexus.utils;
+    requires javafx.media;
 
     opens ru.home.app to javafx.fxml;
     exports ru.home.app;
