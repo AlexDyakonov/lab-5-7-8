@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +13,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -122,62 +122,56 @@ public class MapController implements Initializable {
     @FXML
     private AnchorPane ap_main;
     private static final double STICKMAN_VELOCITY = 1.5;
+    private double mouseX = 0;
+    private double mouseY = 0;
+
+    private double[] generateCoords() {
+        double size = NewStickman.getStickmanSize();
+        double min = 100;
+        double randomX = min + (MAP_WIDTH - min) * Math.random();
+        double randomY = min + (MAP_HEIGHT - min) * Math.random();
+        if (randomX - size < 0 || randomX + size > MAP_WIDTH || randomY - size < 0 || randomY + size > MAP_HEIGHT) {
+            return generateCoords();
+        }
+        return new double[]{randomX, randomY};
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int size = NewStickman.getSize();
         label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
 
         List<NewStickman> stickManList = new ArrayList<>();
 
+
+        Random random = new Random();
         int counter = 0;
         for (HumanBeingResponseDTOwithUsers human : humans) {
-            if (counter++ > 0) {
+            if (counter++ > 100) {
                 break;
             }
-            NewStickman stickman = new NewStickman(human.getUsername());
-            stickman.setX(Math.random() * (MAP_WIDTH - size * 2));
-            stickman.setY(Math.random() * (MAP_HEIGHT - size * 2));
-            stickman.setVelocity(new Point2D(Math.random() * STICKMAN_VELOCITY, Math.random() * STICKMAN_VELOCITY));
-            stickman.addToPane(pane_map);
+            double speedX = 1 + random.nextDouble() * 3;
+            double speedY = 1 + random.nextDouble() * 3;
+            double[] coords = generateCoords();
+
+            NewStickman stickman = new NewStickman(coords[0], coords[1], speedX, speedY, human.getUsername());
             stickManList.add(stickman);
+            pane_map.getChildren().add(stickman.getStickmanGroup());
         }
 
-        pane_map.setOnMouseMoved(event -> {
-            double mouseX = event.getX();
-            double mouseY = event.getY();
-
-
-            for (NewStickman stickman : stickManList) {
-                double stickmanX = stickman.getX() + size / 2;
-                double stickmanY = stickman.getY() + size / 2;
-                double distance = Math.sqrt(Math.pow(mouseX - stickmanX, 2) + Math.pow(mouseY - stickmanY, 2));
-
-                if (distance < 100) {
-                    stickman.setVelocity(new Point2D((stickmanX - mouseX) / 50, (stickmanY - mouseY) / 50));
-                }
-            }
-        });
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 for (NewStickman stickman : stickManList) {
-                    stickman.update();
-
-                    double x = stickman.getX();
-                    double y = stickman.getY();
-
-                    if (x <= 0 || x >= MAP_WIDTH - size) {
-                        Point2D velocity = stickman.getVelocity();
-                        stickman.setVelocity(new Point2D(-velocity.getX(), velocity.getY()));
-                    }
-                    if (y <= 0 || y >= MAP_HEIGHT - size) {
-                        Point2D velocity = stickman.getVelocity();
-                        stickman.setVelocity(new Point2D(velocity.getX(), -velocity.getY()));
-                    }
+                    stickman.move(mouseX, mouseY, MAP_WIDTH, MAP_HEIGHT);
                 }
             }
         };
         timer.start();
+
+        pane_map.addEventHandler(MouseEvent.MOUSE_MOVED, event -> {
+            mouseX = event.getX();
+            mouseY = event.getY();
+        });
 
         setInfo();
         mi_english.setOnAction(e -> {

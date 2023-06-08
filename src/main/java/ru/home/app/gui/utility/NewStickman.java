@@ -1,18 +1,19 @@
 package ru.home.app.gui.utility;
 
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
+import java.util.Random;
+
 public class NewStickman {
-    private static final int STICKMAN_SIZE = 52;
-    private final Group stickmanGroup;
-    private double x;
-    private double y;
-    private Point2D velocity;
+    private static final double STICKMAN_SIZE = 40;
+    double x;
+    double y;
+    double speedX;
+    double speedY;
+    Group stickmanGroup;
 
     private static Color generateColor(String input) {
         int hashCode = input.hashCode();
@@ -23,12 +24,12 @@ public class NewStickman {
     }
 
 
-    public NewStickman(String username) {
-        stickmanGroup = new Group();
+    public NewStickman(double x, double y, double speedX, double speedY, String username) {
         Color color = generateColor(username);
-        this.x = 0;
-        this.y = 0;
-        this.velocity = new Point2D(0, 0);
+        this.x = x;
+        this.y = y;
+        this.speedX = speedX;
+        this.speedY = speedY;
 
         double headRadius = STICKMAN_SIZE * 0.15;
         double bodyLength = STICKMAN_SIZE * 0.4;
@@ -43,7 +44,7 @@ public class NewStickman {
         Line body = new Line(headRadius, headRadius * 2, headRadius, headRadius * 2 + bodyLength);
         body.setStroke(color);
 
-        double armAngle = 50.0;
+        double armAngle = 45.0;
         double armLength = limbLength / Math.cos(Math.toRadians(armAngle)) - 5;
         double armOffset = limbOffset + limbLength * Math.sin(Math.toRadians(armAngle));
 
@@ -59,16 +60,55 @@ public class NewStickman {
         Line rightLeg = new Line(headRadius, headRadius * 2 + bodyLength, headRadius + limbLength, headRadius * 2 + bodyLength + limbLength);
         rightLeg.setStroke(color);
 
-        stickmanGroup.getChildren().addAll(head, body, leftArm, rightArm, leftLeg, rightLeg);
+        this.stickmanGroup = new Group(head, body, leftArm, rightArm, leftLeg, rightLeg);
     }
 
-    public void update() {
-        x += velocity.getX();
-        y += velocity.getY();
-    }
+    public void move(double mouseX, double mouseY, double WIDTH, double HEIGHT) {
+        Random random = new Random();
 
-    public void addToPane(Pane pane) {
-        pane.getChildren().add(stickmanGroup);
+        double dx = x - mouseX;
+        double dy = y - mouseY;
+        double angle = Math.atan2(dy, dx);
+        double newX = x + 5 * Math.cos(angle);
+        double newY = y + 5 * Math.sin(angle);
+
+        double distanceTravelled = Math.hypot(this.x - mouseX, this.y - mouseY);
+        if (distanceTravelled < 50) {
+            this.speedX = (1 + random.nextDouble() * 3) * Math.signum(this.speedX);
+            this.speedY = (1 + random.nextDouble() * 3) * Math.signum(this.speedY);
+            if (!(newX - STICKMAN_SIZE < 0 || newX + STICKMAN_SIZE > WIDTH)) {
+                x = newX;
+            }
+            if (!(newY - STICKMAN_SIZE < 0 || newY + STICKMAN_SIZE > HEIGHT)) {
+                y = newY;
+            }
+        }
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (distanceTravelled > 10) {
+            this.speedX *= 0.9;
+            this.speedY *= 0.9;
+        }
+
+        double minSpeed = 0.5;
+        if (Math.abs(this.speedX) < minSpeed) {
+            this.speedX = Math.copySign(minSpeed, this.speedX);
+        }
+        if (Math.abs(this.speedY) < minSpeed) {
+            this.speedY = Math.copySign(minSpeed, this.speedY);
+        }
+
+        this.stickmanGroup.setTranslateX(this.x);
+        this.stickmanGroup.setTranslateY(this.y);
+
+        if (this.x < 3 || this.x + STICKMAN_SIZE > WIDTH - 7) {
+            this.speedX *= -1.05;
+        }
+        if (this.y < 3 || this.y + STICKMAN_SIZE > HEIGHT - 7) {
+            this.speedY *= -1.05;
+        }
     }
 
     public double getX() {
@@ -77,7 +117,6 @@ public class NewStickman {
 
     public void setX(double x) {
         this.x = x;
-        stickmanGroup.setLayoutX(x);
     }
 
     public double getY() {
@@ -86,18 +125,33 @@ public class NewStickman {
 
     public void setY(double y) {
         this.y = y;
-        stickmanGroup.setLayoutY(y);
     }
 
-    public static int getSize() {
+    public double getSpeedX() {
+        return speedX;
+    }
+
+    public void setSpeedX(double speedX) {
+        this.speedX = speedX;
+    }
+
+    public double getSpeedY() {
+        return speedY;
+    }
+
+    public void setSpeedY(double speedY) {
+        this.speedY = speedY;
+    }
+
+    public Group getStickmanGroup() {
+        return stickmanGroup;
+    }
+
+    public void setStickmanGroup(Group stickmanGroup) {
+        this.stickmanGroup = stickmanGroup;
+    }
+
+    public static double getStickmanSize() {
         return STICKMAN_SIZE;
-    }
-
-    public Point2D getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(Point2D velocity) {
-        this.velocity = velocity;
     }
 }
