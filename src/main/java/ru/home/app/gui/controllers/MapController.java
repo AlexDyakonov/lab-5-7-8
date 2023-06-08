@@ -1,9 +1,11 @@
 package ru.home.app.gui.controllers;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,8 +19,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import ru.home.app.gui.utility.NewStickman;
 import ru.home.app.gui.utility.SpecialWindows;
-import ru.home.app.gui.utility.StickMan;
 import ru.home.app.server.authentication.CurrentUserManager;
 import ru.home.app.server.controller.HumanController;
 import ru.home.app.server.model.dto.HumanBeingResponseDTOwithUsers;
@@ -119,41 +121,64 @@ public class MapController implements Initializable {
     private MenuItem mi_spanish;
     @FXML
     private AnchorPane ap_main;
+    private static final double STICKMAN_VELOCITY = 1.5;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int size = NewStickman.getSize();
         label_all.setText("All(" + mainPageController.humanBeingResponseDTOwithUsersObservableList.size() + ")");
 
-        List<StickMan> stickManList = new ArrayList<>();
+        List<NewStickman> stickManList = new ArrayList<>();
 
         int counter = 0;
         for (HumanBeingResponseDTOwithUsers human : humans) {
-            if (counter++ > 100) {
+            if (counter++ > 0) {
                 break;
             }
-            StickMan stickMan = new StickMan();
-            double x = 40 + Math.random() * MAP_WIDTH % (MAP_WIDTH - 100);
-            double y = 40 + Math.random() * MAP_HEIGHT % (MAP_HEIGHT - 100);
-            stickMan.generate(x, y, 0.5, human.getUsername()).addToPane(pane_map);
-            stickManList.add(stickMan);
+            NewStickman stickman = new NewStickman(human.getUsername());
+            stickman.setX(Math.random() * (MAP_WIDTH - size * 2));
+            stickman.setY(Math.random() * (MAP_HEIGHT - size * 2));
+            stickman.setVelocity(new Point2D(Math.random() * STICKMAN_VELOCITY, Math.random() * STICKMAN_VELOCITY));
+            stickman.addToPane(pane_map);
+            stickManList.add(stickman);
         }
 
         pane_map.setOnMouseMoved(event -> {
             double mouseX = event.getX();
             double mouseY = event.getY();
-            for (StickMan stickMan : stickManList) {
-                double stickManX = stickMan.getX();
-                double stickManY = stickMan.getY();
-                double distance = Math.sqrt(Math.pow(mouseX - stickManX, 2) + Math.pow(mouseY - stickManY, 2));
-                if (distance < 75 && mouseX >= 0 && mouseY >= 0 && mouseX <= MAP_WIDTH && mouseY <= MAP_HEIGHT) {
-                    double dx = stickManX - mouseX;
-                    double dy = stickManY - mouseY;
-                    double angle = Math.atan2(dy, dx);
-                    double newX = stickManX + 5 * Math.cos(angle);
-                    double newY = stickManY + 5 * Math.sin(angle);
-                    stickMan.move(newX, newY, MAP_WIDTH, MAP_HEIGHT);
+
+
+            for (NewStickman stickman : stickManList) {
+                double stickmanX = stickman.getX() + size / 2;
+                double stickmanY = stickman.getY() + size / 2;
+                double distance = Math.sqrt(Math.pow(mouseX - stickmanX, 2) + Math.pow(mouseY - stickmanY, 2));
+
+                if (distance < 100) {
+                    stickman.setVelocity(new Point2D((stickmanX - mouseX) / 50, (stickmanY - mouseY) / 50));
                 }
             }
         });
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                for (NewStickman stickman : stickManList) {
+                    stickman.update();
+
+                    double x = stickman.getX();
+                    double y = stickman.getY();
+
+                    if (x <= 0 || x >= MAP_WIDTH - size) {
+                        Point2D velocity = stickman.getVelocity();
+                        stickman.setVelocity(new Point2D(-velocity.getX(), velocity.getY()));
+                    }
+                    if (y <= 0 || y >= MAP_HEIGHT - size) {
+                        Point2D velocity = stickman.getVelocity();
+                        stickman.setVelocity(new Point2D(velocity.getX(), -velocity.getY()));
+                    }
+                }
+            }
+        };
+        timer.start();
+
         setInfo();
         mi_english.setOnAction(e -> {
             String text = mi_english.getText();
