@@ -1,0 +1,50 @@
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view:focused {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-header {
+    -fx-background-color: #AF517A;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #AF517A;
+}
+
+.table-view .column-header-background .label {
+    -fx-font: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F3CBC5;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #FCDDD8;
+}
+
+.table-cell {
+    -fx-alignment: center;
+}
+
+.table-cell.column_toothpick {
+    -fx-alignment: center;
+}
+
+.table-cell.column_hero {
+    -fx-alignment: center;
+}
+
+.table-cell.column_car_cool {
+    -fx-alignment: center;
+}
